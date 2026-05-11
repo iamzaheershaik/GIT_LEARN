@@ -78,6 +78,7 @@ const SYSTEM_PROMPT = `You are an elite ATS Resume Optimization Agent. Your ONLY
 }`;
 
 // ── DOM Elements ──
+const apiKeyInput = document.getElementById('apiKeyInput');
 const jdInput = document.getElementById('jdInput');
 const resumeInput = document.getElementById('resumeInput');
 const jdChars = document.getElementById('jdChars');
@@ -132,6 +133,8 @@ function hideError() {
 
 // ── Run Agent ──
 async function runAgent() {
+  const apiKey = apiKeyInput.value.trim();
+  if (!apiKey) { showError('Please provide an Anthropic API Key.'); return; }
   if (!jdInput.value.trim()) { showError('Paste a Job Description first.'); return; }
   if (!validateJson(resumeInput.value)) return;
   hideError();
@@ -153,14 +156,25 @@ async function runAgent() {
     const userPrompt = `## JOB DESCRIPTION\n${jdInput.value}\n\n## CANDIDATE RESUME (JSON)\n${resumeInput.value}\n\nRewrite this resume to maximize ATS match for the above JD. Return ONLY valid JSON.`;
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'x-api-key': apiKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
+        model: 'claude-3-5-sonnet-20240620',
         max_tokens: 2000,
         system: SYSTEM_PROMPT,
         messages: [{ role: 'user', content: userPrompt }]
       })
     });
+    
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error?.message || res.statusText);
+    }
+    
     const data = await res.json();
     const raw = (data.content || []).map(b => b.text || '').join('').trim();
     const clean = raw.replace(/```json|```/g, '').trim();
