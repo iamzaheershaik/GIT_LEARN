@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Git Masterclass — Complete Series (Level 1–3)</title>
-<meta name="description" content="The complete Git Masterclass series — from zero to expert. Level 1: Core Commands, Level 2: Advanced Internals, Level 3: Expert Architecture.">
+<title>Dev Hub — Git Masterclass · JD Resume Agent · Crack The JS</title>
+<meta name="description" content="Complete developer hub: Git Masterclass (Levels 1–3), JD Resume Tailor Agent, and Crack The JS Interview prep.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -19,7 +19,7 @@
       <div class="nav-dot" style="background:#34d399"></div>
     </div>
     <div class="nav-brand">
-      <span class="git">git</span><span class="suffix">-masterclass</span>
+      <span class="git">dev</span><span class="suffix">-hub</span>
     </div>
   </div>
 
@@ -28,6 +28,23 @@
     <span>Complete Series</span>
   </div>
 
+  <!-- Section Switcher (Git / Agent / CrackJS) -->
+  <div class="section-switcher" id="sectionSwitcher">
+    <button class="section-btn active" data-section="git" onclick="switchSection('git')" id="secBtnGit">
+      <span class="section-icon">⌥</span>
+      <span class="section-label">Git Masterclass</span>
+    </button>
+    <button class="section-btn" data-section="agent" onclick="switchSection('agent')" id="secBtnAgent">
+      <span class="section-icon">⚡</span>
+      <span class="section-label">JD Resume Agent</span>
+    </button>
+    <button class="section-btn" data-section="crackjs" onclick="switchSection('crackjs')" id="secBtnCrackjs">
+      <span class="section-icon">💻</span>
+      <span class="section-label">Crack The JS</span>
+    </button>
+  </div>
+
+  <!-- Level Switcher (only visible for Git section) -->
   <div class="level-switcher" id="levelSwitcher">
     <button class="level-btn active" data-level="1" onclick="switchLevel(1)" id="lvlBtn1">
       <span class="level-num">1</span>
@@ -46,7 +63,7 @@
     </button>
   </div>
 
-  <div class="nav-hint">
+  <div class="nav-hint" id="navHint">
     <span class="kbd">1</span>
     <span class="kbd">2</span>
     <span class="kbd">3</span>
@@ -67,9 +84,14 @@
 
 <!-- IFRAMES -->
 <div class="frame-container">
-    <iframe class="level-frame active" id="frame1" src="html/git-masterclass.html" title="Level 1: Git Foundations"></iframe>
+  <!-- Git Masterclass frames -->
+  <iframe class="level-frame active" id="frame1" src="html/git-masterclass.html" title="Level 1: Git Foundations"></iframe>
   <iframe class="level-frame" id="frame2" title="Level 2: Git Advanced"></iframe>
   <iframe class="level-frame" id="frame3" title="Level 3: Git Expert"></iframe>
+  <!-- JD Resume Agent -->
+  <iframe class="level-frame" id="frameAgent" title="JD Resume Tailor Agent"></iframe>
+  <!-- Crack The JS -->
+  <iframe class="level-frame" id="frameCrackjs" src="https://crack-the-js.vercel.app" title="Crack The JS Interview"></iframe>
 </div>
 
 <script src="src/script.js"></script>

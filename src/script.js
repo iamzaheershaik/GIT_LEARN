@@ -1,11 +1,19 @@
-// ── Git Masterclass — Level Switcher Logic ──
+// ── Dev Hub — Section & Level Switcher Logic ──
 
 let currentLevel = 1;
+let currentSection = 'git';
 
+// Git level frames
 const frames = {
   1: { el: document.getElementById('frame1'), src: 'html/git-masterclass.html', loaded: true },
   2: { el: document.getElementById('frame2'), src: 'html/git-masterclass-level2.html', loaded: false },
   3: { el: document.getElementById('frame3'), src: 'html/git-masterclass-level3.html', loaded: false },
+};
+
+// Section frames
+const sectionFrames = {
+  agent: { el: document.getElementById('frameAgent'), src: 'html/jd-resume-agent.html', loaded: false },
+  crackjs: { el: document.getElementById('frameCrackjs'), src: 'https://crack-the-js.vercel.app', loaded: true },
 };
 
 const btns = {
@@ -14,11 +22,101 @@ const btns = {
   3: document.getElementById('lvlBtn3'),
 };
 
+const sectionBtns = {
+  git: document.getElementById('secBtnGit'),
+  agent: document.getElementById('secBtnAgent'),
+  crackjs: document.getElementById('secBtnCrackjs'),
+};
+
 const overlay = document.getElementById('transOverlay');
 const loader = document.getElementById('loader');
+const levelSwitcher = document.getElementById('levelSwitcher');
+const navHint = document.getElementById('navHint');
 
+// ── Section Switching ──
+function switchSection(section) {
+  if (section === currentSection) return;
+
+  const prevSection = currentSection;
+  currentSection = section;
+
+  // Update section button states
+  Object.values(sectionBtns).forEach(b => b.classList.remove('active'));
+  sectionBtns[section].classList.add('active');
+
+  // Show/hide level switcher (only for git section)
+  if (section === 'git') {
+    levelSwitcher.style.display = '';
+    navHint.style.display = '';
+  } else {
+    levelSwitcher.style.display = 'none';
+    navHint.style.display = 'none';
+  }
+
+  // Update body class for theming
+  if (section === 'git') {
+    document.body.className = `level-${currentLevel}`;
+  } else if (section === 'agent') {
+    document.body.className = 'section-agent';
+  } else if (section === 'crackjs') {
+    document.body.className = 'section-crackjs';
+  }
+
+  // Show transition overlay
+  overlay.classList.add('active');
+
+  // Hide ALL frames first
+  hideAllFrames();
+
+  if (section === 'git') {
+    // Show current git level frame
+    setTimeout(() => {
+      frames[currentLevel].el.classList.add('active');
+      overlay.classList.remove('active');
+    }, 100);
+  } else {
+    // Show section frame
+    const sf = sectionFrames[section];
+    if (!sf.loaded) {
+      loader.classList.add('show');
+      sf.el.src = sf.src;
+      sf.el.addEventListener('load', () => {
+        sf.loaded = true;
+        loader.classList.remove('show');
+        sf.el.classList.add('active');
+        overlay.classList.remove('active');
+      }, { once: true });
+    } else {
+      setTimeout(() => {
+        sf.el.classList.add('active');
+        overlay.classList.remove('active');
+      }, 100);
+    }
+  }
+
+  // Save to localStorage
+  try { localStorage.setItem('dev-hub-section', section); } catch(e) {}
+}
+
+function hideAllFrames() {
+  // Hide git frames
+  Object.values(frames).forEach(f => f.el.classList.remove('active'));
+  // Hide section frames
+  Object.values(sectionFrames).forEach(f => f.el.classList.remove('active'));
+}
+
+// ── Level Switching (Git Masterclass only) ──
 function switchLevel(level) {
-  if (level === currentLevel) return;
+  if (level === currentLevel && currentSection === 'git') return;
+
+  // If not in git section, switch to it first
+  if (currentSection !== 'git') {
+    currentLevel = level;
+    switchSection('git');
+    Object.values(btns).forEach(b => b.classList.remove('active'));
+    btns[level].classList.add('active');
+    return;
+  }
 
   const prevLevel = currentLevel;
   currentLevel = level;
@@ -69,23 +167,39 @@ document.addEventListener('keydown', (e) => {
   // Ignore if user is typing in an input
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
 
-  if (e.key === '1') switchLevel(1);
-  else if (e.key === '2') switchLevel(2);
-  else if (e.key === '3') switchLevel(3);
-  else if (e.key === 'ArrowLeft' && currentLevel > 1) switchLevel(currentLevel - 1);
-  else if (e.key === 'ArrowRight' && currentLevel < 3) switchLevel(currentLevel + 1);
+  if (currentSection === 'git') {
+    if (e.key === '1') switchLevel(1);
+    else if (e.key === '2') switchLevel(2);
+    else if (e.key === '3') switchLevel(3);
+    else if (e.key === 'ArrowLeft' && currentLevel > 1) switchLevel(currentLevel - 1);
+    else if (e.key === 'ArrowRight' && currentLevel < 3) switchLevel(currentLevel + 1);
+  }
 });
 
-// Restore last level from localStorage
+// Restore last state from localStorage
 try {
-  const saved = localStorage.getItem('git-masterclass-level');
-  if (saved && [1, 2, 3].includes(Number(saved))) {
-    const savedLevel = Number(saved);
-    if (savedLevel !== 1) {
-      // Need to switch after initial frame loads
+  const savedSection = localStorage.getItem('dev-hub-section');
+  const savedLevel = localStorage.getItem('git-masterclass-level');
+
+  if (savedLevel && [1, 2, 3].includes(Number(savedLevel))) {
+    currentLevel = Number(savedLevel);
+    Object.values(btns).forEach(b => b.classList.remove('active'));
+    btns[currentLevel].classList.add('active');
+  }
+
+  if (savedSection && ['git', 'agent', 'crackjs'].includes(savedSection)) {
+    if (savedSection !== 'git') {
       frames[1].el.addEventListener('load', () => {
-        switchLevel(savedLevel);
+        switchSection(savedSection);
+      }, { once: true });
+    } else if (currentLevel !== 1) {
+      frames[1].el.addEventListener('load', () => {
+        switchLevel(currentLevel);
       }, { once: true });
     }
+  } else if (currentLevel !== 1) {
+    frames[1].el.addEventListener('load', () => {
+      switchLevel(currentLevel);
+    }, { once: true });
   }
 } catch(e) {}
