@@ -199,7 +199,6 @@ npx serve .
 - **HTML5** — Semantic markup
 - **CSS3** — Custom properties, glassmorphism, gradient themes, responsive design
 - **Vanilla JavaScript** — DOM manipulation, IntersectionObserver, localStorage
-- **Claude AI API** — Powers the JD Resume Agent
 - **Google Fonts** — Inter, Fira Code, DM Mono, Syne, Space Grotesk, DM Sans
 - **No frameworks. No build tools. No dependencies.**
 
