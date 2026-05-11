@@ -1,6 +1,6 @@
-# 🚀 Dev Hub — Git Masterclass · JD Resume Agent · Crack The JS
+# 🚀 Dev Hub — Git Masterclass · Crack The JS
 
-A comprehensive, interactive, browser-based **developer learning hub** with **3 integrated tools** — Git Masterclass (3 levels), an AI-powered JD-to-Resume Tailor Agent, and Crack The JS Interview prep. No frameworks, no dependencies — just pure HTML, CSS, and JavaScript.
+A comprehensive, interactive, browser-based **developer learning hub** with **2 integrated tools** — Git Masterclass (3 levels) and Crack The JS Interview prep. No frameworks, no dependencies — just pure HTML, CSS, and JavaScript.
 
 ---
 
@@ -19,7 +19,7 @@ A comprehensive, interactive, browser-based **developer learning hub** with **3 
 
 ## Overview
 
-Dev Hub is a unified developer platform with section-based navigation. Switch between three sections — **Git Masterclass** (3 progressive levels), **JD Resume Agent** (AI-powered ATS optimization), and **Crack The JS** (JavaScript interview prep) — all from one premium UI.
+Dev Hub is a unified developer platform with section-based navigation. Switch between two sections — **Git Masterclass** (3 progressive levels) and **Crack The JS** (JavaScript interview prep) — all from one premium UI.
 
 ---
 
@@ -27,10 +27,9 @@ Dev Hub is a unified developer platform with section-based navigation. Switch be
 
 | Feature | Description |
 |---|---|
-| **3 Sections** | Git Masterclass, JD Resume Agent, Crack The JS — all in one hub |
+| **2 Sections** | Git Masterclass, Crack The JS — all in one hub |
 | **Section Switcher** | Smooth navigation between sections with themed transitions |
 | **3 Git Levels** | Beginner → Advanced → Expert, each with unique color theming |
-| **AI Resume Agent** | Paste a JD + resume JSON → get ATS-optimized resume via Claude AI |
 | **JS Interview Prep** | 327+ JS MCQ questions, React questions, and coding problems |
 | **Interactive Quizzes** | Test your understanding after each section |
 | **Copy-to-Clipboard** | One-click copy on all terminal code blocks |
@@ -122,24 +121,7 @@ A 3-level progressive Git learning guide with interactive quizzes, terminal exam
 
 ---
 
-### 2. ⚡ JD Resume Agent — ATS Optimization
-
-An AI-powered resume tailoring tool that rewrites your resume to match any Job Description for maximum ATS score.
-
-| Feature | Description |
-|---|---|
-| **JD Input** | Paste any job description |
-| **Resume JSON Input** | Provide your resume in structured JSON format |
-| **AI Processing** | Powered by Claude API for intelligent keyword matching |
-| **ATS Score** | Get a numerical ATS compatibility score |
-| **Keyword Matching** | See matched & missing keywords at a glance |
-| **Tailored Bullets** | Rewritten experience bullets optimized for ATS |
-| **Optimization Notes** | AI-generated suggestions for improvement |
-| **Copy JSON** | One-click export of optimized resume |
-
----
-
-### 3. 💻 Crack The JS — Interview Prep
+### 2. 💻 Crack The JS — Interview Prep
 
 JavaScript interview preparation with 327+ MCQ questions covering core JS, React, and coding challenges.
 
@@ -164,24 +146,19 @@ GIT_LEARN/
 ├── html/                                      # HTML pages
 │   ├── git-masterclass.html                  #   Git Level 1 — Foundations
 │   ├── git-masterclass-level2.html           #   Git Level 2 — Advanced
-│   ├── git-masterclass-level3.html           #   Git Level 3 — Expert
-│   └── jd-resume-agent.html                  #   JD Resume Agent page
+│   └── git-masterclass-level3.html           #   Git Level 3 — Expert
 │
 ├── styles/                                    # Stylesheets
 │   ├── styles.css                            #   Index page & section switcher styles
-│   ├── jd-resume-agent.css                   #   JD Resume Agent styles
 │   ├── git-masterclass.css                   #   Level 1 styles (green theme)
 │   ├── git-masterclass-level2.css            #   Level 2 styles (amber theme)
 │   └── git-masterclass-level3.css            #   Level 3 styles (indigo/teal theme)
 │
 ├── src/                                       # JavaScript
 │   ├── script.js                             #   Section & level switching logic
-│   ├── jd-resume-agent.js                    #   JD Resume Agent logic
 │   ├── git-masterclass.js                    #   Level 1 interactivity
 │   ├── git-masterclass-level2.js             #   Level 2 interactivity
 │   └── git-masterclass-level3.js             #   Level 3 interactivity
-│
-└── jd-resume-agent (1).jsx                   # Original React JSX reference
 ```
 
 ---

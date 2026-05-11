@@ -12,7 +12,6 @@ const frames = {
 
 // Section frames
 const sectionFrames = {
-  agent: { el: document.getElementById('frameAgent'), src: 'html/jd-resume-agent.html', loaded: false },
   crackjs: { el: document.getElementById('frameCrackjs'), src: 'https://crack-the-js.vercel.app', loaded: true },
 };
 
@@ -24,7 +23,6 @@ const btns = {
 
 const sectionBtns = {
   git: document.getElementById('secBtnGit'),
-  agent: document.getElementById('secBtnAgent'),
   crackjs: document.getElementById('secBtnCrackjs'),
 };
 
@@ -56,8 +54,6 @@ function switchSection(section) {
   // Update body class for theming
   if (section === 'git') {
     document.body.className = `level-${currentLevel}`;
-  } else if (section === 'agent') {
-    document.body.className = 'section-agent';
   } else if (section === 'crackjs') {
     document.body.className = 'section-crackjs';
   }
@@ -187,7 +183,7 @@ try {
     btns[currentLevel].classList.add('active');
   }
 
-  if (savedSection && ['git', 'agent', 'crackjs'].includes(savedSection)) {
+  if (savedSection && ['git', 'crackjs'].includes(savedSection)) {
     if (savedSection !== 'git') {
       frames[1].el.addEventListener('load', () => {
         switchSection(savedSection);
