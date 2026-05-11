@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git Masterclass — Level 2: Advanced</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/git-masterclass-level2.css">
+</head>
+<body>
+
+<div class="progress-bar" id="prog"></div>
+
+<!-- HEADER -->
+<div class="top-header">
+  <div class="win-dots">
+    <div class="wdot" style="background:#f87171"></div>
+    <div class="wdot" style="background:#ffb700"></div>
+    <div class="wdot" style="background:#4ade80"></div>
+  </div>
+  <div class="header-badge">
+    <span>git-masterclass</span>
+    <span class="lvl">LEVEL 2</span>
+  </div>
+  <div class="header-right">
+    <span class="pill">Advanced</span>
+    <span class="pill amber">⚡ Pro Track</span>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sb-section">Internals</div>
+  <a class="sb-link active" onclick="goTo('s1')"><span class="sb-icon">🧬</span>Git Objects<span class="sb-badge hard">deep</span></a>
+  <a class="sb-link" onclick="goTo('s2')"><span class="sb-icon">🪝</span>Git Hooks<span class="sb-badge new">key</span></a>
+
+  <div class="sb-section">Power Commands</div>
+  <a class="sb-link" onclick="goTo('s3')"><span class="sb-icon">🔎</span>Advanced Search<span class="sb-badge new">new</span></a>
+  <a class="sb-link" onclick="goTo('s4')"><span class="sb-icon">🌳</span>Worktrees<span class="sb-badge new">new</span></a>
+  <a class="sb-link" onclick="goTo('s5')"><span class="sb-icon">🎭</span>Advanced Rebase<span class="sb-badge hard">hard</span></a>
+  <a class="sb-link" onclick="goTo('s6')"><span class="sb-icon">🔀</span>Merge Strategies<span class="sb-badge new">new</span></a>
+
+  <div class="sb-section">Repo Architecture</div>
+  <a class="sb-link" onclick="goTo('s7')"><span class="sb-icon">📦</span>Submodules<span class="sb-badge hard">hard</span></a>
+  <a class="sb-link" onclick="goTo('s8')"><span class="sb-icon">🌲</span>Subtrees<span class="sb-badge new">new</span></a>
+  <a class="sb-link" onclick="goTo('s9')"><span class="sb-icon">🗃️</span>Git LFS<span class="sb-badge new">new</span></a>
+  <a class="sb-link" onclick="goTo('s10')"><span class="sb-icon">🎯</span>Sparse Checkout<span class="sb-badge new">new</span></a>
+
+  <div class="sb-section">Workflow & Quality</div>
+  <a class="sb-link" onclick="goTo('s11')"><span class="sb-icon">✍️</span>Commit Standards<span class="sb-badge pro">pro</span></a>
+  <a class="sb-link" onclick="goTo('s12')"><span class="sb-icon">🔐</span>GPG Signing<span class="sb-badge pro">pro</span></a>
+  <a class="sb-link" onclick="goTo('s13')"><span class="sb-icon">📋</span>.gitattributes<span class="sb-badge new">new</span></a>
+  <a class="sb-link" onclick="goTo('s14')"><span class="sb-icon">🚀</span>CI/CD with Git<span class="sb-badge pro">pro</span></a>
+
+  <div class="sb-section">Scale & Performance</div>
+  <a class="sb-link" onclick="goTo('s15')"><span class="sb-icon">⚡</span>Monorepos<span class="sb-badge hard">hard</span></a>
+  <a class="sb-link" onclick="goTo('s16')"><span class="sb-icon">🗜️</span>Performance & GC<span class="sb-badge new">new</span></a>
+  <a class="sb-link" onclick="goTo('s17')"><span class="sb-icon">📦</span>Git Bundle<span class="sb-badge new">new</span></a>
+
+  <div class="sb-section">Projects</div>
+  <a class="sb-link" onclick="goTo('s18')"><span class="sb-icon">🏗️</span>Project: OSS Contrib<span class="sb-badge pro">pro</span></a>
+  <a class="sb-link" onclick="goTo('s19')"><span class="sb-icon">🔬</span>Project: Hook System<span class="sb-badge pro">pro</span></a>
+  <a class="sb-link" onclick="goTo('s20')"><span class="sb-icon">📋</span>Level 2 Cheat Sheet</a>
+</div>
+
+<!-- MAIN -->
+<div class="layout">
+<div class="main">
+
+<!-- HERO -->
+<div class="hero" id="hero">
+  <div class="hero-bg-text">L2</div>
+  <div class="hero-level">
+    <span class="level-chip">Level 2</span>
+    <span class="level-cont">Continuation of Level 1 Masterclass</span>
+  </div>
+  <div class="prereq">
+    ⚠️ <strong>Prerequisites:</strong> Comfortable with git add, commit, branch, merge, push/pull, revert, stash. Completed Level 1.
+  </div>
+  <h1>Git <span class="a">Advanced</span><br>& <span class="p">Internals</span></h1>
+  <p>You know the commands. Now learn <em>how Git thinks</em>. Hooks, internals, worktrees, submodules, monorepo strategies, GPG signing, LFS, and CI/CD integration — the skills that separate juniors from senior engineers.</p>
+  <div class="hero-grid">
+    <div class="hstat"><div class="hstat-n">20</div><div class="hstat-l">Modules</div></div>
+    <div class="hstat"><div class="hstat-n">60+</div><div class="hstat-l">Commands</div></div>
+    <div class="hstat"><div class="hstat-n">2</div><div class="hstat-l">Pro Projects</div></div>
+    <div class="hstat"><div class="hstat-n">∞</div><div class="hstat-l">Career Value</div></div>
+  </div>
+</div>
+
+<div class="content">
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S1: GIT INTERNALS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s1">
+  <div class="section-head">
+    <div class="snum">01</div>
+    <div>
+      <div class="stitle">Git Internals — Object Model <span class="stag hard">DEEP DIVE</span></div>
+      <div class="ssub">Understand what Git actually stores. Everything is an object.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <div class="concept-title">🧬 Git's Content-Addressable Storage</div>
+    <p>Git stores <strong style="color:var(--text-bright)">4 object types</strong> in <span class="ic">.git/objects/</span> — each identified by a SHA-1 hash of its content. This is why Git is so reliable: if the content matches the hash, the data is intact. <strong style="color:var(--amber)">Blobs</strong> hold file content. <strong style="color:var(--purple)">Trees</strong> hold directory structure. <strong style="color:var(--cyan)">Commits</strong> hold metadata + a pointer to a tree. <strong style="color:var(--green)">Tags</strong> are annotated pointers to commits.</p>
+  </div>
+
+  <div class="obj-tree">
+    <div><span class="ot-ref">refs/heads/main</span> <span class="ot-dim">──────────────────────────────► SHA-1</span></div>
+    <div style="padding-left:34px"><span class="ot-dim">└──► </span><span class="ot-commit">commit</span> <span class="ot-dim">a1b2c3d  {tree: x, parent: y, author, message}</span></div>
+    <div style="padding-left:68px"><span class="ot-dim">└──► </span><span class="ot-tree">tree</span>   <span class="ot-dim">x9y8z7w  {README.md → blob f1, src/ → tree g2}</span></div>
+    <div style="padding-left:102px"><span class="ot-dim">├──► </span><span class="ot-blob">blob</span>   <span class="ot-dim">f1e2d3c  "# My App\n..."     ← file content</span></div>
+    <div style="padding-left:102px"><span class="ot-dim">└──► </span><span class="ot-tree">tree</span>   <span class="ot-dim">g2h3i4j  {index.js → blob k5}</span></div>
+    <div style="padding-left:136px"><span class="ot-dim">└──► </span><span class="ot-blob">blob</span>   <span class="ot-dim">k5l6m7n  "console.log('hi')" ← file content</span></div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — Exploring Git Object Internals</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm"># Create a file and commit it, then inspect the objects</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">echo "hello git" | git hash-object --stdin -w</span></div>
+      <div class="line"><span class="oc">8ab686eafeb1f44702738c8b0f24f2567c36da6d</span></div>
+
+      <div class="line gap"><span class="cm"># See object type and size</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git cat-file -t 8ab686</span></div>
+      <div class="line"><span class="oa">blob</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git cat-file -p 8ab686</span></div>
+      <div class="line"><span class="og">hello git</span></div>
+
+      <div class="line gap"><span class="cm"># See the commit object for HEAD</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git cat-file -p HEAD</span></div>
+      <div class="line"><span class="o">tree   a7f3b1c2d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9</span></div>
+      <div class="line"><span class="o">parent d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w</span></div>
+      <div class="line"><span class="o">author Your Name &lt;you@dev.com&gt; 1706745600 +0530</span></div>
+      <div class="line"><span class="o">committer Your Name &lt;you@dev.com&gt; 1706745600 +0530</span></div>
+      <div class="line"><span class="o"></span></div>
+      <div class="line"><span class="og">feat: add initial app structure</span></div>
+
+      <div class="line gap"><span class="cm"># Inspect the tree (directory snapshot)</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git cat-file -p HEAD^{tree}</span></div>
+      <div class="line"><span class="op">100644 blob f1e2d3c4  README.md</span></div>
+      <div class="line"><span class="op">040000 tree g5h6i7j8  src</span></div>
+
+      <div class="line gap"><span class="cm"># Count all objects in the repo</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git count-objects -vH</span></div>
+      <div class="line"><span class="oc">count: 42</span></div>
+      <div class="line"><span class="oc">size: 156.00 KiB</span></div>
+
+      <div class="line gap"><span class="cm"># Verify object integrity</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git fsck</span></div>
+      <div class="line"><span class="og">Checking object directories: 100% done.</span></div>
+      <div class="line"><span class="og">Checking connectivity: done.</span></div>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card"><div class="card-name">git cat-file -p &lt;hash&gt;</div><div class="card-desc">Pretty-print any object (blob/tree/commit/tag). Your window into Git's storage.</div></div>
+    <div class="card"><div class="card-name">git cat-file -t &lt;hash&gt;</div><div class="card-desc">Get the type of an object: <code>blob</code>, <code>tree</code>, <code>commit</code>, or <code>tag</code>.</div></div>
+    <div class="card"><div class="card-name">git hash-object</div><div class="card-desc">Compute or write a hash for file content. The plumbing behind git add.</div></div>
+    <div class="card"><div class="card-name">git ls-tree HEAD</div><div class="card-desc">List the tree for a commit — like ls but for git objects.</div></div>
+    <div class="card"><div class="card-name">git rev-parse HEAD</div><div class="card-desc">Turn a ref (<code>HEAD</code>, <code>main</code>, <code>v1.0</code>) into a full SHA-1 hash.</div></div>
+    <div class="card"><div class="card-name">git verify-pack -v</div><div class="card-desc">Inspect a pack file to see how objects are stored and compressed.</div></div>
+  </div>
+
+  <div class="callout info">
+    <span class="ico">💡</span>
+    <strong>Why it matters:</strong> Understanding objects explains why <code>git rebase</code> creates new commits (new hashes), why branches are just files in <code>.git/refs/</code>, and why Git never truly loses data within 90 days.
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S2: GIT HOOKS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s2">
+  <div class="section-head">
+    <div class="snum">02</div>
+    <div>
+      <div class="stitle">Git Hooks <span class="stag new">AUTOMATION</span></div>
+      <div class="ssub">Trigger scripts automatically on Git events — lint, test, format, enforce.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <div class="concept-title">🪝 What Are Hooks?</div>
+    <p>Hooks are shell scripts in <span class="ic">.git/hooks/</span> that Git runs automatically at specific lifecycle events. They let you <strong style="color:var(--amber)">enforce code quality</strong>, run linters, validate commit messages, prevent accidental pushes to main, and automate deployment — all without a CI server.</p>
+  </div>
+
+  <div style="margin-bottom:16px">
+    <div style="font-size:11px;color:var(--text-dim);margin-bottom:10px;letter-spacing:0.1em;text-transform:uppercase">CLIENT-SIDE HOOKS</div>
+    <span class="hook-pill">pre-commit</span>
+    <span class="hook-pill">prepare-commit-msg</span>
+    <span class="hook-pill">commit-msg</span>
+    <span class="hook-pill">post-commit</span>
+    <span class="hook-pill">pre-push</span>
+    <span class="hook-pill">pre-rebase</span>
+    <span class="hook-pill">post-checkout</span>
+    <span class="hook-pill">post-merge</span>
+  </div>
+  <div style="margin-bottom:24px">
+    <div style="font-size:11px;color:var(--text-dim);margin-bottom:10px;letter-spacing:0.1em;text-transform:uppercase">SERVER-SIDE HOOKS</div>
+    <span class="hook-pill" style="border-color:rgba(255,183,0,0.3);color:var(--amber)">pre-receive</span>
+    <span class="hook-pill" style="border-color:rgba(255,183,0,0.3);color:var(--amber)">update</span>
+    <span class="hook-pill" style="border-color:rgba(255,183,0,0.3);color:var(--amber)">post-receive</span>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="swTab(this,'h-precommit')">pre-commit</div>
+    <div class="tab" onclick="swTab(this,'h-commitmsg')">commit-msg</div>
+    <div class="tab" onclick="swTab(this,'h-prepush')">pre-push</div>
+    <div class="tab" onclick="swTab(this,'h-husky')">Husky Setup</div>
+  </div>
+
+  <div class="tab-pane active" id="h-precommit">
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+        <span class="tname">.git/hooks/pre-commit — Run linter before every commit</span>
+        <button class="tcopy" onclick="copyT(this)">copy</button>
+      </div>
+      <div class="tbody">
+        <div class="line"><span class="cm">#!/bin/bash</span></div>
+        <div class="line"><span class="cm"># .git/hooks/pre-commit — runs before the commit is created</span></div>
+        <div class="line"><span class="cm"># If this script exits non-zero, the commit is ABORTED</span></div>
+        <div class="line gap"><span class="cm"># Run ESLint on staged JS files</span></div>
+        <div class="line"><span class="op">STAGED_FILES</span><span class="cmd">=$(git diff --cached --name-only --diff-filter=ACM | grep '\.js$')</span></div>
+        <div class="line gap"></div>
+        <div class="line"><span class="cmd">if [ -n "$STAGED_FILES" ]; then</span></div>
+        <div class="line"><span class="cmd">  echo "🔍 Running ESLint on staged files..."</span></div>
+        <div class="line"><span class="cmd">  npx eslint $STAGED_FILES --max-warnings=0</span></div>
+        <div class="line"><span class="cmd">  if [ $? -ne 0 ]; then</span></div>
+        <div class="line"><span class="cmd">    echo "❌ ESLint failed. Fix errors before committing."</span></div>
+        <div class="line"><span class="cmd">    exit 1</span></div>
+        <div class="line"><span class="cmd">  fi</span></div>
+        <div class="line"><span class="cmd">fi</span></div>
+        <div class="line gap"><span class="cm"># Also run Prettier check</span></div>
+        <div class="line"><span class="cmd">npx prettier --check . --quiet || exit 1</span></div>
+        <div class="line gap"><span class="og">echo "✅ Pre-commit checks passed!"</span></div>
+        <div class="line gap"><span class="cm"># Make the hook executable:</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">chmod +x .git/hooks/pre-commit</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="h-commitmsg">
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+        <span class="tname">.git/hooks/commit-msg — Enforce Conventional Commits format</span>
+        <button class="tcopy" onclick="copyT(this)">copy</button>
+      </div>
+      <div class="tbody">
+        <div class="line"><span class="cm">#!/bin/bash</span></div>
+        <div class="line"><span class="cm"># commit-msg hook — receives commit message file as $1</span></div>
+        <div class="line gap"></div>
+        <div class="line"><span class="op">COMMIT_MSG</span><span class="cmd">=$(cat "$1")</span></div>
+        <div class="line"><span class="op">PATTERN</span><span class="cmd">="^(feat|fix|docs|style|refactor|test|chore|perf|ci|revert)(\(.+\))?: .{1,72}"</span></div>
+        <div class="line gap"></div>
+        <div class="line"><span class="cmd">if ! echo "$COMMIT_MSG" | grep -qE "$PATTERN"; then</span></div>
+        <div class="line"><span class="cmd">  echo ""</span></div>
+        <div class="line"><span class="or">  echo "❌ Invalid commit message format!"</span></div>
+        <div class="line"><span class="oa">  echo "   Required: feat|fix|docs|chore|refactor: description"</span></div>
+        <div class="line"><span class="oa">   echo "   Example:  feat(auth): add JWT refresh token"</span></div>
+        <div class="line"><span class="cmd">  echo ""</span></div>
+        <div class="line"><span class="cmd">  exit 1</span></div>
+        <div class="line"><span class="cmd">fi</span></div>
+        <div class="line gap"><span class="og">echo "✅ Commit message format OK"</span></div>
+        <div class="line gap"><span class="cm"># Test it</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -m "bad message"</span></div>
+        <div class="line"><span class="or">❌ Invalid commit message format!</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -m "feat: add login page"</span></div>
+        <div class="line"><span class="og">✅ Commit message format OK</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="h-prepush">
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+        <span class="tname">.git/hooks/pre-push — Run tests + block push to main</span>
+        <button class="tcopy" onclick="copyT(this)">copy</button>
+      </div>
+      <div class="tbody">
+        <div class="line"><span class="cm">#!/bin/bash</span></div>
+        <div class="line"><span class="cm"># pre-push — protect main, run tests before any push</span></div>
+        <div class="line gap"></div>
+        <div class="line"><span class="op">REMOTE</span><span class="cmd">="$1"</span></div>
+        <div class="line"><span class="op">CURRENT</span><span class="cmd">=$(git symbolic-ref --short HEAD)</span></div>
+        <div class="line gap"></div>
+        <div class="line"><span class="cm"># Block direct push to main/master</span></div>
+        <div class="line"><span class="cmd">if [[ "$CURRENT" == "main" || "$CURRENT" == "master" ]]; then</span></div>
+        <div class="line"><span class="or">  echo "🚫 Direct push to $CURRENT is not allowed!"</span></div>
+        <div class="line"><span class="oa">  echo "   Use a feature branch and open a PR."</span></div>
+        <div class="line"><span class="cmd">  exit 1</span></div>
+        <div class="line"><span class="cmd">fi</span></div>
+        <div class="line gap"><span class="cm"># Run test suite before pushing</span></div>
+        <div class="line"><span class="og">echo "🧪 Running tests..."</span></div>
+        <div class="line"><span class="cmd">npm test -- --watchAll=false</span></div>
+        <div class="line"><span class="cmd">if [ $? -ne 0 ]; then</span></div>
+        <div class="line"><span class="or">  echo "❌ Tests failed. Fix before pushing."</span></div>
+        <div class="line"><span class="cmd">  exit 1</span></div>
+        <div class="line"><span class="cmd">fi</span></div>
+        <div class="line gap"><span class="og">echo "✅ All good. Pushing..."</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane" id="h-husky">
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+        <span class="tname">Husky — Share hooks with your team via npm</span>
+        <button class="tcopy" onclick="copyT(this)">copy</button>
+      </div>
+      <div class="tbody">
+        <div class="line"><span class="cm"># Problem: .git/hooks are NOT committed. Team can't share them.</span></div>
+        <div class="line"><span class="cm"># Solution: Husky — manages hooks as committed files</span></div>
+        <div class="line gap"><span class="prompt">$ </span><span class="cmd">npm install --save-dev husky</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">npx husky init</span></div>
+        <div class="line"><span class="og">created .husky/pre-commit</span></div>
+        <div class="line gap"><span class="cm"># Edit .husky/pre-commit (this IS committed to git)</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">cat .husky/pre-commit</span></div>
+        <div class="line"><span class="oc">npx lint-staged</span></div>
+        <div class="line gap"><span class="cm"># Add lint-staged config to package.json</span></div>
+        <div class="line"><span class="oa">"lint-staged": {</span></div>
+        <div class="line"><span class="oa">  "*.{js,ts,jsx,tsx}": ["eslint --fix", "prettier --write"],</span></div>
+        <div class="line"><span class="oa">  "*.{json,md,css}": "prettier --write"</span></div>
+        <div class="line"><span class="oa">}</span></div>
+        <div class="line gap"><span class="cm"># Commit message validation with commitlint</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">npm install --save-dev @commitlint/{cli,config-conventional}</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">echo "export default {extends:['@commitlint/config-conventional']}" > commitlint.config.js</span></div>
+        <div class="line"><span class="prompt">$ </span><span class="cmd">echo "npx --no commitlint --edit \$1" > .husky/commit-msg</span></div>
+        <div class="line gap"><span class="og"># Now every dev on the team gets the same hooks on npm install!</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout power">
+    <span class="ico">⚡</span>
+    <strong>Pro Setup:</strong> <code>Husky</code> + <code>lint-staged</code> + <code>commitlint</code> is the industry standard trio. Husky manages hook files, lint-staged only lints staged files (fast!), and commitlint enforces conventional commits.
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S3: ADVANCED SEARCH -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s3">
+  <div class="section-head">
+    <div class="snum">03</div>
+    <div>
+      <div class="stitle">Advanced Log & Search <span class="stag new">DETECTIVE WORK</span></div>
+      <div class="ssub">Find anything in your history — code, authors, strings, regressions.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — Power Search Commands</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm">## ── git log -S (pickaxe) — find who added/removed a string ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git log -S "password" --oneline</span></div>
+      <div class="line"><span class="oa">a1b2c3d feat: add auth module</span></div>
+      <div class="line"><span class="oa">d4e5f6g fix: remove hardcoded password</span></div>
+
+      <div class="line gap"><span class="cm">## ── git log -G (regex pickaxe) — regex content search ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git log -G "api[Kk]ey|secret" --oneline -p</span></div>
+
+      <div class="line gap"><span class="cm">## ── git log --follow — track a renamed file ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git log --follow -p src/components/Header.jsx</span></div>
+
+      <div class="line gap"><span class="cm">## ── git grep — search in working tree or any commit ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git grep "useEffect" -- "*.jsx"</span></div>
+      <div class="line"><span class="oc">src/App.jsx:  useEffect(() => {</span></div>
+      <div class="line"><span class="oc">src/Profile.jsx:  useEffect(() => {</span></div>
+      <div class="line gap"><span class="cm"># Search across ALL commits (slow but thorough)</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git grep "TODO" $(git rev-list --all)</span></div>
+
+      <div class="line gap"><span class="cm">## ── git log with format strings ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git log --pretty=format:"%h | %an | %ar | %s" --no-merges</span></div>
+      <div class="line"><span class="oc">a1b2c3d | RyzeN | 2 hours ago | feat: add auth</span></div>
+      <div class="line"><span class="oc">d4e5f6g | RyzeN | 1 day ago  | fix: navbar bug</span></div>
+
+      <div class="line gap"><span class="cm">## ── Find commits that touched a specific function ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git log -L :handleLogin:src/auth.js</span></div>
+
+      <div class="line gap"><span class="cm">## ── git shortlog — contribution summary ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git shortlog -sn --no-merges</span></div>
+      <div class="line"><span class="og">    47  RyzeN</span></div>
+      <div class="line"><span class="og">    23  teammate@dev.com</span></div>
+
+      <div class="line gap"><span class="cm">## ── Show commits between two dates ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git log --after="2024-01-01" --before="2024-06-30" --oneline</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S4: GIT WORKTREES -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s4">
+  <div class="section-head">
+    <div class="snum">04</div>
+    <div>
+      <div class="stitle">Git Worktrees <span class="stag new">GAME CHANGER</span></div>
+      <div class="ssub">Multiple working directories from ONE repository — no stashing, no switching.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <div class="concept-title">🌳 The Worktree Problem</div>
+    <p>Ever needed to review a PR while mid-feature? Or test a hotfix without abandoning your current work? <strong style="color:var(--amber)">git worktree</strong> lets you check out multiple branches <strong style="color:var(--text-bright)">simultaneously in different folders</strong> — sharing the same <span class="ic">.git</span> database. No more stashing, no more cloning twice.</p>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — git worktree</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm"># You're on feature/dashboard, urgent hotfix needed</span></div>
+      <div class="line"><span class="cm"># Add a NEW working tree for hotfix WITHOUT switching branches</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git worktree add ../hotfix-tree hotfix/payment-null</span></div>
+      <div class="line"><span class="og">Preparing worktree (new branch 'hotfix/payment-null')</span></div>
+      <div class="line"><span class="og">HEAD is now at a1b2c3d feat: dashboard grid</span></div>
+
+      <div class="line gap"><span class="cm"># Now you have two working directories:</span></div>
+      <div class="line"><span class="oc">~/projects/my-app/</span><span class="o">         ← feature/dashboard (original)</span></div>
+      <div class="line"><span class="oc">~/projects/hotfix-tree/</span><span class="o">    ← hotfix/payment-null (new)</span></div>
+
+      <div class="line gap"><span class="cm"># Work in the hotfix tree in a second terminal</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">cd ../hotfix-tree && vim src/payment.js</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -am "hotfix: null check in payment processor"</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git push origin hotfix/payment-null</span></div>
+
+      <div class="line gap"><span class="cm"># Meanwhile your feature/dashboard code is UNTOUCHED</span></div>
+      <div class="line"><span class="cm"># List all worktrees</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git worktree list</span></div>
+      <div class="line"><span class="oa">/home/user/projects/my-app       a1b2c3d [feature/dashboard]</span></div>
+      <div class="line"><span class="oa">/home/user/projects/hotfix-tree  d4e5f6g [hotfix/payment-null]</span></div>
+
+      <div class="line gap"><span class="cm"># Remove the worktree when done</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git worktree remove ../hotfix-tree</span></div>
+      <div class="line"><span class="cm"># Or prune stale references</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git worktree prune</span></div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <span class="ico">💡</span>
+    <strong>Pro Use Case:</strong> Use worktrees to run <code>npm run dev</code> on main (to see production) and <code>npm run dev --port 3001</code> in your feature worktree simultaneously. Visual comparison without any switching!
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S5: ADVANCED REBASE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s5">
+  <div class="section-head">
+    <div class="snum">05</div>
+    <div>
+      <div class="stitle">Advanced Interactive Rebase <span class="stag hard">HARD</span></div>
+      <div class="ssub">Rewrite history like a surgeon — squash, fixup, reorder, edit, exec.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — git rebase -i — All Actions</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git rebase -i HEAD~5</span></div>
+      <div class="line gap"><span class="cm"># The editor opens with your last 5 commits:</span></div>
+      <div class="line"><span class="og">pick </span><span class="o">a1b2c3d feat: add login form</span></div>
+      <div class="line"><span class="og">pick </span><span class="o">d4e5f6g fix: typo in label</span></div>
+      <div class="line"><span class="og">pick </span><span class="o">g7h8i9j fix: another typo</span></div>
+      <div class="line"><span class="og">pick </span><span class="o">j1k2l3m feat: add remember me checkbox</span></div>
+      <div class="line"><span class="og">pick </span><span class="o">m4n5o6p chore: console.log cleanup</span></div>
+      <div class="line gap"><span class="cm">## ── Available actions ──</span></div>
+      <div class="line"><span class="oa">pick</span><span class="o">    → keep commit as-is</span></div>
+      <div class="line"><span class="op">reword</span><span class="o">  → keep, but edit the message</span></div>
+      <div class="line"><span class="oc">edit</span><span class="o">    → pause, amend, then continue</span></div>
+      <div class="line"><span class="ok">squash</span><span class="o">  → combine with previous, edit message</span></div>
+      <div class="line"><span class="ok">fixup</span><span class="o">   → combine with previous, discard message</span></div>
+      <div class="line"><span class="or">drop</span><span class="o">    → delete this commit entirely</span></div>
+      <div class="line"><span class="og">exec</span><span class="o">    → run a shell command</span></div>
+      <div class="line gap"><span class="cm">## ── Example: squash typo fixes, reword first commit ──</span></div>
+      <div class="line"><span class="oc">reword </span><span class="o">a1b2c3d feat: add login form</span></div>
+      <div class="line"><span class="ok">fixup  </span><span class="o">d4e5f6g fix: typo in label</span></div>
+      <div class="line"><span class="ok">fixup  </span><span class="o">g7h8i9j fix: another typo</span></div>
+      <div class="line"><span class="og">pick   </span><span class="o">j1k2l3m feat: add remember me checkbox</span></div>
+      <div class="line"><span class="or">drop   </span><span class="o">m4n5o6p chore: console.log cleanup</span></div>
+      <div class="line gap"><span class="cm">## ── After save, result: clean 2-commit history ──</span></div>
+      <div class="line"><span class="og">* x1y2z3a feat: add login form (polished)</span></div>
+      <div class="line"><span class="og">* b4c5d6e feat: add remember me checkbox</span></div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — exec, autosquash, and fixup! workflow</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm">## ── exec: run tests after each rebased commit ──</span></div>
+      <div class="line"><span class="og">pick</span><span class="o"> a1b2c3d feat: add auth</span></div>
+      <div class="line"><span class="oc">exec</span><span class="o"> npm test</span></div>
+      <div class="line"><span class="og">pick</span><span class="o"> d4e5f6g feat: add profile</span></div>
+      <div class="line"><span class="oc">exec</span><span class="o"> npm test</span></div>
+      <div class="line gap"><span class="cm">## ── Autosquash workflow (professional pattern) ──</span></div>
+      <div class="line"><span class="cm"># Commit a quick fix with special prefix</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -m "fixup! feat: add login form"</span></div>
+      <div class="line"><span class="cm"># Run rebase with --autosquash — Git finds the right commit</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git rebase -i --autosquash HEAD~4</span></div>
+      <div class="line"><span class="cm"># Git automatically places the fixup! under the right commit!</span></div>
+      <div class="line gap"><span class="cm">## ── Global autosquash by default ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global rebase.autoSquash true</span></div>
+      <div class="line"><span class="cm"># Now -i always autosquashes when prefix matches</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S6: MERGE STRATEGIES -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s6">
+  <div class="section-head">
+    <div class="snum">06</div>
+    <div>
+      <div class="stitle">Advanced Merge Strategies <span class="stag new">CONTROL</span></div>
+      <div class="ssub">ours, theirs, octopus, squash — choose your merge weapon.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — Merge Strategy Options</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm">## ── ort (default) — smart 3-way merge ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git merge feature/auth -s ort</span></div>
+      <div class="line gap"><span class="cm">## ── ours — IGNORE the other branch completely ──</span></div>
+      <div class="line"><span class="cm"># Keep our version entirely, record merge happened</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git merge -s ours old-feature</span></div>
+      <div class="line gap"><span class="cm">## ── Conflict resolution: prefer ours/theirs ──</span></div>
+      <div class="line"><span class="cm"># Accept ALL conflicts using our version</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git merge feature/redesign -X ours</span></div>
+      <div class="line"><span class="cm"># Accept ALL conflicts using their version</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git merge feature/redesign -X theirs</span></div>
+      <div class="line gap"><span class="cm">## ── Per-file conflict resolution ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git checkout --ours   style.css</span><span class="cm">   # keep our style.css</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git checkout --theirs package.json</span><span class="cm"> # take their package.json</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git add style.css package.json</span></div>
+      <div class="line gap"><span class="cm">## ── octopus — merge multiple branches at once ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git merge feature/a feature/b feature/c -s octopus</span></div>
+      <div class="line gap"><span class="cm">## ── squash merge — flatten all commits into one ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git merge --squash feature/messy-branch</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -m "feat: clean squashed feature"</span></div>
+      <div class="line gap"><span class="cm">## ── rerere — reuse recorded resolution ──</span></div>
+      <div class="line"><span class="cm"># Enable: Git remembers how you resolved conflicts</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global rerere.enabled true</span></div>
+      <div class="line"><span class="og"># Next time same conflict appears, Git resolves it automatically!</span></div>
+    </div>
+  </div>
+
+  <table class="tbl">
+    <thead><tr><th>Strategy/Option</th><th>When to Use</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td class="ta">--ff-only</td><td class="td">Only merge if fast-forward possible</td><td class="tc">No merge commit, clean line</td></tr>
+      <tr><td class="ta">--no-ff</td><td class="td">Always create merge commit</td><td class="tc">Explicit branch boundary</td></tr>
+      <tr><td class="ta">--squash</td><td class="td">Messy feature branch, clean history wanted</td><td class="tc">One commit, all changes</td></tr>
+      <tr><td class="ta">-X ours</td><td class="td">Our version always wins conflicts</td><td class="tc">Fast conflict resolution</td></tr>
+      <tr><td class="ta">-X theirs</td><td class="td">Incoming branch always wins conflicts</td><td class="tc">Fast conflict resolution</td></tr>
+      <tr><td class="ta">rerere</td><td class="td">Long-lived feature branch, repeated rebases</td><td class="tc">Auto-resolved conflicts</td></tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S7: SUBMODULES -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s7">
+  <div class="section-head">
+    <div class="snum">07</div>
+    <div>
+      <div class="stitle">Git Submodules <span class="stag hard">COMPLEX</span></div>
+      <div class="ssub">Nest one repository inside another — with its own independent history.</div>
+    </div>
+  </div>
+
+  <div class="concept">
+    <div class="concept-title">📦 Submodule Use Cases</div>
+    <p>Use submodules when you need to <strong style="color:var(--amber)">include an external repo</strong> at a specific commit — shared UI component library, a design system, a vendored dependency with custom patches, or a private SDK. The parent repo records exactly <em>which commit</em> of the submodule to use.</p>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — git submodule</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm">## ── Add a submodule ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git submodule add https://github.com/team/ui-lib.git src/lib/ui</span></div>
+      <div class="line"><span class="og">Cloning into '/project/src/lib/ui'...</span></div>
+      <div class="line"><span class="cm"># Two new things created:</span></div>
+      <div class="line"><span class="oc">.gitmodules  ← tracks submodule config</span></div>
+      <div class="line"><span class="oc">src/lib/ui   ← the submodule directory (a pointer, not files)</span></div>
+
+      <div class="line gap"><span class="cm">## ── Clone a repo WITH its submodules ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git clone --recurse-submodules https://github.com/you/project.git</span></div>
+      <div class="line"><span class="cm"># OR if already cloned without submodules:</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git submodule update --init --recursive</span></div>
+
+      <div class="line gap"><span class="cm">## ── Update all submodules to latest remote commit ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git submodule update --remote --merge</span></div>
+
+      <div class="line gap"><span class="cm">## ── Run a command in all submodules ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git submodule foreach 'git pull origin main'</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git submodule foreach 'npm install'</span></div>
+
+      <div class="line gap"><span class="cm">## ── See submodule status ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git submodule status</span></div>
+      <div class="line"><span class="og">+a1b2c3d src/lib/ui (v2.1.0-4-ga1b2c3d)</span></div>
+      <div class="line"><span class="cm"># + means ahead of recorded commit</span></div>
+
+      <div class="line gap"><span class="cm">## ── Remove a submodule (multi-step!) ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git submodule deinit -f src/lib/ui</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git rm -f src/lib/ui</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">rm -rf .git/modules/src/lib/ui</span></div>
+    </div>
+  </div>
+
+  <div class="callout danger">
+    <span class="ico">🚨</span>
+    <strong>Submodule gotcha:</strong> After pulling changes that update a submodule pointer, run <code>git submodule update --init --recursive</code> or your submodule will be stuck at the old commit. Many devs forget this and get confused.
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S8: GIT SUBTREE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s8">
+  <div class="section-head">
+    <div class="snum">08</div>
+    <div>
+      <div class="stitle">Git Subtree <span class="stag new">SIMPLER ALT</span></div>
+      <div class="ssub">Embed a repo inside another — without the complexity of submodules.</div>
+    </div>
+  </div>
+
+  <div class="compare">
+    <div class="cmp-box">
+      <div class="cmp-head a">Submodules</div>
+      <div class="cmp-body">
+        <ul>
+          <li class="good">Separate history maintained</li>
+          <li class="good">Clear boundary between repos</li>
+          <li class="bad">Requires <code>--recurse-submodules</code></li>
+          <li class="bad">Extra <code>submodule update</code> after pull</li>
+          <li class="bad">Confusing for new contributors</li>
+          <li class="bad">Must manage .gitmodules carefully</li>
+        </ul>
+      </div>
+    </div>
+    <div class="cmp-box">
+      <div class="cmp-head b">Subtree</div>
+      <div class="cmp-body">
+        <ul>
+          <li class="good">Regular git clone just works</li>
+          <li class="good">No extra steps for teammates</li>
+          <li class="good">Can contribute back upstream</li>
+          <li class="bad">Merged history can be noisy</li>
+          <li class="bad">Slightly complex push-back syntax</li>
+          <li class="bad">Harder to keep in sync</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — git subtree</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm"># Add a remote repo as a subtree under /src/utils</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git remote add utils-remote https://github.com/team/utils.git</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git subtree add --prefix=src/utils utils-remote main --squash</span></div>
+      <div class="line"><span class="og">Added dir 'src/utils'</span></div>
+
+      <div class="line gap"><span class="cm"># Pull latest changes from the subtree remote</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git subtree pull --prefix=src/utils utils-remote main --squash</span></div>
+
+      <div class="line gap"><span class="cm"># Push changes you made locally BACK to the upstream repo</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git subtree push --prefix=src/utils utils-remote feature/my-contribution</span></div>
+
+      <div class="line gap"><span class="cm"># Split a subdirectory OUT into its own repo history</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git subtree split --prefix=src/utils -b split-utils</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">cd .. && git clone project new-utils-repo</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">cd new-utils-repo && git checkout split-utils</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S9: GIT LFS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s9">
+  <div class="section-head">
+    <div class="snum">09</div>
+    <div>
+      <div class="stitle">Git LFS — Large File Storage <span class="stag new">MEDIA</span></div>
+      <div class="ssub">Store large binaries (images, videos, models) outside the Git object store.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — git-lfs setup and usage</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm"># Install (once per machine)</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git lfs install</span></div>
+      <div class="line"><span class="og">Git LFS initialized.</span></div>
+
+      <div class="line gap"><span class="cm"># Track large file types (adds to .gitattributes)</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git lfs track "*.psd"</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git lfs track "*.mp4"</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git lfs track "*.ai"</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git lfs track "public/assets/**"</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">cat .gitattributes</span></div>
+      <div class="line"><span class="oc">*.psd filter=lfs diff=lfs merge=lfs -text</span></div>
+      <div class="line"><span class="oc">*.mp4 filter=lfs diff=lfs merge=lfs -text</span></div>
+
+      <div class="line gap"><span class="cm"># Commit .gitattributes first!</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git add .gitattributes && git commit -m "chore: add LFS tracking"</span></div>
+
+      <div class="line gap"><span class="cm"># Now add large files normally — LFS handles them</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git add design/mockup.psd && git commit -m "chore: add design mockup"</span></div>
+      <div class="line"><span class="cm"># Git stored a tiny pointer, LFS stored the actual file!</span></div>
+
+      <div class="line gap"><span class="cm"># See LFS status</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git lfs status</span></div>
+      <div class="line"><span class="og">Objects to be committed:  design/mockup.psd (LFS: 24.5 MB)</span></div>
+
+      <div class="line gap"><span class="cm"># See all tracked LFS files</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git lfs ls-files</span></div>
+      <div class="line"><span class="oa">a1b2c3d * design/mockup.psd</span></div>
+
+      <div class="line gap"><span class="cm"># Migrate existing large files to LFS retroactively</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git lfs migrate import --include="*.psd,*.mp4" --everything</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S10: SPARSE CHECKOUT -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s10">
+  <div class="section-head">
+    <div class="snum">10</div>
+    <div>
+      <div class="stitle">Sparse Checkout & Partial Clone <span class="stag new">MONOREPO</span></div>
+      <div class="ssub">Check out only the files you need — essential for giant monorepos.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — Sparse Checkout + Partial Clone</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm">## ── Partial Clone (only download objects you need) ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git clone --filter=blob:none https://github.com/org/monorepo.git</span></div>
+      <div class="line"><span class="cm"># Downloads commits + trees, blobs fetched on demand</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git clone --filter=tree:0 https://github.com/org/monorepo.git</span></div>
+      <div class="line"><span class="cm"># Even lighter: treeless clone</span></div>
+
+      <div class="line gap"><span class="cm">## ── Sparse Checkout (only check out specific dirs) ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git clone --no-checkout https://github.com/org/monorepo.git</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">cd monorepo</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git sparse-checkout init --cone</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git sparse-checkout set packages/frontend packages/shared</span></div>
+      <div class="line"><span class="og">Updating files: 100% (842/842), done.</span></div>
+      <div class="line"><span class="cm"># Now you only have frontend/ and shared/ checked out</span></div>
+      <div class="line"><span class="cm"># packages/backend doesn't exist locally at all!</span></div>
+
+      <div class="line gap"><span class="cm"># Add another package later</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git sparse-checkout add packages/api</span></div>
+
+      <div class="line gap"><span class="cm"># See what's checked out</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git sparse-checkout list</span></div>
+      <div class="line"><span class="oc">packages/frontend</span></div>
+      <div class="line"><span class="oc">packages/shared</span></div>
+      <div class="line"><span class="oc">packages/api</span></div>
+
+      <div class="line gap"><span class="cm"># Disable sparse checkout (get everything)</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git sparse-checkout disable</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S11: CONVENTIONAL COMMITS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s11">
+  <div class="section-head">
+    <div class="snum">11</div>
+    <div>
+      <div class="stitle">Commit Standards & Changelog Automation <span class="stag pro">PRO</span></div>
+      <div class="ssub">Conventional Commits + semantic-release = automated versioning.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — Conventional Commits + semantic-release</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm">## ── Conventional Commit Format ──</span></div>
+      <div class="line"><span class="oa">&lt;type&gt;[optional scope]: &lt;description&gt;</span></div>
+      <div class="line"><span class="oa">[optional body]</span></div>
+      <div class="line"><span class="oa">[optional footer: BREAKING CHANGE: ...]</span></div>
+      <div class="line gap"><span class="cm"># Types that trigger version bumps:</span></div>
+      <div class="line"><span class="og">feat:</span><span class="o">     → minor bump  (0.x.0)</span></div>
+      <div class="line"><span class="or">fix:</span><span class="o">      → patch bump  (0.0.x)</span></div>
+      <div class="line"><span class="ok">BREAKING CHANGE</span><span class="o"> → major bump  (x.0.0)</span></div>
+      <div class="line gap"><span class="cm"># Real examples:</span></div>
+      <div class="line"><span class="og">feat(auth):</span><span class="o"> add OAuth2 Google login</span></div>
+      <div class="line"><span class="or">fix(api):</span><span class="o">  correct null check in payment route</span></div>
+      <div class="line"><span class="oc">docs:</span><span class="o">      update API endpoint documentation</span></div>
+      <div class="line"><span class="oa">chore:</span><span class="o">     bump dependencies to latest</span></div>
+      <div class="line"><span class="op">refactor(db):</span><span class="o"> migrate Mongoose schemas to TypeScript</span></div>
+      <div class="line gap"><span class="cm"># Breaking change example:</span></div>
+      <div class="line"><span class="cm">feat(api): change authentication to Bearer tokens</span></div>
+      <div class="line"><span class="cm"></span></div>
+      <div class="line"><span class="cm">BREAKING CHANGE: Authorization header now uses Bearer instead of Basic.</span></div>
+      <div class="line"><span class="cm">Migration: Update all API clients to use Authorization: Bearer &lt;token&gt;</span></div>
+      <div class="line gap"><span class="cm">## ── semantic-release automation ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">npm install --save-dev semantic-release @semantic-release/changelog</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">npx semantic-release</span></div>
+      <div class="line"><span class="og">✔ Analyzing commits...</span></div>
+      <div class="line"><span class="og">✔ Next release: 2.3.0 (minor — feat: found)</span></div>
+      <div class="line"><span class="og">✔ Generated CHANGELOG.md</span></div>
+      <div class="line"><span class="og">✔ Created GitHub Release v2.3.0</span></div>
+      <div class="line"><span class="og">✔ Published to npm</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S12: GPG SIGNING -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s12">
+  <div class="section-head">
+    <div class="snum">12</div>
+    <div>
+      <div class="stitle">GPG Commit Signing <span class="stag pro">VERIFIED ✓</span></div>
+      <div class="ssub">Prove every commit is really from you — cryptographically.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — GPG Key Setup & Commit Signing</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm"># Generate a GPG key</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">gpg --full-generate-key</span></div>
+      <div class="line"><span class="cm"># Choose: RSA, 4096 bits, your name + GitHub email, no expiry</span></div>
+
+      <div class="line gap"><span class="cm"># List your keys to find the key ID</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">gpg --list-secret-keys --keyid-format=long</span></div>
+      <div class="line"><span class="oc">sec   rsa4096/3AA5C34371567BD2  2024-01-01</span></div>
+      <div class="line"><span class="oc">      Key fingerprint = ...</span></div>
+      <div class="line"><span class="oc">uid   Your Name &lt;you@dev.com&gt;</span></div>
+
+      <div class="line gap"><span class="cm"># Export public key to add to GitHub</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">gpg --armor --export 3AA5C34371567BD2</span></div>
+      <div class="line"><span class="cm"># Copy output → GitHub Settings → GPG Keys → New GPG Key</span></div>
+
+      <div class="line gap"><span class="cm"># Configure Git to use this key</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global user.signingkey 3AA5C34371567BD2</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global commit.gpgsign true</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global tag.gpgsign true</span></div>
+
+      <div class="line gap"><span class="cm"># Now all commits are automatically signed!</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -m "feat: signed commit"</span></div>
+      <div class="line"><span class="og">[main a1b2c3d] feat: signed commit  ← shows "Verified" on GitHub</span></div>
+
+      <div class="line gap"><span class="cm"># Or sign a single commit manually</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -S -m "feat: manually signed"</span></div>
+
+      <div class="line gap"><span class="cm"># Verify a commit's signature</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git log --show-signature -1</span></div>
+      <div class="line"><span class="og">gpg: Good signature from "Your Name &lt;you@dev.com&gt;"</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S13: .gitattributes -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s13">
+  <div class="section-head">
+    <div class="snum">13</div>
+    <div>
+      <div class="stitle">.gitattributes <span class="stag new">CONTROL</span></div>
+      <div class="ssub">Control how Git handles files — line endings, diffs, merges, exports.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">.gitattributes — Production Config</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm"># ── Line Endings (critical for cross-platform teams) ──</span></div>
+      <div class="line"><span class="og">*</span><span class="o">                 text=auto         </span><span class="cm"># auto-detect all files</span></div>
+      <div class="line"><span class="og">*.js</span><span class="o">              text eol=lf        </span><span class="cm"># JS always uses LF</span></div>
+      <div class="line"><span class="og">*.ts</span><span class="o">              text eol=lf</span></div>
+      <div class="line"><span class="og">*.bat</span><span class="o">             text eol=crlf      </span><span class="cm"># Windows batch files need CRLF</span></div>
+      <div class="line"><span class="og">*.sh</span><span class="o">              text eol=lf</span></div>
+      <div class="line gap"><span class="cm"># ── Binary Files (no diffs, no merges) ──</span></div>
+      <div class="line"><span class="og">*.png</span><span class="o">  binary</span></div>
+      <div class="line"><span class="og">*.jpg</span><span class="o">  binary</span></div>
+      <div class="line"><span class="og">*.pdf</span><span class="o">  binary</span></div>
+      <div class="line"><span class="og">*.zip</span><span class="o">  binary</span></div>
+      <div class="line gap"><span class="cm"># ── Custom Diff Drivers (meaningful diffs for binaries) ──</span></div>
+      <div class="line"><span class="og">*.psd</span><span class="o">  diff=exif</span></div>
+      <div class="line"><span class="og">*.ipynb</span><span class="o"> diff=jupyter</span></div>
+      <div class="line gap"><span class="cm"># ── Merge Strategy per file ──</span></div>
+      <div class="line"><span class="og">package-lock.json</span><span class="o">  merge=ours     </span><span class="cm"># always prefer ours in conflicts</span></div>
+      <div class="line"><span class="og">CHANGELOG.md</span><span class="o">       merge=union    </span><span class="cm"># union merge (keep all)</span></div>
+      <div class="line gap"><span class="cm"># ── Export-ignore (exclude from git archive/zip) ──</span></div>
+      <div class="line"><span class="og">.github/</span><span class="o">           export-ignore</span></div>
+      <div class="line"><span class="og">tests/</span><span class="o">             export-ignore</span></div>
+      <div class="line"><span class="og">.husky/</span><span class="o">            export-ignore</span></div>
+      <div class="line gap"><span class="cm"># ── linguist — GitHub language detection ──</span></div>
+      <div class="line"><span class="og">src/vendor/**</span><span class="o">  linguist-vendored</span></div>
+      <div class="line"><span class="og">*.html</span><span class="o">          linguist-detectable=false</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S14: CI/CD WITH GIT -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s14">
+  <div class="section-head">
+    <div class="snum">14</div>
+    <div>
+      <div class="stitle">CI/CD Pipeline with GitHub Actions <span class="stag pro">PRO</span></div>
+      <div class="ssub">Git events trigger automated test, build, and deploy pipelines.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">.github/workflows/ci.yml — Full CI/CD Pipeline</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="oa">name:</span><span class="o"> CI/CD Pipeline</span></div>
+      <div class="line gap"></div>
+      <div class="line"><span class="oa">on:</span></div>
+      <div class="line"><span class="o">  push:</span></div>
+      <div class="line"><span class="o">    branches: [main, develop]</span></div>
+      <div class="line"><span class="o">  pull_request:</span></div>
+      <div class="line"><span class="o">    branches: [main]</span></div>
+      <div class="line"><span class="o">  release:</span></div>
+      <div class="line"><span class="o">    types: [published]</span></div>
+      <div class="line gap"></div>
+      <div class="line"><span class="oa">jobs:</span></div>
+      <div class="line"><span class="oc">  test:</span></div>
+      <div class="line"><span class="o">    runs-on: ubuntu-latest</span></div>
+      <div class="line"><span class="o">    steps:</span></div>
+      <div class="line"><span class="og">      - uses: actions/checkout@v4</span></div>
+      <div class="line"><span class="og">      - uses: actions/setup-node@v4</span></div>
+      <div class="line"><span class="o">        with: {node-version: '20'}</span></div>
+      <div class="line"><span class="og">      - run: npm ci</span></div>
+      <div class="line"><span class="og">      - run: npm test -- --coverage</span></div>
+      <div class="line"><span class="og">      - run: npm run lint</span></div>
+      <div class="line gap"></div>
+      <div class="line"><span class="oc">  deploy-staging:</span></div>
+      <div class="line"><span class="o">    needs: test</span></div>
+      <div class="line"><span class="o">    if: github.ref == 'refs/heads/develop'</span></div>
+      <div class="line"><span class="o">    runs-on: ubuntu-latest</span></div>
+      <div class="line"><span class="o">    steps:</span></div>
+      <div class="line"><span class="og">      - uses: actions/checkout@v4</span></div>
+      <div class="line"><span class="og">      - run: npm ci && npm run build</span></div>
+      <div class="line"><span class="og">      - run: npx vercel deploy --token ${{ secrets.VERCEL_TOKEN }}</span></div>
+      <div class="line gap"></div>
+      <div class="line"><span class="oc">  deploy-production:</span></div>
+      <div class="line"><span class="o">    needs: test</span></div>
+      <div class="line"><span class="o">    if: github.event_name == 'release'</span></div>
+      <div class="line"><span class="og">      - run: npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }}</span></div>
+    </div>
+  </div>
+
+  <div class="callout tip">
+    <span class="ico">🔑</span>
+    <strong>Git event triggers:</strong> <code>push</code> to a branch, <code>pull_request</code> opened/updated, <code>release</code> published (from a tag), <code>schedule</code> (cron), <code>workflow_dispatch</code> (manual). Each trigger a different automation.
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S15: MONOREPOS -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s15">
+  <div class="section-head">
+    <div class="snum">15</div>
+    <div>
+      <div class="stitle">Monorepo Strategies <span class="stag hard">ARCHITECTURE</span></div>
+      <div class="ssub">One repo, multiple packages/apps — with Git strategies for scale.</div>
+    </div>
+  </div>
+
+  <div class="filetree">
+    <div><span class="ft-dir">monorepo/</span></div>
+    <div><span class="ft-dim">├── </span><span class="ft-dir">packages/</span></div>
+    <div><span class="ft-dim">│   ├── </span><span class="ft-dir">frontend/</span><span class="ft-dim">      ← React app</span></div>
+    <div><span class="ft-dim">│   ├── </span><span class="ft-dir">backend/</span><span class="ft-dim">       ← Node API</span></div>
+    <div><span class="ft-dim">│   └── </span><span class="ft-dir">shared/</span><span class="ft-dim">        ← shared types/utils</span></div>
+    <div><span class="ft-dim">├── </span><span class="ft-dir">.github/workflows/</span></div>
+    <div><span class="ft-dim">├── </span><span class="ft-file">package.json</span><span class="ft-dim">         ← root workspace config</span></div>
+    <div><span class="ft-dim">├── </span><span class="ft-file">turbo.json</span><span class="ft-dim">           ← Turborepo config</span></div>
+    <div><span class="ft-dim">└── </span><span class="ft-file">.gitignore</span></div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — Monorepo Git Strategies</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm">## ── Path-filtered CI (only test what changed) ──</span></div>
+      <div class="line"><span class="oa">on:</span></div>
+      <div class="line"><span class="o">  push:</span></div>
+      <div class="line"><span class="o">    paths:</span></div>
+      <div class="line"><span class="og">      - 'packages/frontend/**'</span></div>
+      <div class="line"><span class="og">      - 'packages/shared/**'</span></div>
+      <div class="line"><span class="cm"># Only runs when frontend or shared changes</span></div>
+
+      <div class="line gap"><span class="cm">## ── Detect what changed with git diff ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git diff --name-only HEAD~1 HEAD</span></div>
+      <div class="line"><span class="oc">packages/frontend/src/App.tsx</span></div>
+      <div class="line"><span class="oc">packages/shared/types/user.ts</span></div>
+      <div class="line gap"><span class="cm"># Script: find which packages changed</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git diff --name-only HEAD~1 HEAD | cut -d/ -f1-2 | sort -u</span></div>
+      <div class="line"><span class="og">packages/frontend</span></div>
+      <div class="line"><span class="og">packages/shared</span></div>
+
+      <div class="line gap"><span class="cm">## ── Tag strategies for monorepos ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git tag frontend-v1.2.0</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git tag backend-v3.0.1</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git tag shared-v0.5.0</span></div>
+
+      <div class="line gap"><span class="cm">## ── Turborepo: smart task running (only runs changed) ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">npx turbo run build test --filter=[HEAD^1]</span></div>
+      <div class="line"><span class="og">• Packages in scope: frontend, shared (backend unchanged, skipped)</span></div>
+      <div class="line"><span class="og">• Tasks: 4 successful, 0 failures, 2 cached</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S16: PERFORMANCE & GC -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s16">
+  <div class="section-head">
+    <div class="snum">16</div>
+    <div>
+      <div class="stitle">Git Performance & Maintenance <span class="stag new">SPEED</span></div>
+      <div class="ssub">Keep large repos fast — gc, maintenance, and pack strategies.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — Performance & Maintenance Commands</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm">## ── git gc — garbage collect unreachable objects ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git gc</span></div>
+      <div class="line"><span class="og">Counting objects: 1247, done.</span></div>
+      <div class="line"><span class="og">Compressing objects: 100% (342/342), done.</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git gc --aggressive</span><span class="cm">   # slower, better compression</span></div>
+
+      <div class="line gap"><span class="cm">## ── git maintenance — scheduled background optimization ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git maintenance start</span></div>
+      <div class="line"><span class="og">Scheduled git maintenance tasks. (runs in background)</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git maintenance run --task=gc --task=commit-graph</span></div>
+
+      <div class="line gap"><span class="cm">## ── commit-graph — speed up log/status in huge repos ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git commit-graph write --reachable</span></div>
+      <div class="line"><span class="cm"># Dramatically speeds up: git log, git status, git push</span></div>
+
+      <div class="line gap"><span class="cm">## ── Clean up old remote-tracking branches ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git remote prune origin</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git fetch --prune</span></div>
+
+      <div class="line gap"><span class="cm">## ── Shallow clone for CI (much faster) ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git clone --depth 1 https://github.com/org/repo.git</span></div>
+      <div class="line"><span class="cm"># 10x faster for CI — only needs latest snapshot</span></div>
+      <div class="line"><span class="cm"># Deepen if needed later:</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git fetch --unshallow</span></div>
+
+      <div class="line gap"><span class="cm">## ── Find and remove accidentally committed large files ──</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git rev-list --objects --all | sort -k 2 | cut -f2 -d\  | \</span></div>
+      <div class="line"><span class="cmd">  xargs -I{} git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(*objectname)' | \</span></div>
+      <div class="line"><span class="cmd">  sort -n -k3 | tail -20</span></div>
+      <div class="line"><span class="cm"># Use git-filter-repo to purge large files from history</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">pip install git-filter-repo</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git filter-repo --path-glob '*.psd' --invert-paths</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S17: GIT BUNDLE -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s17">
+  <div class="section-head">
+    <div class="snum">17</div>
+    <div>
+      <div class="stitle">Git Bundle — Offline Transport <span class="stag new">OFFLINE</span></div>
+      <div class="ssub">Pack your entire repo into a single file. Git without internet.</div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — git bundle for air-gapped systems</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm"># SCENARIO: Transfer a repo via USB, email, or air-gapped system</span></div>
+      <div class="line gap"><span class="cm"># Create a bundle with the entire repo</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git bundle create project.bundle --all</span></div>
+      <div class="line"><span class="og">Enumerating objects: 342, done.</span></div>
+      <div class="line"><span class="og">Writing objects: 100% (342/342), 1.24 MiB</span></div>
+      <div class="line"><span class="cm"># project.bundle is now a portable, self-contained git repo</span></div>
+
+      <div class="line gap"><span class="cm"># Bundle only the last 10 commits (incremental update)</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git bundle create update.bundle HEAD~10..HEAD main</span></div>
+
+      <div class="line gap"><span class="cm"># Verify the bundle is valid</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git bundle verify project.bundle</span></div>
+      <div class="line"><span class="og">The bundle contains this complete pack.</span></div>
+      <div class="line"><span class="og">The bundle records a complete history.</span></div>
+
+      <div class="line gap"><span class="cm"># On the receiving machine: clone from the bundle</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git clone project.bundle my-project</span></div>
+      <div class="line"><span class="og">Cloning into 'my-project'...</span></div>
+
+      <div class="line gap"><span class="cm"># Or use bundle as a remote (apply incremental updates)</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git remote add bundle-remote /path/to/update.bundle</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git fetch bundle-remote</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S18: PROJECT — OSS CONTRIBUTION -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s18">
+  <div class="section-head">
+    <div class="snum">18</div>
+    <div>
+      <div class="stitle">Project 1: Full OSS Contribution Workflow <span class="stag pro">PRO</span></div>
+      <div class="ssub">The complete Fork → PR → Sync cycle used by every open-source contributor.</div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-badge">Full Project</span>
+      <span class="proj-name">🏗️ Contribute to an Open Source Project</span>
+    </div>
+    <p class="proj-desc">Use a real npm package or GitHub repo. Simulate the full OSS workflow: fork, clone, branch, fix/feature, sync with upstream, open a PR with a clean commit history.</p>
+    <div class="steps">
+      <div class="step"><div class="stepn">1</div><div class="stept"><strong>Fork</strong> a repo on GitHub you want to contribute to (e.g. an awesome-list or small utility).</div></div>
+      <div class="step"><div class="stepn">2</div><div class="stept"><strong>Clone your fork:</strong> <code>git clone git@github.com:YOUR_USER/repo.git && cd repo</code></div></div>
+      <div class="step"><div class="stepn">3</div><div class="stept"><strong>Add upstream:</strong> <code>git remote add upstream https://github.com/ORIGINAL/repo.git</code> — verify with <code>git remote -v</code></div></div>
+      <div class="step"><div class="stepn">4</div><div class="stept"><strong>Sync first:</strong> <code>git fetch upstream && git rebase upstream/main</code> — always start fresh</div></div>
+      <div class="step"><div class="stepn">5</div><div class="stept"><strong>Branch:</strong> <code>git switch -c fix/correct-typo-in-readme</code></div></div>
+      <div class="step"><div class="stepn">6</div><div class="stept"><strong>Make your changes</strong> in small, atomic commits. Use conventional commits format.</div></div>
+      <div class="step"><div class="stepn">7</div><div class="stept"><strong>Clean up history:</strong> <code>git rebase -i upstream/main</code> — squash fixup commits, reword if needed</div></div>
+      <div class="step"><div class="stepn">8</div><div class="stept"><strong>Sync again before push:</strong> <code>git fetch upstream && git rebase upstream/main</code> — resolve any conflicts</div></div>
+      <div class="step"><div class="stepn">9</div><div class="stept"><strong>Push to your fork:</strong> <code>git push origin fix/correct-typo-in-readme</code></div></div>
+      <div class="step"><div class="stepn">10</div><div class="stept"><strong>Open Pull Request</strong> on GitHub. Fill in description, reference any issues (<code>Closes #42</code>), add screenshots if UI change.</div></div>
+      <div class="step"><div class="stepn">11</div><div class="stept"><strong>Requested changes?</strong> Add new commits, <code>git push</code> again — PR updates automatically.</div></div>
+      <div class="step"><div class="stepn">12</div><div class="stept"><strong>PR merged!</strong> Delete your branch. <code>git switch main && git pull upstream main && git branch -d fix/correct-typo-in-readme</code></div></div>
+    </div>
+  </div>
+
+  <div class="terminal">
+    <div class="term-bar">
+      <div class="tdots"><div class="tdot" style="background:#f87171"></div><div class="tdot" style="background:#ffb700"></div><div class="tdot" style="background:#4ade80"></div></div>
+      <span class="tname">bash — Upstream sync one-liner alias</span>
+      <button class="tcopy" onclick="copyT(this)">copy</button>
+    </div>
+    <div class="tbody">
+      <div class="line"><span class="cm"># Add this alias: sync your fork's main with upstream in one command</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.sync-fork '!git fetch upstream && git switch main && git rebase upstream/main && git push origin main'</span></div>
+      <div class="line"><span class="prompt">$ </span><span class="cmd">git sync-fork</span></div>
+      <div class="line"><span class="og">✔ Fetched upstream, rebased, pushed. Fork is up to date.</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S19: PROJECT — HOOK SYSTEM -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s19">
+  <div class="section-head">
+    <div class="snum">19</div>
+    <div>
+      <div class="stitle">Project 2: Production Hook System <span class="stag pro">PRO</span></div>
+      <div class="ssub">Build a complete quality-gate pipeline using Husky + lint-staged + commitlint.</div>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="proj-head">
+      <span class="proj-badge">Full Project</span>
+      <span class="proj-name">🔬 Build a Zero-Bug-Escape Quality System</span>
+    </div>
+    <p class="proj-desc">By the end, your repo will auto-lint, auto-format, validate commit messages, run tests before push, and block any direct push to main — all automatically.</p>
+    <div class="steps">
+      <div class="step"><div class="stepn">1</div><div class="stept"><strong>Init project:</strong> <code>mkdir quality-demo && cd quality-demo && git init && npm init -y</code></div></div>
+      <div class="step"><div class="stepn">2</div><div class="stept"><strong>Install tooling:</strong> <code>npm i -D husky lint-staged @commitlint/cli @commitlint/config-conventional prettier eslint</code></div></div>
+      <div class="step"><div class="stepn">3</div><div class="stept"><strong>Init Husky:</strong> <code>npx husky init</code> — creates <code>.husky/</code> directory with sample pre-commit</div></div>
+      <div class="step"><div class="stepn">4</div><div class="stept"><strong>Setup lint-staged</strong> in <code>package.json</code>: lint + format only staged files for speed</div></div>
+      <div class="step"><div class="stepn">5</div><div class="stept"><strong>Create commit-msg hook:</strong> <code>echo "npx --no commitlint --edit \$1" > .husky/commit-msg</code></div></div>
+      <div class="step"><div class="stepn">6</div><div class="stept"><strong>Create pre-push hook</strong> that blocks pushes to main and runs <code>npm test</code></div></div>
+      <div class="step"><div class="stepn">7</div><div class="stept"><strong>Test bad commit:</strong> <code>git commit -m "bad"</code> → should FAIL with commitlint error</div></div>
+      <div class="step"><div class="stepn">8</div><div class="stept"><strong>Test good commit:</strong> <code>git commit -m "feat: setup quality pipeline"</code> → should PASS all hooks</div></div>
+      <div class="step"><div class="stepn">9</div><div class="stept"><strong>Test direct push to main:</strong> <code>git push origin main</code> → should be BLOCKED by pre-push</div></div>
+      <div class="step"><div class="stepn">10</div><div class="stept"><strong>Add GitHub Actions CI</strong> as a server-side safety net that mirrors your local hooks</div></div>
+      <div class="step"><div class="stepn">11</div><div class="stept"><strong>Setup branch protection</strong> on GitHub: require PR + status checks from CI to pass before merge</div></div>
+      <div class="step"><div class="stepn">12</div><div class="stept"><strong>Final test:</strong> Try to break the system. Every attempt should be caught at some layer.</div></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- S20: CHEAT SHEET L2 -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="section" id="s20" style="border-bottom:none">
+  <div class="section-head">
+    <div class="snum">20</div>
+    <div>
+      <div class="stitle">Level 2 Cheat Sheet</div>
+      <div class="ssub">Advanced commands at a glance.</div>
+    </div>
+  </div>
+
+  <div class="cheat-grid">
+    <div class="cheat-block">
+      <div class="cheat-head">Git Internals</div>
+      <div class="cheat-row"><span class="cheat-cmd">git cat-file -p HEAD</span><span class="cheat-desc">Read commit object</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git cat-file -t [hash]</span><span class="cheat-desc">Get object type</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git ls-tree HEAD</span><span class="cheat-desc">List tree for commit</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git rev-parse HEAD</span><span class="cheat-desc">Resolve ref to SHA</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git fsck</span><span class="cheat-desc">Verify object integrity</span></div>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-head">Advanced Search</div>
+      <div class="cheat-row"><span class="cheat-cmd">git log -S "string"</span><span class="cheat-desc">Find added/removed string</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git log -G "regex"</span><span class="cheat-desc">Regex content search</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git log --follow -p file</span><span class="cheat-desc">Track renamed file</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git grep "pattern"</span><span class="cheat-desc">Search working tree</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git log -L :fn:file</span><span class="cheat-desc">Track function history</span></div>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-head">Worktrees</div>
+      <div class="cheat-row"><span class="cheat-cmd">git worktree add ../dir branch</span><span class="cheat-desc">New working dir</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git worktree list</span><span class="cheat-desc">List all worktrees</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git worktree remove ../dir</span><span class="cheat-desc">Remove worktree</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git worktree prune</span><span class="cheat-desc">Clean stale refs</span></div>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-head">Advanced Rebase</div>
+      <div class="cheat-row"><span class="cheat-cmd">git rebase -i HEAD~N</span><span class="cheat-desc">Interactive rebase</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">fixup!</span><span class="cheat-desc">Auto-squash prefix</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git rebase -i --autosquash</span><span class="cheat-desc">Auto place fixups</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">exec npm test</span><span class="cheat-desc">Run cmd after commit</span></div>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-head">Merge Strategies</div>
+      <div class="cheat-row"><span class="cheat-cmd">git merge -X ours</span><span class="cheat-desc">Our version wins all</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git merge -X theirs</span><span class="cheat-desc">Their version wins all</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git merge --squash</span><span class="cheat-desc">Flatten to one commit</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git checkout --ours file</span><span class="cheat-desc">Per-file resolution</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">rerere.enabled=true</span><span class="cheat-desc">Auto-reuse resolutions</span></div>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-head">Submodules</div>
+      <div class="cheat-row"><span class="cheat-cmd">git submodule add [url] path</span><span class="cheat-desc">Add submodule</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git clone --recurse-submodules</span><span class="cheat-desc">Clone with subs</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git submodule update --init</span><span class="cheat-desc">Init after clone</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git submodule update --remote</span><span class="cheat-desc">Pull latest</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git submodule foreach 'cmd'</span><span class="cheat-desc">Run in each sub</span></div>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-head">Sparse & Partial</div>
+      <div class="cheat-row"><span class="cheat-cmd">--filter=blob:none</span><span class="cheat-desc">Blobless clone</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git sparse-checkout init</span><span class="cheat-desc">Enable sparse</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git sparse-checkout set path</span><span class="cheat-desc">Set checkout dirs</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git sparse-checkout add path</span><span class="cheat-desc">Add more dirs</span></div>
+    </div>
+    <div class="cheat-block">
+      <div class="cheat-head">Performance & GC</div>
+      <div class="cheat-row"><span class="cheat-cmd">git gc --aggressive</span><span class="cheat-desc">Full garbage collect</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git maintenance start</span><span class="cheat-desc">Background optimize</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git commit-graph write</span><span class="cheat-desc">Speed up log</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git clone --depth 1</span><span class="cheat-desc">Shallow for CI</span></div>
+      <div class="cheat-row"><span class="cheat-cmd">git filter-repo</span><span class="cheat-desc">Rewrite history</span></div>
+    </div>
+  </div>
+
+  <!-- QUIZZES -->
+  <div style="margin-top:44px; font-family:'Space Grotesk',sans-serif; font-size:22px; font-weight:700; color:var(--text-bright); margin-bottom:20px;">🧠 Level 2 Knowledge Check</div>
+
+  <div class="quiz" id="q1">
+    <div class="quiz-q">1. You want to let teammates run <code>npm install</code> and automatically get Git hooks. What do you use?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt" onclick="ans(this,false,'q1')">git config --global core.hooksPath</button>
+      <button class="quiz-opt" onclick="ans(this,true,'q1')">Husky — manages hooks as committed files triggered on npm install</button>
+      <button class="quiz-opt" onclick="ans(this,false,'q1')">Copy .git/hooks manually to each teammate's machine</button>
+      <button class="quiz-opt" onclick="ans(this,false,'q1')">git submodule add .git/hooks</button>
+    </div>
+    <div class="quiz-res" id="q1-res"></div>
+  </div>
+
+  <div class="quiz" id="q2" style="margin-top:14px">
+    <div class="quiz-q">2. What does <code>git log -S "apiKey"</code> do?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt" onclick="ans(this,false,'q2')">Searches commit messages for "apiKey"</button>
+      <button class="quiz-opt" onclick="ans(this,false,'q2')">Shows commits by an author named "apiKey"</button>
+      <button class="quiz-opt" onclick="ans(this,true,'q2')">Finds commits where "apiKey" was added or removed in file content (pickaxe)</button>
+      <button class="quiz-opt" onclick="ans(this,false,'q2')">Sorts commits by "apiKey" field</button>
+    </div>
+    <div class="quiz-res" id="q2-res"></div>
+  </div>
+
+  <div class="quiz" id="q3" style="margin-top:14px">
+    <div class="quiz-q">3. What is the key advantage of <code>git worktree</code> over cloning twice?</div>
+    <div class="quiz-opts">
+      <button class="quiz-opt" onclick="ans(this,false,'q3')">Worktrees are faster because they use C instead of Node.js</button>
+      <button class="quiz-opt" onclick="ans(this,true,'q3')">Multiple directories share ONE .git — no duplication, no sync needed</button>
+      <button class="quiz-opt" onclick="ans(this,false,'q3')">Worktrees allow pushing to multiple remotes simultaneously</button>
+      <button class="quiz-opt" onclick="ans(this,false,'q3')">They work offline without internet</button>
+    </div>
+    <div class="quiz-res" id="q3-res"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="margin-top:52px; padding:32px; background:linear-gradient(135deg,rgba(255,183,0,0.07),rgba(192,132,252,0.05)); border:1px solid rgba(255,183,0,0.2); border-radius:14px; text-align:center;">
+    <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:var(--text-dim); margin-bottom:8px; letter-spacing:0.1em; text-transform:uppercase;">Level 2 Complete</div>
+    <div style="font-family:'Space Grotesk',sans-serif; font-size:26px; font-weight:800; color:var(--amber); margin-bottom:10px;">You're a Senior Git Engineer Now. 🔱</div>
+    <div style="font-size:13px; color:var(--text-dim); max-width:540px; margin:0 auto; line-height:1.85;">Internals, hooks, worktrees, submodules, LFS, GPG, CI/CD, monorepos — you've covered what most developers never learn. Take it to production. Use it every day. Ship confidently.</div>
+    <div style="margin-top:24px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <span style="background:rgba(255,183,0,0.1);border:1px solid rgba(255,183,0,0.25);color:var(--amber);padding:6px 16px;border-radius:6px;font-size:12px;">Level 1: Completed ✓</span>
+      <span style="background:rgba(192,132,252,0.1);border:1px solid rgba(192,132,252,0.25);color:var(--purple);padding:6px 16px;border-radius:6px;font-size:12px;">Level 2: Completed ✓</span>
+      <span style="background:rgba(34,211,238,0.1);border:1px solid rgba(34,211,238,0.25);color:var(--cyan);padding:6px 16px;border-radius:6px;font-size:12px;">Level 3: Coming Soon</span>
+    </div>
+    <div style="margin-top:20px; font-size:11px; color:var(--text-dim);">git-masterclass-level2 · v2.0 · Built for RyzeN</div>
+  </div>
+
+</div><!-- /s20 -->
+
+</div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /layout -->
+
+<script src="../src/git-masterclass-level2.js"><\/script>
+</body>
+</html>

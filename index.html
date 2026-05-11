@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git Masterclass — Complete Series (Level 1–3)</title>
+<meta name="description" content="The complete Git Masterclass series — from zero to expert. Level 1: Core Commands, Level 2: Advanced Internals, Level 3: Expert Architecture.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+<body class="level-1">
+
+<!-- NAVIGATION BAR -->
+<nav class="nav-bar" id="navBar">
+  <div class="nav-logo">
+    <div class="nav-dots">
+      <div class="nav-dot" style="background:#f87171"></div>
+      <div class="nav-dot" style="background:#fbbf24"></div>
+      <div class="nav-dot" style="background:#34d399"></div>
+    </div>
+    <div class="nav-brand">
+      <span class="git">git</span><span class="suffix">-masterclass</span>
+    </div>
+  </div>
+
+  <div class="series-badge">
+    <span class="pulse-dot"></span>
+    <span>Complete Series</span>
+  </div>
+
+  <div class="level-switcher" id="levelSwitcher">
+    <button class="level-btn active" data-level="1" onclick="switchLevel(1)" id="lvlBtn1">
+      <span class="level-num">1</span>
+      <span class="level-label">Foundations</span>
+      <span class="level-diff">Beginner</span>
+    </button>
+    <button class="level-btn" data-level="2" onclick="switchLevel(2)" id="lvlBtn2">
+      <span class="level-num">2</span>
+      <span class="level-label">Advanced</span>
+      <span class="level-diff">Intermediate</span>
+    </button>
+    <button class="level-btn" data-level="3" onclick="switchLevel(3)" id="lvlBtn3">
+      <span class="level-num">3</span>
+      <span class="level-label">Expert</span>
+      <span class="level-diff">Elite</span>
+    </button>
+  </div>
+
+  <div class="nav-hint">
+    <span class="kbd">1</span>
+    <span class="kbd">2</span>
+    <span class="kbd">3</span>
+    <span style="margin-left:2px">to switch</span>
+  </div>
+</nav>
+
+<!-- TRANSITION OVERLAY -->
+<div class="transition-overlay" id="transOverlay"></div>
+
+<!-- LOADING -->
+<div class="level-loader" id="loader">
+  <div class="loader-content">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">Loading level...</div>
+  </div>
+</div>
+
+<!-- IFRAMES -->
+<div class="frame-container">
+    <iframe class="level-frame active" id="frame1" src="html/git-masterclass.html" title="Level 1: Git Foundations"></iframe>
+  <iframe class="level-frame" id="frame2" title="Level 2: Git Advanced"></iframe>
+  <iframe class="level-frame" id="frame3" title="Level 3: Git Expert"></iframe>
+</div>
+
+<script src="src/script.js"></script>
+
+</body>
+</html>

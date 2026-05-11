@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git Masterclass — Zero to Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/git-masterclass.css">
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progress"></div>
+
+<!-- TOP HEADER -->
+<div class="top-header">
+  <div class="term-dots">
+    <div class="header-dot dot-red"></div>
+    <div class="header-dot dot-yellow"></div>
+    <div class="header-dot dot-green"></div>
+  </div>
+  <span class="header-title">git<span>-masterclass</span> ~/learn</span>
+  <span class="header-version">v2.0 — Zero to Pro</span>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-section">Getting Started</div>
+  <a class="sidebar-link active" onclick="scrollTo('s0')"><span class="icon">⚡</span> Introduction</a>
+  <a class="sidebar-link" onclick="scrollTo('s1')"><span class="icon">⚙️</span> Setup & Config</a>
+  <a class="sidebar-link" onclick="scrollTo('s2')"><span class="icon">📁</span> Init & Clone</a>
+
+  <div class="sidebar-section">Core Workflow</div>
+  <a class="sidebar-link" onclick="scrollTo('s3')"><span class="icon">📦</span> Stage & Commit<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s4')"><span class="icon">🔍</span> Status & Log</a>
+  <a class="sidebar-link" onclick="scrollTo('s5')"><span class="icon">🌿</span> Branching<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s6')"><span class="icon">🔀</span> Merging</a>
+
+  <div class="sidebar-section">Remote & Collab</div>
+  <a class="sidebar-link" onclick="scrollTo('s7')"><span class="icon">🌐</span> Remotes<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s8')"><span class="icon">⬆️</span> Push & Pull</a>
+  <a class="sidebar-link" onclick="scrollTo('s9')"><span class="icon">🔁</span> Fetch & Sync</a>
+
+  <div class="sidebar-section">Undo & Recovery</div>
+  <a class="sidebar-link" onclick="scrollTo('s10')"><span class="icon">↩️</span> Revert & Reset</a>
+  <a class="sidebar-link" onclick="scrollTo('s11')"><span class="icon">📌</span> Stash</a>
+
+  <div class="sidebar-section">Advanced</div>
+  <a class="sidebar-link" onclick="scrollTo('s12')"><span class="icon">🎯</span> Rebase</a>
+  <a class="sidebar-link" onclick="scrollTo('s13')"><span class="icon">🍒</span> Cherry-pick</a>
+  <a class="sidebar-link" onclick="scrollTo('s14')"><span class="icon">🏷️</span> Tags</a>
+  <a class="sidebar-link" onclick="scrollTo('s15')"><span class="icon">🔬</span> Bisect & Reflog</a>
+  <a class="sidebar-link" onclick="scrollTo('s16')"><span class="icon">⚡</span> Aliases & Tips</a>
+
+  <div class="sidebar-section">Projects</div>
+  <a class="sidebar-link" onclick="scrollTo('s17')"><span class="icon">🏗️</span> Project 1: Portfolio<span class="badge">PRO</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s18')"><span class="icon">🚀</span> Project 2: Team Flow<span class="badge">PRO</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s19')"><span class="icon">📋</span> Cheat Sheet</a>
+</div>
+
+<!-- MAIN -->
+<div class="layout">
+  <div class="main">
+
+    <!-- HERO -->
+    <div class="hero" id="s0">
+      <div class="hero-tag">Interactive Learning Guide</div>
+      <h1>Master <span class="accent">Git</span><br>From Scratch to Pro</h1>
+      <p>Every command. Every workflow. Learned by doing. This guide takes you from absolute zero to production-ready Git skills with hands-on projects and real terminal examples.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Commands Covered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Real Projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">19</div>
+          <div class="stat-label">Modules</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S1: SETUP -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s1">
+        <div class="section-header">
+          <div class="section-num">01</div>
+          <div>
+            <div class="section-title">Setup & Configuration</div>
+            <div class="section-subtitle">Before anything else — tell Git who you are.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">💡 What is Git?</div>
+          <p>Git is a <strong style="color:var(--text-bright)">distributed version control system</strong>. It tracks changes in your code over time, lets you branch off to experiment, and merge changes back — all without ever losing history. Every developer machine has the full repository, not just a snapshot.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots">
+              <div class="term-dot" style="background:#ff5555"></div>
+              <div class="term-dot" style="background:#f0a500"></div>
+              <div class="term-dot" style="background:#39d353"></div>
+            </div>
+            <span class="term-title">bash — First-Time Git Setup</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># Set your name and email (shown in every commit)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global user.name "Your Name"</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global user.email "you@example.com"</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Set default branch name to 'main'</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global init.defaultBranch main</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Choose your default editor (VS Code)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global core.editor "code --wait"</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Verify all global config</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --list</span></div>
+            <div class="line"><span class="out-cyan">user.name=Your Name</span></div>
+            <div class="line"><span class="out-cyan">user.email=you@example.com</span></div>
+            <div class="line"><span class="out-cyan">init.defaultBranch=main</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># View config file directly</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">cat ~/.gitconfig</span></div>
+          </div>
+        </div>
+
+        <div class="cmd-grid">
+          <div class="cmd-card">
+            <div class="cmd-name">git config --global</div>
+            <div class="cmd-desc">Sets config for ALL repositories on your machine. Stored in <code style="color:var(--amber)">~/.gitconfig</code></div>
+          </div>
+          <div class="cmd-card">
+            <div class="cmd-name">git config --local</div>
+            <div class="cmd-desc">Sets config only for the current repo. Stored in <code style="color:var(--amber)">.git/config</code></div>
+          </div>
+          <div class="cmd-card">
+            <div class="cmd-name">git config --list</div>
+            <div class="cmd-desc">Lists ALL active configuration values from all levels.</div>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <span class="icon">💡</span>
+          <span class="body">On Windows, use Git Bash or WSL. On Mac/Linux, the terminal is all you need. Install Git at <strong>git-scm.com</strong></span>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S2: INIT & CLONE -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s2">
+        <div class="section-header">
+          <div class="section-num">02</div>
+          <div>
+            <div class="section-title">Init & Clone</div>
+            <div class="section-subtitle">Starting a new repo or getting an existing one.</div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this, 'init-tab')">git init</div>
+          <div class="tab" onclick="switchTab(this, 'clone-tab')">git clone</div>
+        </div>
+
+        <div class="tab-content active" id="init-tab">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+              <span class="term-title">bash — Initialize a new repository</span>
+              <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="comment"># Create a new folder and init a git repo inside it</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">mkdir my-project && cd my-project</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git init</span></div>
+              <div class="line"><span class="out-green">Initialized empty Git repository in /home/user/my-project/.git/</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># See the hidden .git folder (the brain of git)</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">ls -la</span></div>
+              <div class="line"><span class="out">drwxr-xr-x  8 user staff  256 .git</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Look inside .git</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">ls .git</span></div>
+              <div class="line"><span class="out-cyan">HEAD  config  description  hooks  info  objects  refs</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="clone-tab">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+              <span class="term-title">bash — Clone an existing repository</span>
+              <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="comment"># Clone from GitHub (creates a folder with repo name)</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git clone https://github.com/user/repo.git</span></div>
+              <div class="line"><span class="out-green">Cloning into 'repo'...</span></div>
+              <div class="line"><span class="out">remote: Counting objects: 100</span></div>
+              <div class="line"><span class="out">Receiving objects: 100% (100/100), done.</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Clone into a custom folder name</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git clone https://github.com/user/repo.git my-app</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Clone only the latest snapshot (shallow clone, faster)</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git clone --depth 1 https://github.com/user/repo.git</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Clone a specific branch only</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git clone -b develop https://github.com/user/repo.git</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">🔑 The .git Folder</div>
+          <p>The <strong style="color:var(--cyan)">.git</strong> directory is everything. It stores your commits, branches, tags, config — the entire history. Delete it and you lose all Git tracking. <strong style="color:var(--red)">Never delete it.</strong></p>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S3: STAGE & COMMIT -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s3">
+        <div class="section-header">
+          <div class="section-num">03</div>
+          <div>
+            <div class="section-title">Stage & Commit</div>
+            <div class="section-subtitle">The heartbeat of Git — the 3-stage workflow.</div>
+          </div>
+        </div>
+
+        <div class="diagram">
+          <div class="diagram-row">
+            <div class="dbox work">Working Directory<br><small style="opacity:0.6">your files</small></div>
+            <div style="text-align:center">
+              <span class="darr"> ──── git add ────► </span>
+            </div>
+            <div class="dbox stage">Staging Area<br><small style="opacity:0.6">index / cache</small></div>
+            <div style="text-align:center">
+              <span class="darr"> ── git commit ──► </span>
+            </div>
+            <div class="dbox repo">Local Repository<br><small style="opacity:0.6">.git/objects</small></div>
+            <div style="text-align:center">
+              <span class="darr"> ── git push ──► </span>
+            </div>
+            <div class="dbox remote">Remote (GitHub)<br><small style="opacity:0.6">origin</small></div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — Stage and Commit Workflow</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># Create a file</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">echo "# My App" > README.md</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Stage ONE file</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git add README.md</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Stage ALL changed files</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git add .</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Stage with pattern matching</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git add src/*.js</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Stage interactively (choose hunks)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git add -p</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Commit with a message</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -m "feat: add README file"</span></div>
+            <div class="line"><span class="out-green">[main (root-commit) a1b2c3d] feat: add README file</span></div>
+            <div class="line"><span class="out"> 1 file changed, 1 insertion(+)</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Skip staging — add and commit tracked files at once</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -am "fix: update readme"</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Fix your last commit message</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git commit --amend -m "feat: better message"</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Unstage a file (keep changes in working dir)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git restore --staged README.md</span></div>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <span class="icon">⚠️</span>
+          <span class="body"><strong>Conventional Commits:</strong> Use prefixes like <code>feat:</code>, <code>fix:</code>, <code>docs:</code>, <code>chore:</code>, <code>refactor:</code> in commit messages. This is industry standard and makes history readable.</span>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">🔑 .gitignore</div>
+          <p>Files you never want Git to track. Create a <strong style="color:var(--cyan)">.gitignore</strong> in your project root.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">.gitignore — Common Patterns</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="out-amber">node_modules/</span><span class="comment">    # entire folder</span></div>
+            <div class="line"><span class="out-amber">.env</span><span class="comment">             # secret keys — NEVER commit this</span></div>
+            <div class="line"><span class="out-amber">dist/</span><span class="comment">            # build output</span></div>
+            <div class="line"><span class="out-amber">*.log</span><span class="comment">            # all .log files</span></div>
+            <div class="line"><span class="out-amber">.DS_Store</span><span class="comment">        # Mac OS metadata</span></div>
+            <div class="line"><span class="out-amber">/coverage</span><span class="comment">        # test coverage (leading slash = root only)</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Remove a file that was accidentally committed</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git rm --cached .env</span></div>
+            <div class="line"><span class="out-green">rm '.env'</span></div>
+          </div>
+        </div>
+
+        <!-- PROJECT 1 MINI -->
+        <div class="project">
+          <div class="project-header">
+            <span class="project-badge">Hands-On</span>
+            <span class="project-name">Mini Project: First Commit</span>
+          </div>
+          <p class="project-desc">Build your first proper Git repository from scratch with meaningful commits.</p>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text">Run <code>mkdir todo-app && cd todo-app && git init</code></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text">Create <code>index.html</code>, <code>style.css</code>, <code>app.js</code> with basic content</div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text">Run <code>git add index.html</code> then <code>git status</code> — see one file staged</div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text">Run <code>git add .</code> then <code>git status</code> — all three files staged</div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text">Commit: <code>git commit -m "feat: initial project structure"</code></div></div>
+            <div class="step"><div class="step-num">6</div><div class="step-text">Create <code>.gitignore</code> with <code>node_modules/</code> and <code>.env</code>, then commit it</div></div>
+            <div class="step"><div class="step-num">7</div><div class="step-text">Edit <code>index.html</code>, stage only that file, commit: <code>git commit -m "feat: add page title"</code></div></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S4: STATUS & LOG -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s4">
+        <div class="section-header">
+          <div class="section-num">04</div>
+          <div>
+            <div class="section-title">Status & Log</div>
+            <div class="section-subtitle">Reading your repository's story.</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — git status & git log</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># See current state of your working directory</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git status</span></div>
+            <div class="line"><span class="out">On branch main</span></div>
+            <div class="line"><span class="out">Changes to be committed:</span></div>
+            <div class="line"><span class="out-green">  modified:   index.html</span></div>
+            <div class="line"><span class="out">Changes not staged for commit:</span></div>
+            <div class="line"><span class="out-red">  modified:   style.css</span></div>
+            <div class="line"><span class="out">Untracked files:</span></div>
+            <div class="line"><span class="out-red">  app.js</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Short status (compact view)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git status -s</span></div>
+            <div class="line"><span class="out-green">M </span><span class="out">index.html</span></div>
+            <div class="line"><span class="out"> </span><span class="out-red">M style.css</span></div>
+            <div class="line"><span class="out-red">?? app.js</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Full commit history</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git log</span></div>
+            <div class="line"><span class="out-amber">commit a1b2c3d4e5f6...</span></div>
+            <div class="line"><span class="out">Author: Your Name &lt;you@example.com&gt;</span></div>
+            <div class="line"><span class="out">Date:   Mon Jan 1 12:00:00 2024</span></div>
+            <div class="line"><span class="out">    feat: add README file</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Beautiful one-line log with graph</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git log --oneline --graph --all</span></div>
+            <div class="line"><span class="out-green">* a1b2c3d </span><span class="out-purple">(HEAD -> main) </span><span class="out">feat: add auth module</span></div>
+            <div class="line"><span class="out-green">* d4e5f6g </span><span class="out">fix: correct typo</span></div>
+            <div class="line"><span class="out-green">* h7i8j9k </span><span class="out-amber">(origin/main) </span><span class="out">feat: initial commit</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Show what changed in a specific commit</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git show a1b2c3d</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Show diff: unstaged changes</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git diff</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Show diff: staged vs last commit</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git diff --staged</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Compare two branches</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git diff main..feature-auth</span></div>
+          </div>
+        </div>
+
+        <div class="cmd-grid">
+          <div class="cmd-card"><div class="cmd-name">git log --oneline</div><div class="cmd-desc">Compact log showing short hash + message only.</div></div>
+          <div class="cmd-card"><div class="cmd-name">git log --author="Name"</div><div class="cmd-desc">Filter commits by a specific author.</div></div>
+          <div class="cmd-card"><div class="cmd-name">git log --since="2 weeks ago"</div><div class="cmd-desc">Show commits from the last 2 weeks.</div></div>
+          <div class="cmd-card"><div class="cmd-name">git log -p</div><div class="cmd-desc">Show full patch (diff) for each commit.</div></div>
+          <div class="cmd-card"><div class="cmd-name">git log --stat</div><div class="cmd-desc">Show files changed + lines added/removed per commit.</div></div>
+          <div class="cmd-card"><div class="cmd-name">git blame filename</div><div class="cmd-desc">Show who last modified each line of a file.</div></div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S5: BRANCHING -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s5">
+        <div class="section-header">
+          <div class="section-num">05</div>
+          <div>
+            <div class="section-title">Branching</div>
+            <div class="section-subtitle">The killer feature of Git. Build in isolation.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">🌿 What is a Branch?</div>
+          <p>A branch is a lightweight movable pointer to a commit. When you branch off, you create a new timeline where you can experiment safely. The <strong style="color:var(--cyan)">main</strong> branch is just the production timeline. You create feature branches, do work, and merge back when ready.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — Branch Commands</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># List all local branches</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git branch</span></div>
+            <div class="line"><span class="out-green">* main</span></div>
+            <div class="line"><span class="out">  develop</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># List remote branches too</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git branch -a</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Create a new branch</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git branch feature/user-auth</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Switch to that branch (new way)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git switch feature/user-auth</span></div>
+            <div class="line"><span class="out-green">Switched to branch 'feature/user-auth'</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Create AND switch in one command ← Use this always</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git switch -c feature/payments</span></div>
+            <div class="line"><span class="out-green">Switched to a new branch 'feature/payments'</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Old way (still widely used)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git checkout -b feature/payments</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Rename current branch</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git branch -m feature/payments feature/stripe-payments</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Delete a merged branch (safe)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git branch -d feature/old-feature</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Force delete (even if unmerged)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git branch -D feature/bad-experiment</span></div>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <span class="icon">💡</span>
+          <span class="body"><strong>Branch Naming Convention:</strong> Use <code>feature/login</code>, <code>fix/navbar-bug</code>, <code>hotfix/payment-crash</code>, <code>release/v1.2</code>. Prefix + short description.</span>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <span class="project-badge">Hands-On</span>
+            <span class="project-name">Branch Playground</span>
+          </div>
+          <p class="project-desc">See branches in action with a real feature workflow.</p>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text">Inside your todo-app: <code>git switch -c feature/add-tasks</code></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text">Add a new function in <code>app.js</code>, commit: <code>git commit -am "feat: add task creation function"</code></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text">Switch back: <code>git switch main</code> — your app.js is the old version. Mind-blowing!</div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text">Create another branch: <code>git switch -c feature/delete-tasks</code></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text">Run <code>git log --oneline --all --graph</code> to see the tree</div></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S6: MERGING -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s6">
+        <div class="section-header">
+          <div class="section-num">06</div>
+          <div>
+            <div class="section-title">Merging</div>
+            <div class="section-subtitle">Bring your branches back together.</div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this, 'ff-tab')">Fast-Forward</div>
+          <div class="tab" onclick="switchTab(this, 'merge-tab')">3-Way Merge</div>
+          <div class="tab" onclick="switchTab(this, 'conflict-tab')">Conflicts</div>
+        </div>
+
+        <div class="tab-content active" id="ff-tab">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+              <span class="term-title">Fast-Forward Merge (no divergence)</span>
+              <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="comment"># main hasn't moved since feature branch was created</span></div>
+              <div class="line"><span class="comment"># Git just moves the main pointer forward</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git switch main</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git merge feature/add-tasks</span></div>
+              <div class="line"><span class="out-green">Updating a1b2c3d..d4e5f6g</span></div>
+              <div class="line"><span class="out-green">Fast-forward</span></div>
+              <div class="line"><span class="out"> app.js | 15 +++++++++++++++</span></div>
+              <div class="line"><span class="out"> 1 file changed, 15 insertions(+)</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Force a merge commit even on fast-forward</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git merge --no-ff feature/add-tasks -m "merge: add tasks feature"</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="merge-tab">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+              <span class="term-title">3-Way Merge (both branches diverged)</span>
+              <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="comment"># main has new commits AND feature branch has new commits</span></div>
+              <div class="line"><span class="comment"># Git creates a new "merge commit" to combine both</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git switch main</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git merge feature/delete-tasks</span></div>
+              <div class="line"><span class="out-green">Merge made by the 'recursive' strategy.</span></div>
+              <div class="line"><span class="out"> app.js | 8 ++++++++</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># After merge, delete the feature branch</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git branch -d feature/delete-tasks</span></div>
+              <div class="line"><span class="out-green">Deleted branch feature/delete-tasks (was g7h8i9j).</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="conflict-tab">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+              <span class="term-title">Handling Merge Conflicts</span>
+              <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git merge feature/redesign</span></div>
+              <div class="line"><span class="out-red">CONFLICT (content): Merge conflict in style.css</span></div>
+              <div class="line"><span class="out-red">Automatic merge failed; fix conflicts and then commit.</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Open style.css — you'll see conflict markers:</span></div>
+              <div class="line"><span class="out-red">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span></div>
+              <div class="line"><span class="out">  background: #ffffff;</span></div>
+              <div class="line"><span class="out-amber">=======</span></div>
+              <div class="line"><span class="out">  background: #1a1a2e;</span></div>
+              <div class="line"><span class="out-green">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/redesign</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># EDIT the file manually — remove markers, keep what you want</span></div>
+              <div class="line"><span class="comment"># Then stage and commit:</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git add style.css</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git commit -m "merge: resolve style conflict"</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Abort a merge if you get scared</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git merge --abort</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S7: REMOTES -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s7">
+        <div class="section-header">
+          <div class="section-num">07</div>
+          <div>
+            <div class="section-title">Remote Repositories</div>
+            <div class="section-subtitle">Connecting your local repo to the world.</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — Managing Remotes</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># Add a remote (GitHub repo URL)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git remote add origin https://github.com/you/todo-app.git</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># List remotes</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git remote -v</span></div>
+            <div class="line"><span class="out-green">origin  https://github.com/you/todo-app.git (fetch)</span></div>
+            <div class="line"><span class="out-green">origin  https://github.com/you/todo-app.git (push)</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Rename a remote</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git remote rename origin upstream</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Change remote URL (switched from HTTPS to SSH)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git remote set-url origin git@github.com:you/todo-app.git</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Remove a remote</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git remote remove origin</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Add upstream for open-source contributions</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git remote add upstream https://github.com/original-owner/repo.git</span></div>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <span class="icon">🔐</span>
+          <span class="body"><strong>SSH vs HTTPS:</strong> Use SSH keys for authentication (<code>git@github.com:user/repo.git</code>). Once set up, no passwords ever. Use <code>ssh-keygen -t ed25519</code> then add the public key to GitHub Settings → SSH Keys.</span>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S8: PUSH & PULL -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s8">
+        <div class="section-header">
+          <div class="section-num">08</div>
+          <div>
+            <div class="section-title">Push & Pull</div>
+            <div class="section-subtitle">Syncing with your remote.</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — Push & Pull</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># Push main to origin for the first time</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git push -u origin main</span></div>
+            <div class="line"><span class="out-green">Branch 'main' set up to track remote branch 'main' from 'origin'.</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># After -u is set, just use:</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git push</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Push a feature branch</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git push origin feature/add-tasks</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Pull = fetch + merge (get remote changes)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git pull</span></div>
+            <div class="line"><span class="out-green">Updating a1b2c3d..d4e5f6g</span></div>
+            <div class="line"><span class="out"> index.html | 3 +++</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Pull with rebase (cleaner history)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git pull --rebase</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Force push (DANGER: rewrites remote history)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git push --force-with-lease</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Delete remote branch</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git push origin --delete feature/old-feature</span></div>
+          </div>
+        </div>
+
+        <div class="callout danger">
+          <span class="icon">🚨</span>
+          <span class="body"><strong>Never force push to main/master</strong> on a shared repo. <code>--force-with-lease</code> is safer than <code>--force</code> — it checks if someone else pushed first.</span>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S9: FETCH -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s9">
+        <div class="section-header">
+          <div class="section-num">09</div>
+          <div>
+            <div class="section-title">Fetch & Sync</div>
+            <div class="section-subtitle">Look before you merge.</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — git fetch</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># Fetch downloads changes but does NOT merge</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git fetch origin</span></div>
+            <div class="line"><span class="out-green">From https://github.com/you/todo-app</span></div>
+            <div class="line"><span class="out-cyan">   a1b2c3d..d4e5f6g  main -> origin/main</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Now inspect what arrived</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git log main..origin/main --oneline</span></div>
+            <div class="line"><span class="out">d4e5f6g feat: new dashboard added by teammate</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># See the diff</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git diff main origin/main</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Merge when you're ready</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git merge origin/main</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Fetch ALL remotes and prune deleted branches</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git fetch --all --prune</span></div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">🔑 Fetch vs Pull</div>
+          <p><strong style="color:var(--cyan)">git fetch</strong> = safe, just downloads. <strong style="color:var(--amber)">git pull</strong> = downloads AND merges immediately. In teams, fetch first, inspect, then merge. Avoid surprises.</p>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S10: UNDO -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s10">
+        <div class="section-header">
+          <div class="section-num">10</div>
+          <div>
+            <div class="section-title">Revert & Reset</div>
+            <div class="section-subtitle">How to undo — safely and dangerously.</div>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <span class="icon">⚠️</span>
+          <span class="body"><strong>The Golden Rule:</strong> <code>git revert</code> is always safe. <code>git reset --hard</code> can destroy your work. Know what you're doing.</span>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — Undo Operations</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">## ── git restore: discard working dir changes ──</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git restore index.html</span></div>
+            <div class="line"><span class="comment">  # Throws away changes in index.html — back to last commit</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment">## ── git restore --staged: unstage ──</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git restore --staged index.html</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment">## ── git revert: create a NEW commit that undoes a commit ──</span></div>
+            <div class="line"><span class="comment">  # Safe for shared/public branches!</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git revert a1b2c3d</span></div>
+            <div class="line"><span class="out-green">[main f1e2d3c] Revert "feat: add broken feature"</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment">## ── git reset: move HEAD backward ──</span></div>
+            <div class="line" style="margin-top:8px"><span class="comment"># --soft: keep changes staged</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git reset --soft HEAD~1</span></div>
+            <div class="line" style="margin-top:8px"><span class="comment"># --mixed (default): keep changes unstaged</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git reset HEAD~1</span></div>
+            <div class="line" style="margin-top:8px"><span class="comment"># --hard: DESTROY changes (irreversible!)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git reset --hard HEAD~1</span></div>
+            <div class="line"><span class="out-red">HEAD is now at d4e5f6g feat: add task list</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Reset to match remote exactly</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git reset --hard origin/main</span></div>
+          </div>
+        </div>
+
+        <table class="cmd-table">
+          <thead><tr><th>Command</th><th>Staging Area</th><th>Working Dir</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td class="tc">reset --soft</td><td class="out-amber" style="color:var(--green)">kept staged</td><td class="out-amber" style="color:var(--green)">kept</td><td class="ta">Want to re-commit</td></tr>
+            <tr><td class="tc">reset --mixed</td><td class="out-red" style="color:var(--red)">unstaged</td><td class="out-amber" style="color:var(--green)">kept</td><td class="ta">Want to re-stage selectively</td></tr>
+            <tr><td class="tc">reset --hard</td><td class="out-red" style="color:var(--red)">cleared</td><td class="out-red" style="color:var(--red)">DELETED</td><td class="ta">Nuke everything — careful!</td></tr>
+            <tr><td class="tc">revert</td><td class="out-amber" style="color:var(--green)">new commit</td><td class="out-amber" style="color:var(--green)">kept</td><td class="ta">Public branches — always safe</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S11: STASH -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s11">
+        <div class="section-header">
+          <div class="section-num">11</div>
+          <div>
+            <div class="section-title">Stash</div>
+            <div class="section-subtitle">Save your work temporarily — without committing.</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — git stash</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># SCENARIO: Working on feature, urgent bug report comes in!</span></div>
+            <div class="line" style="margin-top:8px"><span class="comment"># Save your half-done work</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git stash</span></div>
+            <div class="line"><span class="out-green">Saved working directory and index state WIP on main: a1b2c3d</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Stash with a descriptive name</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git stash save "WIP: user auth form"</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Also stash untracked files</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git stash -u</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Fix the bug, commit, then come back to your stash</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git stash list</span></div>
+            <div class="line"><span class="out-cyan">stash@{0}: WIP on main: a1b2c3d — user auth form</span></div>
+            <div class="line"><span class="out-cyan">stash@{1}: WIP on main: d4e5f6g — dashboard charts</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Pop most recent stash (apply + remove from stack)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git stash pop</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Apply a specific stash (keep it in the list)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git stash apply stash@{1}</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Delete a specific stash</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git stash drop stash@{0}</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Delete ALL stashes</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git stash clear</span></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S12: REBASE -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s12">
+        <div class="section-header">
+          <div class="section-num">12</div>
+          <div>
+            <div class="section-title">Rebase</div>
+            <div class="section-subtitle">Rewrite history for a cleaner timeline.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">🎯 Rebase vs Merge</div>
+          <p><strong style="color:var(--cyan)">Merge</strong> creates a merge commit showing branches joined. <strong style="color:var(--amber)">Rebase</strong> replays your commits on top of another branch — as if you started your feature from the latest main. Result: <strong style="color:var(--green)">clean, linear history.</strong></p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — git rebase</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># On feature branch — bring in latest main changes</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git switch feature/add-tasks</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git rebase main</span></div>
+            <div class="line"><span class="out-green">Successfully rebased and updated refs/heads/feature/add-tasks.</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment">## ── Interactive Rebase: edit last 3 commits ──</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git rebase -i HEAD~3</span></div>
+            <div class="line" style="margin-top:8px"><span class="out-amber"># In the editor you see:</span></div>
+            <div class="line"><span class="out-green">pick</span><span class="out"> a1b2c3d feat: add login form</span></div>
+            <div class="line"><span class="out-green">pick</span><span class="out"> d4e5f6g fix: typo</span></div>
+            <div class="line"><span class="out-green">pick</span><span class="out"> g7h8i9j fix: another typo</span></div>
+            <div class="line" style="margin-top:8px"><span class="out-amber"># Change to squash to combine commits:</span></div>
+            <div class="line"><span class="out-green">pick</span><span class="out"> a1b2c3d feat: add login form</span></div>
+            <div class="line"><span class="out-purple">squash</span><span class="out"> d4e5f6g fix: typo</span></div>
+            <div class="line"><span class="out-purple">squash</span><span class="out"> g7h8i9j fix: another typo</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Abort if things go wrong</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git rebase --abort</span></div>
+            <div class="line" style="margin-top:8px"><span class="comment"># Continue after resolving rebase conflicts</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git rebase --continue</span></div>
+          </div>
+        </div>
+
+        <div class="callout danger">
+          <span class="icon">🚨</span>
+          <span class="body"><strong>Never rebase shared/public branches.</strong> Rebase rewrites commit hashes. If teammates have your branch, rebasing causes chaos. Only rebase your own local feature branches.</span>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S13: CHERRY PICK -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s13">
+        <div class="section-header">
+          <div class="section-num">13</div>
+          <div>
+            <div class="section-title">Cherry-Pick</div>
+            <div class="section-subtitle">Grab a specific commit from any branch.</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — git cherry-pick</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># SCENARIO: A hotfix was committed to develop, need it in main NOW</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git switch main</span></div>
+            <div class="line" style="margin-top:8px"><span class="comment"># Pick only the commit with hash a1b2c3d from develop</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git cherry-pick a1b2c3d</span></div>
+            <div class="line"><span class="out-green">[main g1h2i3j] hotfix: fix payment null check</span></div>
+            <div class="line"><span class="out"> 1 file changed, 3 insertions(+), 1 deletion(-)</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Cherry-pick multiple commits</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git cherry-pick a1b2c3d d4e5f6g</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Cherry-pick a range of commits</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git cherry-pick a1b2c3d^..g7h8i9j</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Cherry-pick without committing (apply only)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git cherry-pick -n a1b2c3d</span></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S14: TAGS -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s14">
+        <div class="section-header">
+          <div class="section-num">14</div>
+          <div>
+            <div class="section-title">Tags</div>
+            <div class="section-subtitle">Mark releases and milestones in history.</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — git tag</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># Lightweight tag (just a name pointer)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git tag v1.0.0</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Annotated tag (with message, tagger, date) ← use this</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git tag -a v1.0.0 -m "Release version 1.0.0 — MVP launch"</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Tag an older commit</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git tag -a v0.9.0 a1b2c3d -m "Beta release"</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># List all tags</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git tag</span></div>
+            <div class="line"><span class="out-cyan">v0.9.0</span></div>
+            <div class="line"><span class="out-cyan">v1.0.0</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Show tag details</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git show v1.0.0</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Push tags to remote (not pushed by default!)</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git push origin v1.0.0</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git push origin --tags</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Delete a tag locally + remotely</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git tag -d v0.9.0</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git push origin --delete v0.9.0</span></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S15: BISECT & REFLOG -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s15">
+        <div class="section-header">
+          <div class="section-num">15</div>
+          <div>
+            <div class="section-title">Bisect & Reflog</div>
+            <div class="section-subtitle">Forensics tools — find bugs and recover from disasters.</div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab(this, 'bisect-tab')">git bisect</div>
+          <div class="tab" onclick="switchTab(this, 'reflog-tab')">git reflog</div>
+        </div>
+
+        <div class="tab-content active" id="bisect-tab">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+              <span class="term-title">git bisect — Binary search for the bug-introducing commit</span>
+              <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="comment"># SCENARIO: A bug exists now but wasn't there 2 weeks ago</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git bisect start</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git bisect bad</span><span class="comment">                # current commit is bad</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git bisect good v1.0.0</span><span class="comment">         # this version was fine</span></div>
+              <div class="line"><span class="out-amber">Bisecting: 15 revisions left to test after this</span></div>
+              <div class="line" style="margin-top:8px"><span class="comment"># Git checks out a commit in the middle. Test your app.</span></div>
+              <div class="line"><span class="comment"># If this one is OK:</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git bisect good</span></div>
+              <div class="line"><span class="comment"># If this one has the bug:</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git bisect bad</span></div>
+              <div class="line" style="margin-top:8px"><span class="comment"># Repeat until Git finds the exact commit:</span></div>
+              <div class="line"><span class="out-red">a1b2c3d is the first bad commit</span></div>
+              <div class="line"><span class="out">Author: Dev &lt;dev@company.com&gt;</span></div>
+              <div class="line"><span class="out">    feat: refactor payment service  ← HERE'S YOUR BUG</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Exit bisect mode</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git bisect reset</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content" id="reflog-tab">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+              <span class="term-title">git reflog — Your safety net. Nothing is truly lost.</span>
+              <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="comment"># reflog tracks EVERY move of HEAD</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git reflog</span></div>
+              <div class="line"><span class="out-green">g7h8i9j HEAD@{0}: commit: feat: user profile page</span></div>
+              <div class="line"><span class="out-green">a1b2c3d HEAD@{1}: reset: moving to HEAD~3</span></div>
+              <div class="line"><span class="out-green">d4e5f6g HEAD@{2}: commit: feat: dashboard v2</span></div>
+              <div class="line"><span class="out-green">h1i2j3k HEAD@{3}: checkout: moving from develop to main</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># SCENARIO: Accidentally did git reset --hard, lost commits!</span></div>
+              <div class="line"><span class="comment"># Find the commit you lost in reflog</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git reflog</span></div>
+              <div class="line"><span class="out-cyan">d4e5f6g HEAD@{2}: commit: feat: dashboard v2 ← THERE IT IS</span></div>
+              <div class="line" style="margin-top:8px"><span class="comment"># Recover it!</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git reset --hard d4e5f6g</span></div>
+              <div class="line"><span class="out-green">HEAD is now at d4e5f6g feat: dashboard v2</span></div>
+              <div class="line" style="margin-top:12px"><span class="comment"># Or recover a deleted branch via reflog</span></div>
+              <div class="line"><span class="prompt">$ </span><span class="cmd">git switch -c feature/recovered HEAD@{3}</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <span class="icon">💡</span>
+          <span class="body"><strong>Reflog is your guardian angel.</strong> Git doesn't delete objects immediately — they stay for 90 days. If you broke something, <code>git reflog</code> will almost always save you.</span>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S16: ALIASES & TIPS -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s16">
+        <div class="section-header">
+          <div class="section-num">16</div>
+          <div>
+            <div class="section-title">Aliases & Pro Tips</div>
+            <div class="section-subtitle">Work 10× faster with shortcuts.</div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">~/.gitconfig — Power User Aliases</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># Add these aliases</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.st status</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.co checkout</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.br branch</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.unstage 'restore --staged'</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.last 'log -1 HEAD'</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.lg "log --oneline --graph --all --decorate"</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.undo 'reset --soft HEAD~1'</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git config --global alias.nuke 'reset --hard HEAD'</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Usage</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git st</span><span class="comment">        # git status</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git lg</span><span class="comment">        # beautiful graph log</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git undo</span><span class="comment">      # undo last commit, keep changes</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># See which branches are already merged</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git branch --merged</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Clean up all merged branches at once</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git branch --merged | grep -v main | xargs git branch -d</span></div>
+            <div class="line" style="margin-top:12px"><span class="comment"># Show files changed between two commits</span></div>
+            <div class="line"><span class="prompt">$ </span><span class="cmd">git diff --name-only HEAD~5 HEAD</span></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S17: PROJECT 1 — PORTFOLIO SITE -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s17">
+        <div class="section-header">
+          <div class="section-num">17</div>
+          <div>
+            <div class="section-title">Project 1: Portfolio Website</div>
+            <div class="section-subtitle">Full solo Git workflow — from zero to GitHub Pages.</div>
+          </div>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <span class="project-badge">Full Project</span>
+            <span class="project-name">🏗️ Build & Ship a Portfolio with Git</span>
+          </div>
+          <p class="project-desc">Simulate a real solo developer workflow. You'll use branches for every feature, meaningful commits, and push everything to GitHub with tags for releases.</p>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Init:</strong> <code>mkdir portfolio && cd portfolio && git init</code></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Setup:</strong> Create <code>index.html</code> skeleton + <code>.gitignore</code>. Commit: <code>git commit -m "chore: project scaffolding"</code></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Feature branch:</strong> <code>git switch -c feature/hero-section</code>. Build the hero. Commit it.</div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Merge:</strong> <code>git switch main && git merge --no-ff feature/hero-section</code></div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Repeat</strong> for <code>feature/projects-section</code> and <code>feature/contact-form</code> — each gets its own branch and merge.</div></div>
+            <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Hotfix simulation:</strong> Break something on main. Create <code>hotfix/typo-fix</code>, fix it, merge back, delete branch.</div></div>
+            <div class="step"><div class="step-num">7</div><div class="step-text"><strong>Remote:</strong> Create repo on GitHub. <code>git remote add origin ...</code> then <code>git push -u origin main</code></div></div>
+            <div class="step"><div class="step-num">8</div><div class="step-text"><strong>Release:</strong> <code>git tag -a v1.0.0 -m "Portfolio launch"</code> then <code>git push origin --tags</code></div></div>
+            <div class="step"><div class="step-num">9</div><div class="step-text"><strong>See your history:</strong> <code>git log --oneline --graph --all</code> — admire your clean workflow!</div></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S18: PROJECT 2 — TEAM WORKFLOW -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s18">
+        <div class="section-header">
+          <div class="section-num">18</div>
+          <div>
+            <div class="section-title">Project 2: Simulated Team Workflow</div>
+            <div class="section-subtitle">GitHub Flow — PRs, conflicts, and collaboration.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">🚀 GitHub Flow (Industry Standard)</div>
+          <p>The workflow every modern team uses: <strong style="color:var(--cyan)">main is always deployable</strong>. All work happens in feature branches. Changes only enter main via Pull Requests (PRs) — reviewed by teammates.</p>
+        </div>
+
+        <div class="project">
+          <div class="project-header">
+            <span class="project-badge">Full Project</span>
+            <span class="project-name">🚀 Simulate a 2-Dev Team with One Repo</span>
+          </div>
+          <p class="project-desc">Simulate Dev A and Dev B working on the same project by using two different local clones. Learn real-world conflict resolution and PR workflow.</p>
+
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Setup:</strong> Create a GitHub repo. Clone it twice into different folders — <code>clone-devA/</code> and <code>clone-devB/</code></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Dev A:</strong> In <code>clone-devA</code>: <code>git switch -c feature/navbar</code>, build navbar, push branch to GitHub.</div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Dev B:</strong> In <code>clone-devB</code>: <code>git switch -c feature/footer</code>, build footer, push branch to GitHub.</div></div>
+            <div class="step"><div class="step-num">4</div><div class="step-text"><strong>PR 1:</strong> On GitHub — Dev A opens a Pull Request from <code>feature/navbar → main</code>. Merge it.</div></div>
+            <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Sync Dev B:</strong> <code>git fetch origin && git rebase origin/main</code> — Dev B gets latest main before their PR.</div></div>
+            <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Force conflict:</strong> Both Dev A and Dev B edit the same line in <code>style.css</code> from their branches. Open two PRs.</div></div>
+            <div class="step"><div class="step-num">7</div><div class="step-text"><strong>Resolve:</strong> The second PR to merge will show a conflict. Resolve it locally, push again, PR passes.</div></div>
+            <div class="step"><div class="step-num">8</div><div class="step-text"><strong>Code Review:</strong> Use GitHub's review UI — add comments, request changes, approve. This is real work.</div></div>
+            <div class="step"><div class="step-num">9</div><div class="step-text"><strong>Protect main:</strong> In GitHub Settings → Branches → add rule: require PR + 1 reviewer before merge.</div></div>
+          </div>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">bash — Full GitHub Flow Command Reference</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment"># The complete GitHub Flow loop for every feature:</span></div>
+            <div class="line" style="margin-top:8px"><span class="out-amber">① </span><span class="prompt">$ </span><span class="cmd">git switch main && git pull</span><span class="comment">              # start fresh</span></div>
+            <div class="line"><span class="out-amber">② </span><span class="prompt">$ </span><span class="cmd">git switch -c feature/my-feature</span><span class="comment">        # branch off</span></div>
+            <div class="line"><span class="out-amber">③ </span><span class="comment">  ... do work, make atomic commits ...</span></div>
+            <div class="line"><span class="out-amber">④ </span><span class="prompt">$ </span><span class="cmd">git push -u origin feature/my-feature</span><span class="comment">   # push branch</span></div>
+            <div class="line"><span class="out-amber">⑤ </span><span class="comment">  ... open Pull Request on GitHub ...</span></div>
+            <div class="line"><span class="out-amber">⑥ </span><span class="comment">  ... team reviews and approves ...</span></div>
+            <div class="line"><span class="out-amber">⑦ </span><span class="comment">  ... PR gets merged via GitHub UI ...</span></div>
+            <div class="line"><span class="out-amber">⑧ </span><span class="prompt">$ </span><span class="cmd">git switch main && git pull</span><span class="comment">              # sync locally</span></div>
+            <div class="line"><span class="out-amber">⑨ </span><span class="prompt">$ </span><span class="cmd">git branch -d feature/my-feature</span><span class="comment">        # clean up</span></div>
+            <div class="line"><span class="out-amber">⑩ </span><span class="comment">  Repeat for every feature. 🔄</span></div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S19: CHEAT SHEET -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s19" style="border-bottom:none">
+        <div class="section-header">
+          <div class="section-num">19</div>
+          <div>
+            <div class="section-title">Cheat Sheet</div>
+            <div class="section-subtitle">Every command you need, at a glance.</div>
+          </div>
+        </div>
+
+        <div class="cheat-grid">
+          <div class="cheat-block">
+            <div class="cheat-title">Setup</div>
+            <div class="cheat-item"><span class="cheat-cmd">git config --global user.name</span><span class="cheat-desc">Set name</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git config --list</span><span class="cheat-desc">View config</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git init</span><span class="cheat-desc">New repo</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git clone [url]</span><span class="cheat-desc">Clone repo</span></div>
+          </div>
+          <div class="cheat-block">
+            <div class="cheat-title">Stage & Commit</div>
+            <div class="cheat-item"><span class="cheat-cmd">git add .</span><span class="cheat-desc">Stage all</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git add -p</span><span class="cheat-desc">Interactive stage</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git commit -m "msg"</span><span class="cheat-desc">Commit</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git commit --amend</span><span class="cheat-desc">Fix last commit</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git restore --staged f</span><span class="cheat-desc">Unstage file</span></div>
+          </div>
+          <div class="cheat-block">
+            <div class="cheat-title">Status & History</div>
+            <div class="cheat-item"><span class="cheat-cmd">git status -s</span><span class="cheat-desc">Short status</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git log --oneline --graph</span><span class="cheat-desc">Visual log</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git diff</span><span class="cheat-desc">Unstaged changes</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git diff --staged</span><span class="cheat-desc">Staged changes</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git show [hash]</span><span class="cheat-desc">Commit details</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git blame [file]</span><span class="cheat-desc">Who changed what</span></div>
+          </div>
+          <div class="cheat-block">
+            <div class="cheat-title">Branching</div>
+            <div class="cheat-item"><span class="cheat-cmd">git branch</span><span class="cheat-desc">List branches</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git switch -c [name]</span><span class="cheat-desc">Create + switch</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git merge [branch]</span><span class="cheat-desc">Merge branch</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git branch -d [name]</span><span class="cheat-desc">Delete branch</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git merge --abort</span><span class="cheat-desc">Cancel merge</span></div>
+          </div>
+          <div class="cheat-block">
+            <div class="cheat-title">Remote</div>
+            <div class="cheat-item"><span class="cheat-cmd">git remote add origin</span><span class="cheat-desc">Add remote</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git push -u origin main</span><span class="cheat-desc">First push</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git push</span><span class="cheat-desc">Push current branch</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git pull</span><span class="cheat-desc">Fetch + merge</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git fetch --all --prune</span><span class="cheat-desc">Fetch all</span></div>
+          </div>
+          <div class="cheat-block">
+            <div class="cheat-title">Undo</div>
+            <div class="cheat-item"><span class="cheat-cmd">git restore [file]</span><span class="cheat-desc">Discard changes</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git revert [hash]</span><span class="cheat-desc">Undo commit (safe)</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git reset --soft HEAD~1</span><span class="cheat-desc">Undo, keep staged</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git reset --hard HEAD</span><span class="cheat-desc">Nuke all changes</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git reflog</span><span class="cheat-desc">Time machine</span></div>
+          </div>
+          <div class="cheat-block">
+            <div class="cheat-title">Advanced</div>
+            <div class="cheat-item"><span class="cheat-cmd">git stash</span><span class="cheat-desc">Save WIP</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git stash pop</span><span class="cheat-desc">Restore WIP</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git rebase -i HEAD~N</span><span class="cheat-desc">Interactive rebase</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git cherry-pick [hash]</span><span class="cheat-desc">Grab one commit</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git bisect start</span><span class="cheat-desc">Find bug commit</span></div>
+          </div>
+          <div class="cheat-block">
+            <div class="cheat-title">Tags</div>
+            <div class="cheat-item"><span class="cheat-cmd">git tag -a v1.0.0 -m</span><span class="cheat-desc">Annotated tag</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git push origin --tags</span><span class="cheat-desc">Push all tags</span></div>
+            <div class="cheat-item"><span class="cheat-cmd">git tag -d v1.0.0</span><span class="cheat-desc">Delete tag</span></div>
+          </div>
+        </div>
+
+        <!-- QUIZ -->
+        <div style="margin-top:40px; font-family:'Syne',sans-serif; font-size:20px; font-weight:700; color:var(--text-bright); margin-bottom:20px;">
+          🧠 Quick Knowledge Check
+        </div>
+
+        <div class="quiz" id="q1">
+          <div class="quiz-q">1. You committed sensitive data (.env file) to the last commit. What's the safest immediate fix?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answer(this, false, 'q1')">git reset --hard HEAD~1</button>
+            <button class="quiz-opt" onclick="answer(this, true, 'q1')">git rm --cached .env, add to .gitignore, then git commit --amend</button>
+            <button class="quiz-opt" onclick="answer(this, false, 'q1')">git revert HEAD</button>
+            <button class="quiz-opt" onclick="answer(this, false, 'q1')">git stash</button>
+          </div>
+          <div class="quiz-result" id="q1-result"></div>
+        </div>
+
+        <div class="quiz" id="q2" style="margin-top:16px">
+          <div class="quiz-q">2. Which command gives you the most visual, readable view of branch history?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answer(this, false, 'q2')">git status</button>
+            <button class="quiz-opt" onclick="answer(this, false, 'q2')">git log -p</button>
+            <button class="quiz-opt" onclick="answer(this, true, 'q2')">git log --oneline --graph --all</button>
+            <button class="quiz-opt" onclick="answer(this, false, 'q2')">git diff</button>
+          </div>
+          <div class="quiz-result" id="q2-result"></div>
+        </div>
+
+        <div class="quiz" id="q3" style="margin-top:16px">
+          <div class="quiz-q">3. You're mid-feature. Urgent bug on main. What do you do with your half-done work?</div>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answer(this, false, 'q3')">git commit -m "WIP: saving"</button>
+            <button class="quiz-opt" onclick="answer(this, true, 'q3')">git stash save "WIP: feature name"</button>
+            <button class="quiz-opt" onclick="answer(this, false, 'q3')">git reset --hard HEAD</button>
+            <button class="quiz-opt" onclick="answer(this, false, 'q3')">Delete the files, fix the bug, retype everything</button>
+          </div>
+          <div class="quiz-result" id="q3-result"></div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="margin-top:48px; padding:28px; background:var(--bg3); border:1px solid var(--border); border-radius:12px; text-align:center;">
+          <div style="font-family:'Syne',sans-serif; font-size:22px; font-weight:800; color:var(--green); margin-bottom:8px;">You're now a Git developer. 🚀</div>
+          <div style="font-size:12.5px; color:var(--text-dim); line-height:1.8; max-width:500px; margin:0 auto;">The only way to truly master Git is to use it daily. Commit often. Branch freely. Break things — you can always reflog your way back. Happy coding, RyzeN.</div>
+          <div style="margin-top:20px; font-size:11px; color:var(--text-dim);">git-masterclass v2.0 · Built with ❤️ for developers</div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /layout -->
+
+<script src="../src/git-masterclass.js"><\/script>
+
+</body>
+</html>
