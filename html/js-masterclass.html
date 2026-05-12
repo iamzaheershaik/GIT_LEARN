@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Masterclass — Fundamentals to Advanced</title>
+<meta name="description" content="Complete JavaScript learning guide covering fundamentals to advanced concepts with interview prep, machine coding questions, and real-world examples.">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/js-masterclass.css">
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progress"></div>
+
+<!-- TOP HEADER -->
+<div class="top-header">
+  <div class="term-dots">
+    <div class="header-dot dot-red"></div>
+    <div class="header-dot dot-yellow"></div>
+    <div class="header-dot dot-green"></div>
+  </div>
+  <span class="header-title">js<span>-masterclass</span> ~/learn</span>
+  <span class="header-version">v1.0 — Fundamentals to Advanced</span>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-section">Fundamentals</div>
+  <a class="sidebar-link active" onclick="scrollTo('s0')"><span class="icon">⚡</span> Introduction</a>
+  <a class="sidebar-link" onclick="scrollTo('s1')"><span class="icon">📦</span> Variables<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s2')"><span class="icon">⚙️</span> Functions<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s3')"><span class="icon">📋</span> Arrays</a>
+  <a class="sidebar-link" onclick="scrollTo('s4')"><span class="icon">🗂️</span> Objects</a>
+
+  <div class="sidebar-section">DOM & Events</div>
+  <a class="sidebar-link" onclick="scrollTo('s5')"><span class="icon">🖥️</span> DOM Manipulation<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s6')"><span class="icon">🎯</span> Events</a>
+
+  <div class="sidebar-section">ES6+ Features</div>
+  <a class="sidebar-link" onclick="scrollTo('s7')"><span class="icon">✨</span> ES6+ Concepts<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s8')"><span class="icon">📂</span> Destructuring</a>
+  <a class="sidebar-link" onclick="scrollTo('s9')"><span class="icon">🔄</span> Spread & Rest</a>
+  <a class="sidebar-link" onclick="scrollTo('s10')"><span class="icon">📦</span> Modules</a>
+
+  <div class="sidebar-section">Advanced Concepts</div>
+  <a class="sidebar-link" onclick="scrollTo('s11')"><span class="icon">🔒</span> Closures<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s12')"><span class="icon">⬆️</span> Hoisting</a>
+  <a class="sidebar-link" onclick="scrollTo('s13')"><span class="icon">📞</span> Callbacks</a>
+  <a class="sidebar-link" onclick="scrollTo('s14')"><span class="icon">🤝</span> Promises<span class="badge">KEY</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s15')"><span class="icon">⏳</span> Async/Await</a>
+  <a class="sidebar-link" onclick="scrollTo('s16')"><span class="icon">🔁</span> Event Loop<span class="badge">KEY</span></a>
+
+  <div class="sidebar-section">Performance</div>
+  <a class="sidebar-link" onclick="scrollTo('s17')"><span class="icon">⏱️</span> Debouncing<span class="badge interview">INT</span></a>
+  <a class="sidebar-link" onclick="scrollTo('s18')"><span class="icon">🚦</span> Throttling<span class="badge interview">INT</span></a>
+
+  <div class="sidebar-section">Web APIs</div>
+  <a class="sidebar-link" onclick="scrollTo('s19')"><span class="icon">💾</span> localStorage</a>
+  <a class="sidebar-link" onclick="scrollTo('s20')"><span class="icon">🌐</span> Fetch API<span class="badge">KEY</span></a>
+</div>
+
+<!-- MOBILE SIDEBAR TOGGLE -->
+<button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+<!-- MAIN -->
+<div class="layout">
+  <div class="main">
+
+    <!-- HERO -->
+    <div class="hero" id="s0">
+      <div class="hero-tag">Complete JavaScript Guide</div>
+      <h1>Master <span class="accent">JavaScript</span><br>From Zero to Hero</h1>
+      <p>Every concept. Every pattern. Interview-ready. This guide takes you from absolute fundamentals to advanced async patterns, with 400+ interview & machine coding questions.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">21</div>
+          <div class="stat-label">Topics Covered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">400+</div>
+          <div class="stat-label">Questions</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">Code Examples</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S1: VARIABLES -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s1">
+        <div class="section-header">
+          <div class="section-num">01</div>
+          <div>
+            <div class="section-title">Variables</div>
+            <div class="section-subtitle">The building blocks of JavaScript — storing and managing data.</div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-icon">📖</span> Definition</div>
+          <div class="concept">
+            <p>A <strong style="color:var(--yellow)">variable</strong> is a named container that stores a value in memory. JavaScript provides three keywords to declare variables: <code>var</code>, <code>let</code>, and <code>const</code>. Each has different scoping rules and behaviors that fundamentally affect how your code works.</p>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-icon">🔬</span> Deep Explanation</div>
+          <div class="concept">
+            <p><strong style="color:var(--cyan)">var</strong> is function-scoped and hoisted to the top of its function. It can be re-declared and re-assigned. Before ES6, this was the only way to declare variables.</p>
+            <p style="margin-top:8px"><strong style="color:var(--green)">let</strong> is block-scoped (within <code>{}</code> braces). It cannot be re-declared in the same scope but can be re-assigned. It exists in a "temporal dead zone" from the start of the block until the declaration.</p>
+            <p style="margin-top:8px"><strong style="color:var(--purple)">const</strong> is also block-scoped. It cannot be re-declared or re-assigned. However, for objects and arrays, the <em>contents</em> can still be mutated — only the binding is immutable.</p>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-icon">⌨️</span> Syntax & Code Examples</div>
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+              <span class="term-title">javascript — Variable Declarations</span>
+              <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="comment">// var — function scoped, hoisted</span></div>
+              <div class="line"><span class="kw">var</span> name = <span class="str">"Alice"</span>;</div>
+              <div class="line"><span class="kw">var</span> name = <span class="str">"Bob"</span>;  <span class="comment">// ✅ re-declaration allowed</span></div>
+              <div class="line"></div>
+              <div class="line"><span class="comment">// let — block scoped</span></div>
+              <div class="line"><span class="kw">let</span> age = <span class="num">25</span>;</div>
+              <div class="line">age = <span class="num">26</span>;  <span class="comment">// ✅ re-assignment allowed</span></div>
+              <div class="line"><span class="comment">// let age = 30;  ❌ SyntaxError: already declared</span></div>
+              <div class="line"></div>
+              <div class="line"><span class="comment">// const — block scoped, immutable binding</span></div>
+              <div class="line"><span class="kw">const</span> PI = <span class="num">3.14159</span>;</div>
+              <div class="line"><span class="comment">// PI = 3.14;  ❌ TypeError: Assignment to constant</span></div>
+              <div class="line"></div>
+              <div class="line"><span class="comment">// ⚠️ const with objects — contents ARE mutable!</span></div>
+              <div class="line"><span class="kw">const</span> user = { name: <span class="str">"Alice"</span> };</div>
+              <div class="line">user.name = <span class="str">"Bob"</span>;  <span class="comment">// ✅ Works! Object mutated</span></div>
+              <div class="line"><span class="comment">// user = {};  ❌ TypeError: can't reassign const</span></div>
+              <div class="line"></div>
+              <div class="line"><span class="comment">// Block scoping demo</span></div>
+              <div class="line"><span class="kw">if</span> (<span class="bool">true</span>) {</div>
+              <div class="line">  <span class="kw">let</span> x = <span class="num">10</span>;</div>
+              <div class="line">  <span class="kw">var</span> y = <span class="num">20</span>;</div>
+              <div class="line">}</div>
+              <div class="line"><span class="comment">// console.log(x); ❌ ReferenceError</span></div>
+              <div class="line">console.<span class="func">log</span>(y); <span class="comment">// ✅ 20 — var leaks out!</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-icon">🌍</span> Real-World Use Cases</div>
+          <div class="cmd-grid">
+            <div class="cmd-card"><div class="cmd-name">const for config</div><div class="cmd-desc">API URLs, environment constants, fixed values that should never change.</div></div>
+            <div class="cmd-card"><div class="cmd-name">let for loops</div><div class="cmd-desc">Loop counters, iterators, values that change during execution.</div></div>
+            <div class="cmd-card"><div class="cmd-name">const for objects</div><div class="cmd-desc">State objects, DOM references, imported modules — prevent accidental reassignment.</div></div>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-icon">❌</span> Common Mistakes</div>
+          <ul class="mistake-list">
+            <li>Using <code>var</code> in loops — causes closure issues in async callbacks</li>
+            <li>Assuming <code>const</code> makes objects/arrays immutable (it doesn't)</li>
+            <li>Accessing <code>let</code>/<code>const</code> before declaration (temporal dead zone)</li>
+            <li>Not understanding that <code>var</code> is function-scoped, not block-scoped</li>
+            <li>Forgetting that undeclared variables become global (no strict mode)</li>
+          </ul>
+        </div>
+
+        <div class="sub-section">
+          <div class="sub-title"><span class="sub-icon">✅</span> Best Practices</div>
+          <ul class="practice-list">
+            <li>Default to <code>const</code> — only use <code>let</code> when reassignment is needed</li>
+            <li>Never use <code>var</code> in modern JavaScript</li>
+            <li>Always use <code>"use strict"</code> to catch undeclared variables</li>
+            <li>Use <code>Object.freeze()</code> if you truly need immutable objects</li>
+            <li>Declare variables at the top of their scope for readability</li>
+          </ul>
+        </div>
+
+        <div class="callout interview-note">
+          <span class="icon">🎯</span>
+          <span class="body"><strong>Interview Tip:</strong> The #1 most asked question is the difference between var, let, and const. Know scoping, hoisting, TDZ, and the closure-in-loop gotcha cold. Be ready to explain with a <code>setTimeout</code> inside a <code>for</code> loop example.</span>
+        </div>
+
+        <!-- Interview Questions -->
+        <div class="questions-section">
+          <div class="questions-header">
+            <h3>🎤 Interview Questions</h3>
+            <span class="questions-badge interview-badge">Interview</span>
+          </div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is the difference between var, let, and const?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> What is hoisting in the context of variables?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> Can you reassign a const variable? What about mutating its value?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> What is the Temporal Dead Zone (TDZ)?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> What will be the output of a for loop with var vs let and setTimeout?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Explain function scope vs block scope with examples.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> What happens when you access a variable before its declaration with let?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> How does variable shadowing work? Show scope chain resolution.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Explain the difference between Object.freeze() and const. When would you use each?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> How do closures interact with var vs let in terms of variable capture?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+
+        <!-- Machine Coding Questions -->
+        <div class="questions-section">
+          <div class="questions-header">
+            <h3>💻 Machine Coding Questions</h3>
+            <span class="questions-badge coding-badge">Coding</span>
+          </div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Write a function to swap two variables without a temp variable.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Create a counter using closures that demonstrates let vs var behavior.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> Write code to deep freeze a nested object.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Implement a simple reactive variable that triggers callbacks on change.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Build a scoping quiz that asks users to predict output of var/let/const scenarios.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Create an environment record simulator showing scope chain lookups.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> Implement Object.freeze() polyfill for nested objects.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Build a JavaScript scope visualizer that shows variable lifecycle.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Implement a reactive state management system using Proxy and const objects.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Create a code sandbox that detects and warns about variable hoisting issues.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S2: FUNCTIONS -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s2">
+        <div class="section-header">
+          <div class="section-num">02</div>
+          <div>
+            <div class="section-title">Functions</div>
+            <div class="section-subtitle">First-class citizens — the heart of JavaScript.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">📖 Definition</div>
+          <p>A <strong style="color:var(--yellow)">function</strong> is a reusable block of code designed to perform a task. In JavaScript, functions are first-class objects — they can be assigned to variables, passed as arguments, returned from other functions, and have their own properties.</p>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">🔬 Deep Explanation</div>
+          <p>JavaScript supports multiple function syntaxes: <strong style="color:var(--cyan)">function declarations</strong> (hoisted), <strong style="color:var(--green)">function expressions</strong> (not hoisted), and <strong style="color:var(--purple)">arrow functions</strong> (lexical <code>this</code>). Arrow functions don't have their own <code>this</code>, <code>arguments</code>, or <code>super</code> — they inherit from the enclosing scope.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">javascript — Function Types</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// 1. Function Declaration (hoisted)</span></div>
+            <div class="line"><span class="kw">function</span> <span class="func">greet</span>(name) {</div>
+            <div class="line">  <span class="kw">return</span> <span class="str">`Hello, ${name}!`</span>;</div>
+            <div class="line">}</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// 2. Function Expression (NOT hoisted)</span></div>
+            <div class="line"><span class="kw">const</span> <span class="func">greet</span> = <span class="kw">function</span>(name) {</div>
+            <div class="line">  <span class="kw">return</span> <span class="str">`Hello, ${name}!`</span>;</div>
+            <div class="line">};</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// 3. Arrow Function (lexical this)</span></div>
+            <div class="line"><span class="kw">const</span> <span class="func">greet</span> = (name) <span class="op">=></span> <span class="str">`Hello, ${name}!`</span>;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// 4. IIFE — Immediately Invoked</span></div>
+            <div class="line">(<span class="kw">function</span>() {</div>
+            <div class="line">  console.<span class="func">log</span>(<span class="str">"Runs immediately!"</span>);</div>
+            <div class="line">})();</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// 5. Default Parameters</span></div>
+            <div class="line"><span class="kw">function</span> <span class="func">createUser</span>(name, role = <span class="str">"viewer"</span>) {</div>
+            <div class="line">  <span class="kw">return</span> { name, role };</div>
+            <div class="line">}</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// 6. Higher-Order Function</span></div>
+            <div class="line"><span class="kw">function</span> <span class="func">multiplier</span>(factor) {</div>
+            <div class="line">  <span class="kw">return</span> (num) <span class="op">=></span> num * factor;</div>
+            <div class="line">}</div>
+            <div class="line"><span class="kw">const</span> double = <span class="func">multiplier</span>(<span class="num">2</span>);</div>
+            <div class="line">console.<span class="func">log</span>(<span class="func">double</span>(<span class="num">5</span>)); <span class="comment">// 10</span></div>
+          </div>
+        </div>
+
+        <div class="callout warn">
+          <span class="icon">⚠️</span>
+          <span class="body"><strong>Arrow vs Regular:</strong> Arrow functions do NOT have their own <code>this</code>. Never use arrows as object methods or constructors. Use regular functions when you need dynamic <code>this</code> binding.</span>
+        </div>
+
+        <ul class="practice-list">
+          <li>Use arrow functions for callbacks and short operations</li>
+          <li>Use named function declarations for top-level logic (better stack traces)</li>
+          <li>Always use default parameters instead of <code>||</code> fallbacks</li>
+          <li>Keep functions small — single responsibility principle</li>
+          <li>Use pure functions when possible (no side effects)</li>
+        </ul>
+
+        <ul class="mistake-list">
+          <li>Using arrow functions as object methods (loses <code>this</code> context)</li>
+          <li>Forgetting <code>return</code> in multi-line arrow functions with <code>{}</code></li>
+          <li>Not understanding function hoisting vs expression hoisting</li>
+          <li>Creating deeply nested callbacks instead of using composition</li>
+        </ul>
+
+        <div class="questions-section">
+          <div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What are first-class functions?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Difference between function declaration and expression?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> What is an IIFE and why use it?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> How does <code>this</code> differ in arrow vs regular functions?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Explain call, apply, and bind with examples.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> What are higher-order functions? Give 3 examples.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> What is function currying? How does it work?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Implement Function.prototype.bind polyfill.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Explain the arguments object vs rest parameters.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> What is tail call optimization and does JS support it?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section">
+          <div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Write a curry function that converts f(a,b,c) to f(a)(b)(c).<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Implement a pipe() function that composes functions left-to-right.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Build a memoize() function with cache expiry.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Implement Function.prototype.call from scratch.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Create a once() function that only allows one invocation.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Build a retry() wrapper that retries failed async functions.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Implement a partial application function.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Build a function composition system with error handling.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Create a trampolining function for stack-safe recursion.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Implement an auto-curry function that works with any arity.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S3: ARRAYS -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s3">
+        <div class="section-header">
+          <div class="section-num">03</div>
+          <div>
+            <div class="section-title">Arrays</div>
+            <div class="section-subtitle">Ordered collections — the Swiss army knife of data.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">📖 Definition & Deep Explanation</div>
+          <p>An <strong style="color:var(--yellow)">array</strong> is an ordered, indexed collection of values. JavaScript arrays are dynamic — they can grow, shrink, and hold mixed types. They inherit from <code>Array.prototype</code> which provides dozens of built-in methods. Arrays are reference types — assigning an array to a new variable creates a reference, not a copy.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">javascript — Array Methods</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="kw">const</span> nums = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>];</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// map — transform each element</span></div>
+            <div class="line"><span class="kw">const</span> doubled = nums.<span class="func">map</span>(n <span class="op">=></span> n * <span class="num">2</span>); <span class="comment">// [2,4,6,8,10]</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// filter — keep matching elements</span></div>
+            <div class="line"><span class="kw">const</span> evens = nums.<span class="func">filter</span>(n <span class="op">=></span> n % <span class="num">2</span> === <span class="num">0</span>); <span class="comment">// [2,4]</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// reduce — accumulate to single value</span></div>
+            <div class="line"><span class="kw">const</span> sum = nums.<span class="func">reduce</span>((acc, n) <span class="op">=></span> acc + n, <span class="num">0</span>); <span class="comment">// 15</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// find / findIndex</span></div>
+            <div class="line"><span class="kw">const</span> found = nums.<span class="func">find</span>(n <span class="op">=></span> n > <span class="num">3</span>); <span class="comment">// 4</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// some / every</span></div>
+            <div class="line">nums.<span class="func">some</span>(n <span class="op">=></span> n > <span class="num">4</span>); <span class="comment">// true</span></div>
+            <div class="line">nums.<span class="func">every</span>(n <span class="op">=></span> n > <span class="num">0</span>); <span class="comment">// true</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// flat / flatMap</span></div>
+            <div class="line"><span class="kw">const</span> nested = [[<span class="num">1</span>,<span class="num">2</span>],[<span class="num">3</span>,[<span class="num">4</span>]]];</div>
+            <div class="line">nested.<span class="func">flat</span>(<span class="num">Infinity</span>); <span class="comment">// [1,2,3,4]</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Chaining methods</span></div>
+            <div class="line"><span class="kw">const</span> result = nums</div>
+            <div class="line">  .<span class="func">filter</span>(n <span class="op">=></span> n % <span class="num">2</span> !== <span class="num">0</span>)</div>
+            <div class="line">  .<span class="func">map</span>(n <span class="op">=></span> n ** <span class="num">2</span>)</div>
+            <div class="line">  .<span class="func">reduce</span>((a, b) <span class="op">=></span> a + b, <span class="num">0</span>); <span class="comment">// 35</span></div>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <span class="icon">💡</span>
+          <span class="body"><strong>Mutating vs Non-mutating:</strong> <code>push, pop, splice, sort, reverse</code> mutate the original array. <code>map, filter, reduce, slice, concat</code> return new arrays. In interviews, always clarify which you're using.</span>
+        </div>
+
+        <ul class="practice-list">
+          <li>Prefer <code>map/filter/reduce</code> over <code>for</code> loops for data transformations</li>
+          <li>Use <code>Array.from()</code> or spread <code>[...iterable]</code> to convert iterables</li>
+          <li>Use <code>structuredClone()</code> or spread for shallow copies</li>
+          <li>Use <code>Array.isArray()</code> to check if something is an array</li>
+        </ul>
+
+        <div class="questions-section">
+          <div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is the difference between map, forEach, and for...of?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> How does Array.isArray() differ from typeof?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> What is the difference between slice and splice?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Explain reduce with a real-world example.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> How do you remove duplicates from an array? (3 ways)<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> What is the difference between shallow and deep copy of arrays?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> Explain flat() and flatMap() with use cases.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> How does sort() work internally? What is its time complexity?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Implement Array.prototype.reduce from scratch.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> What are typed arrays and when would you use them?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section">
+          <div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Flatten a deeply nested array without using flat().<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Implement a polyfill for Array.prototype.map.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Build a function to chunk an array into groups of N.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Implement array intersection, union, and difference.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Build a sortBy() function that sorts objects by a given key.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Create a groupBy() function similar to Lodash.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Implement a virtual scrolling list that renders only visible items.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Build a reactive array that triggers UI updates on mutations.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Implement a lazy evaluation chain (like Lodash lazy).<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Create a pagination system with filter, sort, and search on arrays.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S4: OBJECTS -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s4">
+        <div class="section-header">
+          <div class="section-num">04</div>
+          <div>
+            <div class="section-title">Objects</div>
+            <div class="section-subtitle">Key-value pairs — the foundation of everything in JS.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">📖 Definition & Deep Explanation</div>
+          <p><strong style="color:var(--yellow)">Objects</strong> are unordered collections of key-value pairs. Almost everything in JavaScript is an object (arrays, functions, dates). Objects can have methods (functions as values), getters/setters, and inherit from prototypes. The prototype chain is how JavaScript implements inheritance.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">javascript — Object Operations</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Object creation</span></div>
+            <div class="line"><span class="kw">const</span> user = {</div>
+            <div class="line">  name: <span class="str">"Alice"</span>,</div>
+            <div class="line">  age: <span class="num">28</span>,</div>
+            <div class="line">  <span class="func">greet</span>() { <span class="kw">return</span> <span class="str">`Hi, I'm ${this.name}`</span>; }</div>
+            <div class="line">};</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Access & modify</span></div>
+            <div class="line">user.name;           <span class="comment">// "Alice" (dot notation)</span></div>
+            <div class="line">user[<span class="str">"age"</span>];         <span class="comment">// 28 (bracket notation)</span></div>
+            <div class="line">user.email = <span class="str">"a@b.c"</span>; <span class="comment">// add new property</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Object methods</span></div>
+            <div class="line">Object.<span class="func">keys</span>(user);     <span class="comment">// ["name","age","greet","email"]</span></div>
+            <div class="line">Object.<span class="func">values</span>(user);   <span class="comment">// ["Alice", 28, ƒ, "a@b.c"]</span></div>
+            <div class="line">Object.<span class="func">entries</span>(user);  <span class="comment">// [["name","Alice"], ...]</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Spread & merge</span></div>
+            <div class="line"><span class="kw">const</span> updated = { ...user, age: <span class="num">29</span> };</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Optional chaining</span></div>
+            <div class="line">user?.address?.city; <span class="comment">// undefined (no error)</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Computed property names</span></div>
+            <div class="line"><span class="kw">const</span> key = <span class="str">"role"</span>;</div>
+            <div class="line"><span class="kw">const</span> obj = { [key]: <span class="str">"admin"</span> }; <span class="comment">// { role: "admin" }</span></div>
+          </div>
+        </div>
+
+        <div class="callout interview-note">
+          <span class="icon">🎯</span>
+          <span class="body"><strong>Interview Must-Know:</strong> Understand <code>this</code> in objects, prototype chain, <code>Object.create()</code>, <code>Object.assign()</code> vs spread, deep vs shallow copy, and property descriptors (<code>Object.defineProperty</code>).</span>
+        </div>
+
+        <div class="questions-section">
+          <div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is the difference between dot and bracket notation?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> How do Object.keys(), values(), and entries() work?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Explain the prototype chain with an example.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> What is Object.create() and how does it differ from class?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> How do you deep clone an object? Compare methods.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Explain Object.defineProperty and property descriptors.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> What is optional chaining and nullish coalescing?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> How does prototypal inheritance differ from classical?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Explain WeakMap and WeakSet. When would you use them?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> How does Proxy work? Implement a validation layer using Proxy.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section">
+          <div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Implement a deep clone function for nested objects.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Write a function to flatten a nested object to dot notation keys.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Build an object diff function that shows added/removed/changed keys.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Create a get() function like Lodash _.get for safe nested access.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Implement Object.assign() polyfill.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Build a schema validator for object shapes.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Implement a Proxy-based observable object with change listeners.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Build a JSON path query engine for nested objects.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Create an immutable data structure library using Object.freeze + Proxy.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Implement a class-based inheritance system without using ES6 classes.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S5: DOM MANIPULATION -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s5">
+        <div class="section-header">
+          <div class="section-num">05</div>
+          <div>
+            <div class="section-title">DOM Manipulation</div>
+            <div class="section-subtitle">Interact with the browser — modify pages dynamically.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">📖 Definition & Deep Explanation</div>
+          <p>The <strong style="color:var(--yellow)">DOM (Document Object Model)</strong> is a tree-structured representation of your HTML page. JavaScript can read, modify, add, or remove elements from this tree. The browser re-renders the page whenever the DOM changes. Understanding DOM manipulation is essential for building interactive UIs without frameworks.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">javascript — DOM Methods</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Selecting elements</span></div>
+            <div class="line"><span class="kw">const</span> el = document.<span class="func">getElementById</span>(<span class="str">"app"</span>);</div>
+            <div class="line"><span class="kw">const</span> btn = document.<span class="func">querySelector</span>(<span class="str">".submit-btn"</span>);</div>
+            <div class="line"><span class="kw">const</span> items = document.<span class="func">querySelectorAll</span>(<span class="str">".item"</span>);</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Creating & appending</span></div>
+            <div class="line"><span class="kw">const</span> div = document.<span class="func">createElement</span>(<span class="str">"div"</span>);</div>
+            <div class="line">div.textContent = <span class="str">"Hello World"</span>;</div>
+            <div class="line">div.classList.<span class="func">add</span>(<span class="str">"card"</span>);</div>
+            <div class="line">div.<span class="func">setAttribute</span>(<span class="str">"data-id"</span>, <span class="str">"1"</span>);</div>
+            <div class="line">document.body.<span class="func">appendChild</span>(div);</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// innerHTML vs textContent</span></div>
+            <div class="line">el.innerHTML = <span class="str">"&lt;strong&gt;Bold&lt;/strong&gt;"</span>; <span class="comment">// parses HTML</span></div>
+            <div class="line">el.textContent = <span class="str">"Plain text"</span>; <span class="comment">// safe, no parsing</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Modifying styles</span></div>
+            <div class="line">el.style.backgroundColor = <span class="str">"#1a1a2e"</span>;</div>
+            <div class="line">el.classList.<span class="func">toggle</span>(<span class="str">"active"</span>);</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Removing elements</span></div>
+            <div class="line">el.<span class="func">remove</span>();</div>
+            <div class="line">parent.<span class="func">removeChild</span>(child);</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Document Fragment (batch DOM updates)</span></div>
+            <div class="line"><span class="kw">const</span> frag = document.<span class="func">createDocumentFragment</span>();</div>
+            <div class="line"><span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < <span class="num">100</span>; i++) {</div>
+            <div class="line">  <span class="kw">const</span> li = document.<span class="func">createElement</span>(<span class="str">"li"</span>);</div>
+            <div class="line">  li.textContent = <span class="str">`Item ${i}`</span>;</div>
+            <div class="line">  frag.<span class="func">appendChild</span>(li);</div>
+            <div class="line">}</div>
+            <div class="line">list.<span class="func">appendChild</span>(frag); <span class="comment">// single reflow!</span></div>
+          </div>
+        </div>
+
+        <div class="callout danger">
+          <span class="icon">🚨</span>
+          <span class="body"><strong>XSS Warning:</strong> Never use <code>innerHTML</code> with user input. Always use <code>textContent</code> or sanitize HTML to prevent cross-site scripting attacks.</span>
+        </div>
+
+        <div class="questions-section">
+          <div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is the DOM? How is it different from HTML?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Difference between getElementById, querySelector, querySelectorAll?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> innerHTML vs textContent vs innerText?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> What is a DocumentFragment and why use it?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Explain reflow and repaint. How do you minimize them?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> What is event delegation and why is it performant?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> How does classList differ from className?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Explain the virtual DOM concept and its advantages.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> How does MutationObserver work?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Build a simple virtual DOM diff algorithm concept.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section">
+          <div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Build a dynamic todo list with add/delete/toggle functionality.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Create a character counter for a textarea input.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Build a sortable table with click-to-sort column headers.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Create a modal/dialog component from scratch.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Build an accordion component with smooth animations.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Create a drag-and-drop reorderable list.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Build an infinite scrolling feed with DOM recycling.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Create a rich text editor with basic formatting (bold, italic, link).<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Build a spreadsheet-like grid with editable cells.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Implement a custom DOM rendering engine (mini virtual DOM).<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════ -->
+      <!-- S6: EVENTS -->
+      <!-- ══════════════════════════════════════ -->
+      <div class="section" id="s6">
+        <div class="section-header">
+          <div class="section-num">06</div>
+          <div>
+            <div class="section-title">Events</div>
+            <div class="section-subtitle">Reacting to user actions — clicks, keys, scrolls, and more.</div>
+          </div>
+        </div>
+
+        <div class="concept">
+          <div class="concept-title">📖 Definition & Deep Explanation</div>
+          <p><strong style="color:var(--yellow)">Events</strong> are signals that something has happened — a click, keypress, scroll, or form submission. JavaScript uses an event-driven model. Events propagate through the DOM in three phases: <strong style="color:var(--cyan)">capture</strong> (top-down), <strong style="color:var(--green)">target</strong>, and <strong style="color:var(--purple)">bubble</strong> (bottom-up). Understanding this flow is critical for event delegation and preventing unwanted behavior.</p>
+        </div>
+
+        <div class="terminal">
+          <div class="terminal-header">
+            <div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div>
+            <span class="term-title">javascript — Event Handling</span>
+            <button class="copy-btn" onclick="copyBlock(this)">copy</button>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// addEventListener (recommended)</span></div>
+            <div class="line">btn.<span class="func">addEventListener</span>(<span class="str">"click"</span>, (e) <span class="op">=></span> {</div>
+            <div class="line">  console.<span class="func">log</span>(<span class="str">"Clicked!"</span>, e.target);</div>
+            <div class="line">});</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Event Delegation — listen on parent</span></div>
+            <div class="line">document.<span class="func">getElementById</span>(<span class="str">"list"</span>)</div>
+            <div class="line">  .<span class="func">addEventListener</span>(<span class="str">"click"</span>, (e) <span class="op">=></span> {</div>
+            <div class="line">    <span class="kw">if</span> (e.target.matches(<span class="str">".delete-btn"</span>)) {</div>
+            <div class="line">      e.target.closest(<span class="str">".item"</span>).<span class="func">remove</span>();</div>
+            <div class="line">    }</div>
+            <div class="line">  });</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Prevent default behavior</span></div>
+            <div class="line">form.<span class="func">addEventListener</span>(<span class="str">"submit"</span>, (e) <span class="op">=></span> {</div>
+            <div class="line">  e.<span class="func">preventDefault</span>();</div>
+            <div class="line">  <span class="comment">// handle form data with JS</span></div>
+            <div class="line">});</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Stop propagation</span></div>
+            <div class="line">child.<span class="func">addEventListener</span>(<span class="str">"click"</span>, (e) <span class="op">=></span> {</div>
+            <div class="line">  e.<span class="func">stopPropagation</span>(); <span class="comment">// won't bubble up</span></div>
+            <div class="line">});</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Custom Events</span></div>
+            <div class="line"><span class="kw">const</span> event = <span class="kw">new</span> <span class="cls">CustomEvent</span>(<span class="str">"userLogin"</span>, {</div>
+            <div class="line">  detail: { userId: <span class="num">42</span> }</div>
+            <div class="line">});</div>
+            <div class="line">document.<span class="func">dispatchEvent</span>(event);</div>
+          </div>
+        </div>
+
+        <div class="questions-section">
+          <div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is event bubbling and capturing?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Difference between e.target and e.currentTarget?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> What does preventDefault() do?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> What is event delegation? Why is it better?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Explain the three phases of event propagation.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> How do custom events work in JavaScript?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> What is the difference between stopPropagation and stopImmediatePropagation?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> How does the { once: true } option work in addEventListener?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Implement a custom event emitter (pub/sub pattern).<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> How does passive event listeners improve scroll performance?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section">
+          <div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Build a click counter with increment/decrement/reset buttons.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Create a keyboard shortcut listener (e.g., Ctrl+S to save).<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Build an EventEmitter class with on, off, emit, once methods.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Create a dropdown menu that closes on outside click.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Build an image carousel with keyboard navigation.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Implement a tooltip system using event delegation.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Build a canvas drawing app with mouse/touch events.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Create a gesture recognition system (swipe, pinch, long press).<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Build a real-time collaborative cursor tracker using custom events.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Implement an undo/redo system using the command pattern with events.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S7: ES6+ CONCEPTS -->
+      <div class="section" id="s7">
+        <div class="section-header"><div class="section-num">07</div><div><div class="section-title">ES6+ Concepts</div><div class="section-subtitle">Modern JavaScript — the features that changed everything.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p><strong style="color:var(--yellow)">ES6 (ECMAScript 2015)</strong> introduced revolutionary features: <code>let/const</code>, arrow functions, template literals, classes, Symbols, iterators, generators, <code>for...of</code>, <code>Map/Set</code>, <code>WeakMap/WeakSet</code>, default parameters, and enhanced object literals. Subsequent versions added optional chaining (<code>?.</code>), nullish coalescing (<code>??</code>), <code>Array.prototype.at()</code>, top-level await, and more.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — ES6+ Features</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Template Literals</span></div>
+            <div class="line"><span class="kw">const</span> msg = <span class="str">`Hello ${name}, you are ${age} years old`</span>;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Enhanced Object Literals</span></div>
+            <div class="line"><span class="kw">const</span> obj = { name, age, <span class="func">greet</span>() { <span class="kw">return</span> <span class="str">"hi"</span>; } };</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Symbol — unique identifier</span></div>
+            <div class="line"><span class="kw">const</span> id = <span class="cls">Symbol</span>(<span class="str">"id"</span>);</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Map & Set</span></div>
+            <div class="line"><span class="kw">const</span> map = <span class="kw">new</span> <span class="cls">Map</span>([[<span class="str">"key"</span>, <span class="str">"value"</span>]]);</div>
+            <div class="line"><span class="kw">const</span> set = <span class="kw">new</span> <span class="cls">Set</span>([<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">1</span>]); <span class="comment">// {1,2,3}</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// for...of loop</span></div>
+            <div class="line"><span class="kw">for</span> (<span class="kw">const</span> item <span class="kw">of</span> [<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>]) { console.<span class="func">log</span>(item); }</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Optional Chaining & Nullish Coalescing</span></div>
+            <div class="line"><span class="kw">const</span> city = user?.address?.city ?? <span class="str">"Unknown"</span>;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Classes</span></div>
+            <div class="line"><span class="kw">class</span> <span class="cls">Animal</span> {</div>
+            <div class="line">  <span class="func">constructor</span>(name) { <span class="kw">this</span>.name = name; }</div>
+            <div class="line">  <span class="func">speak</span>() { <span class="kw">return</span> <span class="str">`${this.name} makes a sound`</span>; }</div>
+            <div class="line">}</div>
+            <div class="line"><span class="kw">class</span> <span class="cls">Dog</span> <span class="kw">extends</span> <span class="cls">Animal</span> {</div>
+            <div class="line">  <span class="func">speak</span>() { <span class="kw">return</span> <span class="str">`${this.name} barks`</span>; }</div>
+            <div class="line">}</div>
+          </div>
+        </div>
+        <div class="callout interview-note"><span class="icon">🎯</span><span class="body"><strong>Interview Focus:</strong> Know Map vs Object, Set vs Array, Symbol use cases, iterator/generator protocol, and the difference between for...in and for...of.</span></div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What are template literals and tagged templates?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Difference between Map and Object?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> What is a Set? How do you convert array to Set and back?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> What is a Symbol and when would you use it?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Explain iterators and the iterator protocol.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> What are generators? How do yield and next() work?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> Difference between for...in and for...of?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> How do WeakMap and WeakSet help with memory management?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Implement a custom iterable object.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> What is the Reflect API and how does it relate to Proxy?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Use Set to remove duplicates and find intersection of two arrays.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Build a tagged template function for HTML sanitization.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Implement an LRU cache using Map.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Create a generator-based range function like Python's range().<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Build a class hierarchy for a shape calculator (area, perimeter).<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Implement a custom iterator for a linked list.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Build an async generator-based data streaming system.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Implement a WeakRef-based cache with finalization registry.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Create a Proxy-based form validation framework.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Build a state machine using generators and Symbol states.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S8: DESTRUCTURING -->
+      <div class="section" id="s8">
+        <div class="section-header"><div class="section-num">08</div><div><div class="section-title">Destructuring</div><div class="section-subtitle">Unpack values from arrays and properties from objects — elegantly.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p><strong style="color:var(--yellow)">Destructuring</strong> is a syntax that lets you extract values from arrays or properties from objects into distinct variables. It works in variable declarations, function parameters, and assignments. Combined with default values and renaming, it makes code dramatically more readable.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Destructuring Patterns</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Object destructuring</span></div>
+            <div class="line"><span class="kw">const</span> { name, age, role = <span class="str">"user"</span> } = user;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Renaming</span></div>
+            <div class="line"><span class="kw">const</span> { name: userName, age: userAge } = user;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Nested destructuring</span></div>
+            <div class="line"><span class="kw">const</span> { address: { city, zip } } = user;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Array destructuring</span></div>
+            <div class="line"><span class="kw">const</span> [first, second, ...rest] = [<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>];</div>
+            <div class="line"><span class="comment">// first=1, second=2, rest=[3,4,5]</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Skip elements</span></div>
+            <div class="line"><span class="kw">const</span> [, , third] = [<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>]; <span class="comment">// third = 3</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Swap variables</span></div>
+            <div class="line"><span class="kw">let</span> a = <span class="num">1</span>, b = <span class="num">2</span>;</div>
+            <div class="line">[a, b] = [b, a]; <span class="comment">// a=2, b=1</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// In function parameters</span></div>
+            <div class="line"><span class="kw">function</span> <span class="func">createUser</span>({ name, age, role = <span class="str">"viewer"</span> }) {</div>
+            <div class="line">  <span class="kw">return</span> { name, age, role };</div>
+            <div class="line">}</div>
+          </div>
+        </div>
+        <ul class="practice-list">
+          <li>Destructure function parameters for cleaner API signatures</li>
+          <li>Use default values to avoid undefined errors</li>
+          <li>Combine with rest operator for flexible functions</li>
+          <li>Use renaming when variable names would conflict</li>
+        </ul>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is destructuring? Show array and object examples.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> How do you set default values in destructuring?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> How do you rename variables during destructuring?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Explain nested destructuring with a complex object.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> How does destructuring work in function parameters?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> What happens when you destructure null or undefined?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> How do you destructure a Map or Set?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Explain computed property names in destructuring.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> How does destructuring interact with iterators and generators?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> What is the performance impact of heavy destructuring?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Swap two variables without a temp variable using destructuring.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Extract specific fields from an API response object.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Build a config parser that uses nested destructuring with defaults.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Create a function that merges objects with destructuring and spread.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Implement a pick() function that extracts specified keys from objects.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Build a form data extractor using destructured FormData entries.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Create an API response normalizer using complex destructuring.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Build a pattern matching utility using destructuring patterns.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Implement a recursive object transformer with destructuring.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Create a data mapping pipeline using destructured iterators.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S9: SPREAD & REST -->
+      <div class="section" id="s9">
+        <div class="section-header"><div class="section-num">09</div><div><div class="section-title">Spread & Rest Operators</div><div class="section-subtitle">Three dots that do two very different things.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p>The <strong style="color:var(--yellow)">spread operator (<code>...</code>)</strong> expands an iterable into individual elements. The <strong style="color:var(--cyan)">rest operator (<code>...</code>)</strong> collects multiple elements into an array. Same syntax, opposite behavior — spread <em>unpacks</em>, rest <em>packs</em>. Context determines which: in function params and destructuring it's rest; everywhere else it's spread.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Spread & Rest</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// SPREAD — expanding</span></div>
+            <div class="line"><span class="kw">const</span> arr1 = [<span class="num">1</span>,<span class="num">2</span>], arr2 = [<span class="num">3</span>,<span class="num">4</span>];</div>
+            <div class="line"><span class="kw">const</span> merged = [...arr1, ...arr2]; <span class="comment">// [1,2,3,4]</span></div>
+            <div class="line"><span class="kw">const</span> copy = [...arr1]; <span class="comment">// shallow copy</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Spread in objects</span></div>
+            <div class="line"><span class="kw">const</span> defaults = { theme: <span class="str">"dark"</span>, lang: <span class="str">"en"</span> };</div>
+            <div class="line"><span class="kw">const</span> config = { ...defaults, lang: <span class="str">"fr"</span> };</div>
+            <div class="line"><span class="comment">// { theme: "dark", lang: "fr" }</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Spread in function calls</span></div>
+            <div class="line">Math.<span class="func">max</span>(...[<span class="num">5</span>,<span class="num">2</span>,<span class="num">8</span>,<span class="num">1</span>]); <span class="comment">// 8</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// REST — collecting</span></div>
+            <div class="line"><span class="kw">function</span> <span class="func">sum</span>(...nums) {</div>
+            <div class="line">  <span class="kw">return</span> nums.<span class="func">reduce</span>((a, b) <span class="op">=></span> a + b, <span class="num">0</span>);</div>
+            <div class="line">}</div>
+            <div class="line"><span class="func">sum</span>(<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>); <span class="comment">// 10</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Rest in destructuring</span></div>
+            <div class="line"><span class="kw">const</span> { name, ...others } = { name: <span class="str">"Alice"</span>, age: <span class="num">25</span>, role: <span class="str">"dev"</span> };</div>
+            <div class="line"><span class="comment">// others = { age: 25, role: "dev" }</span></div>
+          </div>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is the difference between spread and rest?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> How do you shallow copy an array using spread?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> How do you merge two objects with spread?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Does spread create a deep or shallow copy? Why does it matter?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> How does rest differ from the arguments object?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Can you use spread with strings? What happens?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> How does spread work with iterables vs non-iterables?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> What is the performance cost of spread in hot loops?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> How does object spread handle getters and setters?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Compare Object.assign vs spread for merging — edge cases?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Write a function that accepts unlimited arguments and returns their sum.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Merge N arrays into one using spread.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Build a deep merge function for nested objects.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Create an omit() function that removes specified keys.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Implement a function composition using rest and spread.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Build a settings merger with nested defaults using spread.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Implement a deep clone using only spread (handle all types).<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Build a variadic event emitter using rest parameters.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Create a middleware pipeline using rest/spread composition.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Implement a functional lens library using spread for immutable updates.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S10: MODULES -->
+      <div class="section" id="s10">
+        <div class="section-header"><div class="section-num">10</div><div><div class="section-title">Modules</div><div class="section-subtitle">Organize code into reusable, maintainable files.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p><strong style="color:var(--yellow)">JavaScript Modules</strong> (ESM) let you split code into separate files with their own scope. <code>export</code> makes things available; <code>import</code> brings them in. Each module has its own scope — no global pollution. Modules are strict mode by default, loaded asynchronously, and evaluated once (singleton). CommonJS (<code>require/module.exports</code>) is Node.js's older system; ESM is the modern standard.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — ES Modules</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Named exports (math.js)</span></div>
+            <div class="line"><span class="kw">export</span> <span class="kw">const</span> PI = <span class="num">3.14159</span>;</div>
+            <div class="line"><span class="kw">export</span> <span class="kw">function</span> <span class="func">add</span>(a, b) { <span class="kw">return</span> a + b; }</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Default export (logger.js)</span></div>
+            <div class="line"><span class="kw">export default</span> <span class="kw">class</span> <span class="cls">Logger</span> { ... }</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Importing</span></div>
+            <div class="line"><span class="kw">import</span> { add, PI } <span class="kw">from</span> <span class="str">'./math.js'</span>;</div>
+            <div class="line"><span class="kw">import</span> <span class="cls">Logger</span> <span class="kw">from</span> <span class="str">'./logger.js'</span>;</div>
+            <div class="line"><span class="kw">import</span> * <span class="kw">as</span> math <span class="kw">from</span> <span class="str">'./math.js'</span>;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Dynamic import (code splitting)</span></div>
+            <div class="line"><span class="kw">const</span> module = <span class="kw">await</span> <span class="func">import</span>(<span class="str">'./heavy-module.js'</span>);</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Re-export</span></div>
+            <div class="line"><span class="kw">export</span> { add } <span class="kw">from</span> <span class="str">'./math.js'</span>;</div>
+          </div>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is the difference between named and default exports?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> How do you import everything from a module?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> ESM vs CommonJS — key differences?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> What is dynamic import and when would you use it?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> How does tree shaking work with ES modules?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> What is the module scope? How does it prevent global pollution?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Explain circular dependencies in modules. How are they resolved?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> How does module bundling work (Webpack, Vite, Rollup)?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> What are import maps and how do they affect module resolution?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Explain the module evaluation order and live bindings.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Structure a project with utils, services, and component modules.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Create a barrel file (index.js) that re-exports from multiple modules.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Implement lazy-loaded routes using dynamic import.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Build a plugin system using dynamic imports.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Create a module that auto-registers all exports from a directory.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Implement a singleton pattern using ES modules.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Build a dependency injection container using modules.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Create a hot module replacement simulator.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Implement a simple module bundler that resolves dependencies.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Build a micro-frontend system using module federation concepts.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S11: CLOSURES -->
+      <div class="section" id="s11">
+        <div class="section-header"><div class="section-num">11</div><div><div class="section-title">Closures</div><div class="section-subtitle">Functions that remember — the most powerful concept in JS.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p>A <strong style="color:var(--yellow)">closure</strong> is a function that has access to variables from its outer (enclosing) function's scope, even after the outer function has returned. Every function in JavaScript creates a closure. This happens because functions carry a reference to their lexical environment. Closures enable data privacy, factory functions, partial application, and module patterns.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Closures</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Basic closure — counter</span></div>
+            <div class="line"><span class="kw">function</span> <span class="func">createCounter</span>() {</div>
+            <div class="line">  <span class="kw">let</span> count = <span class="num">0</span>; <span class="comment">// private variable</span></div>
+            <div class="line">  <span class="kw">return</span> {</div>
+            <div class="line">    <span class="func">increment</span>() { <span class="kw">return</span> ++count; },</div>
+            <div class="line">    <span class="func">decrement</span>() { <span class="kw">return</span> --count; },</div>
+            <div class="line">    <span class="func">getCount</span>() { <span class="kw">return</span> count; }</div>
+            <div class="line">  };</div>
+            <div class="line">}</div>
+            <div class="line"><span class="kw">const</span> counter = <span class="func">createCounter</span>();</div>
+            <div class="line">counter.<span class="func">increment</span>(); <span class="comment">// 1</span></div>
+            <div class="line">counter.<span class="func">increment</span>(); <span class="comment">// 2</span></div>
+            <div class="line"><span class="comment">// count is NOT accessible from outside!</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Classic interview gotcha — var in loop</span></div>
+            <div class="line"><span class="kw">for</span> (<span class="kw">var</span> i = <span class="num">0</span>; i < <span class="num">3</span>; i++) {</div>
+            <div class="line">  <span class="func">setTimeout</span>(() <span class="op">=></span> console.<span class="func">log</span>(i), <span class="num">100</span>);</div>
+            <div class="line">}</div>
+            <div class="line"><span class="comment">// Output: 3, 3, 3 (var is function-scoped!)</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Fix with let (block-scoped)</span></div>
+            <div class="line"><span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < <span class="num">3</span>; i++) {</div>
+            <div class="line">  <span class="func">setTimeout</span>(() <span class="op">=></span> console.<span class="func">log</span>(i), <span class="num">100</span>);</div>
+            <div class="line">}</div>
+            <div class="line"><span class="comment">// Output: 0, 1, 2 ✅</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Fix with IIFE closure</span></div>
+            <div class="line"><span class="kw">for</span> (<span class="kw">var</span> i = <span class="num">0</span>; i < <span class="num">3</span>; i++) {</div>
+            <div class="line">  ((<span class="param">j</span>) <span class="op">=></span> {</div>
+            <div class="line">    <span class="func">setTimeout</span>(() <span class="op">=></span> console.<span class="func">log</span>(j), <span class="num">100</span>);</div>
+            <div class="line">  })(i);</div>
+            <div class="line">}</div>
+          </div>
+        </div>
+        <div class="callout interview-note"><span class="icon">🎯</span><span class="body"><strong>Top Interview Topic:</strong> Closures are asked in 90% of JS interviews. Be ready to explain with counter example, loop+setTimeout example, and data privacy pattern. Understand how closures relate to the execution context and scope chain.</span></div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is a closure? Explain with a simple example.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> How do closures enable data privacy?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> What will the var-in-loop + setTimeout output? Why?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> How do closures relate to the scope chain?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> What are the memory implications of closures?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Explain the module pattern using closures.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> How does closure differ from a regular function?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Can closures cause memory leaks? How do you prevent them?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Explain closure in context of execution context and lexical environment.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> How do closures work with async operations and event handlers?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Build a private counter with increment, decrement, reset.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Create a once() function using closure.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Implement memoization using closures.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Build a rate limiter using closures.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Create a function that generates unique IDs using closure.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Implement a logger with configurable log levels using closures.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Build a complete module system using closures (revealing module).<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Create a private class fields polyfill using WeakMap and closures.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Implement a dependency injection container using closures.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Build a sandbox/jail that restricts access to global scope using closures.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S12: HOISTING -->
+      <div class="section" id="s12">
+        <div class="section-header"><div class="section-num">12</div><div><div class="section-title">Hoisting</div><div class="section-subtitle">Why JavaScript lets you use things before declaring them.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p><strong style="color:var(--yellow)">Hoisting</strong> is JavaScript's behavior of moving declarations to the top of their scope during the compilation phase. <code>var</code> declarations are hoisted and initialized to <code>undefined</code>. <code>let</code>/<code>const</code> are hoisted but NOT initialized — they're in a "Temporal Dead Zone" (TDZ) until the declaration line. Function declarations are fully hoisted (body and all). Function expressions are NOT hoisted.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Hoisting Behavior</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line">console.<span class="func">log</span>(a); <span class="comment">// undefined (var hoisted)</span></div>
+            <div class="line"><span class="kw">var</span> a = <span class="num">10</span>;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// console.log(b); ❌ ReferenceError (TDZ)</span></div>
+            <div class="line"><span class="kw">let</span> b = <span class="num">20</span>;</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Function declaration — fully hoisted</span></div>
+            <div class="line"><span class="func">greet</span>(); <span class="comment">// ✅ "Hello!" — works before declaration</span></div>
+            <div class="line"><span class="kw">function</span> <span class="func">greet</span>() { console.<span class="func">log</span>(<span class="str">"Hello!"</span>); }</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Function expression — NOT hoisted</span></div>
+            <div class="line"><span class="comment">// sayBye(); ❌ TypeError: not a function</span></div>
+            <div class="line"><span class="kw">var</span> sayBye = <span class="kw">function</span>() { console.<span class="func">log</span>(<span class="str">"Bye!"</span>); };</div>
+          </div>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is hoisting in JavaScript?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Are let and const hoisted?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> What is the Temporal Dead Zone?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> What is the output: console.log(x); var x = 5; Why?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> How are function declarations vs expressions hoisted differently?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> What happens when var and function have the same name?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Explain hoisting in the context of execution context creation.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> How does hoisting work inside blocks with var vs let?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> What is the output of complex hoisting scenarios with multiple declarations?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> How does class hoisting differ from function hoisting?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Predict the output of 5 hoisting code snippets.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Rewrite hoisted code to show what the engine actually does.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Build a hoisting visualizer that shows variable states during execution.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Create a quiz app that tests hoisting knowledge with tricky examples.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Write a linter rule that detects potential hoisting bugs.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Debug a real-world bug caused by hoisting and fix it.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Build an execution context visualizer showing creation and execution phases.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Implement a mini JS interpreter that handles hoisting correctly.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Create a code transformer that eliminates hoisting issues (like Babel).<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Build a step-by-step debugger that shows hoisting in action.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S13: CALLBACKS -->
+      <div class="section" id="s13">
+        <div class="section-header"><div class="section-num">13</div><div><div class="section-title">Callbacks</div><div class="section-subtitle">Passing functions as arguments — async JavaScript begins here.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p>A <strong style="color:var(--yellow)">callback</strong> is a function passed as an argument to another function, to be executed later. Callbacks are the foundation of asynchronous JavaScript. They're used in event handlers, timers, array methods, and Node.js APIs. The main problem with callbacks is <strong style="color:var(--red)">"callback hell"</strong> — deeply nested callbacks that become unreadable and hard to debug. This led to Promises and async/await.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Callbacks</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Synchronous callback</span></div>
+            <div class="line"><span class="kw">function</span> <span class="func">process</span>(arr, callback) {</div>
+            <div class="line">  <span class="kw">return</span> arr.<span class="func">map</span>(callback);</div>
+            <div class="line">}</div>
+            <div class="line"><span class="func">process</span>([<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>], x <span class="op">=></span> x * <span class="num">2</span>); <span class="comment">// [2,4,6]</span></div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Asynchronous callback</span></div>
+            <div class="line"><span class="func">setTimeout</span>(() <span class="op">=></span> console.<span class="func">log</span>(<span class="str">"After 1s"</span>), <span class="num">1000</span>);</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// ❌ Callback Hell</span></div>
+            <div class="line"><span class="func">getUser</span>(id, (user) <span class="op">=></span> {</div>
+            <div class="line">  <span class="func">getPosts</span>(user.id, (posts) <span class="op">=></span> {</div>
+            <div class="line">    <span class="func">getComments</span>(posts[<span class="num">0</span>].id, (comments) <span class="op">=></span> {</div>
+            <div class="line">      console.<span class="func">log</span>(comments); <span class="comment">// 😰 pyramid of doom</span></div>
+            <div class="line">    });</div>
+            <div class="line">  });</div>
+            <div class="line">});</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Error-first callback pattern (Node.js)</span></div>
+            <div class="line">fs.<span class="func">readFile</span>(<span class="str">"data.json"</span>, (err, data) <span class="op">=></span> {</div>
+            <div class="line">  <span class="kw">if</span> (err) <span class="kw">return</span> console.<span class="func">error</span>(err);</div>
+            <div class="line">  console.<span class="func">log</span>(data);</div>
+            <div class="line">});</div>
+          </div>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is a callback function?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Difference between synchronous and asynchronous callbacks?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> What is callback hell? How do you avoid it?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Explain the error-first callback pattern.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> How do callbacks relate to higher-order functions?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> How does Inversion of Control apply to callbacks?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Convert callback-based code to Promises.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> What is the difference between callback and closure?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> How do you handle errors in nested callbacks?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Implement promisify — convert callback API to Promise API.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Create a custom forEach using callbacks.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Build a setTimeout wrapper that accepts a callback.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Implement promisify() function.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Build an async waterfall function (sequential callbacks).<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Create a parallel callback executor with a done handler.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Build a retry mechanism with exponential backoff using callbacks.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Implement an async.series / async.parallel equivalent.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Build an event-driven task queue using callbacks.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Create a file reader simulation with progress callbacks.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Implement a middleware chain (like Express) using callbacks.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S14: PROMISES -->
+      <div class="section" id="s14">
+        <div class="section-header"><div class="section-num">14</div><div><div class="section-title">Promises</div><div class="section-subtitle">The modern solution to async JavaScript — no more callback hell.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p>A <strong style="color:var(--yellow)">Promise</strong> represents a value that may not be available yet but will be resolved in the future (or rejected with an error). Promises have three states: <strong style="color:var(--text-dim)">pending</strong>, <strong style="color:var(--green)">fulfilled</strong>, and <strong style="color:var(--red)">rejected</strong>. They enable chaining with <code>.then()</code>, error handling with <code>.catch()</code>, and cleanup with <code>.finally()</code>. Static methods like <code>Promise.all()</code>, <code>Promise.race()</code>, <code>Promise.allSettled()</code>, and <code>Promise.any()</code> handle multiple promises.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Promises</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Creating a Promise</span></div>
+            <div class="line"><span class="kw">const</span> promise = <span class="kw">new</span> <span class="cls">Promise</span>((resolve, reject) <span class="op">=></span> {</div>
+            <div class="line">  <span class="func">setTimeout</span>(() <span class="op">=></span> <span class="func">resolve</span>(<span class="str">"Done!"</span>), <span class="num">1000</span>);</div>
+            <div class="line">});</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Consuming</span></div>
+            <div class="line">promise</div>
+            <div class="line">  .<span class="func">then</span>(result <span class="op">=></span> console.<span class="func">log</span>(result))</div>
+            <div class="line">  .<span class="func">catch</span>(err <span class="op">=></span> console.<span class="func">error</span>(err))</div>
+            <div class="line">  .<span class="func">finally</span>(() <span class="op">=></span> console.<span class="func">log</span>(<span class="str">"Cleanup"</span>));</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Chaining — no nesting!</span></div>
+            <div class="line"><span class="func">getUser</span>(id)</div>
+            <div class="line">  .<span class="func">then</span>(user <span class="op">=></span> <span class="func">getPosts</span>(user.id))</div>
+            <div class="line">  .<span class="func">then</span>(posts <span class="op">=></span> <span class="func">getComments</span>(posts[<span class="num">0</span>].id))</div>
+            <div class="line">  .<span class="func">then</span>(comments <span class="op">=></span> console.<span class="func">log</span>(comments))</div>
+            <div class="line">  .<span class="func">catch</span>(err <span class="op">=></span> console.<span class="func">error</span>(err));</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Static methods</span></div>
+            <div class="line">Promise.<span class="func">all</span>([p1, p2, p3]);        <span class="comment">// all must resolve</span></div>
+            <div class="line">Promise.<span class="func">allSettled</span>([p1, p2, p3]); <span class="comment">// wait for all</span></div>
+            <div class="line">Promise.<span class="func">race</span>([p1, p2, p3]);       <span class="comment">// first to settle</span></div>
+            <div class="line">Promise.<span class="func">any</span>([p1, p2, p3]);        <span class="comment">// first to resolve</span></div>
+          </div>
+        </div>
+        <div class="callout interview-note"><span class="icon">🎯</span><span class="body"><strong>Interview Must-Know:</strong> Understand Promise states, microtask queue, chaining, error propagation, and the difference between Promise.all vs allSettled vs race vs any. Be ready to implement Promise.all from scratch.</span></div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What are the three states of a Promise?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> What is the difference between .then() and .catch()?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">3</span> What does .finally() do?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Difference between Promise.all, race, allSettled, any?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> How does promise chaining work? Can you return a value from .then()?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> What happens if you don't catch a rejected promise?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">7</span> How do Promises relate to the microtask queue?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Implement Promise.all from scratch.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> What is a thenable? How does Promise.resolve handle it?<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Explain the Promise resolution procedure (A+ spec).<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> Create a sleep() function using Promises.<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> Convert a callback-based function to return a Promise.<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Implement Promise.all() from scratch.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> Implement Promise.race() from scratch.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">5</span> Build a retry function with Promise-based backoff.<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">6</span> Create a promise pool that limits concurrent executions.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">7</span> Implement a full Promise class from scratch (A+ compliant).<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">8</span> Build a cancellable promise wrapper.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">9</span> Create a promise-based task scheduler with priority queue.<span class="q-diff">Hard</span></li>
+            <li class="question-item hard"><span class="q-num">10</span> Implement Promise.allSettled() from scratch.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S15: ASYNC/AWAIT -->
+      <div class="section" id="s15">
+        <div class="section-header"><div class="section-num">15</div><div><div class="section-title">Async / Await</div><div class="section-subtitle">Writing asynchronous code that looks and behaves synchronously.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p><strong style="color:var(--yellow)">Async/await</strong> is syntactic sugar built on top of Promises. Declaring a function with <code>async</code> ensures it always returns a Promise. Inside an async function, the <code>await</code> keyword pauses execution until the awaited Promise settles, non-blocking the main thread. Error handling is handled naturally using standard `try...catch` blocks.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Async / Await</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Standard Async/Await usage</span></div>
+            <div class="line"><span class="kw">async function</span> <span class="func">fetchUserData</span>(userId) {</div>
+            <div class="line">  <span class="kw">try</span> {</div>
+            <div class="line">    <span class="kw">const</span> response = <span class="kw">await</span> <span class="func">fetch</span>(<span class="str">`https://api.example.com/users/${userId}`</span>);</div>
+            <div class="line">    <span class="kw">if</span> (!response.ok) <span class="kw">throw new</span> <span class="cls">Error</span>(<span class="str">"Network response was not ok"</span>);</div>
+            <div class="line">    <span class="kw">const</span> data = <span class="kw">await</span> response.<span class="func">json</span>();</div>
+            <div class="line">    <span class="kw">return</span> data;</div>
+            <div class="line">  } <span class="kw">catch</span> (error) {</div>
+            <div class="line">    console.<span class="func">error</span>(<span class="str">"Fetching failed:"</span>, error);</div>
+            <div class="line">    <span class="kw">throw</span> error;</div>
+            <div class="line">  }</div>
+            <div class="line">}</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Executing parallel tasks (do NOT await sequentially if independent!)</span></div>
+            <div class="line"><span class="kw">async function</span> <span class="func">loadDashboard</span>() {</div>
+            <div class="line">  <span class="comment">// Starts requests in parallel</span></div>
+            <div class="line">  <span class="kw">const</span> userPromise = <span class="func">fetchUserData</span>(<span class="num">1</span>);</div>
+            <div class="line">  <span class="kw">const</span> postsPromise = <span class="func">fetch</span>(<span class="str">"/posts"</span>).<span class="func">then</span>(r <span class="op">=></span> r.<span class="func">json</span>());</div>
+            <div class="line">  </div>
+            <div class="line">  <span class="comment">// Awaits both together</span></div>
+            <div class="line">  <span class="kw">const</span> [user, posts] = <span class="kw">await</span> Promise.<span class="func">all</span>([userPromise, postsPromise]);</div>
+            <div class="line">  console.<span class="func">log</span>(user, posts);</div>
+            <div class="line">}</div>
+          </div>
+        </div>
+        <div class="callout interview-note"><span class="icon">🎯</span><span class="body"><strong>Interview Focus:</strong> Be able to convert promise chains to async/await, explain error handling inside loops (e.g. `for...of` vs `forEach` with async), and know that `await` blocks execution inside the async function but yields back to the Event Loop.</span></div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is async/await? How does it differ from raw Promises?<span class="q-diff">Easy</span></li>
+            <li class="question-item easy"><span class="q-num">2</span> How do you handle errors in async/await functions?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">3</span> Why doesn't `await` work inside a standard `.forEach()` loop?<span class="q-diff">Medium</span></li>
+            <li class="question-item medium"><span class="q-num">4</span> How can you execute multiple async operations concurrently?<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">5</span> Explain top-level await and its module scope implications.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item medium"><span class="q-num">1</span> Build an API utility that fetches data sequentially from an array of URLs.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">2</span> Implement an async function memoizer that caches resolved Promise data.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S16: EVENT LOOP -->
+      <div class="section" id="s16">
+        <div class="section-header"><div class="section-num">16</div><div><div class="section-title">The Event Loop</div><div class="section-subtitle">The heartbeat of JavaScript's non-blocking concurrency model.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p>JavaScript is single-threaded. The <strong style="color:var(--yellow)">Event Loop</strong> orchestrates the execution of synchronous code, microtasks, and macrotasks. The Call Stack runs execution contexts. When async tasks (like timers or IO) finish, callbacks queue up. <strong style="color:var(--cyan)">Microtasks</strong> (Promises, `queueMicrotask`, `MutationObserver`) have higher priority and empty completely before the next <strong style="color:var(--purple)">Macrotask</strong> (`setTimeout`, `setInterval`, UI rendering) starts.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Event Loop Execution Order</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line">console.<span class="func">log</span>(<span class="str">"1. Start (Sync)"</span>);</div>
+            <div class="line"></div>
+            <div class="line"><span class="func">setTimeout</span>(() <span class="op">=></span> console.<span class="func">log</span>(<span class="str">"5. Timeout (Macrotask)"</span>), <span class="num">0</span>);</div>
+            <div class="line"></div>
+            <div class="line">Promise.<span class="func">resolve</span>().<span class="func">then</span>(() <span class="op">=></span> console.<span class="func">log</span>(<span class="str">"3. Promise 1 (Microtask)"</span>));</div>
+            <div class="line"></div>
+            <div class="line"><span class="func">queueMicrotask</span>(() <span class="op">=></span> console.<span class="func">log</span>(<span class="str">"4. queueMicrotask (Microtask)"</span>));</div>
+            <div class="line"></div>
+            <div class="line">console.<span class="func">log</span>(<span class="str">"2. End (Sync)"</span>);</div>
+            <div class="line"><span class="comment">// Output: 1 -> 2 -> 3 -> 4 -> 5</span></div>
+          </div>
+        </div>
+        <div class="callout interview-note"><span class="icon">🎯</span><span class="body"><strong>Interview Focus:</strong> Event loop priority output questions are guaranteed in Elite JS rounds. Always trace synchronous code -> entire Microtask queue -> single Macrotask -> render -> repeat.</span></div>
+        <div class="questions-section"><div class="questions-header"><h3>🎤 Interview Questions</h3><span class="questions-badge interview-badge">Interview</span></div>
+          <ol class="question-list">
+            <li class="question-item easy"><span class="q-num">1</span> What is the difference between Call Stack and Task Queue?<span class="q-diff">Easy</span></li>
+            <li class="question-item medium"><span class="q-num">2</span> Microtasks vs Macrotasks: give examples and execution priority.<span class="q-diff">Medium</span></li>
+            <li class="question-item hard"><span class="q-num">3</span> How does UI Rendering fit into the Event Loop lifecycle?<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S17: DEBOUNCING -->
+      <div class="section" id="s17">
+        <div class="section-header"><div class="section-num">17</div><div><div class="section-title">Debouncing</div><div class="section-subtitle">Delaying execution until a period of inactivity passes.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p><strong style="color:var(--yellow)">Debouncing</strong> ensures a high-frequency function is only executed after a specified delay of user inactivity. If the event triggers again before the delay lapses, the timer resets. Ideal for search autocompletes and window resizing.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Debounce Implementation</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="kw">function</span> <span class="func">debounce</span>(func, delay) {</div>
+            <div class="line">  <span class="kw">let</span> timerId;</div>
+            <div class="line">  <span class="kw">return function</span> (...args) {</div>
+            <div class="line">    <span class="func">clearTimeout</span>(timerId);</div>
+            <div class="line">    timerId = <span class="func">setTimeout</span>(() <span class="op">=></span> func.<span class="func">apply</span>(<span class="kw">this</span>, args), delay);</div>
+            <div class="line">  };</div>
+            <div class="line">}</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Usage</span></div>
+            <div class="line"><span class="kw">const</span> handleSearch = <span class="func">debounce</span>((q) <span class="op">=></span> console.<span class="func">log</span>(<span class="str">"Fetching:"</span>, q), <span class="num">300</span>);</div>
+          </div>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item medium"><span class="q-num">1</span> Implement a complete debounce utility with an optional `leading` invocation trigger.<span class="q-diff">Medium</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S18: THROTTLING -->
+      <div class="section" id="s18">
+        <div class="section-header"><div class="section-num">18</div><div><div class="section-title">Throttling</div><div class="section-subtitle">Guaranteeing a consistent rate of execution over time.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p><strong style="color:var(--yellow)">Throttling</strong> limits the rate at which a function can fire. Unlike debouncing, throttling guarantees execution at regular intervals as long as triggers continue. Highly essential for scroll tracking, shooting games, and button spam prevention.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Throttle Implementation</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="kw">function</span> <span class="func">throttle</span>(func, limit) {</div>
+            <div class="line">  <span class="kw">let</span> inThrottle;</div>
+            <div class="line">  <span class="kw">return function</span> (...args) {</div>
+            <div class="line">    <span class="kw">if</span> (!inThrottle) {</div>
+            <div class="line">      func.<span class="func">apply</span>(<span class="kw">this</span>, args);</div>
+            <div class="line">      inThrottle = <span class="kw">true</span>;</div>
+            <div class="line">      <span class="func">setTimeout</span>(() <span class="op">=></span> inThrottle = <span class="kw">false</span>, limit);</div>
+            <div class="line">    }</div>
+            <div class="line">  };</div>
+            <div class="line">}</div>
+          </div>
+        </div>
+        <div class="questions-section"><div class="questions-header"><h3>💻 Machine Coding Questions</h3><span class="questions-badge coding-badge">Coding</span></div>
+          <ol class="question-list">
+            <li class="question-item hard"><span class="q-num">1</span> Implement a comprehensive throttle utility supporting trailing callbacks.<span class="q-diff">Hard</span></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- S19: LOCALSTORAGE -->
+      <div class="section" id="s19">
+        <div class="section-header"><div class="section-num">19</div><div><div class="section-title">Web Storage API</div><div class="section-subtitle">Persisting user data natively within the browser client.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p><strong style="color:var(--yellow)">localStorage</strong> preserves key-value pairs persistently across browser sessions without expirations. <strong style="color:var(--cyan)">sessionStorage</strong> operates exactly the same but clears automatically when the tab closes. Data stored is stringified by default, requiring `JSON.stringify` and `JSON.parse` for complex structures.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — localStorage Usage</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Preserving complex entities</span></div>
+            <div class="line"><span class="kw">const</span> sessionData = { token: <span class="str">"xyz"</span>, theme: <span class="str">"dark"</span> };</div>
+            <div class="line">localStorage.<span class="func">setItem</span>(<span class="str">"session"</span>, JSON.<span class="func">stringify</span>(sessionData));</div>
+            <div class="line"></div>
+            <div class="line"><span class="comment">// Restoring entities securely</span></div>
+            <div class="line"><span class="kw">const</span> raw = localStorage.<span class="func">getItem</span>(<span class="str">"session"</span>);</div>
+            <div class="line"><span class="kw">const</span> parsed = raw ? JSON.<span class="func">parse</span>(raw) : <span class="kw">null</span>;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S20: FETCH API -->
+      <div class="section" id="s20">
+        <div class="section-header"><div class="section-num">20</div><div><div class="section-title">Fetch API</div><div class="section-subtitle">Making native network requests directly from the client.</div></div></div>
+        <div class="concept"><div class="concept-title">📖 Definition & Explanation</div>
+          <p>The <strong style="color:var(--yellow)">Fetch API</strong> provides a modern global method for retrieving resources asynchronously across the network. Returning a Promise directly, it handles HTTP Request and Response interfaces completely natively.</p>
+        </div>
+        <div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">javascript — Custom Fetch Utility</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div>
+          <div class="terminal-body">
+            <div class="line"><span class="comment">// Full POST payload template</span></div>
+            <div class="line"><span class="kw">async function</span> <span class="func">postData</span>(url = <span class="str">""</span>, data = {}) {</div>
+            <div class="line">  <span class="kw">const</span> response = <span class="kw">await</span> <span class="func">fetch</span>(url, {</div>
+            <div class="line">    method: <span class="str">"POST"</span>,</div>
+            <div class="line">    headers: { <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span> },</div>
+            <div class="line">    body: JSON.<span class="func">stringify</span>(data),</div>
+            <div class="line">  });</div>
+            <div class="line">  <span class="kw">return response</span>.<span class="func">json</span>();</div>
+            <div class="line">}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+<script src="../src/js-masterclass.js"></script>
+</body>
+</html>

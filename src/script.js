@@ -12,6 +12,9 @@ const frames = {
 
 // Section frames
 const sectionFrames = {
+  js: { el: document.getElementById('frameJs'), src: 'html/js-masterclass.html', loaded: false },
+  html5: { el: document.getElementById('frameHtml5'), src: 'html/html5-notes.html', loaded: false },
+  networking: { el: document.getElementById('frameNetworking'), src: 'html/networking-notes.html', loaded: false },
   crackjs: { el: document.getElementById('frameCrackjs'), src: 'https://crack-the-js.vercel.app', loaded: true },
 };
 
@@ -23,6 +26,9 @@ const btns = {
 
 const sectionBtns = {
   git: document.getElementById('secBtnGit'),
+  js: document.getElementById('secBtnJs'),
+  html5: document.getElementById('secBtnHtml5'),
+  networking: document.getElementById('secBtnNetworking'),
   crackjs: document.getElementById('secBtnCrackjs'),
 };
 
@@ -54,8 +60,8 @@ function switchSection(section) {
   // Update body class for theming
   if (section === 'git') {
     document.body.className = `level-${currentLevel}`;
-  } else if (section === 'crackjs') {
-    document.body.className = 'section-crackjs';
+  } else {
+    document.body.className = `section-${section}`;
   }
 
   // Show transition overlay
@@ -183,7 +189,7 @@ try {
     btns[currentLevel].classList.add('active');
   }
 
-  if (savedSection && ['git', 'crackjs'].includes(savedSection)) {
+  if (savedSection && ['git', 'js', 'html5', 'networking', 'crackjs'].includes(savedSection)) {
     if (savedSection !== 'git') {
       frames[1].el.addEventListener('load', () => {
         switchSection(savedSection);

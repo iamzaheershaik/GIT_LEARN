@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Computer Networking & Web Fundamentals — Dev Hub</title>
+<link rel="stylesheet" href="../styles/html5-notes.css">
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <h1><span class="html-badge" style="background:linear-gradient(135deg, #3b82f6, #1d4ed8)">NET</span> Dev Hub</h1>
+    <p>Computer Networking & Web Basics</p>
+  </div>
+
+  <div class="search-wrap">
+    <input type="text" class="search-input" id="search-input" placeholder="Search topics...">
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Core Architecture</div>
+    <a href="#how-websites-work" class="nav-link active" onclick="setActive(this)"><span class="dot"></span>How Websites Work</a>
+    <a href="#client-vs-server" class="nav-link" onclick="setActive(this)"><span class="dot"></span>Client vs Server</a>
+    <a href="#http-vs-https" class="nav-link" onclick="setActive(this)"><span class="dot"></span>HTTP vs HTTPS</a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Data & Communication</div>
+    <a href="#apis" class="nav-link" onclick="setActive(this)"><span class="dot"></span>APIs Explained</a>
+    <a href="#json" class="nav-link" onclick="setActive(this)"><span class="dot"></span>JSON Deep Dive</a>
+    <a href="#browser-rendering" class="nav-link" onclick="setActive(this)"><span class="dot"></span>Browser Rendering</a>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-section-title">Infrastructure & Env</div>
+    <a href="#hosting-basics" class="nav-link" onclick="setActive(this)"><span class="dot"></span>Hosting Basics</a>
+    <a href="#package-managers" class="nav-link" onclick="setActive(this)"><span class="dot"></span>npm vs pnpm</a>
+    <a href="#vs-code" class="nav-link" onclick="setActive(this)"><span class="dot"></span>VS Code Mastery</a>
+    <a href="#terminal-basics" class="nav-link" onclick="setActive(this)"><span class="dot"></span>Terminal Basics</a>
+    <a href="#file-structure" class="nav-link" onclick="setActive(this)"><span class="dot"></span>File Structure</a>
+    <a href="#env-variables" class="nav-link" onclick="setActive(this)"><span class="dot"></span>Env Variables</a>
+  </div>
+
+  <div class="sidebar-footer">
+    <span>Maintained by Dev Hub Core</span>
+  </div>
+</aside>
+
+<!-- ── MAIN CONTENT ── -->
+<main class="main">
+  <header class="topbar">
+    <div class="topbar-breadcrumb">Computer Networking <span>/ Fundamentals Masterclass</span></div>
+  </header>
+
+  <div class="content">
+    
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-tags">
+        <span class="hero-tag">Fundamentals</span>
+        <span class="hero-tag">Architecture</span>
+        <span class="hero-tag">Networking</span>
+      </div>
+      <h1>Web Fundamentals &<br><em>Computer Networking</em></h1>
+      <p>A high-level systems breakdown of how the modern internet works, client-server lifecycle, core tooling, protocols, environments, and developer setups.</p>
+    </div>
+
+    <!-- 1. HOW WEBSITES WORK -->
+    <div class="section" id="how-websites-work">
+      <span class="section-badge blue">Architecture</span>
+      <h2 class="section-title">1. How Websites Work</h2>
+      <p class="section-subtitle">From typing a URL to displaying pixels on the screen.</p>
+      
+      <div class="prose">
+        <p>When you type a URL like <strong>google.com</strong> into your browser and press Enter, a sophisticated sequence of networked requests and file parsing initiates almost instantaneously.</p>
+      </div>
+
+      <div class="compare" style="grid-template-columns: 1fr;">
+        <div class="compare-box">
+          <h4>The Step-by-Step Lifecycle</h4>
+          <ul>
+            <li><strong>DNS Resolution:</strong> The browser queries Domain Name System (DNS) servers to translate the human-readable domain (google.com) into an IP address (e.g., 142.250.190.46).</li>
+            <li><strong>TCP Handshake:</strong> The browser establishes a reliable Transmission Control Protocol (TCP) connection with the destination server via a 3-way handshake (SYN, SYN-ACK, ACK).</li>
+            <li><strong>TLS/SSL Handshake:</strong> If encrypted via HTTPS, cryptographic keys are exchanged to secure all subsequent communications.</li>
+            <li><strong>HTTP Request:</strong> The client dispatches an HTTP GET request asking for the root document (`index.html`).</li>
+            <li><strong>Server Response:</strong> The backend server computes the request, retrieves assets, and replies with standard HTTP response headers and the payload body.</li>
+            <li><strong>Browser Parsing:</strong> The client parses HTML into the DOM tree, CSS into the CSSOM tree, executes JavaScript, and paints the visible page layout.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout info">
+        <span class="callout-icon">💡</span>
+        <div><strong>DNS Analogy:</strong> Think of DNS as the absolute phonebook of the internet. Humans remember names, but routing machines communicate exclusively via raw numerical IP addresses.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 2. CLIENT VS SERVER -->
+    <div class="section" id="client-vs-server">
+      <span class="section-badge purple">System Models</span>
+      <h2 class="section-title">2. Client vs Server</h2>
+      <p class="section-subtitle">The standard multi-tier distributed computing model.</p>
+
+      <div class="compare">
+        <div class="compare-box">
+          <h4 style="color:var(--cyan)">💻 The Client (Frontend)</h4>
+          <ul>
+            <li>Runs locally on the end-user's consumer hardware (Browser, Mobile App).</li>
+            <li>Responsible for user interfaces, dynamic visual layout, and capturing events.</li>
+            <li>Parses documents, computes presentation logic, and renders output.</li>
+            <li>Highly untrusted execution environment; variables can be inspected or manipulated.</li>
+          </ul>
+        </div>
+        <div class="compare-box">
+          <h4 style="color:var(--green)">🗄️ The Server (Backend)</h4>
+          <ul>
+            <li>Runs remotely in highly optimized cloud datacenters.</li>
+            <li>Responsible for authenticating users, central logic, and database persistence.</li>
+            <li>Serves requested API endpoints, static assets, and dynamic payloads.</li>
+            <li>Highly secure, trusted environment managing sensitive credentials.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 3. HTTP VS HTTPS -->
+    <div class="section" id="http-vs-https">
+      <span class="section-badge green">Protocols</span>
+      <h2 class="section-title">3. HTTP vs HTTPS</h2>
+      <p class="section-subtitle">Securing data transport across the public internet.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>HTTP (Hypertext Transfer Protocol)</th>
+              <th>HTTPS (HTTP Secure)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Encryption</strong></td>
+              <td>None. Transmits plain text payloads openly.</td>
+              <td>Encrypted symmetrically using TLS/SSL protocols.</td>
+            </tr>
+            <tr>
+              <td><strong>Default Port</strong></td>
+              <td>Port <code>80</code></td>
+              <td>Port <code>443</code></td>
+            </tr>
+            <tr>
+              <td><strong>Security</strong></td>
+              <td>Vulnerable to packet sniffing and Man-in-the-Middle (MitM).</td>
+              <td>Highly resilient; validates site authenticity via CA Certificates.</td>
+            </tr>
+            <tr>
+              <td><strong>Performance</strong></td>
+              <td>Slightly faster due to skipping initial cryptographic handshakes.</td>
+              <td>Enables HTTP/2 and HTTP/3 multiplexing natively for superior loads.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout success">
+        <span class="callout-icon">🔒</span>
+        <div><strong>TLS Handshake Standard:</strong> Modern HTTPS leverages asymmetric cryptography (Public/Private keys) to exchange symmetric session keys safely, providing optimal performance for streaming massive payloads.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 4. APIS -->
+    <div class="section" id="apis">
+      <span class="section-badge amber">Interfaces</span>
+      <h2 class="section-title">4. APIs (Application Programming Interfaces)</h2>
+      <p class="section-subtitle">How decoupled software applications talk to each other.</p>
+
+      <div class="prose">
+        <p>An <strong>API</strong> is a contractual set of rules defines how independent software entities interact. In web development, REST APIs and GraphQL APIs serve as universal bridges passing serialized data back and forth.</p>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">HTTP Request Lifecycle</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="keyword">GET</span> /api/v1/users/42 <span class="doctype">HTTP/1.1</span>
+<span class="prop">Host:</span> api.devhub.internal
+<span class="prop">Authorization:</span> Bearer eyJhbGciOiJIUzI1Ni...
+<span class="prop">Accept:</span> application/json
+
+<span class="comment">── Server responds with HTTP/1.1 200 OK ──</span></pre>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">📐</div>
+          <div class="card-title">REST API</div>
+          <div class="card-desc">Resource-based routing utilizing standard HTTP verbs (GET, POST, PUT, DELETE). Stateless architecture.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🕸️</div>
+          <div class="card-title">GraphQL</div>
+          <div class="card-desc">Query-based architecture allowing clients to fetch precisely the structured payload shapes they require.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">WebSockets</div>
+          <div class="card-desc">Persistent full-duplex TCP communication channels ideal for live chats and stock price streaming.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 5. JSON -->
+    <div class="section" id="json">
+      <span class="section-badge orange">Data Formats</span>
+      <h2 class="section-title">5. JSON (JavaScript Object Notation)</h2>
+      <p class="section-subtitle">The universal standard for lightweight data interchange.</p>
+
+      <div class="prose">
+        <p>Derived from JavaScript syntax, <strong>JSON</strong> is language-agnostic. All property keys must be wrapped in double quotes. It supports basic scalar primitives (strings, numbers, booleans, null) along with ordered arrays and nested objects.</p>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">JSON Payload Payload</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre>{
+  <span class="string">"status"</span>: <span class="string">"success"</span>,
+  <span class="string">"timestamp"</span>: <span class="number">1715483200</span>,
+  <span class="string">"data"</span>: {
+    <span class="string">"user"</span>: {
+      <span class="string">"id"</span>: <span class="number">42</span>,
+      <span class="string">"username"</span>: <span class="string">"ryzen_dev"</span>,
+      <span class="string">"roles"</span>: [<span class="string">"admin"</span>, <span class="string">"developer"</span>],
+      <span class="string">"isVerified"</span>: <span class="val">true</span>
+    }
+  }
+}</pre>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 6. BROWSER RENDERING -->
+    <div class="section" id="browser-rendering">
+      <span class="section-badge pink">Engine Internals</span>
+      <h2 class="section-title">6. Browser Rendering Pipeline</h2>
+      <p class="section-subtitle">How web engines convert raw byte arrays into painted interactive screens.</p>
+
+      <div class="compare" style="grid-template-columns: 1fr;">
+        <div class="compare-box">
+          <h4>Critical Rendering Path</h4>
+          <ol style="padding-left:20px; font-size:13.5px; color:var(--text2); line-height:1.8;">
+            <li><strong>DOM Construction:</strong> Bytes are transformed into Characters -> Tokens -> Nodes -> DOM tree.</li>
+            <li><strong>CSSOM Construction:</strong> Concurrent CSS byte parsing produces the CSS Object Model tree.</li>
+            <li><strong>Render Tree Assembly:</strong> DOM and CSSOM combine, omitting non-visual hidden elements (`display: none`).</li>
+            <li><strong>Layout (Reflow):</strong> Engine calculates exact geometric positioning and sizing dimensions for each node.</li>
+            <li><strong>Paint:</strong> Converts node layout boundaries into concrete raster pixels across rendering layers.</li>
+            <li><strong>Compositing:</strong> Renders visual layers overlapping correctly onto the physical screen buffer.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 7. HOSTING BASICS -->
+    <div class="section" id="hosting-basics">
+      <span class="section-badge teal">Cloud Deployments</span>
+      <h2 class="section-title">7. Hosting Basics</h2>
+      <p class="section-subtitle">Making your local projects accessible globally.</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">📦</div>
+          <div class="card-title">Shared / VPS Hosting</div>
+          <div class="card-desc">Traditional instances hosting monolithic setups running Apache/Nginx webservers. Fixed capacity limits.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚀</div>
+          <div class="card-title">Serverless / Jamstack</div>
+          <div class="card-desc">Vercel, Netlify, Cloudflare Pages. Code deploys directly to distributed edge networks instantly.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🐳</div>
+          <div class="card-title">Containerized (Docker)</div>
+          <div class="card-desc">AWS ECS, Google Cloud Run. Packaging applications inside portable isolated Linux container images.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 8. PACKAGE MANAGERS -->
+    <div class="section" id="package-managers">
+      <span class="section-badge red">Tooling</span>
+      <h2 class="section-title">8. Package Managers: npm vs pnpm</h2>
+      <p class="section-subtitle">Managing third-party open source code dependencies efficiently.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>npm (Node Package Manager)</th>
+              <th>pnpm (Performant npm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Storage Architecture</strong></td>
+              <td>Flat file structure inside <code>node_modules</code>. Duplicates identical packages across distinct projects.</td>
+              <td>Centralized global content-addressable store. Hard links dependencies directly into isolated local maps.</td>
+            </tr>
+            <tr>
+              <td><strong>Disk Efficiency</strong></td>
+              <td>Extremely heavy disk space footprint.</td>
+              <td>Saves gigabytes of storage space via unique immutable pointers.</td>
+            </tr>
+            <tr>
+              <td><strong>Installation Speed</strong></td>
+              <td>Standard synchronous sequential resolution pipelines.</td>
+              <td>Blazing fast concurrent downloads and symlink layouts.</td>
+            </tr>
+            <tr>
+              <td><strong>Strictness</strong></td>
+              <td>Allows accessing phantom hoisted dependencies openly.</td>
+              <td>Strict isolated layouts prevent ghost imports natively.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 9. VS CODE -->
+    <div class="section" id="vs-code">
+      <span class="section-badge blue">IDE Mastery</span>
+      <h2 class="section-title">9. VS Code Setup & Core Shortcuts</h2>
+      <p class="section-subtitle">Maximizing developer productivity inside the world's most popular text editor.</p>
+
+      <div class="attr-grid">
+        <div class="attr-row">
+          <div class="attr-key">Ctrl + P / Cmd + P</div>
+          <div class="attr-val">Quick Open file navigator. Instantly jump directly to any document inside the workspace.</div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-key">Ctrl + Shift + P</div>
+          <div class="attr-val">Command Palette. Execute editor commands, extensions, and workspace configuration scripts.</div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-key">Ctrl + ` / Cmd + `</div>
+          <div class="attr-val">Toggle Integrated Terminal pane instantly without leaving keyboard layouts.</div>
+        </div>
+        <div class="attr-row">
+          <div class="attr-key">Alt + Click / Opt + Click</div>
+          <div class="attr-val">Multi-cursor editing. Edit variable arrays and lists concurrently across scattered offsets.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 10. TERMINAL BASICS -->
+    <div class="section" id="terminal-basics">
+      <span class="section-badge purple">Shell Commands</span>
+      <h2 class="section-title">10. Terminal Basics</h2>
+      <p class="section-subtitle">Command-line operations every professional developer must command.</p>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">POSIX Shell Core Utilities</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="comment"># Navigation and listing</span>
+<span class="keyword">pwd</span>                 <span class="comment"># Print working directory absolute route</span>
+<span class="keyword">ls -la</span>              <span class="comment"># List detailed attributes including hidden files</span>
+<span class="keyword">cd</span> /var/www/html    <span class="comment"># Change directory context</span>
+
+<span class="comment"># File management</span>
+<span class="keyword">mkdir -p</span> src/utils  <span class="comment"># Create recursive nested directories</span>
+<span class="keyword">touch</span> .env.example  <span class="comment"># Initialize empty file pointers</span>
+<span class="keyword">rm -rf</span> dist/        <span class="comment"># Forcefully delete directory contents recursively</span>
+
+<span class="comment"># Inspections</span>
+<span class="keyword">cat</span> package.json    <span class="comment"># Print complete file streams directly to stdout</span>
+<span class="keyword">grep -rn</span> "PORT" .   <span class="comment"># Search string occurrences recursively matching lines</span></pre>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 11. FILE STRUCTURE -->
+    <div class="section" id="file-structure">
+      <span class="section-badge amber">Project Architecture</span>
+      <h2 class="section-title">11. Standard Production File Structure</h2>
+      <p class="section-subtitle">Organizing scalable JavaScript/TypeScript codebases reliably.</p>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">Enterprise Directory Tree</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre>my-app/
+├── <span class="string">.env</span>                <span class="comment"># Local secrets (NEVER committed to git)</span>
+├── <span class="string">.env.example</span>        <span class="comment"># Sample environment schema templates</span>
+├── <span class="string">.gitignore</span>          <span class="comment"># Files ignored during version control commits</span>
+├── <span class="string">package.json</span>        <span class="comment"># Dependency tracking declarations</span>
+├── <span class="string">pnpm-lock.yaml</span>      <span class="comment"># Deterministic dependency verification map</span>
+├── <span class="string">public/</span>             <span class="comment"># Static uncompiled public client assets</span>
+│   └── favicon.ico
+└── <span class="string">src/</span>                <span class="comment"># Primary compiled source maps</span>
+    ├── <span class="string">assets/</span>         <span class="comment"># Images, icons, custom font binaries</span>
+    ├── <span class="string">components/</span>     <span class="comment"># Reusable visual interface chunks</span>
+    ├── <span class="string">hooks/</span>          <span class="comment"># Customized React lifecycle logic</span>
+    ├── <span class="string">services/</span>       <span class="comment"># External API wrapper integrations</span>
+    ├── <span class="string">styles/</span>         <span class="comment"># Global stylesheets and CSS tokens</span>
+    └── <span class="string">utils/</span>          <span class="comment"># Pure helper calculations and regex validators</span></pre>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- 12. ENV VARIABLES -->
+    <div class="section" id="env-variables">
+      <span class="section-badge green">Configuration</span>
+      <h2 class="section-title">12. Environment Variables</h2>
+      <p class="section-subtitle">Decoupling dynamic system parameters from permanent codebase logic.</p>
+
+      <div class="prose">
+        <p><strong>Environment Variables</strong> define configurable strings injected into execution scopes dynamically. This securely decouples API keys, database URLs, and port mappings from public git repositories.</p>
+      </div>
+
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">.env Schema Mapping</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="comment"># Production Environment Maps</span>
+<span class="prop">PORT</span>=<span class="number">8080</span>
+<span class="prop">NODE_ENV</span>=<span class="string">production</span>
+<span class="prop">DATABASE_URL</span>=<span class="string">"postgresql://user:secretpass@db.internal:5432/prod"</span>
+<span class="prop">JWT_SECRET_KEY</span>=<span class="string">"super-secret-cryptographic-hash-salt-phrase"</span></pre>
+      </div>
+
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        <div><strong>Security Mandate:</strong> Always append <code>.env</code> inside your root <code>.gitignore</code> configuration file instantly. Exposing database credentials or access tokens publicly leads to severe infrastructural compromises.</div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../src/html5-notes.js"></script>
+</body>
+</html>

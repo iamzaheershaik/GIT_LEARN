@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML5 Complete Notes — RyzeN Dev</title>
+<link rel="stylesheet" href="../styles/html5-notes.css">
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <h1><span class="html-badge">HTML5</span> Complete Notes</h1>
+    <p>8 Topics · Full Reference</p>
+  </div>
+  <div class="search-wrap">
+    <input class="search-input" type="text" placeholder="Search topics…" id="search-input">
+  </div>
+  <nav class="sidebar-section">
+    <div class="sidebar-section-title">Topics</div>
+    <a class="nav-link active" href="#intro" onclick="setActive(this)"><span class="dot"></span>Introduction</a>
+    <a class="nav-link" href="#semantic" onclick="setActive(this)"><span class="dot"></span>Semantic Tags</a>
+    <a class="nav-link" href="#forms" onclick="setActive(this)"><span class="dot"></span>Forms & Inputs</a>
+    <a class="nav-link" href="#tables" onclick="setActive(this)"><span class="dot"></span>Tables</a>
+    <a class="nav-link" href="#accessibility" onclick="setActive(this)"><span class="dot"></span>Accessibility (a11y)</a>
+    <a class="nav-link" href="#seo" onclick="setActive(this)"><span class="dot"></span>SEO Basics</a>
+    <a class="nav-link" href="#media" onclick="setActive(this)"><span class="dot"></span>Audio &amp; Video</a>
+    <a class="nav-link" href="#meta" onclick="setActive(this)"><span class="dot"></span>Meta Tags</a>
+  </nav>
+  <div class="sidebar-footer">
+    Crafted by RyzeN · 2025<br>
+    MERN Stack Developer
+  </div>
+</aside>
+
+<!-- ── MAIN ── -->
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-breadcrumb">HTML5 / <span>Complete Notes</span></div>
+    <div style="font-size:12px;color:var(--text3)">Press <kbd style="background:var(--bg3);border:1px solid var(--border);padding:2px 6px;border-radius:4px;font-size:11px">Ctrl+F</kbd> to search</div>
+  </div>
+
+  <div class="content">
+
+    <!-- ── INTRO ── -->
+    <section class="section" id="intro">
+      <div class="hero">
+        <h1><em>HTML5</em> Complete Reference</h1>
+        <p>Your go-to reference for modern HTML5 — from semantic structure to accessibility, SEO, media, and meta tags. Study it, bookmark it, use it.</p>
+        <div class="hero-tags">
+          <span class="hero-tag">Semantic Tags</span>
+          <span class="hero-tag">Forms & Inputs</span>
+          <span class="hero-tag">Tables</span>
+          <span class="hero-tag">Accessibility</span>
+          <span class="hero-tag">SEO</span>
+          <span class="hero-tag">Audio/Video</span>
+          <span class="hero-tag">Meta Tags</span>
+        </div>
+      </div>
+
+      <div class="section-badge blue">📄 Introduction</div>
+      <h2 class="section-title">What is HTML5?</h2>
+      <p class="section-subtitle">HTML5 is the 5th and current version of HTML — the standard language for creating web pages. Released in 2014 by W3C, it introduced semantic elements, native audio/video, form improvements, canvas, local storage, and much more.</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">🏗️</div>
+          <div class="card-title">Structure</div>
+          <div class="card-desc">Defines the skeleton of every webpage — headings, paragraphs, sections, links.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <div class="card-title">Semantic Meaning</div>
+          <div class="card-desc">New tags like <code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> describe content meaning.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🎯</div>
+          <div class="card-title">Accessibility</div>
+          <div class="card-desc">ARIA roles and semantic HTML make sites usable for everyone, including screen readers.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔍</div>
+          <div class="card-title">SEO Friendly</div>
+          <div class="card-desc">Search engines read HTML to understand page content. Proper markup boosts rankings.</div>
+        </div>
+      </div>
+
+      <h3>Basic HTML5 Document Structure</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">HTML5 Boilerplate</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag-name">&lt;html</span> <span class="attr">lang</span>=<span class="val">"en"</span><span class="tag-name">&gt;</span>
+<span class="tag-name">&lt;head&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">charset</span>=<span class="val">"UTF-8"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"viewport"</span> <span class="attr">content</span>=<span class="val">"width=device-width, initial-scale=1.0"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"description"</span> <span class="attr">content</span>=<span class="val">"Page description for SEO"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;title&gt;</span>Page Title<span class="tag-name">&lt;/title&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"style.css"</span><span class="tag-name">&gt;</span>
+<span class="tag-name">&lt;/head&gt;</span>
+<span class="tag-name">&lt;body&gt;</span>
+  <span class="tag-name">&lt;header&gt;</span>...<span class="tag-name">&lt;/header&gt;</span>
+  <span class="tag-name">&lt;main&gt;</span>
+    <span class="tag-name">&lt;section&gt;</span>...<span class="tag-name">&lt;/section&gt;</span>
+    <span class="tag-name">&lt;article&gt;</span>...<span class="tag-name">&lt;/article&gt;</span>
+  <span class="tag-name">&lt;/main&gt;</span>
+  <span class="tag-name">&lt;footer&gt;</span>...<span class="tag-name">&lt;/footer&gt;</span>
+  <span class="tag-name">&lt;script</span> <span class="attr">src</span>=<span class="val">"app.js"</span><span class="tag-name">&gt;&lt;/script&gt;</span>
+<span class="tag-name">&lt;/body&gt;</span>
+<span class="tag-name">&lt;/html&gt;</span></pre>
+      </div>
+      <div class="callout info">
+        <span class="callout-icon">💡</span>
+        <div><strong>DOCTYPE:</strong> Always the very first line. <code>&lt;!DOCTYPE html&gt;</code> tells the browser to render in HTML5 standards mode — never omit it.</div>
+      </div>
+    </section>
+
+    <!-- ── SEMANTIC TAGS ── -->
+    <section class="section" id="semantic">
+      <div class="section-badge green">🏷️ Semantic Tags</div>
+      <h2 class="section-title">Semantic HTML5 Tags</h2>
+      <p class="section-subtitle">Semantic tags tell the browser (and search engines) what a piece of content means — not just how it looks. They replaced the old soup of <code>&lt;div id="nav"&gt;</code> patterns.</p>
+
+      <div class="compare">
+        <div class="compare-box" style="border-color:var(--red-border)">
+          <h4 style="color:var(--red)">❌ Non-semantic (Old way)</h4>
+          <ul>
+            <li>All <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code></li>
+            <li>No meaning to the browser</li>
+            <li>Bad for accessibility</li>
+            <li>Harder for SEO crawlers</li>
+          </ul>
+        </div>
+        <div class="compare-box" style="border-color:var(--green-border)">
+          <h4 style="color:var(--green)">✅ Semantic (HTML5 way)</h4>
+          <ul>
+            <li>Meaningful tags describe content</li>
+            <li>Screen readers understand structure</li>
+            <li>Better SEO ranking</li>
+            <li>Cleaner, maintainable code</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Page Layout Tags</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Tag</th><th>Purpose</th><th>Usage Tip</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>&lt;header&gt;</code></td><td>Intro/top of page or section. Can contain logo, nav, h1.</td><td>One per page typically, or per <code>&lt;article&gt;</code></td></tr>
+            <tr><td><code>&lt;nav&gt;</code></td><td>Navigation links block (menus, breadcrumbs).</td><td>Wrap only major nav, not all links</td></tr>
+            <tr><td><code>&lt;main&gt;</code></td><td>The dominant content of the page. Only ONE per page.</td><td>Never put inside <code>&lt;header&gt;</code> or <code>&lt;footer&gt;</code></td></tr>
+            <tr><td><code>&lt;section&gt;</code></td><td>Thematic grouping. Should have a heading inside.</td><td>Use when content is related but not standalone</td></tr>
+            <tr><td><code>&lt;article&gt;</code></td><td>Self-contained, reusable content (blog post, card, product).</td><td>Should make sense on its own, out of context</td></tr>
+            <tr><td><code>&lt;aside&gt;</code></td><td>Tangentially related content — sidebars, callout boxes.</td><td>Related to nearby content but could be removed</td></tr>
+            <tr><td><code>&lt;footer&gt;</code></td><td>Closing content — copyright, links, contact info.</td><td>Can be used inside <code>&lt;article&gt;</code> too</td></tr>
+            <tr><td><code>&lt;address&gt;</code></td><td>Contact info for nearest article or body element.</td><td>Not just postal — can be email/phone/social</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Content Tags</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Tag</th><th>Meaning</th><th>Block/Inline</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>&lt;h1&gt;–&lt;h6&gt;</code></td><td>Headings. h1 = most important. Use only ONE h1 per page.</td><td>Block</td></tr>
+            <tr><td><code>&lt;p&gt;</code></td><td>Paragraph of text.</td><td>Block</td></tr>
+            <tr><td><code>&lt;strong&gt;</code></td><td>Important/bold text. Has semantic weight (not just visual).</td><td>Inline</td></tr>
+            <tr><td><code>&lt;em&gt;</code></td><td>Emphasis/italic. Stress emphasis on a word.</td><td>Inline</td></tr>
+            <tr><td><code>&lt;mark&gt;</code></td><td>Highlighted/relevant text (search result highlight).</td><td>Inline</td></tr>
+            <tr><td><code>&lt;time&gt;</code></td><td>Machine-readable date/time. Use <code>datetime</code> attribute.</td><td>Inline</td></tr>
+            <tr><td><code>&lt;abbr&gt;</code></td><td>Abbreviation. Use <code>title</code> attr for full expansion.</td><td>Inline</td></tr>
+            <tr><td><code>&lt;cite&gt;</code></td><td>Title of a work being referenced.</td><td>Inline</td></tr>
+            <tr><td><code>&lt;code&gt;</code></td><td>Inline code snippet.</td><td>Inline</td></tr>
+            <tr><td><code>&lt;pre&gt;</code></td><td>Preformatted text — whitespace preserved.</td><td>Block</td></tr>
+            <tr><td><code>&lt;blockquote&gt;</code></td><td>Long quotation from another source. Use <code>cite</code> attr.</td><td>Block</td></tr>
+            <tr><td><code>&lt;figure&gt;</code> + <code>&lt;figcaption&gt;</code></td><td>Self-contained media with caption (image, chart, code).</td><td>Block</td></tr>
+            <tr><td><code>&lt;details&gt;</code> + <code>&lt;summary&gt;</code></td><td>Native accordion/disclosure widget. No JS needed.</td><td>Block</td></tr>
+            <tr><td><code>&lt;dialog&gt;</code></td><td>Native modal dialog element. Use JS .showModal().</td><td>Block</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Full Page Structure Example</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">Semantic Layout</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="tag-name">&lt;body&gt;</span>
+  <span class="tag-name">&lt;header&gt;</span>
+    <span class="tag-name">&lt;nav&gt;</span>
+      <span class="tag-name">&lt;ul&gt;</span>
+        <span class="tag-name">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="val">"/"</span><span class="tag-name">&gt;</span>Home<span class="tag-name">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="tag-name">&lt;li&gt;&lt;a</span> <span class="attr">href</span>=<span class="val">"/about"</span><span class="tag-name">&gt;</span>About<span class="tag-name">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="tag-name">&lt;/ul&gt;</span>
+    <span class="tag-name">&lt;/nav&gt;</span>
+  <span class="tag-name">&lt;/header&gt;</span>
+
+  <span class="tag-name">&lt;main&gt;</span>
+    <span class="tag-name">&lt;article&gt;</span>
+      <span class="tag-name">&lt;header&gt;</span>
+        <span class="tag-name">&lt;h1&gt;</span>Blog Post Title<span class="tag-name">&lt;/h1&gt;</span>
+        <span class="tag-name">&lt;time</span> <span class="attr">datetime</span>=<span class="val">"2025-05-12"</span><span class="tag-name">&gt;</span>May 12, 2025<span class="tag-name">&lt;/time&gt;</span>
+      <span class="tag-name">&lt;/header&gt;</span>
+      <span class="tag-name">&lt;section&gt;</span>
+        <span class="tag-name">&lt;h2&gt;</span>Introduction<span class="tag-name">&lt;/h2&gt;</span>
+        <span class="tag-name">&lt;p&gt;</span>Content goes here...<span class="tag-name">&lt;/p&gt;</span>
+      <span class="tag-name">&lt;/section&gt;</span>
+      <span class="tag-name">&lt;figure&gt;</span>
+        <span class="tag-name">&lt;img</span> <span class="attr">src</span>=<span class="val">"chart.png"</span> <span class="attr">alt</span>=<span class="val">"Sales chart"</span><span class="tag-name">&gt;</span>
+        <span class="tag-name">&lt;figcaption&gt;</span>Q1 2025 Sales Data<span class="tag-name">&lt;/figcaption&gt;</span>
+      <span class="tag-name">&lt;/figure&gt;</span>
+    <span class="tag-name">&lt;/article&gt;</span>
+    <span class="tag-name">&lt;aside&gt;</span>
+      <span class="tag-name">&lt;h3&gt;</span>Related Posts<span class="tag-name">&lt;/h3&gt;</span>
+    <span class="tag-name">&lt;/aside&gt;</span>
+  <span class="tag-name">&lt;/main&gt;</span>
+
+  <span class="tag-name">&lt;footer&gt;</span>
+    <span class="tag-name">&lt;address&gt;</span>Contact: <span class="tag-name">&lt;a</span> <span class="attr">href</span>=<span class="val">"mailto:hello@example.com"</span><span class="tag-name">&gt;</span>hello@example.com<span class="tag-name">&lt;/a&gt;&lt;/address&gt;</span>
+  <span class="tag-name">&lt;/footer&gt;</span>
+<span class="tag-name">&lt;/body&gt;</span></pre>
+      </div>
+      <div class="callout success">
+        <span class="callout-icon">✅</span>
+        <div><strong>Rule of thumb:</strong> Use <code>&lt;div&gt;</code> only when no semantic tag fits. If it's navigation → <code>&lt;nav&gt;</code>. If it's a blog post → <code>&lt;article&gt;</code>. If it's a side column → <code>&lt;aside&gt;</code>.</div>
+      </div>
+    </section>
+
+    <!-- ── FORMS ── -->
+    <section class="section" id="forms">
+      <div class="section-badge amber">📝 Forms & Inputs</div>
+      <h2 class="section-title">Forms & Input Elements</h2>
+      <p class="section-subtitle">Forms are how users send data to your server. HTML5 added a ton of new input types and attributes that give you built-in validation for free.</p>
+
+      <h3>Form Structure</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">Basic Form</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="tag-name">&lt;form</span>
+  <span class="attr">action</span>=<span class="val">"/submit"</span>       <span class="comment">&lt;!-- Where to send data --&gt;</span>
+  <span class="attr">method</span>=<span class="val">"POST"</span>        <span class="comment">&lt;!-- GET or POST --&gt;</span>
+  <span class="attr">enctype</span>=<span class="val">"multipart/form-data"</span>  <span class="comment">&lt;!-- needed for file uploads --&gt;</span>
+  <span class="attr">novalidate</span>           <span class="comment">&lt;!-- disables browser validation --&gt;</span>
+<span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;fieldset&gt;</span>
+    <span class="tag-name">&lt;legend&gt;</span>Personal Info<span class="tag-name">&lt;/legend&gt;</span>
+    <span class="tag-name">&lt;label</span> <span class="attr">for</span>=<span class="val">"name"</span><span class="tag-name">&gt;</span>Full Name<span class="tag-name">&lt;/label&gt;</span>
+    <span class="tag-name">&lt;input</span>
+      <span class="attr">type</span>=<span class="val">"text"</span>
+      <span class="attr">id</span>=<span class="val">"name"</span>
+      <span class="attr">name</span>=<span class="val">"name"</span>
+      <span class="attr">placeholder</span>=<span class="val">"Enter your name"</span>
+      <span class="attr">required</span>
+      <span class="attr">autocomplete</span>=<span class="val">"name"</span>
+    <span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;/fieldset&gt;</span>
+  <span class="tag-name">&lt;button</span> <span class="attr">type</span>=<span class="val">"submit"</span><span class="tag-name">&gt;</span>Submit<span class="tag-name">&lt;/button&gt;</span>
+<span class="tag-name">&lt;/form&gt;</span></pre>
+      </div>
+
+      <h3>All HTML5 Input Types</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>type</th><th>Description</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><code>text</code></td><td>Single-line text</td><td>Default input type</td></tr>
+            <tr><td><code>email</code></td><td>Email address</td><td>Built-in @ validation</td></tr>
+            <tr><td><code>password</code></td><td>Masked text</td><td>Never log these</td></tr>
+            <tr><td><code>number</code></td><td>Numeric value</td><td>Use <code>min</code>, <code>max</code>, <code>step</code></td></tr>
+            <tr><td><code>tel</code></td><td>Phone number</td><td>Shows phone keyboard on mobile</td></tr>
+            <tr><td><code>url</code></td><td>Web URL</td><td>Validates URL format</td></tr>
+            <tr><td><code>search</code></td><td>Search field</td><td>Gets clear ✕ button in some browsers</td></tr>
+            <tr><td><code>date</code></td><td>Date picker</td><td>Value format: <code>YYYY-MM-DD</code></td></tr>
+            <tr><td><code>time</code></td><td>Time picker</td><td>Value format: <code>HH:MM</code></td></tr>
+            <tr><td><code>datetime-local</code></td><td>Date + time picker</td><td>No timezone</td></tr>
+            <tr><td><code>month</code></td><td>Month picker</td><td>Year + month only</td></tr>
+            <tr><td><code>week</code></td><td>Week picker</td><td>ISO week format</td></tr>
+            <tr><td><code>range</code></td><td>Slider control</td><td>Use <code>min</code>, <code>max</code>, <code>step</code>, <code>value</code></td></tr>
+            <tr><td><code>color</code></td><td>Color picker</td><td>Returns hex value</td></tr>
+            <tr><td><code>file</code></td><td>File upload</td><td>Use <code>accept</code>, <code>multiple</code></td></tr>
+            <tr><td><code>checkbox</code></td><td>Boolean toggle</td><td>Group with same <code>name</code></td></tr>
+            <tr><td><code>radio</code></td><td>One of many choices</td><td>Same <code>name</code> = same group</td></tr>
+            <tr><td><code>hidden</code></td><td>Invisible field</td><td>For sending data without user input</td></tr>
+            <tr><td><code>submit</code></td><td>Submit button</td><td>Prefer <code>&lt;button type="submit"&gt;</code></td></tr>
+            <tr><td><code>reset</code></td><td>Reset all fields</td><td>Rarely used — bad UX</td></tr>
+            <tr><td><code>image</code></td><td>Image as submit button</td><td>Use src + alt attributes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Input Attributes (HTML5)</h3>
+      <div class="attr-grid">
+        <div class="attr-row"><div class="attr-key">required</div><div class="attr-val">Field must be filled before submit. Browser shows error automatically.</div></div>
+        <div class="attr-row"><div class="attr-key">placeholder</div><div class="attr-val">Hint text shown inside empty field. Not a substitute for <code>&lt;label&gt;</code>.</div></div>
+        <div class="attr-row"><div class="attr-key">pattern</div><div class="attr-val">Regex validation. Example: <code>pattern="[A-Za-z]{3}"</code></div></div>
+        <div class="attr-row"><div class="attr-key">min / max</div><div class="attr-val">Min/max value for number, date, range inputs.</div></div>
+        <div class="attr-row"><div class="attr-key">minlength / maxlength</div><div class="attr-val">Character length limits for text inputs.</div></div>
+        <div class="attr-row"><div class="attr-key">step</div><div class="attr-val">Increment size for number/range inputs. Use <code>step="0.01"</code> for decimals.</div></div>
+        <div class="attr-row"><div class="attr-key">disabled</div><div class="attr-val">Field is not interactive. Value is NOT sent on submit.</div></div>
+        <div class="attr-row"><div class="attr-key">readonly</div><div class="attr-val">User can't change value but it IS sent on submit.</div></div>
+        <div class="attr-row"><div class="attr-key">autofocus</div><div class="attr-val">Automatically focused when page loads. Use sparingly (one per page).</div></div>
+        <div class="attr-row"><div class="attr-key">autocomplete</div><div class="attr-val">Hints browser for autofill: <code>"name"</code>, <code>"email"</code>, <code>"off"</code>.</div></div>
+        <div class="attr-row"><div class="attr-key">multiple</div><div class="attr-val">Allows multiple values. For <code>file</code> and <code>email</code> inputs.</div></div>
+        <div class="attr-row"><div class="attr-key">accept</div><div class="attr-val">Filter file types: <code>accept=".pdf,.jpg,image/*"</code></div></div>
+        <div class="attr-row"><div class="attr-key">list</div><div class="attr-val">Links to a <code>&lt;datalist&gt;</code> id for autocomplete suggestions.</div></div>
+        <div class="attr-row"><div class="attr-key">form</div><div class="attr-val">Associate input with a form by its id, even if outside the form tag.</div></div>
+      </div>
+
+      <h3>Other Form Elements</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">select, textarea, datalist, output</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="comment">&lt;!-- Dropdown Select --&gt;</span>
+<span class="tag-name">&lt;select</span> <span class="attr">name</span>=<span class="val">"city"</span> <span class="attr">multiple</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;optgroup</span> <span class="attr">label</span>=<span class="val">"Maharashtra"</span><span class="tag-name">&gt;</span>
+    <span class="tag-name">&lt;option</span> <span class="attr">value</span>=<span class="val">"pune"</span><span class="tag-name">&gt;</span>Pune<span class="tag-name">&lt;/option&gt;</span>
+    <span class="tag-name">&lt;option</span> <span class="attr">value</span>=<span class="val">"mumbai"</span> <span class="attr">selected</span><span class="tag-name">&gt;</span>Mumbai<span class="tag-name">&lt;/option&gt;</span>
+  <span class="tag-name">&lt;/optgroup&gt;</span>
+<span class="tag-name">&lt;/select&gt;</span>
+
+<span class="comment">&lt;!-- Textarea --&gt;</span>
+<span class="tag-name">&lt;textarea</span>
+  <span class="attr">name</span>=<span class="val">"bio"</span>
+  <span class="attr">rows</span>=<span class="val">"5"</span>
+  <span class="attr">cols</span>=<span class="val">"40"</span>
+  <span class="attr">maxlength</span>=<span class="val">"500"</span>
+  <span class="attr">placeholder</span>=<span class="val">"Tell us about yourself..."</span>
+<span class="tag-name">&gt;&lt;/textarea&gt;</span>
+
+<span class="comment">&lt;!-- Datalist: autocomplete suggestions --&gt;</span>
+<span class="tag-name">&lt;input</span> <span class="attr">type</span>=<span class="val">"text"</span> <span class="attr">list</span>=<span class="val">"frameworks"</span> <span class="attr">placeholder</span>=<span class="val">"Pick a framework"</span><span class="tag-name">&gt;</span>
+<span class="tag-name">&lt;datalist</span> <span class="attr">id</span>=<span class="val">"frameworks"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;option</span> <span class="attr">value</span>=<span class="val">"React"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;option</span> <span class="attr">value</span>=<span class="val">"Vue"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;option</span> <span class="attr">value</span>=<span class="val">"Svelte"</span><span class="tag-name">&gt;</span>
+<span class="tag-name">&lt;/datalist&gt;</span>
+
+<span class="comment">&lt;!-- Output: display calculated result --&gt;</span>
+<span class="tag-name">&lt;input</span> <span class="attr">type</span>=<span class="val">"range"</span> <span class="attr">id</span>=<span class="val">"a"</span> <span class="attr">value</span>=<span class="val">"50"</span><span class="tag-name">&gt;</span>
+<span class="tag-name">&lt;output</span> <span class="attr">for</span>=<span class="val">"a"</span><span class="tag-name">&gt;</span>50<span class="tag-name">&lt;/output&gt;</span></pre>
+      </div>
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        <div><strong>Always use labels!</strong> Every input needs an associated <code>&lt;label for="id"&gt;</code>. It improves accessibility, clickable hit area, and screen reader support. Never use <code>placeholder</code> as a substitute.</div>
+      </div>
+    </section>
+
+    <!-- ── TABLES ── -->
+    <section class="section" id="tables">
+      <div class="section-badge purple">📊 Tables</div>
+      <h2 class="section-title">HTML Tables</h2>
+      <p class="section-subtitle">Tables are for tabular data — rows and columns with a relationship. Never use them for layout purposes (that's CSS Grid's job).</p>
+
+      <h3>Complete Table Anatomy</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">Full Table Structure</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="tag-name">&lt;table&gt;</span>
+  <span class="tag-name">&lt;caption&gt;</span>Monthly Sales Report 2025<span class="tag-name">&lt;/caption&gt;</span> <span class="comment">&lt;!-- visible title --&gt;</span>
+
+  <span class="tag-name">&lt;colgroup&gt;</span>
+    <span class="tag-name">&lt;col</span> <span class="attr">span</span>=<span class="val">"1"</span> <span class="attr">style</span>=<span class="val">"background:#f9f9f9"</span><span class="tag-name">&gt;</span>
+    <span class="tag-name">&lt;col</span> <span class="attr">span</span>=<span class="val">"3"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;/colgroup&gt;</span>
+
+  <span class="tag-name">&lt;thead&gt;</span>                          <span class="comment">&lt;!-- header rows --&gt;</span>
+    <span class="tag-name">&lt;tr&gt;</span>
+      <span class="tag-name">&lt;th</span> <span class="attr">scope</span>=<span class="val">"col"</span><span class="tag-name">&gt;</span>Month<span class="tag-name">&lt;/th&gt;</span>      <span class="comment">&lt;!-- scope for a11y --&gt;</span>
+      <span class="tag-name">&lt;th</span> <span class="attr">scope</span>=<span class="val">"col"</span><span class="tag-name">&gt;</span>Units<span class="tag-name">&lt;/th&gt;</span>
+      <span class="tag-name">&lt;th</span> <span class="attr">scope</span>=<span class="val">"col"</span><span class="tag-name">&gt;</span>Revenue<span class="tag-name">&lt;/th&gt;</span>
+      <span class="tag-name">&lt;th</span> <span class="attr">scope</span>=<span class="val">"col"</span><span class="tag-name">&gt;</span>Growth<span class="tag-name">&lt;/th&gt;</span>
+    <span class="tag-name">&lt;/tr&gt;</span>
+  <span class="tag-name">&lt;/thead&gt;</span>
+
+  <span class="tag-name">&lt;tbody&gt;</span>                          <span class="comment">&lt;!-- data rows --&gt;</span>
+    <span class="tag-name">&lt;tr&gt;</span>
+      <span class="tag-name">&lt;th</span> <span class="attr">scope</span>=<span class="val">"row"</span><span class="tag-name">&gt;</span>January<span class="tag-name">&lt;/th&gt;</span>   <span class="comment">&lt;!-- row header --&gt;</span>
+      <span class="tag-name">&lt;td&gt;</span>120<span class="tag-name">&lt;/td&gt;</span>
+      <span class="tag-name">&lt;td&gt;</span>₹1,20,000<span class="tag-name">&lt;/td&gt;</span>
+      <span class="tag-name">&lt;td&gt;</span>+12%<span class="tag-name">&lt;/td&gt;</span>
+    <span class="tag-name">&lt;/tr&gt;</span>
+    <span class="tag-name">&lt;tr&gt;</span>
+      <span class="tag-name">&lt;th</span> <span class="attr">scope</span>=<span class="val">"row"</span><span class="tag-name">&gt;</span>February<span class="tag-name">&lt;/th&gt;</span>
+      <span class="tag-name">&lt;td</span> <span class="attr">colspan</span>=<span class="val">"2"</span><span class="tag-name">&gt;</span>No Data<span class="tag-name">&lt;/td&gt;</span>  <span class="comment">&lt;!-- spans 2 cols --&gt;</span>
+      <span class="tag-name">&lt;td&gt;</span>-<span class="tag-name">&lt;/td&gt;</span>
+    <span class="tag-name">&lt;/tr&gt;</span>
+  <span class="tag-name">&lt;/tbody&gt;</span>
+
+  <span class="tag-name">&lt;tfoot&gt;</span>                          <span class="comment">&lt;!-- summary row --&gt;</span>
+    <span class="tag-name">&lt;tr&gt;</span>
+      <span class="tag-name">&lt;th</span> <span class="attr">scope</span>=<span class="val">"row"</span><span class="tag-name">&gt;</span>Total<span class="tag-name">&lt;/th&gt;</span>
+      <span class="tag-name">&lt;td&gt;</span>120<span class="tag-name">&lt;/td&gt;</span>
+      <span class="tag-name">&lt;td&gt;</span>₹1,20,000<span class="tag-name">&lt;/td&gt;</span>
+      <span class="tag-name">&lt;td</span> <span class="attr">rowspan</span>=<span class="val">"1"</span><span class="tag-name">&gt;</span>+12%<span class="tag-name">&lt;/td&gt;</span>
+    <span class="tag-name">&lt;/tr&gt;</span>
+  <span class="tag-name">&lt;/tfoot&gt;</span>
+<span class="tag-name">&lt;/table&gt;</span></pre>
+      </div>
+
+      <h3>Key Table Attributes</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Attribute</th><th>Element</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>scope="col"</code></td><td><code>&lt;th&gt;</code></td><td>Header applies to entire column (required for accessibility)</td></tr>
+            <tr><td><code>scope="row"</code></td><td><code>&lt;th&gt;</code></td><td>Header applies to entire row</td></tr>
+            <tr><td><code>colspan="N"</code></td><td><code>&lt;td&gt;</code>, <code>&lt;th&gt;</code></td><td>Cell spans N columns horizontally</td></tr>
+            <tr><td><code>rowspan="N"</code></td><td><code>&lt;td&gt;</code>, <code>&lt;th&gt;</code></td><td>Cell spans N rows vertically</td></tr>
+            <tr><td><code>headers="id"</code></td><td><code>&lt;td&gt;</code></td><td>Links cell to header by id — complex tables</td></tr>
+            <tr><td><code>id</code></td><td><code>&lt;th&gt;</code></td><td>Used with headers attribute for complex tables</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout danger">
+        <span class="callout-icon">🚫</span>
+        <div><strong>Never use tables for layout!</strong> That was a 1990s practice. Use CSS Grid or Flexbox instead. Tables are only for data that has row + column relationships.</div>
+      </div>
+    </section>
+
+    <!-- ── ACCESSIBILITY ── -->
+    <section class="section" id="accessibility">
+      <div class="section-badge teal">♿ Accessibility (a11y)</div>
+      <h2 class="section-title">Accessibility (a11y)</h2>
+      <p class="section-subtitle">Accessibility means building websites that everyone can use — including people with visual, motor, auditory, or cognitive disabilities. It's a legal requirement in many countries and good practice always.</p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">👁️</div>
+          <div class="card-title">Visual</div>
+          <div class="card-desc">Blind/low vision users use screen readers (NVDA, JAWS, VoiceOver). Need proper markup and text alternatives.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">⌨️</div>
+          <div class="card-title">Motor</div>
+          <div class="card-desc">Some users navigate only by keyboard (Tab, Enter, Arrow keys). Never trap keyboard focus.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔊</div>
+          <div class="card-title">Auditory</div>
+          <div class="card-desc">Deaf users need captions on videos and transcripts for audio content.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <div class="card-title">Cognitive</div>
+          <div class="card-desc">Clear language, consistent layout, readable fonts, and meaningful error messages help everyone.</div>
+        </div>
+      </div>
+
+      <h3>ARIA Roles & Attributes</h3>
+      <p class="prose">ARIA (Accessible Rich Internet Applications) adds meaning to elements that HTML alone can't describe — especially for custom components.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Attribute</th><th>Purpose</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>role</code></td><td>Defines what an element is (overrides semantic meaning)</td><td><code>role="button"</code>, <code>role="dialog"</code></td></tr>
+            <tr><td><code>aria-label</code></td><td>Provides an accessible name when visible text isn't enough</td><td><code>aria-label="Close menu"</code></td></tr>
+            <tr><td><code>aria-labelledby</code></td><td>Points to another element's id as the label</td><td><code>aria-labelledby="modal-title"</code></td></tr>
+            <tr><td><code>aria-describedby</code></td><td>Points to an element with extra description text</td><td><code>aria-describedby="hint-text"</code></td></tr>
+            <tr><td><code>aria-hidden="true"</code></td><td>Hides decorative element from screen readers</td><td>Icons, decorative images</td></tr>
+            <tr><td><code>aria-expanded</code></td><td>Whether a collapsible is open or closed</td><td><code>aria-expanded="false"</code></td></tr>
+            <tr><td><code>aria-required</code></td><td>Marks field as required (for custom controls)</td><td><code>aria-required="true"</code></td></tr>
+            <tr><td><code>aria-invalid</code></td><td>Signals validation failure</td><td><code>aria-invalid="true"</code></td></tr>
+            <tr><td><code>aria-live</code></td><td>Announces dynamic content changes to screen readers</td><td><code>aria-live="polite"</code></td></tr>
+            <tr><td><code>aria-current</code></td><td>Current item in set (nav, breadcrumb, pagination)</td><td><code>aria-current="page"</code></td></tr>
+            <tr><td><code>tabindex</code></td><td>Controls keyboard tab order. 0=natural, -1=programmatic only</td><td><code>tabindex="0"</code></td></tr>
+            <tr><td><code>role="alert"</code></td><td>Live region that interrupts screen readers for urgent info</td><td>Error messages</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Common ARIA Roles</h3>
+      <div class="tag-row">
+        <span class="t-badge t-blue">banner</span>
+        <span class="t-badge t-blue">navigation</span>
+        <span class="t-badge t-blue">main</span>
+        <span class="t-badge t-blue">contentinfo</span>
+        <span class="t-badge t-teal">button</span>
+        <span class="t-badge t-teal">link</span>
+        <span class="t-badge t-teal">checkbox</span>
+        <span class="t-badge t-teal">radio</span>
+        <span class="t-badge t-teal">textbox</span>
+        <span class="t-badge t-amber">dialog</span>
+        <span class="t-badge t-amber">alertdialog</span>
+        <span class="t-badge t-amber">tooltip</span>
+        <span class="t-badge t-amber">menu</span>
+        <span class="t-badge t-purple">listbox</span>
+        <span class="t-badge t-purple">combobox</span>
+        <span class="t-badge t-purple">tab</span>
+        <span class="t-badge t-purple">tabpanel</span>
+        <span class="t-badge t-red">alert</span>
+        <span class="t-badge t-red">status</span>
+      </div>
+
+      <h3>Accessibility Best Practices</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">a11y examples</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="comment">&lt;!-- ✅ Alt text for images --&gt;</span>
+<span class="tag-name">&lt;img</span> <span class="attr">src</span>=<span class="val">"chart.png"</span> <span class="attr">alt</span>=<span class="val">"Bar chart showing 40% sales increase in Q1"</span><span class="tag-name">&gt;</span>
+<span class="tag-name">&lt;img</span> <span class="attr">src</span>=<span class="val">"divider.png"</span> <span class="attr">alt</span>=<span class="val">""</span> <span class="attr">aria-hidden</span>=<span class="val">"true"</span><span class="tag-name">&gt;</span> <span class="comment">&lt;!-- decorative --&gt;</span>
+
+<span class="comment">&lt;!-- ✅ Skip nav link (for keyboard users) --&gt;</span>
+<span class="tag-name">&lt;a</span> <span class="attr">href</span>=<span class="val">"#main-content"</span> <span class="attr">class</span>=<span class="val">"skip-link"</span><span class="tag-name">&gt;</span>Skip to main content<span class="tag-name">&lt;/a&gt;</span>
+
+<span class="comment">&lt;!-- ✅ Accessible button (keyboard + screen reader) --&gt;</span>
+<span class="tag-name">&lt;button</span>
+  <span class="attr">type</span>=<span class="val">"button"</span>
+  <span class="attr">aria-expanded</span>=<span class="val">"false"</span>
+  <span class="attr">aria-controls</span>=<span class="val">"dropdown-menu"</span>
+<span class="tag-name">&gt;</span>
+  Menu <span class="tag-name">&lt;span</span> <span class="attr">aria-hidden</span>=<span class="val">"true"</span><span class="tag-name">&gt;</span>▾<span class="tag-name">&lt;/span&gt;</span>
+<span class="tag-name">&lt;/button&gt;</span>
+
+<span class="comment">&lt;!-- ✅ Live region for dynamic updates --&gt;</span>
+<span class="tag-name">&lt;div</span> <span class="attr">role</span>=<span class="val">"status"</span> <span class="attr">aria-live</span>=<span class="val">"polite"</span> <span class="attr">aria-atomic</span>=<span class="val">"true"</span><span class="tag-name">&gt;</span>
+  3 results found
+<span class="tag-name">&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- ✅ Accessible form error --&gt;</span>
+<span class="tag-name">&lt;input</span>
+  <span class="attr">type</span>=<span class="val">"email"</span>
+  <span class="attr">id</span>=<span class="val">"email"</span>
+  <span class="attr">aria-describedby</span>=<span class="val">"email-error"</span>
+  <span class="attr">aria-invalid</span>=<span class="val">"true"</span>
+<span class="tag-name">&gt;</span>
+<span class="tag-name">&lt;span</span> <span class="attr">id</span>=<span class="val">"email-error"</span> <span class="attr">role</span>=<span class="val">"alert"</span><span class="tag-name">&gt;</span>Invalid email address<span class="tag-name">&lt;/span&gt;</span></pre>
+      </div>
+      <div class="callout info">
+        <span class="callout-icon">💡</span>
+        <div><strong>WCAG 2.1 AA</strong> — The industry standard for accessibility. 4 principles: <strong>Perceivable, Operable, Understandable, Robust</strong> (POUR). Aim for a contrast ratio of at least 4.5:1 for text.</div>
+      </div>
+    </section>
+
+    <!-- ── SEO ── -->
+    <section class="section" id="seo">
+      <div class="section-badge pink">🔍 SEO Basics</div>
+      <h2 class="section-title">SEO Basics in HTML</h2>
+      <p class="section-subtitle">Search Engine Optimization starts with well-structured HTML. Google crawls your HTML before anything else. Get this right and you're already ahead.</p>
+
+      <h3>On-Page SEO Checklist</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Element</th><th>Best Practice</th><th>Impact</th></tr></thead>
+          <tbody>
+            <tr><td><code>&lt;title&gt;</code></td><td>50-60 chars, include target keyword. Unique per page.</td><td>⭐⭐⭐ Very high</td></tr>
+            <tr><td><code>&lt;meta description&gt;</code></td><td>150-160 chars, compelling summary, include keyword.</td><td>⭐⭐ CTR (not ranking)</td></tr>
+            <tr><td><code>&lt;h1&gt;</code></td><td>One per page, matches user intent, includes primary keyword.</td><td>⭐⭐⭐ Very high</td></tr>
+            <tr><td>Heading hierarchy</td><td>h1 → h2 → h3. Never skip levels. Logical structure.</td><td>⭐⭐ Medium</td></tr>
+            <tr><td><code>alt</code> attribute</td><td>Descriptive alt text on images. Include keyword naturally.</td><td>⭐⭐ Image SEO</td></tr>
+            <tr><td>Semantic HTML</td><td>Use proper semantic tags. Google understands your layout.</td><td>⭐⭐ Medium</td></tr>
+            <tr><td>Canonical URL</td><td><code>&lt;link rel="canonical"&gt;</code> prevents duplicate content.</td><td>⭐⭐ Technical</td></tr>
+            <tr><td>Page speed</td><td>Lazy load images, minify HTML, defer JS.</td><td>⭐⭐⭐ Core Web Vitals</td></tr>
+            <tr><td>Structured Data</td><td>JSON-LD schema markup for rich snippets.</td><td>⭐⭐⭐ Rich results</td></tr>
+            <tr><td>Internal linking</td><td>Use descriptive anchor text, not "click here".</td><td>⭐⭐ Crawlability</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>SEO-Optimized HTML Head</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">SEO Head Tags</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="tag-name">&lt;head&gt;</span>
+  <span class="comment">&lt;!-- Core SEO --&gt;</span>
+  <span class="tag-name">&lt;title&gt;</span>Best MERN Stack Tutorial for Beginners 2025 | RyzeN Dev<span class="tag-name">&lt;/title&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"description"</span>
+    <span class="attr">content</span>=<span class="val">"Learn MERN stack from scratch. Build 3 real projects with MongoDB, Express, React and Node.js. Free tutorial with source code."</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"keywords"</span> <span class="attr">content</span>=<span class="val">"MERN stack, React tutorial, Node.js beginner"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Canonical --&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"canonical"</span> <span class="attr">href</span>=<span class="val">"https://ryzenv.dev/tutorials/mern"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Robots --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"robots"</span> <span class="attr">content</span>=<span class="val">"index, follow"</span><span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- "noindex, nofollow" to block a page --&gt;</span>
+
+  <span class="comment">&lt;!-- Open Graph (Facebook, LinkedIn previews) --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:type"</span> <span class="attr">content</span>=<span class="val">"article"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:title"</span> <span class="attr">content</span>=<span class="val">"Best MERN Stack Tutorial"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:description"</span> <span class="attr">content</span>=<span class="val">"Learn MERN stack from scratch..."</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:image"</span> <span class="attr">content</span>=<span class="val">"https://ryzenv.dev/og-image.jpg"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:url"</span> <span class="attr">content</span>=<span class="val">"https://ryzenv.dev/tutorials/mern"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Twitter Card --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"twitter:card"</span> <span class="attr">content</span>=<span class="val">"summary_large_image"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"twitter:creator"</span> <span class="attr">content</span>=<span class="val">"@iamzaheershaik"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- JSON-LD Structured Data --&gt;</span>
+  <span class="tag-name">&lt;script</span> <span class="attr">type</span>=<span class="val">"application/ld+json"</span><span class="tag-name">&gt;</span>
+  {
+    <span class="string">"@context"</span>: <span class="string">"https://schema.org"</span>,
+    <span class="string">"@type"</span>: <span class="string">"Article"</span>,
+    <span class="string">"headline"</span>: <span class="string">"Best MERN Stack Tutorial"</span>,
+    <span class="string">"author"</span>: { <span class="string">"@type"</span>: <span class="string">"Person"</span>, <span class="string">"name"</span>: <span class="string">"RyzeN"</span> },
+    <span class="string">"datePublished"</span>: <span class="string">"2025-05-12"</span>
+  }
+  <span class="tag-name">&lt;/script&gt;</span>
+<span class="tag-name">&lt;/head&gt;</span></pre>
+      </div>
+      <div class="callout success">
+        <span class="callout-icon">🚀</span>
+        <div><strong>Core Web Vitals:</strong> Google's ranking signals — LCP (Largest Contentful Paint &lt;2.5s), FID/INP (interaction &lt;200ms), CLS (layout shift &lt;0.1). Lazy load images with <code>loading="lazy"</code> and defer scripts to improve all three.</div>
+      </div>
+    </section>
+
+    <!-- ── AUDIO / VIDEO ── -->
+    <section class="section" id="media">
+      <div class="section-badge orange">🎬 Audio &amp; Video</div>
+      <h2 class="section-title">Audio &amp; Video</h2>
+      <p class="section-subtitle">HTML5 introduced native <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements — no more Flash or plugin requirements. Multiple source formats ensure cross-browser compatibility.</p>
+
+      <h3>Video Element</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">HTML5 Video</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="tag-name">&lt;video</span>
+  <span class="attr">width</span>=<span class="val">"720"</span>
+  <span class="attr">height</span>=<span class="val">"405"</span>
+  <span class="attr">controls</span>            <span class="comment">&lt;!-- shows play/pause/volume UI --&gt;</span>
+  <span class="attr">autoplay</span>           <span class="comment">&lt;!-- plays on load (needs muted for Chrome) --&gt;</span>
+  <span class="attr">muted</span>              <span class="comment">&lt;!-- required for autoplay to work --&gt;</span>
+  <span class="attr">loop</span>               <span class="comment">&lt;!-- loops when done --&gt;</span>
+  <span class="attr">preload</span>=<span class="val">"metadata"</span> <span class="comment">&lt;!-- none | metadata | auto --&gt;</span>
+  <span class="attr">poster</span>=<span class="val">"thumbnail.jpg"</span> <span class="comment">&lt;!-- shown before play --&gt;</span>
+  <span class="attr">playsinline</span>        <span class="comment">&lt;!-- iOS: play inline instead of fullscreen --&gt;</span>
+<span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- Multiple formats for browser compatibility --&gt;</span>
+  <span class="tag-name">&lt;source</span> <span class="attr">src</span>=<span class="val">"video.mp4"</span>  <span class="attr">type</span>=<span class="val">"video/mp4"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;source</span> <span class="attr">src</span>=<span class="val">"video.webm"</span> <span class="attr">type</span>=<span class="val">"video/webm"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;source</span> <span class="attr">src</span>=<span class="val">"video.ogv"</span>  <span class="attr">type</span>=<span class="val">"video/ogg"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Subtitles / Captions --&gt;</span>
+  <span class="tag-name">&lt;track</span>
+    <span class="attr">src</span>=<span class="val">"captions-en.vtt"</span>
+    <span class="attr">kind</span>=<span class="val">"captions"</span>
+    <span class="attr">srclang</span>=<span class="val">"en"</span>
+    <span class="attr">label</span>=<span class="val">"English"</span>
+    <span class="attr">default</span>
+  <span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;track</span> <span class="attr">src</span>=<span class="val">"sub-hi.vtt"</span> <span class="attr">kind</span>=<span class="val">"subtitles"</span> <span class="attr">srclang</span>=<span class="val">"hi"</span> <span class="attr">label</span>=<span class="val">"Hindi"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Fallback for ancient browsers --&gt;</span>
+  Your browser does not support the video tag.
+<span class="tag-name">&lt;/video&gt;</span></pre>
+      </div>
+
+      <h3>Audio Element</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">HTML5 Audio</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="tag-name">&lt;audio</span>
+  <span class="attr">controls</span>
+  <span class="attr">loop</span>
+  <span class="attr">preload</span>=<span class="val">"auto"</span>
+<span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;source</span> <span class="attr">src</span>=<span class="val">"audio.mp3"</span>  <span class="attr">type</span>=<span class="val">"audio/mpeg"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;source</span> <span class="attr">src</span>=<span class="val">"audio.ogg"</span>  <span class="attr">type</span>=<span class="val">"audio/ogg"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;source</span> <span class="attr">src</span>=<span class="val">"audio.wav"</span>  <span class="attr">type</span>=<span class="val">"audio/wav"</span><span class="tag-name">&gt;</span>
+  Your browser does not support the audio element.
+<span class="tag-name">&lt;/audio&gt;</span>
+
+<span class="comment">&lt;!-- JS Media API --&gt;</span>
+<span class="tag-name">&lt;script&gt;</span>
+  <span class="keyword">const</span> video = document.querySelector(<span class="string">'video'</span>);
+  video.play();           <span class="comment">// play</span>
+  video.pause();          <span class="comment">// pause</span>
+  video.currentTime = 0;  <span class="comment">// seek to start</span>
+  video.volume = 0.5;     <span class="comment">// 50% volume</span>
+  video.playbackRate = 2; <span class="comment">// 2x speed</span>
+  <span class="comment">// Events</span>
+  video.addEventListener(<span class="string">'ended'</span>, () =&gt; console.log(<span class="string">'Done!'</span>));
+  video.addEventListener(<span class="string">'timeupdate'</span>, () =&gt; console.log(video.currentTime));
+<span class="tag-name">&lt;/script&gt;</span></pre>
+      </div>
+
+      <h3>Media Format Support</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Format</th><th>Type</th><th>Chrome</th><th>Firefox</th><th>Safari</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>MP4 (H.264)</td><td>Video</td><td>✅</td><td>✅</td><td>✅</td><td>Best universal choice</td></tr>
+            <tr><td>WebM (VP9)</td><td>Video</td><td>✅</td><td>✅</td><td>⚠️ partial</td><td>Better compression, open</td></tr>
+            <tr><td>OGG (Theora)</td><td>Video</td><td>✅</td><td>✅</td><td>❌</td><td>Older open format</td></tr>
+            <tr><td>MP3</td><td>Audio</td><td>✅</td><td>✅</td><td>✅</td><td>Best universal choice</td></tr>
+            <tr><td>OGG (Vorbis)</td><td>Audio</td><td>✅</td><td>✅</td><td>⚠️ partial</td><td>Open source</td></tr>
+            <tr><td>WAV</td><td>Audio</td><td>✅</td><td>✅</td><td>✅</td><td>Large file size</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warning">
+        <span class="callout-icon">⚠️</span>
+        <div><strong>Accessibility for media:</strong> Always add captions (<code>&lt;track kind="captions"&gt;</code>) for video. Provide text transcripts for audio content. Never use <code>autoplay</code> without <code>muted</code> — it will be blocked by browsers.</div>
+      </div>
+    </section>
+
+    <!-- ── META TAGS ── -->
+    <section class="section" id="meta">
+      <div class="section-badge red">🏷️ Meta Tags</div>
+      <h2 class="section-title">Meta Tags — Complete Reference</h2>
+      <p class="section-subtitle">Meta tags live in <code>&lt;head&gt;</code> and give browsers, search engines, and social platforms information about your page. They are invisible to users but critical to everything else.</p>
+
+      <h3>Essential Meta Tags</h3>
+      <div class="code-wrap">
+        <div class="code-header">
+          <span class="code-lang">All Core Meta Tags</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><span class="tag-name">&lt;head&gt;</span>
+  <span class="comment">&lt;!── MUST-HAVE ─────────────────────────────────────────────────────────&gt;</span>
+
+  <span class="comment">&lt;!-- Character encoding. ALWAYS first --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">charset</span>=<span class="val">"UTF-8"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Responsive design. ALWAYS second --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"viewport"</span> <span class="attr">content</span>=<span class="val">"width=device-width, initial-scale=1.0"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- IE compatibility (legacy, rarely needed) --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">http-equiv</span>=<span class="val">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="val">"IE=edge"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!── SEO META ───────────────────────────────────────────────────────────&gt;</span>
+
+  <span class="comment">&lt;!-- Page title (in &lt;title&gt; tag, not meta) --&gt;</span>
+  <span class="tag-name">&lt;title&gt;</span>Page Title — Site Name<span class="tag-name">&lt;/title&gt;</span>
+
+  <span class="comment">&lt;!-- Search engine description snippet --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"description"</span> <span class="attr">content</span>=<span class="val">"150-160 chars. Compelling summary of this page."</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Keywords (low SEO value now, still used by some engines) --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"keywords"</span> <span class="attr">content</span>=<span class="val">"keyword1, keyword2, keyword3"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Author --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"author"</span> <span class="attr">content</span>=<span class="val">"Zaheer Shaik"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!-- Crawler instructions --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"robots"</span> <span class="attr">content</span>=<span class="val">"index, follow"</span><span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- Options: noindex, nofollow, noarchive, nosnippet --&gt;</span>
+
+  <span class="comment">&lt;!-- Canonical URL --&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"canonical"</span> <span class="attr">href</span>=<span class="val">"https://example.com/this-page"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!── OPEN GRAPH (og:) — Facebook, LinkedIn, WhatsApp previews ──────────&gt;</span>
+
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:site_name"</span>   <span class="attr">content</span>=<span class="val">"RyzeN Dev"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:type"</span>        <span class="attr">content</span>=<span class="val">"website"</span><span class="tag-name">&gt;</span>  <span class="comment">&lt;!-- or: article, video, profile --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:title"</span>       <span class="attr">content</span>=<span class="val">"Page Title"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:description"</span> <span class="attr">content</span>=<span class="val">"Page description"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:image"</span>       <span class="attr">content</span>=<span class="val">"https://example.com/og.jpg"</span><span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- og:image should be 1200×630px --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:image:width"</span>  <span class="attr">content</span>=<span class="val">"1200"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:image:height"</span> <span class="attr">content</span>=<span class="val">"630"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:url"</span>         <span class="attr">content</span>=<span class="val">"https://example.com/this-page"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">property</span>=<span class="val">"og:locale"</span>      <span class="attr">content</span>=<span class="val">"en_US"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!── TWITTER CARD —— Twitter/X previews ─────────────────────────────────&gt;</span>
+
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"twitter:card"</span>        <span class="attr">content</span>=<span class="val">"summary_large_image"</span><span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- summary | summary_large_image | app | player --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"twitter:site"</span>        <span class="attr">content</span>=<span class="val">"@iamzaheershaik"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"twitter:creator"</span>     <span class="attr">content</span>=<span class="val">"@iamzaheershaik"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"twitter:title"</span>       <span class="attr">content</span>=<span class="val">"Page Title"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"twitter:description"</span>  <span class="attr">content</span>=<span class="val">"Page description"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"twitter:image"</span>        <span class="attr">content</span>=<span class="val">"https://example.com/twitter.jpg"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!── PWA / MOBILE APP META ───────────────────────────────────────────────&gt;</span>
+
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"theme-color"</span> <span class="attr">content</span>=<span class="val">"#3b82f6"</span><span class="tag-name">&gt;</span>     <span class="comment">&lt;!-- browser chrome color --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="val">"yes"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"apple-mobile-web-app-capable"</span> <span class="attr">content</span>=<span class="val">"yes"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"apple-mobile-web-app-title"</span> <span class="attr">content</span>=<span class="val">"RyzeN"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">name</span>=<span class="val">"apple-mobile-web-app-status-bar-style"</span> <span class="attr">content</span>=<span class="val">"black-translucent"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"manifest"</span> <span class="attr">href</span>=<span class="val">"/manifest.json"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!── ICONS ───────────────────────────────────────────────────────────────&gt;</span>
+
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"icon"</span> <span class="attr">href</span>=<span class="val">"/favicon.ico"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"icon"</span> <span class="attr">type</span>=<span class="val">"image/png"</span> <span class="attr">sizes</span>=<span class="val">"32x32"</span> <span class="attr">href</span>=<span class="val">"/favicon-32.png"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"apple-touch-icon"</span> <span class="attr">href</span>=<span class="val">"/apple-icon-180.png"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!── PERFORMANCE ─────────────────────────────────────────────────────────&gt;</span>
+
+  <span class="comment">&lt;!-- Preconnect to external origins you'll need --&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"preconnect"</span> <span class="attr">href</span>=<span class="val">"https://fonts.googleapis.com"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"preconnect"</span> <span class="attr">href</span>=<span class="val">"https://fonts.gstatic.com"</span> <span class="attr">crossorigin</span><span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- Preload critical assets --&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"preload"</span> <span class="attr">href</span>=<span class="val">"hero.jpg"</span> <span class="attr">as</span>=<span class="val">"image"</span><span class="tag-name">&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"preload"</span> <span class="attr">href</span>=<span class="val">"main.js"</span>  <span class="attr">as</span>=<span class="val">"script"</span><span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- DNS Prefetch --&gt;</span>
+  <span class="tag-name">&lt;link</span> <span class="attr">rel</span>=<span class="val">"dns-prefetch"</span> <span class="attr">href</span>=<span class="val">"//api.example.com"</span><span class="tag-name">&gt;</span>
+
+  <span class="comment">&lt;!── HTTP-EQUIV (browser behavior) ─────────────────────────────────────&gt;</span>
+
+  <span class="comment">&lt;!-- Refresh page after 30 seconds --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">http-equiv</span>=<span class="val">"refresh"</span> <span class="attr">content</span>=<span class="val">"30"</span><span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- Redirect after 3 seconds --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">http-equiv</span>=<span class="val">"refresh"</span> <span class="attr">content</span>=<span class="val">"3; url=https://newsite.com"</span><span class="tag-name">&gt;</span>
+  <span class="comment">&lt;!-- Content Security Policy --&gt;</span>
+  <span class="tag-name">&lt;meta</span> <span class="attr">http-equiv</span>=<span class="val">"Content-Security-Policy"</span> <span class="attr">content</span>=<span class="val">"default-src 'self'"</span><span class="tag-name">&gt;</span>
+
+<span class="tag-name">&lt;/head&gt;</span></pre>
+      </div>
+
+      <h3>Meta Tag Quick Reference</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tag</th><th>Attribute</th><th>What It Does</th></tr></thead>
+          <tbody>
+            <tr><td><code>&lt;meta charset&gt;</code></td><td>charset</td><td>Character encoding. UTF-8 supports all languages and symbols.</td></tr>
+            <tr><td><code>&lt;meta viewport&gt;</code></td><td>name</td><td>Critical for responsive design. Without it, mobile renders desktop-sized.</td></tr>
+            <tr><td><code>&lt;meta description&gt;</code></td><td>name</td><td>Shown in Google search result snippets. 150-160 chars max.</td></tr>
+            <tr><td><code>&lt;meta robots&gt;</code></td><td>name</td><td>index/noindex: allow/block in search. follow/nofollow: allow/block crawling links.</td></tr>
+            <tr><td><code>&lt;meta theme-color&gt;</code></td><td>name</td><td>Colors the browser's address bar on mobile (Chrome, Edge).</td></tr>
+            <tr><td><code>og:image</code></td><td>property</td><td>Image shown when page is shared on social media. 1200×630px recommended.</td></tr>
+            <tr><td><code>twitter:card</code></td><td>name</td><td>summary = small card. summary_large_image = big card with hero image.</td></tr>
+            <tr><td><code>&lt;link rel="canonical"&gt;</code></td><td>rel</td><td>Tells Google which URL is the "official" version to avoid duplicate content penalty.</td></tr>
+            <tr><td><code>&lt;link rel="preconnect"&gt;</code></td><td>rel</td><td>Establishes connection to external host early. Speeds up resource loading.</td></tr>
+            <tr><td><code>&lt;link rel="preload"&gt;</code></td><td>rel</td><td>Fetches critical resource immediately. Use for LCP images and key scripts.</td></tr>
+            <tr><td><code>&lt;link rel="manifest"&gt;</code></td><td>rel</td><td>Links to PWA manifest.json for installable web apps.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout success">
+        <span class="callout-icon">🎯</span>
+        <div><strong>Test your meta tags:</strong> Use <a href="https://metatags.io" target="_blank" style="color:var(--accent)">metatags.io</a> to preview how your page looks on Google, Facebook, Twitter, LinkedIn. Use <a href="https://search.google.com/test/rich-results" target="_blank" style="color:var(--accent)">Google Rich Results Test</a> to validate structured data.</div>
+      </div>
+
+      <!-- FINAL CHEAT SHEET -->
+      <div class="divider"></div>
+      <h3>⚡ Full HTML5 Cheat Sheet</h3>
+      <div class="three-col" style="margin-top:12px">
+        <div class="card">
+          <div class="card-title" style="margin-bottom:8px">Semantic Tags</div>
+          <div class="tag-row" style="gap:4px">
+            <span class="t-badge t-blue" style="font-size:11px">&lt;header&gt;</span>
+            <span class="t-badge t-blue" style="font-size:11px">&lt;nav&gt;</span>
+            <span class="t-badge t-blue" style="font-size:11px">&lt;main&gt;</span>
+            <span class="t-badge t-blue" style="font-size:11px">&lt;section&gt;</span>
+            <span class="t-badge t-blue" style="font-size:11px">&lt;article&gt;</span>
+            <span class="t-badge t-blue" style="font-size:11px">&lt;aside&gt;</span>
+            <span class="t-badge t-blue" style="font-size:11px">&lt;footer&gt;</span>
+            <span class="t-badge t-teal" style="font-size:11px">&lt;figure&gt;</span>
+            <span class="t-badge t-teal" style="font-size:11px">&lt;time&gt;</span>
+            <span class="t-badge t-teal" style="font-size:11px">&lt;mark&gt;</span>
+            <span class="t-badge t-teal" style="font-size:11px">&lt;details&gt;</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="margin-bottom:8px">Form Elements</div>
+          <div class="tag-row" style="gap:4px">
+            <span class="t-badge t-amber" style="font-size:11px">&lt;form&gt;</span>
+            <span class="t-badge t-amber" style="font-size:11px">&lt;input&gt;</span>
+            <span class="t-badge t-amber" style="font-size:11px">&lt;label&gt;</span>
+            <span class="t-badge t-amber" style="font-size:11px">&lt;select&gt;</span>
+            <span class="t-badge t-amber" style="font-size:11px">&lt;textarea&gt;</span>
+            <span class="t-badge t-amber" style="font-size:11px">&lt;button&gt;</span>
+            <span class="t-badge t-orange" style="font-size:11px">&lt;fieldset&gt;</span>
+            <span class="t-badge t-orange" style="font-size:11px">&lt;legend&gt;</span>
+            <span class="t-badge t-orange" style="font-size:11px">&lt;datalist&gt;</span>
+            <span class="t-badge t-orange" style="font-size:11px">&lt;output&gt;</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title" style="margin-bottom:8px">Media &amp; Meta</div>
+          <div class="tag-row" style="gap:4px">
+            <span class="t-badge t-purple" style="font-size:11px">&lt;video&gt;</span>
+            <span class="t-badge t-purple" style="font-size:11px">&lt;audio&gt;</span>
+            <span class="t-badge t-purple" style="font-size:11px">&lt;source&gt;</span>
+            <span class="t-badge t-purple" style="font-size:11px">&lt;track&gt;</span>
+            <span class="t-badge t-red" style="font-size:11px">&lt;meta&gt;</span>
+            <span class="t-badge t-red" style="font-size:11px">&lt;link&gt;</span>
+            <span class="t-badge t-red" style="font-size:11px">&lt;title&gt;</span>
+            <span class="t-badge t-gray" style="font-size:11px">&lt;script&gt;</span>
+            <span class="t-badge t-gray" style="font-size:11px">&lt;style&gt;</span>
+            <span class="t-badge t-gray" style="font-size:11px">&lt;noscript&gt;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="../src/html5-notes.js"></script>
+</body>
+</html>
