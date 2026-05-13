@@ -121,6 +121,7 @@ console.<span class="fn">log</span>(<span class="fn">oddOrEven</span>(<span clas
       <div class="q-body">
         <div class="q-desc">A number is prime if it has no divisors other than 1 and itself. Key optimisation: only check up to <strong>√n</strong> — if no factor found by then, it's prime.</div>
         <div class="lang-tabs">
+          <button class="lang-tab pseudo-tab" onclick="switchTab(this,'pseudo','q2')">Sudo Code</button>
           <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q2')">C++</button>
           <button class="lang-tab js-tab" onclick="switchTab(this,'js','q2')">JavaScript</button>
         </div>
@@ -165,6 +166,32 @@ console.<span class="fn">log</span>(<span class="fn">oddOrEven</span>(<span clas
 console.<span class="fn">log</span>(<span class="fn">isPrime</span>(<span class="nm">17</span>)); <span class="cmt">// true</span>
 console.<span class="fn">log</span>(<span class="fn">isPrime</span>(<span class="nm">18</span>)); <span class="cmt">// false</span></pre></div>
         </div>
+        <div id="q2-pseudo" class="lang-pane">
+          <div class="logic-rich-content">
+            <h4>❌ Brute Force — The Naive Way</h4>
+            <div class="code-wrap" style="padding:.8rem; margin-bottom:1rem;"><pre><span class="kw">function</span> <span class="fn">isPrime</span>(n):
+    <span class="kw">if</span> n &lt;= <span class="nm">1</span>: <span class="kw">return false</span>
+    <span class="kw">for</span> i = <span class="nm">2</span> <span class="kw">to</span> n-<span class="nm">1</span>:
+        <span class="kw">if</span> n % i == <span class="nm">0</span>: <span class="kw">return false</span>
+    <span class="kw">return true</span></pre></div>
+            <p><strong>Problem:</strong> Checks ALL numbers from 2 to n-1. For <code>n = 1,000,000</code> → <strong>999,998 iterations</strong>. Way too slow.</p>
+
+            <h4>🔑 Optimization 1: Why <code>i * i &lt;= n</code>?</h4>
+            <blockquote><strong>Divisors always come in pairs.</strong> If a × b = n, then one of them is ≤ √n.</blockquote>
+            <table class="logic-table">
+              <tr><th>Pair</th><th>a</th><th>b</th><th>a ≤ √36 (≤6)?</th></tr>
+              <tr><td>1 × 36</td><td>1</td><td>36</td><td>✅ a=1 is ≤ 6</td></tr>
+              <tr><td>2 × 18</td><td>2</td><td>18</td><td>✅ a=2 is ≤ 6</td></tr>
+              <tr><td>3 × 12</td><td>3</td><td>12</td><td>✅ a=3 is ≤ 6</td></tr>
+              <tr><td>6 × 6</td><td>6</td><td>6</td><td>✅ a=6 is ≤ 6</td></tr>
+            </table>
+            <p>After √n, the pairs just <strong>MIRROR</strong>. So if no divisor found up to √n, none exists beyond it either.</p>
+
+            <h4>🔑 Optimization 2: Why <code>i += 6</code>? (The 6k ± 1 Pattern)</h4>
+            <p>Every integer falls into one of 6 buckets based on remainder when divided by 6. <strong>4 out of 6 positions are GUARANTEED non-prime!</strong> Only <code>6k+1</code> and <code>6k-1</code> can be prime. So we check 5, 7, 11, 13...</p>
+            <p><strong>Result:</strong> We skip 2/3 of all candidates → <strong>3x faster</strong>.</p>
+          </div>
+        </div>
         <div class="output-wrap"><div class="output-label">Output</div>17 → true (prime) | 18 → false | Complexity: O(√n)</div>
       </div>
     </div>
@@ -183,6 +210,7 @@ console.<span class="fn">log</span>(<span class="fn">isPrime</span>(<span class=
       <div class="q-body">
         <div class="q-desc">Print the first N terms of Fibonacci: each term is the sum of the previous two. F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2).</div>
         <div class="lang-tabs">
+          <button class="lang-tab pseudo-tab" onclick="switchTab(this,'pseudo','q3')">Sudo Code</button>
           <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q3')">C++</button>
           <button class="lang-tab js-tab" onclick="switchTab(this,'js','q3')">JavaScript</button>
         </div>
@@ -223,6 +251,22 @@ console.<span class="fn">log</span>(<span class="fn">isPrime</span>(<span class=
 console.<span class="fn">log</span>(<span class="fn">fibonacci</span>(<span class="nm">10</span>));
 <span class="cmt">// 0 1 1 2 3 5 8 13 21 34</span></pre></div>
         </div>
+        <div id="q3-pseudo" class="lang-pane">
+          <div class="logic-rich-content">
+            <h4>❌ Recursive (Exponential — O(2^n))</h4>
+            <p><strong>Problem:</strong> HUGE duplication of work. <code>fib(5)</code> calculates <code>fib(2)</code> three times! At <code>fib(50)</code>, it's billions of redundant calls.</p>
+            
+            <h4>✅ Iterative (Linear — O(n))</h4>
+            <blockquote><strong>The Sliding Window:</strong> We only ever need the <strong>last two</strong> numbers to compute the next one. No need to store the entire array or build a massive call stack.</blockquote>
+            <div class="code-wrap" style="padding:.8rem;"><pre><span class="kw">function</span> <span class="fn">fibonacci</span>(n):
+    prev = <span class="nm">0</span>, curr = <span class="nm">1</span>
+    <span class="kw">for</span> i = <span class="nm">2</span> <span class="kw">to</span> n:
+        next = prev + curr  <span class="cmt">// compute next</span>
+        prev = curr         <span class="cmt">// slide window forward</span>
+        curr = next
+    <span class="kw">return</span> curr</pre></div>
+          </div>
+        </div>
         <div class="output-wrap"><div class="output-label">Output (n=10)</div>0 1 1 2 3 5 8 13 21 34</div>
       </div>
     </div>
@@ -241,6 +285,7 @@ console.<span class="fn">log</span>(<span class="fn">fibonacci</span>(<span clas
       <div class="q-body">
         <div class="q-desc">n! = n × (n-1) × ... × 1. Shown with both <strong>iterative</strong> and <strong>recursive</strong> approaches.</div>
         <div class="lang-tabs">
+          <button class="lang-tab pseudo-tab" onclick="switchTab(this,'pseudo','q4')">Sudo Code</button>
           <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q4')">C++</button>
           <button class="lang-tab js-tab" onclick="switchTab(this,'js','q4')">JavaScript</button>
         </div>
@@ -282,6 +327,22 @@ console.<span class="fn">log</span>(<span class="fn">fibonacci</span>(<span clas
 console.<span class="fn">log</span>(<span class="fn">factIter</span>(<span class="nm">10</span>)); <span class="cmt">// 3628800</span>
 console.<span class="fn">log</span>(<span class="fn">factRec</span>(<span class="nm">10</span>));  <span class="cmt">// 3628800</span></pre></div>
         </div>
+        <div id="q4-pseudo" class="lang-pane">
+          <div class="logic-rich-content">
+            <h4>🧠 THE WHY: Break it down</h4>
+            <p><code>5! = 5 × 4 × 3 × 2 × 1</code></p>
+            <p>By mathematical definition, <code>0! = 1</code>. This is our BASE CASE for recursion.</p>
+            
+            <h4>🔑 Why start Iterative at 2?</h4>
+            <blockquote>Multiplying by 1 is useless. <code>result</code> is already 1. So we start our loop at 2.</blockquote>
+            <div class="code-wrap" style="padding:.8rem;"><pre><span class="kw">function</span> <span class="fn">factorial</span>(n):
+    result = <span class="nm">1</span>
+    <span class="kw">for</span> i = <span class="nm">2</span> <span class="kw">to</span> n:
+        result *= i
+    <span class="kw">return</span> result</pre></div>
+            <p><strong>Interview Tip:</strong> Iterative is preferred in interviews to avoid <strong>Stack Overflow</strong> on huge numbers.</p>
+          </div>
+        </div>
         <div class="output-wrap"><div class="output-label">Output</div>10! = 3628800</div>
       </div>
     </div>
@@ -300,6 +361,7 @@ console.<span class="fn">log</span>(<span class="fn">factRec</span>(<span class=
       <div class="q-body">
         <div class="q-desc">Reverse the digits of an integer using modulus and division. Extract last digit with <strong>n % 10</strong>, build reversed number.</div>
         <div class="lang-tabs">
+          <button class="lang-tab pseudo-tab" onclick="switchTab(this,'pseudo','q5')">Sudo Code</button>
           <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q5')">C++</button>
           <button class="lang-tab js-tab" onclick="switchTab(this,'js','q5')">JavaScript</button>
         </div>
@@ -330,6 +392,24 @@ console.<span class="fn">log</span>(<span class="fn">factRec</span>(<span class=
 }
 console.<span class="fn">log</span>(<span class="fn">reverseNum</span>(<span class="nm">12345</span>)); <span class="cmt">// 54321</span></pre></div>
         </div>
+        <div id="q5-pseudo" class="lang-pane">
+          <div class="logic-rich-content">
+            <h4>🧠 THE WHY behind each operation:</h4>
+            <table class="logic-table">
+              <tr><th>Operation</th><th>Purpose</th><th>Example (n=1234)</th></tr>
+              <tr><td><code>n % 10</code></td><td>Gets the <strong>last digit</strong></td><td>1234 % 10 = <strong>4</strong></td></tr>
+              <tr><td><code>rev * 10</code></td><td><strong>Shifts</strong> existing digits left</td><td>0 → 0, 4 → 40, 43 → 430</td></tr>
+              <tr><td><code>+ lastDigit</code></td><td><strong>Places</strong> new digit</td><td>0+4=4, 40+3=43, 430+2=432</td></tr>
+              <tr><td><code>n / 10</code></td><td><strong>Removes</strong> the last digit</td><td>1234→123→12→1→0</td></tr>
+            </table>
+
+            <h4>Step-by-step trace for n = 1234:</h4>
+            <div class="code-wrap" style="padding:.8rem;"><pre>Step <span class="nm">1</span>: last = <span class="nm">4</span>, rev = <span class="nm">0</span>*<span class="nm">10</span> + <span class="nm">4</span> = <span class="nm">4</span>,       n = <span class="nm">123</span>
+Step <span class="nm">2</span>: last = <span class="nm">3</span>, rev = <span class="nm">4</span>*<span class="nm">10</span> + <span class="nm">3</span> = <span class="nm">43</span>,      n = <span class="nm">12</span>
+Step <span class="nm">3</span>: last = <span class="nm">2</span>, rev = <span class="nm">43</span>*<span class="nm">10</span> + <span class="nm">2</span> = <span class="nm">432</span>,    n = <span class="nm">1</span>
+Step <span class="nm">4</span>: last = <span class="nm">1</span>, rev = <span class="nm">432</span>*<span class="nm">10</span> + <span class="nm">1</span> = <span class="nm">4321</span>,  n = <span class="nm">0</span> → STOP</pre></div>
+          </div>
+        </div>
         <div class="output-wrap"><div class="output-label">Output</div>12345 → 54321</div>
       </div>
     </div>
@@ -345,6 +425,7 @@ console.<span class="fn">log</span>(<span class="fn">reverseNum</span>(<span cla
       <div class="q-body">
         <div class="q-desc">A number is a palindrome if it reads the same forwards and backwards. Reverse and compare, or use two-pointer on string.</div>
         <div class="lang-tabs">
+          <button class="lang-tab pseudo-tab" onclick="switchTab(this,'pseudo','q6')">Sudo Code</button>
           <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q6')">C++</button>
           <button class="lang-tab js-tab" onclick="switchTab(this,'js','q6')">JavaScript</button>
         </div>
@@ -377,6 +458,26 @@ console.<span class="fn">log</span>(<span class="fn">reverseNum</span>(<span cla
 }
 console.<span class="fn">log</span>(<span class="fn">isPalindrome</span>(<span class="nm">121</span>)); <span class="cmt">// true</span>
 console.<span class="fn">log</span>(<span class="fn">isPalindrome</span>(<span class="nm">123</span>)); <span class="cmt">// false</span></pre></div>
+        </div>
+        <div id="q6-pseudo" class="lang-pane">
+          <div class="logic-rich-content">
+            <h4>🔑 WHY check <code>n < 0</code>?</h4>
+            <p>The <code>-</code> sign only exists on one side. <code>-121</code> reversed is <code>121-</code> which isn't valid. So ALL negatives fail immediately.</p>
+            
+            <h4>🔑 Optimization — Half Reversal</h4>
+            <blockquote><strong>WHY only half?</strong> We don't need to reverse the entire number! We only reverse HALF the digits to avoid integer overflow and save time. Once reversed half catches up to remaining half, we compare.</blockquote>
+            <p>For <code>12321</code>: when <code>n=12</code> and <code>reversed=123</code>, we check <code>12 === Math.floor(123/10)</code> = <code>12 === 12</code> ✅</p>
+            
+            <div class="code-wrap" style="padding:.8rem;"><pre><span class="kw">function</span> <span class="fn">isPalindrome</span>(n):
+    <span class="kw">if</span> n &lt; <span class="nm">0</span> <span class="kw">or</span> (n % <span class="nm">10</span> == <span class="nm">0</span> <span class="kw">and</span> n != <span class="nm">0</span>): <span class="kw">return false</span>
+    
+    rev = <span class="nm">0</span>
+    <span class="kw">while</span> n > rev:  <span class="cmt">// Stop exactly halfway</span>
+        rev = (rev * <span class="nm">10</span>) + (n % <span class="nm">10</span>)
+        n = <span class="fn">floor</span>(n / <span class="nm">10</span>)
+    
+    <span class="kw">return</span> n == rev <span class="kw">or</span> n == <span class="fn">floor</span>(rev / <span class="nm">10</span>)</pre></div>
+          </div>
         </div>
         <div class="output-wrap"><div class="output-label">Output</div>121 → true | 123 → false</div>
       </div>
@@ -1391,6 +1492,7 @@ console.<span class="fn">log</span>(<span class="fn">dnf</span>([<span class="nm
       <div class="q-body">
         <div class="q-desc">HashMap approach: store visited elements. For each element, check if target-element exists in map. O(n) time and space.</div>
         <div class="lang-tabs">
+          <button class="lang-tab pseudo-tab" onclick="switchTab(this,'pseudo','q28')">Sudo Code</button>
           <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q28')">C++</button>
           <button class="lang-tab js-tab" onclick="switchTab(this,'js','q28')">JavaScript</button>
         </div>
@@ -1422,6 +1524,21 @@ console.<span class="fn">log</span>(<span class="fn">dnf</span>([<span class="nm
     <span class="kw">return</span> [];
 }
 console.<span class="fn">log</span>(<span class="fn">twoSum</span>([<span class="nm">2</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">15</span>], <span class="nm">9</span>)); <span class="cmt">// [0,1]</span></pre></div>
+        </div>
+        <div id="q28-pseudo" class="lang-pane">
+          <div class="logic-rich-content">
+            <h4>❌ Brute Force — O(n²)</h4>
+            <p>Using two nested loops. <strong>Why j = i + 1?</strong> Avoids checking the same pair twice AND avoids pairing an element with itself.</p>
+
+            <h4>✅ HashMap — O(n)</h4>
+            <blockquote>Instead of asking "which two numbers sum to target?", flip it: <strong>"I have nums[i], does (target - nums[i]) already exist?"</strong></blockquote>
+            
+            <h4>Trace: nums = [2, 7, 11, 15], target = 9</h4>
+            <div class="code-wrap" style="padding:.8rem;"><pre>i=0: num=2, comp=7, map={} → 7 not found → store {2:0}
+i=1: num=7, comp=2, map={2:0} → 2 FOUND! → return [0, 1] ✅</pre></div>
+            
+            <p><strong>WHY is this O(n)?</strong> HashMap lookup is O(1). We traverse the array once → O(n) total.</p>
+          </div>
         </div>
         <div class="output-wrap"><div class="output-label">Output</div>[2,7,11,15] target=9 → [0,1] (indices)</div>
       </div>
@@ -1608,6 +1725,7 @@ console.<span class="fn">log</span>(<span class="fn">intersect</span>([<span cla
       <div class="q-body">
         <div class="q-desc">Repeatedly compare adjacent elements and swap if out of order. Optimised with early exit flag. O(n²) worst, O(n) best.</div>
         <div class="lang-tabs">
+          <button class="lang-tab pseudo-tab" onclick="switchTab(this,'pseudo','q33')">Sudo Code</button>
           <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q33')">C++</button>
           <button class="lang-tab js-tab" onclick="switchTab(this,'js','q33')">JavaScript</button>
         </div>
@@ -1643,6 +1761,24 @@ console.<span class="fn">log</span>(<span class="fn">intersect</span>([<span cla
     <span class="kw">return</span> arr;
 }
 console.<span class="fn">log</span>(<span class="fn">bubbleSort</span>([<span class="nm">5</span>,<span class="nm">3</span>,<span class="nm">8</span>,<span class="nm">1</span>])); <span class="cmt">// [1,3,5,8]</span></pre></div>
+        </div>
+        <div id="q33-pseudo" class="lang-pane">
+          <div class="logic-rich-content">
+            <h4>🔑 WHY n - 1 passes?</h4>
+            <p>Each pass guarantees at least one element reaches its correct position. After n-1 passes, the last element is automatically correct.</p>
+
+            <h4>🔑 WHY n - 1 - i inner bound?</h4>
+            <p>After <code>i</code> passes, the last <code>i</code> elements are already sorted (bubbled to the end). No need to re-check them.</p>
+
+            <h4>🔑 WHY swapped flag?</h4>
+            <p>If no swaps happen in a full pass, the array is already sorted. Breaking early gives a best-case scenario of <strong>O(n)</strong>.</p>
+
+            <h4>Trace:</h4>
+            <div class="code-wrap" style="padding:.8rem;"><pre>Pass 0: [5,3,1,4,2] → [3,1,4,2,|5|]  ← 5 is now in place
+Pass 1: [3,1,4,2]   → [1,3,2,|4,5|]  ← 4 is now in place
+Pass 2: [1,3,2]     → [1,2,|3,4,5|]  ← 3 is now in place
+Pass 3: [1,2]       → [|1,2,3,4,5|]  ← done!</pre></div>
+          </div>
         </div>
         <div class="output-wrap"><div class="output-label">Output</div>[5,3,8,1] → [1,3,5,8] | O(n²) worst</div>
       </div>
@@ -1770,6 +1906,7 @@ console.<span class="fn">log</span>(<span class="fn">maxProfit</span>([<span cla
       <div class="q-body">
         <div class="q-desc">At each element, decide: extend current subarray or start fresh. <strong>maxCur = max(num, maxCur + num)</strong>. Track global max. O(n) O(1).</div>
         <div class="lang-tabs">
+          <button class="lang-tab pseudo-tab" onclick="switchTab(this,'pseudo','q36')">Sudo Code</button>
           <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q36')">C++</button>
           <button class="lang-tab js-tab" onclick="switchTab(this,'js','q36')">JavaScript</button>
         </div>
@@ -1799,6 +1936,25 @@ console.<span class="fn">log</span>(<span class="fn">maxProfit</span>([<span cla
 }
 console.<span class="fn">log</span>(<span class="fn">maxSubarraySum</span>([-<span class="nm">2</span>,<span class="nm">1</span>,-<span class="nm">3</span>,<span class="nm">4</span>,-<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">1</span>,-<span class="nm">5</span>,<span class="nm">4</span>]));
 <span class="cmt">// 6</span></pre></div>
+        </div>
+        <div id="q36-pseudo" class="lang-pane">
+          <div class="logic-rich-content">
+            <h4>🧠 THE WHY: Math.max(nums[i], currentSum + nums[i])</h4>
+            <blockquote>At each element, we ask: <strong>"Am I better off on my own, or does joining the previous group help me?"</strong></blockquote>
+            <p>If <code>currentSum</code> is negative, it's <strong>dragging us down</strong>. Starting fresh is better.</p>
+
+            <h4>Trace: Array [-2, 1, -3, 4, -1, 2, 1, -5, 4]</h4>
+            <table class="logic-table">
+              <tr><th>i</th><th>Calculation (Am I better alone or joined?)</th><th>Action</th><th>MaxSum</th></tr>
+              <tr><td>0</td><td>Init: -2</td><td>Start</td><td>-2</td></tr>
+              <tr><td>1</td><td>max(1, -2+1) = max(1,-1) = 1</td><td>Start fresh!</td><td>1</td></tr>
+              <tr><td>2</td><td>max(-3, 1-3) = max(-3,-2) = -2</td><td>Keep group</td><td>1</td></tr>
+              <tr><td>3</td><td>max(4, -2+4) = max(4, 2) = 4</td><td>Start fresh!</td><td>4</td></tr>
+              <tr><td>4</td><td>max(-1, 4-1) = max(-1, 3) = 3</td><td>Keep group</td><td>4</td></tr>
+              <tr><td>5</td><td>max(2, 3+2) = max(2, 5) = 5</td><td>Keep group</td><td>5</td></tr>
+              <tr><td>6</td><td>max(1, 5+1) = max(1, 6) = 6</td><td>Keep group</td><td>6 ✅</td></tr>
+            </table>
+          </div>
         </div>
         <div class="output-wrap"><div class="output-label">Output</div>[-2,1,-3,4,-1,2,1,-5,4] → Max sum = 6 (subarray [4,-1,2,1])</div>
       </div>

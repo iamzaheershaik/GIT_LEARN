@@ -320,6 +320,53 @@ main { max-width:1200px; margin:0 auto; padding:0 2rem 8rem; }
   color:var(--accent5); margin-bottom:1rem;
 }
 
+/* ── LOGIC RICH CONTENT ── */
+.logic-rich-content {
+  padding: 1.4rem 1.6rem;
+  background: var(--bg3);
+  color: var(--text2);
+  font-size: .85rem;
+  line-height: 1.6;
+}
+.logic-rich-content h4 {
+  color: var(--accent);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .9rem;
+  margin: 1.5rem 0 .8rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.logic-rich-content h4:first-child { margin-top: 0; }
+.logic-rich-content p { margin-bottom: 1rem; }
+.logic-rich-content strong { color: var(--text); }
+.logic-rich-content blockquote {
+  border-left: 3px solid var(--accent3);
+  background: rgba(56, 189, 248, 0.05);
+  padding: .8rem 1rem;
+  margin: 1rem 0;
+  font-style: italic;
+  color: var(--text);
+}
+.logic-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .75rem;
+}
+.logic-table th, .logic-table td {
+  border: 1px solid var(--border2);
+  padding: .6rem;
+  text-align: left;
+}
+.logic-table th {
+  background: var(--panel);
+  color: var(--text);
+}
+.logic-table td {
+  color: var(--text2);
+}
+
 /* ── DIVIDER ── */
 .divider { border:none; border-top:1px solid var(--border); margin:0; }
 
