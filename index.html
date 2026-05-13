@@ -3,73 +3,187 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dev Hub — Git Masterclass · JD Resume Agent · Crack The JS</title>
-<meta name="description" content="Complete developer hub: Git Masterclass (Levels 1–3), JD Resume Tailor Agent, and Crack The JS Interview prep.">
+<title>Dev Hub — Comprehensive Developer Platform</title>
+<meta name="description" content="Complete developer hub: Git Masterclass, Backend, Frontend, and JS Interview prep.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body class="level-1">
+<body class="section-home">
 
-<!-- NAVIGATION BAR -->
-<nav class="nav-bar" id="navBar">
-  <div class="nav-logo">
-    <div class="nav-dots">
-      <div class="nav-dot" style="background:#f87171"></div>
-      <div class="nav-dot" style="background:#fbbf24"></div>
-      <div class="nav-dot" style="background:#34d399"></div>
+<div class="app-container">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="nav-dots">
+        <div class="nav-dot" style="background:#f87171"></div>
+        <div class="nav-dot" style="background:#fbbf24"></div>
+        <div class="nav-dot" style="background:#34d399"></div>
+      </div>
+      <div class="nav-brand">
+        <span class="git">dev</span><span class="suffix">-hub</span>
+      </div>
     </div>
-    <div class="nav-brand">
-      <span class="git">dev</span><span class="suffix">-hub</span>
+
+    <div class="sidebar-search" id="btnCmdPalette">
+      <span class="search-icon">🔍</span>
+      <span class="search-text">Search...</span>
+      <span class="search-kbd">Ctrl K</span>
     </div>
-  </div>
 
-  <div class="series-badge">
-    <span class="pulse-dot"></span>
-    <span>Complete Series</span>
-  </div>
+    <div class="sidebar-scroll">
+      <div class="nav-group">
+        <div class="nav-group-title">Home</div>
+        <button class="section-btn active" data-section="home" onclick="switchSection('home')" id="secBtnHome">
+          <span class="section-icon">🏠</span>
+          <span class="section-label">Dashboard</span>
+        </button>
+      </div>
 
-  <!-- Section Switcher -->
-  <div class="section-switcher" id="sectionSwitcher">
-    <button class="section-btn active" data-section="git" onclick="switchSection('git')" id="secBtnGit">
-      <span class="section-icon">⌥</span>
-      <span class="section-label">Git Masterclass</span>
-    </button>
-    <button class="section-btn" data-section="js" onclick="switchSection('js')" id="secBtnJs">
-      <span class="section-icon">⚡</span>
-      <span class="section-label">JS Masterclass</span>
-    </button>
-    <button class="section-btn" data-section="html5" onclick="switchSection('html5')" id="secBtnHtml5">
-      <span class="section-icon">🌐</span>
-      <span class="section-label">HTML5 Notes</span>
-    </button>
-    <button class="section-btn" data-section="networking" onclick="switchSection('networking')" id="secBtnNetworking">
-      <span class="section-icon">📡</span>
-      <span class="section-label">Networking</span>
-    </button>
-    <button class="section-btn" data-section="crackjs" onclick="switchSection('crackjs')" id="secBtnCrackjs">
-      <span class="section-icon">💻</span>
-      <span class="section-label">Crack The JS</span>
-    </button>
-    <button class="section-btn" data-section="logic" onclick="switchSection('logic')" id="secBtnLogic">
-      <span class="section-icon">🧠</span>
-      <span class="section-label">Interview Logic</span>
-    </button>
-    <button class="section-btn" data-section="sql" onclick="switchSection('sql')" id="secBtnSql">
-      <span class="section-icon">🗄️</span>
-      <span class="section-label">SQL Roadmap</span>
-    </button>
-    <button class="section-btn" data-section="postgres" onclick="switchSection('postgres')" id="secBtnPostgres">
-      <span class="section-icon">🐘</span>
-      <span class="section-label">PostgreSQL</span>
-    </button>
-    <button class="section-btn" data-section="node" onclick="switchSection('node')" id="secBtnNode">
-      <span class="section-icon">🟢</span>
-      <span class="section-label">Node/Mongo</span>
-    </button>
-  </div>
+      <div class="nav-group">
+        <div class="nav-group-title">Frontend & Core</div>
+        <button class="section-btn" data-section="git" onclick="switchSection('git')" id="secBtnGit">
+          <span class="section-icon">⌥</span>
+          <span class="section-label">Git Masterclass</span>
+        </button>
+        <button class="section-btn" data-section="js" onclick="switchSection('js')" id="secBtnJs">
+          <span class="section-icon">⚡</span>
+          <span class="section-label">JS Masterclass</span>
+        </button>
+        <button class="section-btn" data-section="html5" onclick="switchSection('html5')" id="secBtnHtml5">
+          <span class="section-icon">🌐</span>
+          <span class="section-label">HTML5 Notes</span>
+        </button>
+        <button class="section-btn" data-section="networking" onclick="switchSection('networking')" id="secBtnNetworking">
+          <span class="section-icon">📡</span>
+          <span class="section-label">Networking</span>
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Backend & Database</div>
+        <button class="section-btn" data-section="node" onclick="switchSection('node')" id="secBtnNode">
+          <span class="section-icon">🟢</span>
+          <span class="section-label">Node / Mongo</span>
+        </button>
+        <button class="section-btn" data-section="sql" onclick="switchSection('sql')" id="secBtnSql">
+          <span class="section-icon">🗄️</span>
+          <span class="section-label">SQL Roadmap</span>
+        </button>
+        <button class="section-btn" data-section="postgres" onclick="switchSection('postgres')" id="secBtnPostgres">
+          <span class="section-icon">🐘</span>
+          <span class="section-label">PostgreSQL</span>
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-title">Interview Prep</div>
+        <button class="section-btn" data-section="react" onclick="switchSection('react')" id="secBtnReact">
+          <span class="section-icon">⚛️</span>
+          <span class="section-label">React Q/A</span>
+        </button>
+        <button class="section-btn" data-section="logic" onclick="switchSection('logic')" id="secBtnLogic">
+          <span class="section-icon">🧠</span>
+          <span class="section-label">Interview Logic</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <header class="topbar">
+      <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="document.getElementById('sidebar').classList.toggle('open')">
+        ☰
+      </button>
+      <div class="breadcrumb" id="breadcrumb">
+        <span class="bc-icon">🏠</span> Dashboard
+      </div>
+    </header>
+
+    <div class="frame-container">
+      
+      <!-- DASHBOARD VIEW -->
+      <div class="dashboard-view active" id="dashboardView">
+        <div class="dash-hero">
+          <h1 class="dash-title">Welcome to <span>Dev Hub</span></h1>
+          <p class="dash-subtitle">Your comprehensive 9-module engineering roadmap.</p>
+        </div>
+
+        <div class="dash-grid">
+          <div class="dash-card card-git" onclick="switchSection('git')">
+            <div class="dc-icon">⌥</div>
+            <h3 class="dc-title">Git Masterclass</h3>
+            <p class="dc-desc">3 progressive levels from beginner to expert concepts.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-git" style="width: 0%; background: var(--l1)"></div></div>
+          </div>
+          <div class="dash-card card-js" onclick="switchSection('js')">
+            <div class="dc-icon">⚡</div>
+            <h3 class="dc-title">JS Masterclass</h3>
+            <p class="dc-desc">Deep dive into JavaScript APIs, scope, and closures.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-js" style="width: 0%; background: var(--js)"></div></div>
+          </div>
+          <div class="dash-card card-html5" onclick="switchSection('html5')">
+            <div class="dc-icon">🌐</div>
+            <h3 class="dc-title">HTML5 Notes</h3>
+            <p class="dc-desc">Semantic HTML, accessibility, and SEO mastery.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-html5" style="width: 0%; background: var(--html5)"></div></div>
+          </div>
+          <div class="dash-card card-networking" onclick="switchSection('networking')">
+            <div class="dc-icon">📡</div>
+            <h3 class="dc-title">Networking</h3>
+            <p class="dc-desc">HTTP, WebSockets, DNS, TCP/IP & Performance.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-networking" style="width: 0%; background: var(--net)"></div></div>
+          </div>
+          <div class="dash-card card-node" onclick="switchSection('node')">
+            <div class="dc-icon">🟢</div>
+            <h3 class="dc-title">Node & Mongo</h3>
+            <p class="dc-desc">180+ curated Node/Express/Mongo interview Q&A.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-node" style="width: 0%; background: var(--node)"></div></div>
+          </div>
+          <div class="dash-card card-sql" onclick="switchSection('sql')">
+            <div class="dc-icon">🗄️</div>
+            <h3 class="dc-title">SQL Roadmap</h3>
+            <p class="dc-desc">From zero to complex analytical queries and CTEs.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-sql" style="width: 0%; background: var(--sql)"></div></div>
+          </div>
+          <div class="dash-card card-postgres" onclick="switchSection('postgres')">
+            <div class="dc-icon">🐘</div>
+            <h3 class="dc-title">PostgreSQL</h3>
+            <p class="dc-desc">Advanced Postgres triggers, JSONB, & row security.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-postgres" style="width: 0%; background: var(--postgres)"></div></div>
+          </div>
+          <div class="dash-card card-react" onclick="switchSection('react')">
+            <div class="dc-icon">⚛️</div>
+            <h3 class="dc-title">React Q/A</h3>
+            <p class="dc-desc">Core concepts, Hooks, State, and Interview Questions.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-react" style="width: 0%; background: var(--react)"></div></div>
+          </div>
+          <div class="dash-card card-logic" onclick="switchSection('logic')">
+            <div class="dc-icon">🧠</div>
+            <h3 class="dc-title">Interview Logic</h3>
+            <p class="dc-desc">50+ array patterns and algorithm implementation.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-logic" style="width: 0%; background: var(--logic)"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- IFRAMES -->
+      <iframe class="level-frame" id="frame1" src="html/git-masterclass.html" title="Level 1: Git Foundations"></iframe>
+      <iframe class="level-frame" id="frame2" title="Level 2: Git Advanced"></iframe>
+      <iframe class="level-frame" id="frame3" title="Level 3: Git Expert"></iframe>
+      <iframe class="level-frame" id="frameJs" title="JS Masterclass"></iframe>
+      <iframe class="level-frame" id="frameHtml5" title="HTML5 Notes"></iframe>
+      <iframe class="level-frame" id="frameNetworking" title="Networking Notes"></iframe>
+      <iframe class="level-frame" id="frameReact" src="https://crack-the-js.vercel.app" title="React Interview Prep"></iframe>
+      <iframe class="level-frame" id="frameLogic" title="Interview Logic Questions"></iframe>
+      <iframe class="level-frame" id="frameSql" title="SQL Roadmap"></iframe>
+      <iframe class="level-frame" id="framePostgres" title="PostgreSQL Mastery Series"></iframe>
+      <iframe class="level-frame" id="frameNode" title="Node Mongo Express"></iframe>
+    </div>
+  </main>
 
   <!-- Level Switcher (only visible for Git section) -->
-  <div class="level-switcher" id="levelSwitcher">
+  <div class="level-switcher" id="levelSwitcher" style="display:none;">
     <button class="level-btn active" data-level="1" onclick="switchLevel(1)" id="lvlBtn1">
       <span class="level-num">1</span>
       <span class="level-label">Foundations</span>
@@ -87,46 +201,33 @@
     </button>
   </div>
 
-  <div class="nav-hint" id="navHint">
-    <span class="kbd">1</span>
-    <span class="kbd">2</span>
-    <span class="kbd">3</span>
-    <span style="margin-left:2px">to switch</span>
+  <!-- TRANSITION OVERLAY -->
+  <div class="transition-overlay" id="transOverlay"></div>
+
+  <!-- LOADING -->
+  <div class="level-loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Loading module...</div>
+    </div>
   </div>
-</nav>
 
-<!-- TRANSITION OVERLAY -->
-<div class="transition-overlay" id="transOverlay"></div>
-
-<!-- LOADING -->
-<div class="level-loader" id="loader">
-  <div class="loader-content">
-    <div class="loader-spinner"></div>
-    <div class="loader-text">Loading level...</div>
+  <!-- COMMAND PALETTE (CTRL+K) -->
+  <div class="cmd-overlay" id="cmdOverlay">
+    <div class="cmd-palette" id="cmdPalette">
+      <div class="cmd-header">
+        <span class="cmd-icon">🔍</span>
+        <input type="text" id="cmdInput" placeholder="Search across all modules... (e.g. 'Event Loop', 'Join')" autocomplete="off">
+        <span class="cmd-esc">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults">
+        <!-- JS will populate this -->
+      </div>
+    </div>
   </div>
-</div>
 
-<!-- IFRAMES -->
-<div class="frame-container">
-  <!-- Git Masterclass frames -->
-  <iframe class="level-frame active" id="frame1" src="html/git-masterclass.html" title="Level 1: Git Foundations"></iframe>
-  <iframe class="level-frame" id="frame2" title="Level 2: Git Advanced"></iframe>
-  <iframe class="level-frame" id="frame3" title="Level 3: Git Expert"></iframe>
-  <!-- JS Masterclass -->
-  <iframe class="level-frame" id="frameJs" title="JS Masterclass"></iframe>
-  <!-- HTML5 Notes -->
-  <iframe class="level-frame" id="frameHtml5" title="HTML5 Notes"></iframe>
-  <!-- Networking Notes -->
-  <iframe class="level-frame" id="frameNetworking" title="Networking Notes"></iframe>
-  <!-- Section Frames -->
-  <iframe class="level-frame" id="frameCrackjs" src="https://crack-the-js.vercel.app" title="Crack The JS Interview"></iframe>
-  <iframe class="level-frame" id="frameLogic" title="Interview Logic Questions"></iframe>
-  <iframe class="level-frame" id="frameSql" title="SQL Roadmap"></iframe>
-  <iframe class="level-frame" id="framePostgres" title="PostgreSQL Mastery Series"></iframe>
-  <iframe class="level-frame" id="frameNode" title="Node Mongo Express"></iframe>
 </div>
 
 <script src="src/script.js"></script>
-
 </body>
 </html>

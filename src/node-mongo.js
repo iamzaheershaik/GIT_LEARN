@@ -69,4 +69,3 @@ document.querySelectorAll('.qa-list').forEach(list => {
     card.style.animationDelay = `${i * 30}ms`;
   });
 });
-</script>
