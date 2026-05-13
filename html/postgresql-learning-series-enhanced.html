@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PostgreSQL Mastery Series</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/postgresql.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════ -->
+<header>
+  <div class="header-grid"></div>
+  <div class="glow-orb orb1"></div>
+  <div class="glow-orb orb2"></div>
+  <div class="glow-orb orb3"></div>
+
+  <div class="badge">Complete Learning Series · 2026</div>
+  <h1>
+    <span class="pg">Post</span><span class="sql">gre</span><br>
+    <span class="pg">SQL</span><br>
+    <span style="color:var(--text2);font-size:.55em;font-weight:400;letter-spacing:-.01em">Mastery Series</span>
+  </h1>
+  <p class="subtitle">From zero to production-grade developer. Every concept, every pattern, with real projects that compound your skills.</p>
+
+  <div class="meta-row">
+    <div class="meta-item"><span class="dot" style="background:var(--accent)"></span>7 Phases</div>
+    <div class="meta-item"><span class="dot" style="background:#a78bfa"></span>40+ Lessons</div>
+    <div class="meta-item"><span class="dot" style="background:var(--accent2)"></span>3 Real Projects</div>
+    <div class="meta-item"><span class="dot" style="background:var(--accent4)"></span>Developer Depth</div>
+    <div class="meta-item"><span class="dot" style="background:var(--accent5)"></span>~90 Hours</div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">pg.learn</div>
+  <a href="#overview">Overview</a>
+  <a href="#phase1">Foundations</a>
+  <a href="#phase2">Core SQL</a>
+  <a href="#project1">Project 1</a>
+  <a href="#phase3">Intermediate</a>
+  <a href="#project2">Project 2</a>
+  <a href="#phase4">Advanced</a>
+  <a href="#phase5">Performance</a>
+  <a href="#phase6">Dev Deep Dive</a>
+  <a href="#project3">Project 3</a>
+  <a href="#roadmap">Roadmap</a>
+</nav>
+
+<!-- ════════════════════════════════════════════════════
+     MAIN
+════════════════════════════════════════════════════ -->
+<main>
+
+<!-- ─── OVERVIEW ──────────────────────────────────── -->
+<section id="overview">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Series Overview</div>
+      <h2 class="section-title">Why PostgreSQL, and<br>How This Series Works</h2>
+    </div>
+    <span class="section-count">00</span>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-card">
+      <span class="concept-icon">🗄️</span>
+      <div class="concept-name">What is PostgreSQL?</div>
+      <div class="concept-desc">The world's most advanced open-source relational database. Used by Instagram, Spotify, GitHub, and thousands of production systems globally. SQL is the universal language to talk to it.</div>
+    </div>
+    <div class="concept-card">
+      <span class="concept-icon">🏗️</span>
+      <div class="concept-name">Series Structure</div>
+      <div class="concept-desc">Each phase builds on the last. Concepts come with SQL you can run immediately. Three milestone projects apply everything from their preceding phases into a real-world schema.</div>
+    </div>
+    <div class="concept-card">
+      <span class="concept-icon">⚡</span>
+      <div class="concept-name">Developer Depth</div>
+      <div class="concept-desc">This series doesn't stop at SELECT. You'll learn query planning, index internals, transactions, JSONB, full-text search, row-level security — things that separate juniors from seniors.</div>
+    </div>
+    <div class="concept-card">
+      <span class="concept-icon">🔧</span>
+      <div class="concept-name">Tools You'll Use</div>
+      <div class="concept-desc">PostgreSQL 16, psql CLI, pgAdmin 4, DBeaver, Node.js with pg / Prisma. All examples run locally — install once, practice everywhere.</div>
+    </div>
+  </div>
+
+  <div class="alert info">
+    <span class="alert-icon">💡</span>
+    <div>
+      <div class="al-title">Setup First</div>
+      <p>Install PostgreSQL via <code>brew install postgresql@16</code> (macOS), <code>sudo apt install postgresql-16</code> (Ubuntu/Debian), or the official Windows installer at postgresql.org. Verify with <code>psql --version</code>.</p>
+    </div>
+  </div>
+
+  <div style="margin: 2rem 0;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;">Skill Coverage by Phase</div>
+    <div class="progress-row"><span class="progress-label">SQL Fundamentals</span><div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--accent)"></div></div><span class="progress-pct">Ph 1–2</span></div>
+    <div class="progress-row"><span class="progress-label">Joins & Subqueries</span><div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--accent)"></div></div><span class="progress-pct">Ph 2–3</span></div>
+    <div class="progress-row"><span class="progress-label">Window Functions</span><div class="progress-bar"><div class="progress-fill" style="width:80%;background:#a78bfa"></div></div><span class="progress-pct">Ph 3</span></div>
+    <div class="progress-row"><span class="progress-label">Query Optimization</span><div class="progress-bar"><div class="progress-fill" style="width:70%;background:var(--accent2)"></div></div><span class="progress-pct">Ph 5</span></div>
+    <div class="progress-row"><span class="progress-label">Indexes & Internals</span><div class="progress-bar"><div class="progress-fill" style="width:65%;background:var(--accent4)"></div></div><span class="progress-pct">Ph 5–6</span></div>
+    <div class="progress-row"><span class="progress-label">Procedures/Triggers</span><div class="progress-bar"><div class="progress-fill" style="width:60%;background:var(--accent5)"></div></div><span class="progress-pct">Ph 6</span></div>
+    <div class="progress-row"><span class="progress-label">Security & JSONB</span><div class="progress-bar"><div class="progress-fill" style="width:55%;background:#f87171"></div></div><span class="progress-pct">Ph 6</span></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PHASE 1: FOUNDATIONS ──────────────────────── -->
+<section id="phase1">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Phase 1</div>
+      <h2 class="section-title">Absolute Foundations</h2>
+    </div>
+    <span class="section-count">01</span>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num p1">PHASE 01</span>
+      <span class="phase-title">What Are Databases, Really?</span>
+      <span class="phase-desc">No prior knowledge needed. Build the mental model first.</span>
+    </div>
+
+    <div class="lessons-grid">
+      <div class="lesson">
+        <span class="lesson-num">1.1</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Databases vs Spreadsheets — The Mental Model</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">tables</span>
+            <span class="topic-tag">rows & columns</span>
+            <span class="topic-tag">relations</span>
+            <span class="topic-tag">why not Excel?</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-1-1">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 1.1</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>Why Not a Spreadsheet?</h4>
+    <p>A spreadsheet is a <strong>flat file</strong> — all data lives in one grid. When data grows complex (orders tied to customers, products to categories), you either duplicate rows or lose integrity. There's no enforcement that a customer ID actually exists.</p>
+    <p>A relational database stores data in <strong>separate tables linked by keys</strong>. Each piece of data lives in exactly one place. Relationships are enforced by the engine itself — not by your discipline.</p>
+    
+<div class="diagram-wrap">
+  <div class="diagram-title">// Diagram — Database vs Spreadsheet</div>
+  <svg viewBox="0 0 720 260" width="720" height="260" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace">
+    <!-- SPREADSHEET side -->
+    <rect x="20" y="20" width="300" height="220" rx="6" fill="#0d1117" stroke="#1e2d3d"/>
+    <text x="170" y="15" fill="#8b9ab3" font-size="11" text-anchor="middle" letter-spacing="2">SPREADSHEET</text>
+    <!-- header row -->
+    <rect x="20" y="20" width="300" height="28" rx="0" fill="#131c26"/>
+    <text x="80"  y="38" fill="#4a5d73" font-size="10">Name</text>
+    <text x="160" y="38" fill="#4a5d73" font-size="10">Orders</text>
+    <text x="250" y="38" fill="#4a5d73" font-size="10">Total ₹</text>
+    <!-- rows -->
+    <text x="80"  y="62" fill="#e2eaf4" font-size="10">Zaheer</text>
+    <text x="160" y="62" fill="#f59e0b" font-size="10">3, 7, 12 orders</text>
+    <text x="250" y="62" fill="#f59e0b" font-size="10">mixed</text>
+    <text x="80"  y="85" fill="#e2eaf4" font-size="10">Priya</text>
+    <text x="160" y="85" fill="#e2eaf4" font-size="10">2</text>
+    <text x="250" y="85" fill="#e2eaf4" font-size="10">₹8,400</text>
+    <!-- problem callout -->
+    <rect x="30" y="105" width="280" height="50" rx="4" fill="rgba(245,158,11,.08)" stroke="rgba(245,158,11,.3)"/>
+    <text x="170" y="125" fill="#f59e0b" font-size="10" text-anchor="middle">⚠  Data duplicated, no relations,</text>
+    <text x="170" y="142" fill="#f59e0b" font-size="10" text-anchor="middle">no integrity, hard to query at scale</text>
+    <!-- arrow divider -->
+    <text x="350" y="140" fill="#4a5d73" font-size="22" text-anchor="middle">→</text>
+    <!-- DATABASE side -->
+    <rect x="400" y="20" width="300" height="220" rx="6" fill="#0d1117" stroke="#1e2d3d"/>
+    <text x="550" y="15" fill="#00d4ff" font-size="11" text-anchor="middle" letter-spacing="2">POSTGRESQL</text>
+    <!-- users table -->
+    <rect x="410" y="25" width="130" height="80" rx="4" fill="#131c26" stroke="#1e2d3d"/>
+    <rect x="410" y="25" width="130" height="22" rx="4" fill="#0a1520"/>
+    <text x="475" y="40" fill="#00d4ff" font-size="10" text-anchor="middle">users</text>
+    <text x="425" y="58" fill="#4a5d73" font-size="9">id PK</text>
+    <text x="425" y="72" fill="#e2eaf4" font-size="9">name: Zaheer</text>
+    <text x="425" y="86" fill="#e2eaf4" font-size="9">email: z@x.com</text>
+    <!-- orders table -->
+    <rect x="560" y="25" width="130" height="96" rx="4" fill="#131c26" stroke="#1e2d3d"/>
+    <rect x="560" y="25" width="130" height="22" rx="4" fill="#0a1520"/>
+    <text x="625" y="40" fill="#00d4ff" font-size="10" text-anchor="middle">orders</text>
+    <text x="575" y="58" fill="#4a5d73" font-size="9">id PK</text>
+    <text x="575" y="72" fill="#4a5d73" font-size="9">user_id FK →</text>
+    <text x="575" y="86" fill="#e2eaf4" font-size="9">total: ₹3200</text>
+    <text x="575" y="100" fill="#e2eaf4" font-size="9">status: PAID</text>
+    <!-- FK arrow -->
+    <line x1="540" y1="65" x2="560" y2="65" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="4,3"/>
+    <!-- benefit callout -->
+    <rect x="410" y="145" width="280" height="50" rx="4" fill="rgba(0,212,255,.06)" stroke="rgba(0,212,255,.2)"/>
+    <text x="550" y="165" fill="#00d4ff" font-size="10" text-anchor="middle">✓ Single source of truth</text>
+    <text x="550" y="182" fill="#00d4ff" font-size="10" text-anchor="middle">✓ Referential integrity, JOIN queries</text>
+  </svg>
+</div>
+    <h4>Core Mental Model</h4>
+    <ul>
+      <li><strong>Table</strong> = a named grid of typed columns. Like a class/struct definition.</li>
+      <li><strong>Row (tuple)</strong> = one record — one instance of that entity.</li>
+      <li><strong>Column (attribute)</strong> = a field with a fixed data type. Every row must conform.</li>
+      <li><strong>Relation</strong> = a link between tables via shared keys (PK → FK).</li>
+    </ul>
+    <div class="key-point">
+      <span class="kp-icon">💡</span>
+      <p>The golden rule: store each fact <em>once</em>. If you find yourself copying the same customer name into 50 order rows, you need a <code>customers</code> table and a <code>customer_id</code> foreign key on <code>orders</code>.</p>
+    </div>
+
+  </div>
+</div>
+
+      <div class="lesson">
+        <span class="lesson-num">1.2</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Relational vs Non-Relational — When to Use What</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">RDBMS</span>
+            <span class="topic-tag">NoSQL</span>
+            <span class="topic-tag">ACID</span>
+            <span class="topic-tag">use cases</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-1-2">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 1.2</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>RDBMS vs NoSQL — The Real Decision</h4>
+    <div class="compare-grid">
+      <div class="compare-box">
+        <div class="cb-title">RDBMS (PostgreSQL)</div>
+        <p>Rigid schema, strict types, ACID transactions. Data has known structure and clear relationships. Ideal for: finance, SaaS apps, inventory, HR systems.</p>
+      </div>
+      <div class="compare-box">
+        <div class="cb-title">NoSQL (Mongo, Redis…)</div>
+        <p>Flexible schema, horizontal scale, eventual consistency. Data is document-like or graph-like with no fixed shape. Ideal for: caching, user-generated content, real-time feeds.</p>
+      </div>
+    </div>
+    
+<div class="diagram-wrap">
+  <div class="diagram-title">// Diagram — RDBMS vs NoSQL Decision Tree</div>
+  <svg viewBox="0 0 700 300" width="700" height="300" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace" font-size="11">
+    <!-- root -->
+    <rect x="250" y="10" width="200" height="36" rx="4" fill="#131c26" stroke="#1e2d3d"/>
+    <text x="350" y="33" fill="#e2eaf4" text-anchor="middle">What's your data shape?</text>
+    <!-- left branch: structured -->
+    <line x1="300" y1="46" x2="160" y2="100" stroke="#1e2d3d" stroke-width="1.5"/>
+    <rect x="60" y="100" width="200" height="36" rx="4" fill="#0a1520" stroke="#00d4ff" stroke-width="1.2"/>
+    <text x="160" y="123" fill="#00d4ff" text-anchor="middle">Structured + Relations</text>
+    <!-- right branch: flexible -->
+    <line x1="400" y1="46" x2="540" y2="100" stroke="#1e2d3d" stroke-width="1.5"/>
+    <rect x="440" y="100" width="220" height="36" rx="4" fill="#0a1520" stroke="#7c3aed" stroke-width="1.2"/>
+    <text x="550" y="123" fill="#a78bfa" text-anchor="middle">Flexible / Document / Graph</text>
+    <!-- left result -->
+    <line x1="160" y1="136" x2="160" y2="175" stroke="#00d4ff" stroke-width="1.5"/>
+    <rect x="60" y="175" width="200" height="70" rx="4" fill="rgba(0,212,255,.06)" stroke="rgba(0,212,255,.2)"/>
+    <text x="160" y="198" fill="#00d4ff" text-anchor="middle" font-weight="bold">PostgreSQL ✓</text>
+    <text x="160" y="215" fill="#8b9ab3" text-anchor="middle">ACID, JOINs, constraints</text>
+    <text x="160" y="230" fill="#8b9ab3" text-anchor="middle">BI, fintech, SaaS, ERP</text>
+    <!-- right result -->
+    <line x1="550" y1="136" x2="550" y2="175" stroke="#7c3aed" stroke-width="1.5"/>
+    <rect x="440" y="175" width="220" height="70" rx="4" fill="rgba(124,58,237,.06)" stroke="rgba(124,58,237,.2)"/>
+    <text x="550" y="198" fill="#a78bfa" text-anchor="middle" font-weight="bold">NoSQL options</text>
+    <text x="550" y="215" fill="#8b9ab3" text-anchor="middle">MongoDB, Redis, DynamoDB</text>
+    <text x="550" y="230" fill="#8b9ab3" text-anchor="middle">Caching, catalogs, graphs</text>
+    <!-- ACID box -->
+    <rect x="90" y="260" width="540" height="32" rx="4" fill="#0d1117" stroke="#1e2d3d"/>
+    <text x="360" y="280" fill="#4a5d73" text-anchor="middle">ACID = Atomicity · Consistency · Isolation · Durability  (PostgreSQL guarantees all four)</text>
+  </svg>
+</div>
+    <h4>ACID — What It Actually Means</h4>
+    <ul>
+      <li><strong>Atomicity</strong> — A transaction is all-or-nothing. Transfer ₹500: both debit AND credit happen, or neither does.</li>
+      <li><strong>Consistency</strong> — Every transaction takes the DB from one valid state to another. Constraints are never violated mid-transaction.</li>
+      <li><strong>Isolation</strong> — Concurrent transactions don't see each other's uncommitted work. Prevents dirty reads.</li>
+      <li><strong>Durability</strong> — Once committed, data survives crashes. PostgreSQL uses a Write-Ahead Log (WAL) to guarantee this.</li>
+    </ul>
+    <div class="key-point">
+      <span class="kp-icon">🎯</span>
+      <p>In MNC interviews: "Use PostgreSQL when your data has relationships and you need ACID. Use MongoDB when your schema is dynamic and you need document-level flexibility." That's the clean answer.</p>
+    </div>
+
+  </div>
+</div>
+
+      <div class="lesson">
+        <span class="lesson-num">1.3</span>
+        <div class="lesson-body">
+          <div class="lesson-title">PostgreSQL Setup — psql, pgAdmin, and Your First Database</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CREATE DATABASE</span>
+            <span class="topic-tag">psql CLI</span>
+            <span class="topic-tag">pgAdmin</span>
+            <span class="topic-tag">\dt \l \c commands</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-1-3">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 1.3</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>Essential psql Commands You Must Know</h4>
+    <div class="mini-code">
+<span class="cmt">-- Connect to a database</span>
+psql -U postgres -d mydb
+
+<span class="cmt">-- Inside psql shell</span>
+\l          <span class="cmt">-- list all databases</span>
+\c mydb     <span class="cmt">-- connect to mydb</span>
+\dt         <span class="cmt">-- list tables in current DB</span>
+\d users    <span class="cmt">-- describe users table (columns, types, constraints)</span>
+\di         <span class="cmt">-- list indexes</span>
+\df         <span class="cmt">-- list functions</span>
+\timing     <span class="cmt">-- toggle query timing (useful for performance)</span>
+\q          <span class="cmt">-- quit</span>
+
+<span class="cmt">-- Create your first DB</span>
+<span class="kw">CREATE DATABASE</span> dev_db;
+<span class="kw">DROP DATABASE</span> dev_db; <span class="cmt">-- destructive! no undo</span>
+    </div>
+    <h4>How pgAdmin Relates to psql</h4>
+    <p>psql is the CLI — fast, scriptable, ssh-friendly. pgAdmin is the GUI — good for visually exploring schemas. In production you'll use psql (or a migration tool). Master psql first; pgAdmin is a crutch.</p>
+    <div class="warn-point">
+      <p>⚠️ <strong>Never</strong> run psql as the <code>postgres</code> superuser in production. Create a dedicated role with only the permissions it needs.</p>
+    </div>
+
+  </div>
+</div>
+
+      <div class="lesson">
+        <span class="lesson-num">1.4</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Data Types — Choosing the Right Type for Every Column</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">INTEGER / BIGINT</span>
+            <span class="topic-tag">TEXT / VARCHAR</span>
+            <span class="topic-tag">BOOLEAN</span>
+            <span class="topic-tag">DATE / TIMESTAMP</span>
+            <span class="topic-tag">NUMERIC / DECIMAL</span>
+            <span class="topic-tag">UUID</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-1-4">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 1.4</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>Choosing the Right Data Type — Why It Matters</h4>
+    <p>Wrong types cost you: storage, performance, correctness. <code>TEXT</code> where you need <code>TIMESTAMPTZ</code> means your app does date math in JavaScript instead of the DB. <code>FLOAT</code> for money means your balance sheet is wrong.</p>
+    
+<div class="diagram-wrap">
+  <div class="diagram-title">// Diagram — PostgreSQL Data Type Decision Map</div>
+  <svg viewBox="0 0 700 320" width="700" height="320" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace" font-size="10.5">
+    <!-- category boxes -->
+    <!-- NUMERIC -->
+    <rect x="10" y="10" width="160" height="180" rx="5" fill="#0a1520" stroke="#1e2d3d"/>
+    <rect x="10" y="10" width="160" height="24" rx="5" fill="#131c26"/>
+    <text x="90" y="26" fill="#00d4ff" text-anchor="middle" font-size="11">NUMERIC</text>
+    <text x="20" y="52" fill="#4ec9b0">SMALLINT</text><text x="130" y="52" fill="#4a5d73">-32k..32k</text>
+    <text x="20" y="70" fill="#4ec9b0">INTEGER</text><text x="130" y="70" fill="#4a5d73">±2.1B</text>
+    <text x="20" y="88" fill="#00d4ff">BIGINT</text><text x="130" y="88" fill="#4a5d73">±9.2×10¹⁸</text>
+    <text x="20" y="106" fill="#4ec9b0">NUMERIC(p,s)</text>
+    <text x="20" y="120" fill="#4a5d73">  exact decimal (money!)</text>
+    <text x="20" y="140" fill="#4ec9b0">FLOAT8</text><text x="100" y="140" fill="#4a5d73">approx</text>
+    <text x="20" y="158" fill="#f59e0b">SERIAL</text><text x="90" y="158" fill="#4a5d73">autoincrement</text>
+    <text x="20" y="176" fill="#00d4ff">BIGSERIAL</text><text x="110" y="176" fill="#4a5d73">preferred</text>
+    <!-- TEXT -->
+    <rect x="185" y="10" width="160" height="145" rx="5" fill="#0a1520" stroke="#1e2d3d"/>
+    <rect x="185" y="10" width="160" height="24" rx="5" fill="#131c26"/>
+    <text x="265" y="26" fill="#00d4ff" text-anchor="middle" font-size="11">TEXT / STRING</text>
+    <text x="195" y="52" fill="#00d4ff">TEXT</text><text x="255" y="52" fill="#4a5d73">unlimited ✓</text>
+    <text x="195" y="70" fill="#4ec9b0">VARCHAR(n)</text><text x="285" y="70" fill="#4a5d73">capped</text>
+    <text x="195" y="88" fill="#4ec9b0">CHAR(n)</text><text x="270" y="88" fill="#4a5d73">padded</text>
+    <text x="195" y="110" fill="#4a5d73">Prefer TEXT in PG —</text>
+    <text x="195" y="126" fill="#4a5d73">VARCHAR(n) adds no</text>
+    <text x="195" y="142" fill="#4a5d73">performance benefit</text>
+    <!-- DATE/TIME -->
+    <rect x="360" y="10" width="165" height="145" rx="5" fill="#0a1520" stroke="#1e2d3d"/>
+    <rect x="360" y="10" width="165" height="24" rx="5" fill="#131c26"/>
+    <text x="442" y="26" fill="#00d4ff" text-anchor="middle" font-size="11">DATE / TIME</text>
+    <text x="370" y="52" fill="#4ec9b0">DATE</text><text x="430" y="52" fill="#4a5d73">2025-01-15</text>
+    <text x="370" y="70" fill="#4ec9b0">TIME</text><text x="430" y="70" fill="#4a5d73">14:30:00</text>
+    <text x="370" y="88" fill="#4ec9b0">TIMESTAMP</text>
+    <text x="370" y="104" fill="#00d4ff">TIMESTAMPTZ</text><text x="490" y="104" fill="#4a5d73">✓</text>
+    <text x="370" y="124" fill="#4a5d73">Always use TZ-aware</text>
+    <text x="370" y="140" fill="#4a5d73">TIMESTAMPTZ in apps</text>
+    <!-- OTHER -->
+    <rect x="540" y="10" width="150" height="145" rx="5" fill="#0a1520" stroke="#1e2d3d"/>
+    <rect x="540" y="10" width="150" height="24" rx="5" fill="#131c26"/>
+    <text x="615" y="26" fill="#00d4ff" text-anchor="middle" font-size="11">SPECIAL</text>
+    <text x="550" y="52" fill="#4ec9b0">BOOLEAN</text><text x="630" y="52" fill="#4a5d73">true/false</text>
+    <text x="550" y="70" fill="#00d4ff">UUID</text><text x="590" y="70" fill="#4a5d73">globally unique</text>
+    <text x="550" y="88" fill="#4ec9b0">JSONB</text><text x="600" y="88" fill="#4a5d73">semi-struct</text>
+    <text x="550" y="106" fill="#4ec9b0">ARRAY</text><text x="605" y="106" fill="#4a5d73">e.g. INT[]</text>
+    <text x="550" y="124" fill="#4ec9b0">ENUM</text><text x="595" y="124" fill="#4a5d73">custom type</text>
+    <text x="550" y="142" fill="#4ec9b0">BYTEA</text><text x="602" y="142" fill="#4a5d73">binary data</text>
+    <!-- money warning -->
+    <rect x="10" y="205" width="680" height="50" rx="4" fill="rgba(245,158,11,.05)" stroke="rgba(245,158,11,.25)"/>
+    <text x="350" y="226" fill="#f59e0b" text-anchor="middle">⚠  For money: use NUMERIC(12,2) — never FLOAT. Floats have rounding errors.</text>
+    <text x="350" y="245" fill="#4a5d73" text-anchor="middle">Example: FLOAT8 can represent 0.1 + 0.2 = 0.30000000000000004 — catastrophic for finance.</text>
+    <!-- UUID vs SERIAL -->
+    <rect x="10" y="268" width="680" height="44" rx="4" fill="rgba(0,212,255,.04)" stroke="rgba(0,212,255,.15)"/>
+    <text x="350" y="289" fill="#00d4ff" text-anchor="middle">UUID vs BIGINT PK: Use UUID when you need globally unique IDs (distributed systems, public APIs).</text>
+    <text x="350" y="307" fill="#4a5d73" text-anchor="middle">Use BIGINT GENERATED ALWAYS AS IDENTITY for internal tables — smaller, faster index scans.</text>
+  </svg>
+</div>
+    <h4>Type Selection Rules (Interview Ready)</h4>
+    <ul>
+      <li><strong>IDs</strong>: <code>BIGINT GENERATED ALWAYS AS IDENTITY</code> (preferred) or <code>UUID</code> for distributed systems.</li>
+      <li><strong>Money</strong>: <code>NUMERIC(12, 2)</code> — exact, no float rounding.</li>
+      <li><strong>Strings</strong>: <code>TEXT</code> over <code>VARCHAR(n)</code> unless you genuinely need a length cap enforced at DB level.</li>
+      <li><strong>Timestamps</strong>: Always <code>TIMESTAMPTZ</code> — it stores UTC, displays in your session timezone.</li>
+      <li><strong>Flags</strong>: <code>BOOLEAN</code>, not <code>INTEGER</code> (0/1 is a code smell).</li>
+    </ul>
+
+  </div>
+</div>
+
+      <div class="lesson">
+        <span class="lesson-num">1.5</span>
+        <div class="lesson-body">
+          <div class="lesson-title">CREATE TABLE — Schema Design from Scratch</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">PRIMARY KEY</span>
+            <span class="topic-tag">NOT NULL</span>
+            <span class="topic-tag">DEFAULT</span>
+            <span class="topic-tag">UNIQUE</span>
+            <span class="topic-tag">SERIAL / GENERATED</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-1-5">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 1.5</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>CREATE TABLE — Every Constraint Explained</h4>
+    <div class="mini-code">
+<span class="kw">CREATE TABLE</span> users (
+  id         <span class="ty">BIGINT</span> <span class="kw">GENERATED ALWAYS AS IDENTITY</span> <span class="kw">PRIMARY KEY</span>,
+  <span class="cmt">-- GENERATED ALWAYS: PG manages this. You can't accidentally override it.</span>
+  <span class="cmt">-- PRIMARY KEY: implies NOT NULL + UNIQUE + creates a B-Tree index automatically.</span>
+
+  email      <span class="ty">TEXT</span> <span class="kw">NOT NULL UNIQUE</span>,
+  <span class="cmt">-- NOT NULL: row is rejected if email is missing. Never store NULL emails.</span>
+  <span class="cmt">-- UNIQUE: a separate B-Tree index is auto-created. Fast lookups by email.</span>
+
+  username   <span class="ty">VARCHAR</span>(<span class="nm">50</span>) <span class="kw">NOT NULL</span>,
+  is_active  <span class="ty">BOOLEAN</span>     <span class="kw">NOT NULL DEFAULT TRUE</span>,
+  <span class="cmt">-- DEFAULT: value used when column is omitted in INSERT.</span>
+  created_at <span class="ty">TIMESTAMPTZ</span> <span class="kw">NOT NULL DEFAULT</span> <span class="fn">now</span>()
+);
+    </div>
+    <h4>When to Use SERIAL vs GENERATED ALWAYS AS IDENTITY</h4>
+    <ul>
+      <li><strong>SERIAL</strong> is old shorthand — it creates a sequence and sets a DEFAULT. You CAN override it with an explicit value in INSERT. Risky.</li>
+      <li><strong>GENERATED ALWAYS AS IDENTITY</strong> (PG 10+) is the SQL standard. The DB always controls the value. Safer. Use this.</li>
+      <li><strong>GENERATED BY DEFAULT AS IDENTITY</strong> allows overriding — useful when you need to restore from a backup with known IDs.</li>
+    </ul>
+    <div class="key-point">
+      <span class="kp-icon">🎯</span>
+      <p>After CREATE TABLE, run <code>\d users</code> in psql to verify column types, constraints, and the automatically-created indexes. This habit catches mistakes immediately.</p>
+    </div>
+
+  </div>
+</div>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="cmt">-- Lesson 1.5 · Your first real table</span>
+
+<span class="kw">CREATE TABLE</span> users (
+  id         <span class="ty">BIGINT</span> <span class="kw">GENERATED ALWAYS AS IDENTITY PRIMARY KEY</span>,
+  email      <span class="ty">TEXT</span>        <span class="kw">NOT NULL UNIQUE</span>,
+  username   <span class="ty">VARCHAR</span>(<span class="nm">50</span>) <span class="kw">NOT NULL</span>,
+  is_active  <span class="ty">BOOLEAN</span>     <span class="kw">NOT NULL DEFAULT</span> <span class="kw">TRUE</span>,
+  created_at <span class="ty">TIMESTAMPTZ</span> <span class="kw">NOT NULL DEFAULT</span> <span class="fn">now</span>()
+);
+
+<span class="cmt">-- Inspect what you just built</span>
+<span class="fn">\d</span> users</pre>
+    
+<div class="answer-panel" id="ans-1-6">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 1.6</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>CRUD — The Four Operations</h4>
+    <div class="mini-code">
+<span class="kw">INSERT INTO</span> users (email, username)
+<span class="kw">VALUES</span> (<span class="str">'zaheer@dev.io'</span>, <span class="str">'zaheer'</span>)
+<span class="kw">RETURNING</span> id, created_at;
+
+<span class="kw">SELECT</span> id, email <span class="kw">FROM</span> users <span class="kw">WHERE</span> is_active = <span class="kw">TRUE</span>;
+
+<span class="kw">UPDATE</span> users
+<span class="kw">SET</span>    username = <span class="str">'zaheer_dev'</span>
+<span class="kw">WHERE</span>  id = <span class="nm">1</span>
+<span class="kw">RETURNING</span> *;
+
+<span class="kw">DELETE FROM</span> users <span class="kw">WHERE</span> id = <span class="nm">1</span>;
+<span class="cmt">-- ⚠ Always use WHERE on UPDATE/DELETE. Wrap in BEGIN; first in prod.</span>
+    </div>
+    <p><code>RETURNING</code> is PostgreSQL-specific — it gives back affected rows after INSERT/UPDATE/DELETE. No need for a follow-up SELECT. Use it always.</p>
+
+  </div>
+</div>
+
+    <div class="lessons-grid" style="margin-top:.5rem">
+      <div class="lesson">
+        <span class="lesson-num">1.6</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Your First CRUD — INSERT, SELECT, UPDATE, DELETE</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">INSERT INTO</span>
+            <span class="topic-tag">SELECT *</span>
+            <span class="topic-tag">UPDATE … SET</span>
+            <span class="topic-tag">DELETE FROM</span>
+            <span class="topic-tag">WHERE clause</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-1-7">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 1.7</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>ON DELETE Options — Choose Carefully</h4>
+    <ul>
+      <li><strong>CASCADE</strong>: Delete parent → delete children. Use for: orders/order_items, posts/comments.</li>
+      <li><strong>SET NULL</strong>: Delete parent → FK becomes NULL. Use for: optional relations.</li>
+      <li><strong>RESTRICT / NO ACTION</strong>: Prevents parent deletion if children exist. Use for: critical reference data.</li>
+    </ul>
+    <div class="mini-code">
+<span class="kw">CREATE TABLE</span> orders (
+  id        <span class="ty">BIGINT</span> <span class="kw">GENERATED ALWAYS AS IDENTITY PRIMARY KEY</span>,
+  user_id   <span class="ty">BIGINT</span> <span class="kw">NOT NULL REFERENCES</span> users(id) <span class="kw">ON DELETE CASCADE</span>,
+  total     <span class="ty">NUMERIC</span>(<span class="nm">12</span>,<span class="nm">2</span>) <span class="kw">NOT NULL CHECK</span> (total >= <span class="nm">0</span>)
+);
+    </div>
+    <div class="warn-point">
+      <p>⚠️ Interview trap: "What's the difference between RESTRICT and NO ACTION?" RESTRICT checks immediately when the statement runs; NO ACTION defers check to end of transaction. In practice they behave the same for most use cases.</p>
+    </div>
+
+  </div>
+</div>
+
+      <div class="lesson">
+        <span class="lesson-num">1.7</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Constraints Deep Dive — Enforcing Data Integrity</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CHECK constraints</span>
+            <span class="topic-tag">FOREIGN KEY</span>
+            <span class="topic-tag">ON DELETE CASCADE</span>
+            <span class="topic-tag">ON DELETE SET NULL</span>
+          </div>
+        </div>
+        <span class="      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PHASE 2: CORE SQL ─────────────────────────── -->
+<section id="phase2">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Phase 2</div>
+      <h2 class="section-title">Core SQL — Querying with Confidence</h2>
+    </div>
+    <span class="section-count">02</span>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num p2">PHASE 02</span>
+      <span class="phase-title">Filtering, Sorting, Aggregating</span>
+      <span class="phase-desc">The bread-and-butter of every SQL developer</span>
+    </div>
+
+    <div class="lessons-grid">
+      <div class="lesson">
+        <span class="lesson-num">2.1</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Filtering Mastery — WHERE, AND, OR, NOT, IN, BETWEEN, LIKE</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">WHERE</span>
+            <span class="topic-tag">IN / NOT IN</span>
+            <span class="topic-tag">BETWEEN</span>
+            <span class="topic-tag">LIKE / ILIKE</span>
+            <span class="topic-tag">IS NULL</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-2-1">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 2.1</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>WHERE Operators — Every One You Need</h4>
+    <div class="mini-code">
+<span class="kw">WHERE</span> age > <span class="nm">18</span> <span class="kw">AND</span> age <= <span class="nm">65</span>
+<span class="kw">WHERE</span> country <span class="kw">IN</span> (<span class="str">'IN'</span>, <span class="str">'US'</span>)
+<span class="kw">WHERE</span> created_at <span class="kw">BETWEEN</span> <span class="str">'2025-01-01'</span> <span class="kw">AND</span> <span class="str">'2025-12-31'</span>
+<span class="kw">WHERE</span> email <span class="kw">LIKE</span> <span class="str">'%@gmail.com'</span>
+<span class="kw">WHERE</span> username <span class="kw">ILIKE</span> <span class="str">'zaheer%'</span>  <span class="cmt">-- case-insensitive (PG only)</span>
+<span class="kw">WHERE</span> deleted_at <span class="kw">IS NULL</span>        <span class="cmt">-- never use = NULL</span>
+    </div>
+    <div class="warn-point">
+      <p>⚠️ <strong>NULL trap</strong>: <code>WHERE email = NULL</code> always returns 0 rows. NULL comparisons with = are always NULL (unknown), not TRUE/FALSE. Always use <code>IS NULL</code> / <code>IS NOT NULL</code>.</p>
+    </div>
+
+  </div>
+</div>
+
+      <div class="lesson">
+        <span class="lesson-num">2.2</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Sorting and Limiting — ORDER BY, LIMIT, OFFSET</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">ORDER BY ASC/DESC</span>
+            <span class="topic-tag">NULLS FIRST/LAST</span>
+            <span class="topic-tag">LIMIT</span>
+            <span class="topic-tag">OFFSET</span>
+            <span class="topic-tag">pagination patterns</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-2-2">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 2.2</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>Pagination — Offset vs Keyset</h4>
+    <div class="mini-code">
+<span class="cmt">-- Offset (simple, but scans N rows at scale)</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> posts <span class="kw">ORDER BY</span> id <span class="kw">LIMIT</span> <span class="nm">20</span> <span class="kw">OFFSET</span> <span class="nm">1000</span>;
+<span class="cmt">-- ⚠ PG must scan and discard 1000 rows</span>
+
+<span class="cmt">-- Keyset/cursor (production preferred)</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> posts
+<span class="kw">WHERE</span>  id > <span class="nm">$last_seen_id</span>
+<span class="kw">ORDER BY</span> id
+<span class="kw">LIMIT</span>  <span class="nm">20</span>;  <span class="cmt">-- O(log n) via index, no wasted scan</span>
+
+<span class="cmt">-- NULLS placement</span>
+<span class="kw">ORDER BY</span> score <span class="kw">DESC NULLS LAST</span>  <span class="cmt">-- NULLs go to end (often what you want)</span>
+    </div>
+
+  </div>
+</div>
+
+      <div class="lesson">
+        <span class="lesson-num">2.3</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Aggregate Functions — COUNT, SUM, AVG, MIN, MAX</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">COUNT(*)</span>
+            <span class="topic-tag">COUNT(DISTINCT)</span>
+            <span class="topic-tag">SUM / AVG</span>
+            <span class="topic-tag">MIN / MAX</span>
+            <span class="topic-tag">ROUND()</span>
+          </div>
+        </div>
+        <span class="      </div>
+
+<div class="answer-panel" id="ans-2-3">
+  <button class="answer-toggle" aria-expanded="false">
+    <span class="toggle-label">Explanation &amp; Answer</span>
+    <span class="toggle-badge">Lesson 2.3</span>
+  </button>
+  <div class="answer-body">
+
+    <h4>Aggregates — Core Reference</h4>
+    <div class="mini-code">
+<span class="fn">COUNT</span>(*)                   <span class="cmt">-- total rows</span>
+<span class="fn">COUNT</span>(email)               <span class="cmt">-- non-NULL only</span>
+<span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> country)    <span class="cmt">-- unique values</span>
+<span class="fn">SUM</span>(amount)                <span class="cmt">-- NULLs ignored</span>
+<span class="fn">AVG</span>(amount)                <span class="cmt">-- NULLs ignored — trap: 3 NULLs of 10 rows → avg of 7</span>
+<span class="fn">ROUND</span>(<span class="fn">AVG</span>(amount), <span class="nm">2</span>)     <span class="cmt">-- round result</span>
+<span class="fn">MIN</span>(created_at)            <span class="cmt">-- earliest</span>
+<span class="fn">MAX</span>(amount)                <span class="cmt">-- highest</span>
+<span class="fn">STRING_AGG</span>(name, <span class="str">', '</span>)    <span class="cmt">-- concat strings in group</span>
+    </div>
+
+  </div>
+</div>
+
+      <div class="lesson">
+        <span class="lesson-num">2.4</span>
+        <div class="lesson-body">
+          <div class="lesson-title">GROUP BY and HAVING — Grouping Data, Filtering Groups</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">GROUP BY</span>
+            <span class="topic-tag">HAVING</span>
+            <span class="topic-tag">WHERE vs HAVING</span>
+            <span class="topic-tag">GROUPING SETS</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="cmt">-- Lesson 2.3–2.4 · Aggregation in action</span>
+
+<span class="kw">SELECT</span>
+  <span class="fn">DATE_TRUNC</span>(<span class="str">'month'</span>, created_at) <span class="kw">AS</span> month,
+  status,
+  <span class="fn">COUNT</span>(*)                         <span class="kw">AS</span> total_orders,
+  <span class="fn">ROUND</span>(<span class="fn">AVG</span>(total_amount), <span class="nm">2</span>)      <span class="kw">AS</span> avg_order_value,
+  <span class="fn">SUM</span>(total_amount)                 <span class="kw">AS</span> revenue
+<span class="kw">FROM</span>   orders
+<span class="kw">WHERE</span>  created_at <span class="op">>=</span> <span class="str">'2024-01-01'</span>
+<span class="kw">GROUP  BY</span> <span class="nm">1</span>, <span class="nm">2</span>
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) <span class="op">></span> <span class="nm">10</span>
+<span class="kw">ORDER  BY</span> month <span class="kw">DESC</span>, revenue <span class="kw">DESC</span>;</pre>
+    </div>
+
+    <div class="phase-header" style="margin-top:2.5rem">
+      <span class="phase-num p2">PHASE 02</span>
+      <span class="phase-title">JOINs — The Heart of Relational SQL</span>
+      <span class="phase-desc">Master every JOIN type with visual mental models</span>
+    </div>
+
+    <div class="lessons-grid">
+      <div class="lesson">
+        <span class="lesson-num">2.5</span>
+        <div class="lesson-body">
+          <div class="lesson-title">INNER JOIN — Only Matching Rows from Both Tables</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">JOIN … ON</span>
+            <span class="topic-tag">table aliases</span>
+            <span class="topic-tag">multi-table joins</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">2.6</span>
+        <div class="lesson-body">
+          <div class="lesson-title">LEFT / RIGHT / FULL OUTER JOIN — Keeping Unmatched Rows</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">LEFT JOIN</span>
+            <span class="topic-tag">RIGHT JOIN</span>
+            <span class="topic-tag">FULL OUTER JOIN</span>
+            <span class="topic-tag">NULL handling</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">2.7</span>
+        <div class="lesson-body">
+          <div class="lesson-title">CROSS JOIN and SELF JOIN — Cartesian Products and Recursive Relationships</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CROSS JOIN</span>
+            <span class="topic-tag">self-join pattern</span>
+            <span class="topic-tag">employee hierarchy example</span>
+          </div>
+        </div>
+        <span class="lesson-time">~45 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">2.8</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Subqueries — Queries Inside Queries</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">scalar subquery</span>
+            <span class="topic-tag">IN subquery</span>
+            <span class="topic-tag">EXISTS</span>
+            <span class="topic-tag">correlated subquery</span>
+            <span class="topic-tag">derived table</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="cmt">-- Lesson 2.5–2.6 · All JOIN types at once</span>
+
+<span class="cmt">-- Find all customers + their orders (including customers with zero orders)</span>
+<span class="kw">SELECT</span>
+  c.id,
+  c.name,
+  <span class="fn">COUNT</span>(o.id)      <span class="kw">AS</span> order_count,
+  <span class="fn">COALESCE</span>(<span class="fn">SUM</span>(o.total), <span class="nm">0</span>) <span class="kw">AS</span> lifetime_value
+<span class="kw">FROM</span>       customers  c
+<span class="kw">LEFT JOIN</span>  orders     o <span class="kw">ON</span> o.customer_id <span class="op">=</span> c.id
+<span class="kw">GROUP BY</span>   c.id, c.name
+<span class="kw">ORDER BY</span>   lifetime_value <span class="kw">DESC</span>;</pre>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PROJECT 1 ───────────────────────────────────── -->
+<section id="project1">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Milestone Project 1</div>
+      <h2 class="section-title">Library Management System</h2>
+    </div>
+    <span class="section-count">P1</span>
+  </div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon" style="background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.15)">📚</div>
+      <div class="project-meta">
+        <div class="project-label">Milestone Project · Phase 1 + 2</div>
+        <div class="project-name">Library Management System</div>
+      </div>
+      <div class="project-difficulty">
+        <div class="diff-dot filled"></div>
+        <div class="diff-dot filled"></div>
+        <div class="diff-dot"></div>
+        <div class="diff-dot"></div>
+        <div class="diff-dot"></div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div class="project-goals">
+        <h4>What You'll Build &amp; Learn</h4>
+        <ul class="goal-list">
+          <li>Design a normalized schema: books, authors, members, loans, categories</li>
+          <li>Enforce all constraints: FK relationships, due-date checks, unique ISBN</li>
+          <li>Write queries to find overdue books, top borrowers, most popular genres</li>
+          <li>Multi-table JOINs with LEFT JOIN to find members who never borrowed</li>
+          <li>Aggregates: monthly loan stats, average loan duration, overdue rate</li>
+          <li>Practice CRUD: issue a book, return it, extend a loan</li>
+        </ul>
+      </div>
+
+      <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem;">Schema Design</div>
+      <div class="schema-preview">
+        <div class="table-card">
+          <div class="table-card-header">books</div>
+          <div class="table-card-body">
+            <div class="table-col"><span class="col-name">id</span><span class="col-pk">PK</span><span class="col-type">bigint</span></div>
+            <div class="table-col"><span class="col-name">isbn</span><span></span><span class="col-type">text</span></div>
+            <div class="table-col"><span class="col-name">title</span><span></span><span class="col-type">text</span></div>
+            <div class="table-col"><span class="col-name">author_id</span><span class="col-pk">FK</span><span class="col-type">bigint</span></div>
+            <div class="table-col"><span class="col-name">copies_total</span><span></span><span class="col-type">int</span></div>
+            <div class="table-col"><span class="col-name">copies_avail</span><span></span><span class="col-type">int</span></div>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-card-header">members</div>
+          <div class="table-card-body">
+            <div class="table-col"><span class="col-name">id</span><span class="col-pk">PK</span><span class="col-type">bigint</span></div>
+            <div class="table-col"><span class="col-name">name</span><span></span><span class="col-type">text</span></div>
+            <div class="table-col"><span class="col-name">email</span><span></span><span class="col-type">text</span></div>
+            <div class="table-col"><span class="col-name">joined_at</span><span></span><span class="col-type">date</span></div>
+            <div class="table-col"><span class="col-name">is_active</span><span></span><span class="col-type">bool</span></div>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-card-header">loans</div>
+          <div class="table-card-body">
+            <div class="table-col"><span class="col-name">id</span><span class="col-pk">PK</span><span class="col-type">bigint</span></div>
+            <div class="table-col"><span class="col-name">book_id</span><span class="col-pk">FK</span><span class="col-type">bigint</span></div>
+            <div class="table-col"><span class="col-name">member_id</span><span class="col-pk">FK</span><span class="col-type">bigint</span></div>
+            <div class="table-col"><span class="col-name">loaned_at</span><span></span><span class="col-type">date</span></div>
+            <div class="table-col"><span class="col-name">due_at</span><span></span><span class="col-type">date</span></div>
+            <div class="table-col"><span class="col-name">returned_at</span><span></span><span class="col-type">date</span></div>
+          </div>
+        </div>
+        <div class="table-card">
+          <div class="table-card-header">authors</div>
+          <div class="table-card-body">
+            <div class="table-col"><span class="col-name">id</span><span class="col-pk">PK</span><span class="col-type">bigint</span></div>
+            <div class="table-col"><span class="col-name">name</span><span></span><span class="col-type">text</span></div>
+            <div class="table-col"><span class="col-name">nationality</span><span></span><span class="col-type">text</span></div>
+            <div class="table-col"><span class="col-name">born</span><span></span><span class="col-type">date</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block" style="margin-top:1.5rem">
+        <pre><span class="cmt">-- Project Query · Books overdue this week + fine calculation</span>
+
+<span class="kw">SELECT</span>
+  m.name                                      <span class="kw">AS</span> member,
+  b.title,
+  l.due_at,
+  <span class="fn">CURRENT_DATE</span> <span class="op">-</span> l.due_at                   <span class="kw">AS</span> days_overdue,
+  <span class="nm">0.50</span> <span class="op">*</span> (<span class="fn">CURRENT_DATE</span> <span class="op">-</span> l.due_at)           <span class="kw">AS</span> fine_usd
+<span class="kw">FROM</span>      loans    l
+<span class="kw">JOIN</span>      books    b <span class="kw">ON</span> b.id <span class="op">=</span> l.book_id
+<span class="kw">JOIN</span>      members  m <span class="kw">ON</span> m.id <span class="op">=</span> l.member_id
+<span class="kw">WHERE</span>     l.returned_at <span class="kw">IS NULL</span>
+  <span class="kw">AND</span>     l.due_at <span class="op">&lt;</span> <span class="fn">CURRENT_DATE</span>
+<span class="kw">ORDER BY</span>  days_overdue <span class="kw">DESC</span>;</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PHASE 3: INTERMEDIATE ─────────────────────── -->
+<section id="phase3">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Phase 3</div>
+      <h2 class="section-title">Intermediate SQL — Power Queries</h2>
+    </div>
+    <span class="section-count">03</span>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num p3">PHASE 03</span>
+      <span class="phase-title">CTEs, Window Functions, CASE</span>
+      <span class="phase-desc">The tools that make analytics queries possible</span>
+    </div>
+
+    <div class="lessons-grid">
+      <div class="lesson">
+        <span class="lesson-num">3.1</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Common Table Expressions (WITH) — Readable Multi-Step Queries</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">WITH … AS</span>
+            <span class="topic-tag">chaining CTEs</span>
+            <span class="topic-tag">CTE vs subquery performance</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">3.2</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Recursive CTEs — Hierarchical Data and Tree Traversal</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">WITH RECURSIVE</span>
+            <span class="topic-tag">org charts</span>
+            <span class="topic-tag">category trees</span>
+            <span class="topic-tag">depth limiting</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">3.3</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Window Functions Part 1 — ROW_NUMBER, RANK, DENSE_RANK</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">OVER (PARTITION BY)</span>
+            <span class="topic-tag">ORDER BY in window</span>
+            <span class="topic-tag">ROW_NUMBER vs RANK</span>
+            <span class="topic-tag">top-N per group</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">3.4</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Window Functions Part 2 — LAG, LEAD, NTILE, Running Totals</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">LAG / LEAD</span>
+            <span class="topic-tag">NTILE(n)</span>
+            <span class="topic-tag">SUM OVER frame</span>
+            <span class="topic-tag">ROWS BETWEEN</span>
+            <span class="topic-tag">moving average</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">3.5</span>
+        <div class="lesson-body">
+          <div class="lesson-title">CASE WHEN — Conditional Logic Inside SQL</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">searched CASE</span>
+            <span class="topic-tag">simple CASE</span>
+            <span class="topic-tag">pivot tables</span>
+            <span class="topic-tag">conditional aggregation</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">3.6</span>
+        <div class="lesson-body">
+          <div class="lesson-title">String, Date &amp; Math Functions — The Full Toolkit</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CONCAT / ||</span>
+            <span class="topic-tag">TRIM / LOWER / UPPER</span>
+            <span class="topic-tag">EXTRACT / DATE_PART</span>
+            <span class="topic-tag">AGE()</span>
+            <span class="topic-tag">INTERVAL</span>
+            <span class="topic-tag">COALESCE / NULLIF</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">3.7</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Views and Materialized Views — Reusable Query Abstractions</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CREATE VIEW</span>
+            <span class="topic-tag">MATERIALIZED VIEW</span>
+            <span class="topic-tag">REFRESH MATERIALIZED VIEW</span>
+            <span class="topic-tag">when to use each</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="cmt">-- Lesson 3.3–3.4 · Window functions: ranking + running total + MoM growth</span>
+
+<span class="kw">WITH</span> monthly_revenue <span class="kw">AS</span> (
+  <span class="kw">SELECT</span>
+    <span class="fn">DATE_TRUNC</span>(<span class="str">'month'</span>, created_at) <span class="kw">AS</span> month,
+    <span class="fn">SUM</span>(amount)                      <span class="kw">AS</span> revenue
+  <span class="kw">FROM</span>   orders
+  <span class="kw">GROUP  BY</span> <span class="nm">1</span>
+)
+<span class="kw">SELECT</span>
+  month,
+  revenue,
+  <span class="fn">SUM</span>(revenue)  <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> month)                       <span class="kw">AS</span> running_total,
+  <span class="fn">LAG</span>(revenue)  <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> month)                       <span class="kw">AS</span> prev_month,
+  <span class="fn">ROUND</span>(
+    <span class="nm">100.0</span> <span class="op">*</span> (revenue <span class="op">-</span> <span class="fn">LAG</span>(revenue) <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> month))
+          <span class="op">/</span> <span class="fn">NULLIF</span>(<span class="fn">LAG</span>(revenue) <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> month), <span class="nm">0</span>),
+    <span class="nm">2</span>
+  )                                                           <span class="kw">AS</span> mom_growth_pct
+<span class="kw">FROM</span>  monthly_revenue
+<span class="kw">ORDER BY</span> month;</pre>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PROJECT 2 ───────────────────────────────────── -->
+<section id="project2">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Milestone Project 2</div>
+      <h2 class="section-title">E-Commerce Analytics Database</h2>
+    </div>
+    <span class="section-count">P2</span>
+  </div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon" style="background:rgba(255,107,53,.08);border:1px solid rgba(255,107,53,.15)">🛒</div>
+      <div class="project-meta">
+        <div class="project-label" style="color:var(--accent2)">Milestone Project · Phase 2 + 3</div>
+        <div class="project-name">E-Commerce Analytics Database</div>
+      </div>
+      <div class="project-difficulty">
+        <div class="diff-dot filled" style="background:var(--accent2)"></div>
+        <div class="diff-dot filled" style="background:var(--accent2)"></div>
+        <div class="diff-dot filled" style="background:var(--accent2)"></div>
+        <div class="diff-dot"></div>
+        <div class="diff-dot"></div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div class="project-goals">
+        <h4>What You'll Build &amp; Learn</h4>
+        <ul class="goal-list">
+          <li>Full e-commerce schema: products, categories, customers, orders, order_items, reviews</li>
+          <li>Revenue dashboard: daily/monthly revenue, top products, category breakdown</li>
+          <li>Customer lifetime value (CLV) with window functions and CTEs</li>
+          <li>Cohort analysis: which signup month retains customers best</li>
+          <li>Inventory management: stock alerts, reorder recommendations</li>
+          <li>Review sentiment pivot: star rating distribution per product category</li>
+        </ul>
+      </div>
+
+      <div class="code-block">
+        <pre><span class="cmt">-- Project 2 · Customer cohort retention analysis</span>
+
+<span class="kw">WITH</span> cohorts <span class="kw">AS</span> (
+  <span class="kw">SELECT</span>
+    id <span class="kw">AS</span> customer_id,
+    <span class="fn">DATE_TRUNC</span>(<span class="str">'month'</span>, created_at) <span class="kw">AS</span> cohort_month
+  <span class="kw">FROM</span> customers
+),
+activity <span class="kw">AS</span> (
+  <span class="kw">SELECT</span>
+    o.customer_id,
+    <span class="fn">DATE_TRUNC</span>(<span class="str">'month'</span>, o.created_at) <span class="kw">AS</span> order_month
+  <span class="kw">FROM</span> orders o
+)
+<span class="kw">SELECT</span>
+  c.cohort_month,
+  <span class="fn">EXTRACT</span>(<span class="ty">MONTH</span> <span class="kw">FROM</span> <span class="fn">AGE</span>(a.order_month, c.cohort_month)) <span class="kw">AS</span> month_number,
+  <span class="fn">COUNT</span>(<span class="kw">DISTINCT</span> a.customer_id)                              <span class="kw">AS</span> active_customers
+<span class="kw">FROM</span>      cohorts  c
+<span class="kw">LEFT JOIN</span> activity a <span class="kw">ON</span> a.customer_id <span class="op">=</span> c.customer_id
+<span class="kw">GROUP BY</span>  <span class="nm">1</span>, <span class="nm">2</span>
+<span class="kw">ORDER BY</span>  <span class="nm">1</span>, <span class="nm">2</span>;</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PHASE 4: ADVANCED SQL ─────────────────────── -->
+<section id="phase4">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Phase 4</div>
+      <h2 class="section-title">Advanced SQL — Developer Patterns</h2>
+    </div>
+    <span class="section-count">04</span>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num p4">PHASE 04</span>
+      <span class="phase-title">Transactions, Normalization, Schema Design</span>
+    </div>
+
+    <div class="lessons-grid">
+      <div class="lesson">
+        <span class="lesson-num">4.1</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Database Normalization — 1NF, 2NF, 3NF, BCNF Explained</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">1NF atomicity</span>
+            <span class="topic-tag">2NF partial deps</span>
+            <span class="topic-tag">3NF transitive deps</span>
+            <span class="topic-tag">denormalization tradeoffs</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">4.2</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Transactions — ACID Guarantees and Error Handling</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">BEGIN / COMMIT</span>
+            <span class="topic-tag">ROLLBACK</span>
+            <span class="topic-tag">SAVEPOINT</span>
+            <span class="topic-tag">Atomicity / Consistency</span>
+            <span class="topic-tag">Isolation / Durability</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">4.3</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Isolation Levels — Dirty Reads, Phantom Reads, Serializable</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">READ UNCOMMITTED</span>
+            <span class="topic-tag">READ COMMITTED</span>
+            <span class="topic-tag">REPEATABLE READ</span>
+            <span class="topic-tag">SERIALIZABLE</span>
+            <span class="topic-tag">MVCC</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">4.4</span>
+        <div class="lesson-body">
+          <div class="lesson-title">UPSERT — INSERT … ON CONFLICT DO UPDATE / NOTHING</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">ON CONFLICT</span>
+            <span class="topic-tag">DO UPDATE SET</span>
+            <span class="topic-tag">EXCLUDED pseudo-table</span>
+            <span class="topic-tag">idempotent writes</span>
+          </div>
+        </div>
+        <span class="lesson-time">~45 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">4.5</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Schema Migrations — ALTER TABLE, Safe Migrations in Production</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">ALTER TABLE ADD COLUMN</span>
+            <span class="topic-tag">zero-downtime migrations</span>
+            <span class="topic-tag">backfilling safely</span>
+            <span class="topic-tag">NOT NULL gotchas</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">4.6</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Roles, Users &amp; Permissions — GRANT, REVOKE, Row-Level Security</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CREATE ROLE</span>
+            <span class="topic-tag">GRANT / REVOKE</span>
+            <span class="topic-tag">ENABLE ROW LEVEL SECURITY</span>
+            <span class="topic-tag">CREATE POLICY</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="cmt">-- Lesson 4.2 · Safe multi-step transaction (bank transfer)</span>
+
+<span class="kw">BEGIN</span>;
+
+<span class="kw">UPDATE</span> accounts
+<span class="kw">SET</span>    balance <span class="op">=</span> balance <span class="op">-</span> <span class="nm">500</span>
+<span class="kw">WHERE</span>  id <span class="op">=</span> <span class="nm">1</span>
+  <span class="kw">AND</span>  balance <span class="op">>=</span> <span class="nm">500</span>; <span class="cmt">-- guard against overdraft</span>
+
+<span class="kw">GET DIAGNOSTICS</span> rows_affected <span class="op">=</span> <span class="kw">ROW_COUNT</span>;
+<span class="kw">IF</span> rows_affected <span class="op">=</span> <span class="nm">0</span> <span class="kw">THEN</span>
+  <span class="kw">ROLLBACK</span>; <span class="cmt">-- Insufficient funds</span>
+<span class="kw">END IF</span>;
+
+<span class="kw">UPDATE</span> accounts
+<span class="kw">SET</span>    balance <span class="op">=</span> balance <span class="op">+</span> <span class="nm">500</span>
+<span class="kw">WHERE</span>  id <span class="op">=</span> <span class="nm">2</span>;
+
+<span class="kw">INSERT INTO</span> transfer_log (from_id, to_id, amount, created_at)
+<span class="kw">VALUES</span> (<span class="nm">1</span>, <span class="nm">2</span>, <span class="nm">500</span>, <span class="fn">now</span>());
+
+<span class="kw">COMMIT</span>;</pre>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PHASE 5: PERFORMANCE ──────────────────────── -->
+<section id="phase5">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Phase 5</div>
+      <h2 class="section-title">Query Performance &amp; Indexing</h2>
+    </div>
+    <span class="section-count">05</span>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num p5">PHASE 05</span>
+      <span class="phase-title">How PostgreSQL Executes Your Queries</span>
+      <span class="phase-desc">Read execution plans. Fix slow queries. Build the right indexes.</span>
+    </div>
+
+    <div class="lessons-grid">
+      <div class="lesson">
+        <span class="lesson-num">5.1</span>
+        <div class="lesson-body">
+          <div class="lesson-title">EXPLAIN and EXPLAIN ANALYZE — Reading the Query Plan</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">EXPLAIN</span>
+            <span class="topic-tag">EXPLAIN ANALYZE</span>
+            <span class="topic-tag">EXPLAIN (BUFFERS)</span>
+            <span class="topic-tag">Seq Scan vs Index Scan</span>
+            <span class="topic-tag">cost estimation</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">5.2</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Index Types — B-Tree, Hash, GiST, GIN, BRIN</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">B-Tree (default)</span>
+            <span class="topic-tag">Hash index</span>
+            <span class="topic-tag">GiST (geometric)</span>
+            <span class="topic-tag">GIN (full-text, arrays)</span>
+            <span class="topic-tag">BRIN (time-series)</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">5.3</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Index Strategy — Partial, Composite, Expression, Covering Indexes</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">partial index</span>
+            <span class="topic-tag">composite index order</span>
+            <span class="topic-tag">expression index</span>
+            <span class="topic-tag">INCLUDE columns</span>
+            <span class="topic-tag">index-only scans</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">5.4</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Common Performance Anti-Patterns — What Kills Your Queries</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">SELECT *</span>
+            <span class="topic-tag">implicit type casts</span>
+            <span class="topic-tag">functions on indexed cols</span>
+            <span class="topic-tag">N+1 query problem</span>
+            <span class="topic-tag">OFFSET at scale</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">5.5</span>
+        <div class="lesson-body">
+          <div class="lesson-title">VACUUM, ANALYZE, AUTOVACUUM — Table Maintenance</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">table bloat</span>
+            <span class="topic-tag">dead tuples</span>
+            <span class="topic-tag">VACUUM FULL</span>
+            <span class="topic-tag">autovacuum tuning</span>
+            <span class="topic-tag">pg_stat_user_tables</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+    </div>
+
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin:1.5rem 0 .75rem;">EXPLAIN ANALYZE Output — Reading It</div>
+    <div class="explain-block">
+<span class="explain-node">Gather</span>  (<span class="explain-cost">cost=1000.00..18500.50 rows=5243 width=72</span>)
+         (<span class="explain-rows">actual time=12.540..89.321 rows=5243 loops=1</span>)
+  Workers Planned: 2
+  Workers Launched: 2
+  -&gt;  <span class="explain-node">Parallel Seq Scan on orders</span>  (<span class="explain-cost">cost=0.00..17976.20 rows=2185 width=72</span>)
+           Filter: ((status = 'PENDING'::text) AND (created_at &gt; '2024-01-01'))
+           Rows Removed by Filter: <span class="explain-warn">287422</span>   <span class="cmt">← ⚠️  Most rows filtered out. Need an index!</span>
+
+Planning Time: 1.234 ms
+Execution Time: <span class="explain-warn">94.876 ms</span>  <span class="cmt">← ⚠️  Way too slow for an API endpoint</span>
+
+<span class="cmt">── Fix: Create a partial composite index ──</span>
+<span class="kw">CREATE INDEX CONCURRENTLY</span> idx_orders_pending_date
+  <span class="kw">ON</span> orders (created_at <span class="kw">DESC</span>)
+  <span class="kw">WHERE</span> status <span class="op">=</span> <span class="str">'PENDING'</span>;
+
+<span class="cmt">── After fix: Execution Time: 0.421 ms ✅ 225× faster</span></div>
+
+    <div class="alert warn">
+      <span class="alert-icon">⚠️</span>
+      <div>
+        <div class="al-title">Golden Rule of Indexes</div>
+        <p>Never create an index just because a column is in WHERE. Profile first with <code>EXPLAIN ANALYZE</code>. Indexes cost write performance and storage — every index must justify its existence with a measured speedup.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PHASE 6: DEV DEEP DIVE ─────────────────────── -->
+<section id="phase6">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Phase 6</div>
+      <h2 class="section-title">PostgreSQL Developer Deep Dive</h2>
+    </div>
+    <span class="section-count">06</span>
+  </div>
+
+  <div class="phase">
+    <div class="phase-header">
+      <span class="phase-num p6">PHASE 06</span>
+      <span class="phase-title">Server-Side Programming</span>
+      <span class="phase-desc">Functions, procedures, triggers — moving logic into the database</span>
+    </div>
+
+    <div class="lessons-grid">
+      <div class="lesson">
+        <span class="lesson-num">6.1</span>
+        <div class="lesson-body">
+          <div class="lesson-title">PL/pgSQL Functions — Writing Stored Functions in PostgreSQL</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CREATE FUNCTION</span>
+            <span class="topic-tag">RETURNS TABLE</span>
+            <span class="topic-tag">DECLARE / BEGIN / END</span>
+            <span class="topic-tag">exception handling</span>
+            <span class="topic-tag">SECURITY DEFINER</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6.2</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Stored Procedures — Transactional Server-Side Logic</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CREATE PROCEDURE</span>
+            <span class="topic-tag">CALL</span>
+            <span class="topic-tag">function vs procedure</span>
+            <span class="topic-tag">COMMIT inside proc</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6.3</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Triggers — Automatic Logic on Data Changes</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">CREATE TRIGGER</span>
+            <span class="topic-tag">BEFORE / AFTER</span>
+            <span class="topic-tag">INSERT / UPDATE / DELETE</span>
+            <span class="topic-tag">NEW / OLD records</span>
+            <span class="topic-tag">audit log pattern</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="cmt">-- Lesson 6.3 · Audit log trigger — track every change automatically</span>
+
+<span class="kw">CREATE TABLE</span> audit_log (
+  id          <span class="ty">BIGINT</span> <span class="kw">GENERATED ALWAYS AS IDENTITY PRIMARY KEY</span>,
+  table_name  <span class="ty">TEXT</span>        <span class="kw">NOT NULL</span>,
+  operation   <span class="ty">TEXT</span>        <span class="kw">NOT NULL</span>,   <span class="cmt">-- INSERT | UPDATE | DELETE</span>
+  old_data    <span class="ty">JSONB</span>,
+  new_data    <span class="ty">JSONB</span>,
+  changed_by  <span class="ty">TEXT</span>        <span class="kw">DEFAULT</span> <span class="fn">current_user</span>,
+  changed_at  <span class="ty">TIMESTAMPTZ</span> <span class="kw">DEFAULT</span> <span class="fn">now</span>()
+);
+
+<span class="kw">CREATE OR REPLACE FUNCTION</span> <span class="fn">fn_audit_trigger</span>()
+<span class="kw">RETURNS TRIGGER LANGUAGE</span> plpgsql <span class="kw">AS</span> $$
+<span class="kw">BEGIN</span>
+  <span class="kw">INSERT INTO</span> audit_log (table_name, operation, old_data, new_data)
+  <span class="kw">VALUES</span> (
+    <span class="fn">TG_TABLE_NAME</span>,
+    <span class="fn">TG_OP</span>,
+    <span class="kw">CASE WHEN</span> <span class="fn">TG_OP</span> <span class="op">!=</span> <span class="str">'INSERT'</span> <span class="kw">THEN</span> <span class="fn">row_to_json</span>(<span class="kw">OLD</span>) <span class="kw">END</span>,
+    <span class="kw">CASE WHEN</span> <span class="fn">TG_OP</span> <span class="op">!=</span> <span class="str">'DELETE'</span> <span class="kw">THEN</span> <span class="fn">row_to_json</span>(<span class="kw">NEW</span>) <span class="kw">END</span>
+  );
+  <span class="kw">RETURN</span> <span class="kw">COALESCE</span>(<span class="kw">NEW</span>, <span class="kw">OLD</span>);
+<span class="kw">END</span>; $$;
+
+<span class="kw">CREATE TRIGGER</span> tg_users_audit
+  <span class="kw">AFTER INSERT OR UPDATE OR DELETE ON</span> users
+  <span class="kw">FOR EACH ROW EXECUTE FUNCTION</span> <span class="fn">fn_audit_trigger</span>();</pre>
+    </div>
+
+    <div class="phase-header" style="margin-top:2.5rem">
+      <span class="phase-num p6">PHASE 06</span>
+      <span class="phase-title">PostgreSQL-Specific Power Features</span>
+    </div>
+
+    <div class="lessons-grid">
+      <div class="lesson">
+        <span class="lesson-num">6.4</span>
+        <div class="lesson-body">
+          <div class="lesson-title">JSONB — Storing and Querying Semi-Structured Data</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">JSON vs JSONB</span>
+            <span class="topic-tag">-> and ->></span>
+            <span class="topic-tag">@> containment</span>
+            <span class="topic-tag">jsonb_set()</span>
+            <span class="topic-tag">GIN index on JSONB</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6.5</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Full-Text Search — tsvector, tsquery, pg_trgm</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">to_tsvector()</span>
+            <span class="topic-tag">to_tsquery()</span>
+            <span class="topic-tag">ts_rank()</span>
+            <span class="topic-tag">GIN text index</span>
+            <span class="topic-tag">pg_trgm similarity</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6.6</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Table Partitioning — Range, List, and Hash Partitioning</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">PARTITION BY RANGE</span>
+            <span class="topic-tag">PARTITION BY LIST</span>
+            <span class="topic-tag">PARTITION BY HASH</span>
+            <span class="topic-tag">partition pruning</span>
+            <span class="topic-tag">when to partition</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6.7</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Array Types and ENUM — Native PostgreSQL Advantages</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">INTEGER[]</span>
+            <span class="topic-tag">TEXT[]</span>
+            <span class="topic-tag">ANY / ALL</span>
+            <span class="topic-tag">unnest()</span>
+            <span class="topic-tag">CREATE TYPE AS ENUM</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6.8</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Row-Level Security — Per-User Data Isolation</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">ALTER TABLE ENABLE RLS</span>
+            <span class="topic-tag">CREATE POLICY</span>
+            <span class="topic-tag">USING clause</span>
+            <span class="topic-tag">app user context</span>
+            <span class="topic-tag">multi-tenant patterns</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6.9</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Connection Pooling — PgBouncer, Max Connections, Node.js pg Pool</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">max_connections</span>
+            <span class="topic-tag">PgBouncer modes</span>
+            <span class="topic-tag">node-postgres pool</span>
+            <span class="topic-tag">Prisma connection limit</span>
+          </div>
+        </div>
+        <span class="lesson-time">~60 min</span>
+      </div>
+
+      <div class="lesson">
+        <span class="lesson-num">6.10</span>
+        <div class="lesson-body">
+          <div class="lesson-title">Replication Basics — WAL, Streaming Replication, Read Replicas</div>
+          <div class="lesson-topics">
+            <span class="topic-tag">WAL (Write-Ahead Log)</span>
+            <span class="topic-tag">streaming replication</span>
+            <span class="topic-tag">read replica setup</span>
+            <span class="topic-tag">replica lag</span>
+            <span class="topic-tag">logical replication</span>
+          </div>
+        </div>
+        <span class="lesson-time">~90 min</span>
+      </div>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="cmt">-- Lesson 6.4 · JSONB power — storing product metadata flexibly</span>
+
+<span class="kw">CREATE TABLE</span> products (
+  id       <span class="ty">BIGINT</span> <span class="kw">GENERATED ALWAYS AS IDENTITY PRIMARY KEY</span>,
+  name     <span class="ty">TEXT</span>  <span class="kw">NOT NULL</span>,
+  metadata <span class="ty">JSONB</span> <span class="kw">NOT NULL DEFAULT</span> <span class="str">'{}'</span>
+);
+
+<span class="cmt">-- GIN index for fast JSONB queries</span>
+<span class="kw">CREATE INDEX</span> idx_products_meta <span class="kw">ON</span> products <span class="kw">USING GIN</span> (metadata);
+
+<span class="cmt">-- Insert product with flexible attributes</span>
+<span class="kw">INSERT INTO</span> products (name, metadata) <span class="kw">VALUES</span>
+  (<span class="str">'MacBook Pro 16"'</span>, <span class="str">'{"brand":"Apple","ram_gb":32,"storage_tb":1,"tags":["laptop","pro"]}'</span>);
+
+<span class="cmt">-- Query: find all products with >=16GB RAM that have "pro" tag</span>
+<span class="kw">SELECT</span> name, metadata <span class="op">->></span> <span class="str">'brand'</span> <span class="kw">AS</span> brand
+<span class="kw">FROM</span>   products
+<span class="kw">WHERE</span>  (metadata <span class="op">->></span> <span class="str">'ram_gb'</span>)<span class="op">::</span><span class="ty">INT</span> <span class="op">>=</span> <span class="nm">16</span>
+  <span class="kw">AND</span>  metadata <span class="op">-></span> <span class="str">'tags'</span> <span class="op">@></span> <span class="str">'["pro"]'</span>;</pre>
+    </div>
+
+    <div class="code-block">
+      <pre><span class="cmt">-- Lesson 6.5 · Full-text search with ranking</span>
+
+<span class="cmt">-- Add a generated tsvector column for performance</span>
+<span class="kw">ALTER TABLE</span> products
+  <span class="kw">ADD COLUMN</span> search_vector <span class="ty">TSVECTOR</span>
+    <span class="kw">GENERATED ALWAYS AS</span> (
+      <span class="fn">to_tsvector</span>(<span class="str">'english'</span>, <span class="fn">COALESCE</span>(name, <span class="str">''</span>) <span class="op">||</span> <span class="str">' '</span> <span class="op">||</span>
+                           <span class="fn">COALESCE</span>(metadata<span class="op">->></span><span class="str">'description'</span>, <span class="str">''</span>))
+    ) <span class="kw">STORED</span>;
+
+<span class="kw">CREATE INDEX</span> idx_products_fts <span class="kw">ON</span> products <span class="kw">USING GIN</span>(search_vector);
+
+<span class="cmt">-- Search with relevance ranking</span>
+<span class="kw">SELECT</span>
+  name,
+  <span class="fn">ts_rank</span>(search_vector, query)   <span class="kw">AS</span> rank,
+  <span class="fn">ts_headline</span>(<span class="str">'english'</span>, name, query) <span class="kw">AS</span> headline
+<span class="kw">FROM</span>
+  products,
+  <span class="fn">to_tsquery</span>(<span class="str">'english'</span>, <span class="str">'laptop &amp; pro'</span>) <span class="kw">AS</span> query
+<span class="kw">WHERE</span>  search_vector <span class="op">@@</span> query
+<span class="kw">ORDER BY</span> rank <span class="kw">DESC</span>;</pre>
+    </div>
+
+    <div class="alert tip">
+      <span class="alert-icon">🚀</span>
+      <div>
+        <div class="al-title">PostgreSQL vs Elasticsearch for FTS</div>
+        <p>For most applications, PostgreSQL full-text search is sufficient and eliminates an entire infrastructure component. Only migrate to Elasticsearch when you need fuzzy multi-language search, advanced relevance tuning, or searching across hundreds of millions of rows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── PROJECT 3 ───────────────────────────────────── -->
+<section id="project3">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Milestone Project 3</div>
+      <h2 class="section-title">Production SaaS Database</h2>
+    </div>
+    <span class="section-count">P3</span>
+  </div>
+
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon" style="background:rgba(236,72,153,.08);border:1px solid rgba(236,72,153,.15)">🏢</div>
+      <div class="project-meta">
+        <div class="project-label" style="color:#f472b6">Capstone Project · All Phases</div>
+        <div class="project-name">Multi-Tenant SaaS Task Manager</div>
+      </div>
+      <div class="project-difficulty">
+        <div class="diff-dot filled" style="background:#f472b6"></div>
+        <div class="diff-dot filled" style="background:#f472b6"></div>
+        <div class="diff-dot filled" style="background:#f472b6"></div>
+        <div class="diff-dot filled" style="background:#f472b6"></div>
+        <div class="diff-dot filled" style="background:#f472b6"></div>
+      </div>
+    </div>
+    <div class="project-body">
+      <div class="project-goals">
+        <h4>What This Builds</h4>
+        <ul class="goal-list">
+          <li>Multi-tenant schema: organizations → workspaces → projects → tasks</li>
+          <li>Row-level security so tenants never see each other's data</li>
+          <li>Full audit log via triggers on all critical tables</li>
+          <li>Task search with pg_trgm and tsvector (title + description)</li>
+          <li>JSONB for custom fields per organization (no schema migrations needed)</li>
+          <li>Range-partitioned activity_log table by created_at month</li>
+          <li>Stored procedures for: assign task, complete task, archive project</li>
+          <li>Performance audit: EXPLAIN ANALYZE every endpoint, add targeted indexes</li>
+          <li>Seed 1M+ tasks and validate query times stay under 10ms</li>
+        </ul>
+      </div>
+
+      <div class="checklist">
+        <div class="check-item"><div class="check-box">✓</div>Schema design with full ERD diagram</div>
+        <div class="check-item"><div class="check-box">✓</div>RLS policies tested with multiple tenant roles</div>
+        <div class="check-item"><div class="check-box">✓</div>Migration scripts (up + down) for every schema change</div>
+        <div class="check-item"><div class="check-box">✓</div>EXPLAIN ANALYZE on all 10 primary API queries</div>
+        <div class="check-item"><div class="check-box">✓</div>Index coverage report: 0 sequential scans on hot paths</div>
+        <div class="check-item"><div class="check-box">✓</div>Node.js integration with node-postgres connection pool</div>
+        <div class="check-item"><div class="check-box">✓</div>Full-text search endpoint with rank ordering</div>
+        <div class="check-item"><div class="check-box">✓</div>Audit log covers all INSERT / UPDATE / DELETE</div>
+      </div>
+
+      <div class="alert info" style="margin-top:1rem">
+        <span class="alert-icon">📎</span>
+        <div>
+          <div class="al-title">Bonus Challenge</div>
+          <p>Add a <code>notifications</code> table with LISTEN/NOTIFY so your Node.js backend receives real-time events when a task is assigned — zero polling, pure PostgreSQL pubsub.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ─── ROADMAP ────────────────────────────────────── -->
+<section id="roadmap">
+  <div class="section-intro">
+    <div>
+      <div class="section-tag">Learning Roadmap</div>
+      <h2 class="section-title">Your Path from Zero to Senior</h2>
+    </div>
+    <span class="section-count">→</span>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Week 1–2 · Phase 1</div>
+      <div class="tl-head">Foundations &amp; First Schema</div>
+      <div class="tl-body">Install PostgreSQL. Learn data types, CREATE TABLE, constraints. Master INSERT/SELECT/UPDATE/DELETE. Understand PRIMARY KEY, FOREIGN KEY, NOT NULL. Build confidence with psql CLI.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Week 3–4 · Phase 2</div>
+      <div class="tl-head">Core SQL Fluency</div>
+      <div class="tl-body">Filter with WHERE + all operators. Aggregate with COUNT/SUM/AVG. Group with GROUP BY + HAVING. Master all JOIN types until they feel automatic. Write subqueries.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-phase">Week 5 · Project 1</div>
+      <div class="tl-head">🏗️ Build: Library Management System</div>
+      <div class="tl-body">Apply everything from Phase 1–2 to a real multi-table schema. Don't look up solutions — struggle through it. This is where the learning compounds.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot purple"></div>
+      <div class="tl-phase">Week 6–7 · Phase 3</div>
+      <div class="tl-head">Power Queries: CTEs &amp; Window Functions</div>
+      <div class="tl-body">CTEs make complex queries readable. Window functions unlock analytics impossible with GROUP BY alone. LAG/LEAD, running totals, RANK — these are interview gold.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot purple"></div>
+      <div class="tl-phase">Week 8 · Project 2</div>
+      <div class="tl-head">🏗️ Build: E-Commerce Analytics</div>
+      <div class="tl-body">Cohort analysis, CLV, revenue trends. You'll write queries that a data analyst would pay for. CTEs + window functions working together at scale.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot orange"></div>
+      <div class="tl-phase">Week 9–10 · Phase 4</div>
+      <div class="tl-head">Advanced SQL: Transactions, UPSERT, Migrations</div>
+      <div class="tl-body">Understand ACID deeply. Write safe multi-step transactions. Use UPSERT for idempotent writes. Learn to run zero-downtime migrations — this is production knowledge.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot orange"></div>
+      <div class="tl-phase">Week 11–12 · Phase 5</div>
+      <div class="tl-head">Performance: EXPLAIN ANALYZE + Indexes</div>
+      <div class="tl-body">The single skill that separates strong developers from the rest. Read execution plans. Build the right index for each query type. Measure before and after. Never guess.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot green"></div>
+      <div class="tl-phase">Week 13–15 · Phase 6</div>
+      <div class="tl-head">Developer Deep Dive: Functions, JSONB, RLS, FTS</div>
+      <div class="tl-body">PostgreSQL-specific superpowers. PL/pgSQL functions and triggers. JSONB for schema flexibility. Full-text search built-in. Row-level security for multi-tenant apps. Partitioning for huge tables.</div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot green"></div>
+      <div class="tl-phase">Week 16 · Project 3</div>
+      <div class="tl-head">🏗️ Capstone: Production SaaS Database</div>
+      <div class="tl-body">Everything. RLS, triggers, JSONB, FTS, partitioning, indexes, connection pooling, Node.js integration. This project goes on your portfolio and in your resume.</div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.25rem;">After This Series — Where to Go Next</div>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <span class="concept-icon">🔄</span>
+        <div class="concept-name">Prisma / Drizzle ORM</div>
+        <div class="concept-desc">Type-safe query builders that compile to SQL. Your PostgreSQL depth will make you a better ORM user — you'll know exactly what SQL gets generated.</div>
+      </div>
+      <div class="concept-card">
+        <span class="concept-icon">📊</span>
+        <div class="concept-name">TimescaleDB</div>
+        <div class="concept-desc">A PostgreSQL extension for time-series data. Continuous aggregates, compression, hypertables. One step beyond standard partitioning.</div>
+      </div>
+      <div class="concept-card">
+        <span class="concept-icon">🌐</span>
+        <div class="concept-name">PostGIS</div>
+        <div class="concept-desc">Geographic data extension. ST_Distance, ST_Within, radius searches. Essential for any location-based app. Runs entirely in PostgreSQL.</div>
+      </div>
+      <div class="concept-card">
+        <span class="concept-icon">☁️</span>
+        <div class="concept-name">Supabase / Neon</div>
+        <div class="concept-desc">Managed PostgreSQL with serverless branching (Neon) or a full BaaS with auth + storage (Supabase). Your skills transfer directly — it's still PostgreSQL.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <div class="footer-brand">pg.learn</div>
+  <p>PostgreSQL Mastery Series · 7 Phases · 40+ Lessons · 3 Real Projects</p>
+  <p style="margin-top:.5rem;font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--border2)">Built for developers who want to go deep · 2026</p>
+</footer>
+
+<script src="../src/postgresql.js"></script>
+</body>
+</html>

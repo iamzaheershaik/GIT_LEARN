@@ -16,6 +16,10 @@ const sectionFrames = {
   html5: { el: document.getElementById('frameHtml5'), src: 'html/html5-notes.html', loaded: false },
   networking: { el: document.getElementById('frameNetworking'), src: 'html/networking-notes.html', loaded: false },
   crackjs: { el: document.getElementById('frameCrackjs'), src: 'https://crack-the-js.vercel.app', loaded: true },
+  logic: { el: document.getElementById('frameLogic'), src: 'html/interview-logic-questions.html', loaded: false },
+  sql: { el: document.getElementById('frameSql'), src: 'html/SQL_Complete_Learning_Roadmap.html', loaded: false },
+  postgres: { el: document.getElementById('framePostgres'), src: 'html/postgresql-learning-series-enhanced.html', loaded: false },
+  node: { el: document.getElementById('frameNode'), src: 'html/node-mongo-express-interview.html', loaded: false },
 };
 
 const btns = {
@@ -30,6 +34,10 @@ const sectionBtns = {
   html5: document.getElementById('secBtnHtml5'),
   networking: document.getElementById('secBtnNetworking'),
   crackjs: document.getElementById('secBtnCrackjs'),
+  logic: document.getElementById('secBtnLogic'),
+  sql: document.getElementById('secBtnSql'),
+  postgres: document.getElementById('secBtnPostgres'),
+  node: document.getElementById('secBtnNode'),
 };
 
 const overlay = document.getElementById('transOverlay');
@@ -189,7 +197,7 @@ try {
     btns[currentLevel].classList.add('active');
   }
 
-  if (savedSection && ['git', 'js', 'html5', 'networking', 'crackjs'].includes(savedSection)) {
+  if (savedSection && Object.keys(sectionBtns).includes(savedSection)) {
     if (savedSection !== 'git') {
       frames[1].el.addEventListener('load', () => {
         switchSection(savedSection);

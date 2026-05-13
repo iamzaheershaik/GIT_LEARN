@@ -27,7 +27,7 @@ Dev Hub is a unified developer platform with section-based navigation. Switch be
 
 | Feature | Description |
 |---|---|
-| **2 Sections** | Git Masterclass, Crack The JS — all in one hub |
+| **9 Sections** | Git, JS Masterclass, HTML5, Networking, Crack The JS, Logic, SQL, PostgreSQL, Node/Mongo/Express |
 | **Section Switcher** | Smooth navigation between sections with themed transitions |
 | **3 Git Levels** | Beginner → Advanced → Expert, each with unique color theming |
 | **JS Interview Prep** | 327+ JS MCQ questions, React questions, and coding problems |
@@ -135,6 +135,48 @@ JavaScript interview preparation with 327+ MCQ questions covering core JS, React
 
 ---
 
+### 3. 🧠 Interview Logic Questions
+
+50+ logical interview questions, array patterns, subarray problems, and CRUD implementation details in C++ and JavaScript.
+
+---
+
+### 4. 🗄️ SQL Complete Learning Roadmap
+
+A comprehensive guide for learning SQL, including fundamental concepts, advanced queries, window functions, and database design.
+
+---
+
+### 5. 🐘 PostgreSQL Mastery Series
+
+Advanced PostgreSQL tutorials covering topics such as triggers, JSONB, Full-Text Search, Row-Level Security, and performance optimization.
+
+---
+
+### 6. 🟢 Node.js · MongoDB · Express
+
+180+ curated interview Q&A covering everything a fresher/entry-level developer needs — from Event Loop internals to production Express patterns.
+
+---
+
+### 7. ⚡ JS Masterclass
+
+A deep dive into JavaScript fundamentals, advanced concepts, design patterns, and Web APIs to elevate your frontend engineering skills.
+
+---
+
+### 8. 🌐 HTML5 Notes
+
+Comprehensive semantic HTML5 guidelines, accessibility best practices, SEO optimization techniques, and modern browser API references.
+
+---
+
+### 9. 📡 Networking Notes
+
+Essential networking concepts for web developers including HTTP/HTTPS, WebSockets, DNS, TCP/IP, and performance tuning strategies.
+
+---
+
 ## 📁 Project Structure
 
 ```
@@ -146,19 +188,40 @@ GIT_LEARN/
 ├── html/                                      # HTML pages
 │   ├── git-masterclass.html                  #   Git Level 1 — Foundations
 │   ├── git-masterclass-level2.html           #   Git Level 2 — Advanced
-│   └── git-masterclass-level3.html           #   Git Level 3 — Expert
+│   ├── git-masterclass-level3.html           #   Git Level 3 — Expert
+│   ├── js-masterclass.html                   #   JS Masterclass
+│   ├── html5-notes.html                      #   HTML5 Notes
+│   ├── networking-notes.html                 #   Networking Notes
+│   ├── interview-logic-questions.html        #   Interview Logic Questions
+│   ├── SQL_Complete_Learning_Roadmap.html    #   SQL Learning Roadmap
+│   ├── postgresql-learning-series-enhanced.html # PostgreSQL Mastery Series
+│   └── node-mongo-express-interview.html     #   Node/Mongo/Express Guide
 │
 ├── styles/                                    # Stylesheets
 │   ├── styles.css                            #   Index page & section switcher styles
 │   ├── git-masterclass.css                   #   Level 1 styles (green theme)
 │   ├── git-masterclass-level2.css            #   Level 2 styles (amber theme)
-│   └── git-masterclass-level3.css            #   Level 3 styles (indigo/teal theme)
+│   ├── git-masterclass-level3.css            #   Level 3 styles (indigo/teal theme)
+│   ├── js-masterclass.css                    #   JS Masterclass styles
+│   ├── html5-notes.css                       #   HTML5 Notes styles
+│   ├── networking-notes.css                  #   Networking Notes styles
+│   ├── interview-logic.css                   #   Interview Logic styles
+│   ├── sql-roadmap.css                       #   SQL Roadmap styles
+│   ├── postgresql.css                        #   PostgreSQL styles
+│   └── node-mongo.css                        #   Node/Mongo styles
 │
 ├── src/                                       # JavaScript
 │   ├── script.js                             #   Section & level switching logic
 │   ├── git-masterclass.js                    #   Level 1 interactivity
 │   ├── git-masterclass-level2.js             #   Level 2 interactivity
-│   └── git-masterclass-level3.js             #   Level 3 interactivity
+│   ├── git-masterclass-level3.js             #   Level 3 interactivity
+│   ├── js-masterclass.js                     #   JS Masterclass interactivity
+│   ├── html5-notes.js                        #   HTML5 Notes interactivity
+│   ├── networking-notes.js                   #   Networking Notes interactivity
+│   ├── interview-logic.js                    #   Interview Logic interactivity
+│   ├── sql-roadmap.js                        #   SQL Roadmap interactivity
+│   ├── postgresql.js                         #   PostgreSQL interactivity
+│   └── node-mongo.js                         #   Node/Mongo interactivity
 ```
 
 ---

@@ -27,6 +27,26 @@
   --crackjs: #ff6b35;
   --crackjs-glow: rgba(255, 107, 53, 0.25);
   --crackjs-bg: rgba(255, 107, 53, 0.06);
+
+  /* Logic Section */
+  --logic: #00ff87;
+  --logic-glow: rgba(0, 255, 135, 0.25);
+  --logic-bg: rgba(0, 255, 135, 0.06);
+
+  /* SQL Section */
+  --sql: #f59e0b;
+  --sql-glow: rgba(245, 158, 11, 0.25);
+  --sql-bg: rgba(245, 158, 11, 0.06);
+
+  /* Postgres Section */
+  --postgres: #00d4ff;
+  --postgres-glow: rgba(0, 212, 255, 0.25);
+  --postgres-bg: rgba(0, 212, 255, 0.06);
+
+  /* Node Section */
+  --node: #68a063;
+  --node-glow: rgba(104, 160, 99, 0.25);
+  --node-bg: rgba(104, 160, 99, 0.06);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -66,6 +86,18 @@ body.level-3::before {
 body.section-crackjs::before {
   background: radial-gradient(ellipse, rgba(255, 107, 53, 0.05), transparent 70%);
 }
+body.section-logic::before {
+  background: radial-gradient(ellipse, rgba(0, 255, 135, 0.05), transparent 70%);
+}
+body.section-sql::before {
+  background: radial-gradient(ellipse, rgba(245, 158, 11, 0.05), transparent 70%);
+}
+body.section-postgres::before {
+  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.05), transparent 70%);
+}
+body.section-node::before {
+  background: radial-gradient(ellipse, rgba(104, 160, 99, 0.05), transparent 70%);
+}
 
 /* Subtle dot grid */
 body::after {
@@ -99,6 +131,10 @@ body.level-1 .nav-bar { border-bottom-color: rgba(57, 211, 83, 0.15); }
 body.level-2 .nav-bar { border-bottom-color: rgba(255, 183, 0, 0.15); }
 body.level-3 .nav-bar { border-bottom-color: rgba(129, 140, 248, 0.15); }
 body.section-crackjs .nav-bar { border-bottom-color: rgba(255, 107, 53, 0.15); }
+body.section-logic .nav-bar { border-bottom-color: rgba(0, 255, 135, 0.15); }
+body.section-sql .nav-bar { border-bottom-color: rgba(245, 158, 11, 0.15); }
+body.section-postgres .nav-bar { border-bottom-color: rgba(0, 212, 255, 0.15); }
+body.section-node .nav-bar { border-bottom-color: rgba(104, 160, 99, 0.15); }
 
 /* Logo area */
 .nav-logo {
@@ -129,6 +165,10 @@ body.section-crackjs .nav-bar { border-bottom-color: rgba(255, 107, 53, 0.15); }
 body.level-2 .nav-brand .git { color: var(--l2); }
 body.level-3 .nav-brand .git { color: var(--l3); }
 body.section-crackjs .nav-brand .git { color: var(--crackjs); }
+body.section-logic .nav-brand .git { color: var(--logic); }
+body.section-sql .nav-brand .git { color: var(--sql); }
+body.section-postgres .nav-brand .git { color: var(--postgres); }
+body.section-node .nav-brand .git { color: var(--node); }
 
 .nav-brand .suffix { color: var(--text-dim); font-weight: 500; }
 
@@ -190,6 +230,30 @@ body.level-3 .section-btn.active[data-section="git"] {
   background: var(--crackjs-bg);
   color: var(--crackjs);
   box-shadow: 0 0 16px rgba(255, 107, 53, 0.08), inset 0 0 0 1px rgba(255, 107, 53, 0.15);
+}
+
+.section-btn.active[data-section="logic"] {
+  background: var(--logic-bg);
+  color: var(--logic);
+  box-shadow: 0 0 16px rgba(0, 255, 135, 0.08), inset 0 0 0 1px rgba(0, 255, 135, 0.15);
+}
+
+.section-btn.active[data-section="sql"] {
+  background: var(--sql-bg);
+  color: var(--sql);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.08), inset 0 0 0 1px rgba(245, 158, 11, 0.15);
+}
+
+.section-btn.active[data-section="postgres"] {
+  background: var(--postgres-bg);
+  color: var(--postgres);
+  box-shadow: 0 0 16px rgba(0, 212, 255, 0.08), inset 0 0 0 1px rgba(0, 212, 255, 0.15);
+}
+
+.section-btn.active[data-section="node"] {
+  background: var(--node-bg);
+  color: var(--node);
+  box-shadow: 0 0 16px rgba(104, 160, 99, 0.08), inset 0 0 0 1px rgba(104, 160, 99, 0.15);
 }
 
 /* Level Switcher */
@@ -397,6 +461,10 @@ body.level-3 .section-btn.active[data-section="git"] {
 body.level-2 .series-badge .pulse-dot { background: var(--l2); }
 body.level-3 .series-badge .pulse-dot { background: var(--l3); }
 body.section-crackjs .series-badge .pulse-dot { background: var(--crackjs); }
+body.section-logic .series-badge .pulse-dot { background: var(--logic); }
+body.section-sql .series-badge .pulse-dot { background: var(--sql); }
+body.section-postgres .series-badge .pulse-dot { background: var(--postgres); }
+body.section-node .series-badge .pulse-dot { background: var(--node); }
 
 @keyframes pulse {
   0%, 100% { opacity: 1; }
@@ -490,6 +558,10 @@ body.section-crackjs .series-badge .pulse-dot { background: var(--crackjs); }
 body.level-2 .loader-spinner { border-top-color: var(--l2); }
 body.level-3 .loader-spinner { border-top-color: var(--l3); }
 body.section-crackjs .loader-spinner { border-top-color: var(--crackjs); }
+body.section-logic .loader-spinner { border-top-color: var(--logic); }
+body.section-sql .loader-spinner { border-top-color: var(--sql); }
+body.section-postgres .loader-spinner { border-top-color: var(--postgres); }
+body.section-node .loader-spinner { border-top-color: var(--node); }
 
 @keyframes spin { to { transform: rotate(360deg); } }
 

@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Node.js · MongoDB · Express — Interview Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/node-mongo.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-logo">Interview Guide</div>
+    <div class="sidebar-title">Node · Mongo · Express</div>
+    <div class="sidebar-subtitle">180+ Q&amp;A for Freshers</div>
+  </div>
+
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search questions..." autocomplete="off">
+  </div>
+
+  <nav class="nav-section" id="nav-tree">
+    <div class="nav-part-label">📦 Part 1 — Node.js</div>
+    <a class="nav-item" href="#s1"><span class="nav-dot"></span>Fundamentals (Q1–20)</a>
+    <a class="nav-item" href="#s2"><span class="nav-dot"></span>Async Patterns (Q21–40)</a>
+    <a class="nav-item" href="#s3"><span class="nav-dot"></span>Modules &amp; npm (Q41–55)</a>
+    <a class="nav-item" href="#s4"><span class="nav-dot"></span>HTTP &amp; Networking (Q56–70)</a>
+    <a class="nav-item" href="#s5"><span class="nav-dot"></span>Security &amp; Perf (Q71–85)</a>
+    <a class="nav-item" href="#s6"><span class="nav-dot"></span>Advanced &amp; Misc (Q86–100)</a>
+
+    <div class="nav-part-label">🍃 Part 2 — MongoDB</div>
+    <a class="nav-item" href="#s7"><span class="nav-dot"></span>MongoDB Basics (Q1–20)</a>
+    <a class="nav-item" href="#s8"><span class="nav-dot"></span>Mongoose (Q21–40)</a>
+
+    <div class="nav-part-label">🚂 Part 3 — Express</div>
+    <a class="nav-item" href="#s9"><span class="nav-dot"></span>Express Basics (Q1–20)</a>
+    <a class="nav-item" href="#s10"><span class="nav-dot"></span>Advanced Express (Q21–40)</a>
+
+    <div class="nav-part-label">✅ Reference</div>
+    <a class="nav-item" href="#cheat"><span class="nav-dot"></span>Cheat Sheet</a>
+  </nav>
+
+  <div class="sidebar-stats">
+    <div class="stat-chip">
+      <span class="stat-num">100</span>
+      <span class="stat-lbl">Node.js</span>
+    </div>
+    <div class="stat-chip">
+      <span class="stat-num">40</span>
+      <span class="stat-lbl">MongoDB</span>
+    </div>
+    <div class="stat-chip">
+      <span class="stat-num">40</span>
+      <span class="stat-lbl">Express</span>
+    </div>
+  </div>
+</aside>
+
+<!-- PROGRESS -->
+<div class="progress-bar-wrap" style="position:fixed;top:0;left:260px;right:0;z-index:500;">
+  <div id="progress-bar"></div>
+</div>
+
+<!-- MAIN -->
+<main id="main">
+  <div class="hero">
+    <div class="hero-eyebrow">Complete Interview Preparation</div>
+    <h1 class="hero-title">Node.js · MongoDB<br><span>Express Interview</span></h1>
+    <p class="hero-desc">180+ curated Q&amp;A covering everything a fresher/entry-level developer needs — from Event Loop internals to production Express patterns. Click any question to expand the answer.</p>
+    <div class="hero-tags">
+      <span class="hero-tag node">Node.js Core</span>
+      <span class="hero-tag node">Async / Await</span>
+      <span class="hero-tag node">Streams</span>
+      <span class="hero-tag mongo">MongoDB</span>
+      <span class="hero-tag mongo">Mongoose ODM</span>
+      <span class="hero-tag express">Express.js</span>
+      <span class="hero-tag express">REST API</span>
+      <span class="hero-tag info">JWT Auth</span>
+      <span class="hero-tag info">RBAC</span>
+      <span class="hero-tag info">Fresher Level</span>
+    </div>
+  </div>
+
+  <div class="content" id="content">
+
+    <!-- ══════════════════════════════════════════════
+         PART 1 — NODE.JS
+    ══════════════════════════════════════════════ -->
+    <div class="part-header">
+      <span class="part-badge node">Part 1</span>
+      <h2 class="part-title">Node.js Core</h2>
+      <span class="part-count">100 Questions</span>
+    </div>
+
+    <!-- S1: Fundamentals -->
+    <div id="s1">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">📦</span>
+        <span class="section-title">Section 1 — Fundamentals</span>
+        <span class="section-range">Q1–20</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s1">
+
+        <div class="qa-card" data-q="What is Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q1</span>
+            <span class="q-text">What is Node.js?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Node.js is an open-source, cross-platform <strong>JavaScript runtime</strong> built on Chrome's <strong>V8 engine</strong>. It allows JavaScript to run on the server side (outside the browser).</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the V8 Engine?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q2</span>
+            <span class="q-text">What is the V8 Engine?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>V8 is Google's open-source JavaScript engine written in C++. It compiles JS directly to machine code, making execution very fast. Node.js uses V8 to execute JS on the server.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What makes Node.js different from PHP Java?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q3</span>
+            <span class="q-text">What makes Node.js different from other server-side technologies like PHP or Java?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th>Feature</th><th>Node.js</th><th>PHP/Java</th></tr>
+            <tr><td>Language</td><td>JavaScript</td><td>PHP / Java</td></tr>
+            <tr><td>Threading</td><td>Single-threaded + Event Loop</td><td>Multi-threaded</td></tr>
+            <tr><td>I/O</td><td>Non-blocking async</td><td>Blocking (traditional)</td></tr>
+            <tr><td>Use case</td><td>Real-time, I/O heavy apps</td><td>CPU-heavy, traditional web</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the Event Loop in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q4</span>
+            <span class="q-text">What is the Event Loop in Node.js?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>The Event Loop is the core mechanism that allows Node.js to perform <strong>non-blocking I/O</strong> despite being single-threaded. It offloads operations to the OS/libuv thread pool, and when they complete, the callbacks are pushed to the call stack.</p>
+            <p><strong>Phases of the Event Loop:</strong></p>
+            <ol>
+              <li><code>timers</code> — executes <code>setTimeout</code> and <code>setInterval</code> callbacks</li>
+              <li><code>pending callbacks</code> — I/O callbacks deferred to next loop</li>
+              <li><code>idle, prepare</code> — internal use</li>
+              <li><code>poll</code> — retrieve new I/O events</li>
+              <li><code>check</code> — <code>setImmediate</code> callbacks</li>
+              <li><code>close callbacks</code> — e.g., <code>socket.on('close')</code></li>
+            </ol>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Is Node.js single-threaded?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q5</span>
+            <span class="q-text">Is Node.js single-threaded?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Yes, Node.js runs JavaScript on a <strong>single main thread</strong>. However, I/O operations are handled by <strong>libuv's thread pool</strong> (4 threads by default), so the main thread is never blocked.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is non-blocking I/O?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q6</span>
+            <span class="q-text">What is non-blocking I/O?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Non-blocking I/O means that when a file read or network request is made, Node.js does <strong>not wait</strong> for it to complete. It registers a callback and moves to the next task.</p>
+            <pre><code>const fs = require('fs');
+
+// Non-blocking
+fs.readFile('file.txt', 'utf8', (err, data) => {
+  console.log(data); // runs later
+});
+
+console.log('This runs first'); // runs immediately</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the difference between process.nextTick and setImmediate?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q7</span>
+            <span class="q-text">What is the difference between <code>process.nextTick()</code> and <code>setImmediate()</code>?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th></th><th>process.nextTick()</th><th>setImmediate()</th></tr>
+            <tr><td>Runs</td><td>After current operation, before I/O</td><td>After I/O events in the check phase</td></tr>
+            <tr><td>Priority</td><td>Higher</td><td>Lower</td></tr>
+            <tr><td>Use case</td><td>Defer within same phase</td><td>Defer to next iteration</td></tr>
+            </table>
+            <pre><code>setImmediate(() => console.log('setImmediate'));
+process.nextTick(() => console.log('nextTick'));
+// Output: nextTick → setImmediate</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is setTimeout 0 vs setImmediate?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q8</span>
+            <span class="q-text">What is <code>setTimeout(() => {}, 0)</code> vs <code>setImmediate()</code>?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Both execute after I/O, but <code>setTimeout</code> with 0ms delay can fire <strong>before or after</strong> <code>setImmediate</code> depending on the context. Inside an I/O callback, <code>setImmediate</code> always fires first.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are streams in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q9</span>
+            <span class="q-text">What are streams in Node.js?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Streams are objects that let you read/write data <strong>piece by piece</strong> (chunks) rather than loading everything into memory at once.</p>
+            <p><strong>Types of streams:</strong></p>
+            <ul>
+              <li><code>Readable</code> — reading data (e.g., <code>fs.createReadStream</code>)</li>
+              <li><code>Writable</code> — writing data (e.g., <code>fs.createWriteStream</code>)</li>
+              <li><code>Duplex</code> — both read and write (e.g., TCP socket)</li>
+              <li><code>Transform</code> — duplex + transforms data (e.g., <code>zlib.createGzip</code>)</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the pipe method in streams?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q10</span>
+            <span class="q-text">What is the <code>pipe()</code> method in streams?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>pipe()</code> connects a Readable stream to a Writable stream, automatically handling backpressure.</p>
+            <pre><code>const fs = require('fs');
+const readable = fs.createReadStream('input.txt');
+const writable = fs.createWriteStream('output.txt');
+readable.pipe(writable);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the difference between require and import?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q11</span>
+            <span class="q-text">What is the difference between <code>require()</code> and <code>import</code>?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th></th><th>require()</th><th>import</th></tr>
+            <tr><td>System</td><td>CommonJS (CJS)</td><td>ES Modules (ESM)</td></tr>
+            <tr><td>Loading</td><td>Synchronous, dynamic</td><td>Asynchronous, static</td></tr>
+            <tr><td>File ext</td><td>.js (default)</td><td>.mjs or "type":"module"</td></tr>
+            <tr><td>Top-level await</td><td>❌</td><td>✅</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is module.exports vs exports?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q12</span>
+            <span class="q-text">What is <code>module.exports</code> vs <code>exports</code>?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>module.exports</code> is the actual object returned by <code>require()</code>. <code>exports</code> is a shorthand reference to <code>module.exports</code>.</p>
+            <pre><code>// Both work for adding properties
+exports.greet = () => 'Hello';
+
+// Only module.exports works for replacing the entire export
+module.exports = () => 'Hello'; // ✅
+exports = () => 'Hello';        // ❌ breaks the reference</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is __dirname and __filename in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q13</span>
+            <span class="q-text">What is <code>__dirname</code> and <code>__filename</code> in Node.js?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>__dirname</code> — absolute path of the <strong>directory</strong> containing the current file.<br>
+            <code>__filename</code> — absolute path of the <strong>current file</strong>.</p>
+            <pre><code>console.log(__dirname);  // /home/zaheer/project
+console.log(__filename); // /home/zaheer/project/app.js</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the path module?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q14</span>
+            <span class="q-text">What is the <code>path</code> module?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A built-in Node.js module to work with file and directory paths in an OS-independent way.</p>
+            <pre><code>const path = require('path');
+path.join('/home', 'zaheer', 'app.js');   // /home/zaheer/app.js
+path.resolve('src', 'index.js');           // absolute path
+path.basename('/home/zaheer/app.js');      // app.js
+path.extname('app.js');                    // .js
+path.dirname('/home/zaheer/app.js');       // /home/zaheer</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the fs module?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q15</span>
+            <span class="q-text">What is the <code>fs</code> module?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>The <code>fs</code> (File System) module provides APIs to interact with the filesystem.</p>
+            <pre><code>const fs = require('fs');
+
+// Async read
+fs.readFile('file.txt', 'utf8', (err, data) => { ... });
+
+// Sync read (blocks event loop — avoid in production)
+const data = fs.readFileSync('file.txt', 'utf8');
+
+// Write
+fs.writeFile('out.txt', 'Hello', (err) => { ... });</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is os module?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q16</span>
+            <span class="q-text">What is <code>os</code> module?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>const os = require('os');
+os.platform();  // 'linux', 'win32', 'darwin'
+os.cpus();      // array of CPU info
+os.totalmem();  // total memory in bytes
+os.freemem();   // free memory in bytes
+os.homedir();   // home directory path</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the events module and EventEmitter?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q17</span>
+            <span class="q-text">What is the <code>events</code> module and EventEmitter?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>EventEmitter</code> allows objects to emit named events and register listeners for those events.</p>
+            <pre><code>const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+emitter.on('greet', (name) => {
+  console.log(`Hello, ${name}`);
+});
+
+emitter.emit('greet', 'Zaheer'); // Hello, Zaheer</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is process object in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q18</span>
+            <span class="q-text">What is <code>process</code> object in Node.js?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>process.env.NODE_ENV   // environment variables
+process.argv           // command-line arguments
+process.exit(0)        // exit with success code
+process.cwd()          // current working directory
+process.pid            // process ID
+process.memoryUsage()  // memory info</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are Buffers in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q19</span>
+            <span class="q-text">What are Buffers in Node.js?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Buffers represent fixed-length raw binary data. Used for handling binary data like files, network packets, etc.</p>
+            <pre><code>const buf = Buffer.from('Hello', 'utf8');
+console.log(buf);            // &lt;Buffer 48 65 6c 6c 6f&gt;
+console.log(buf.toString()); // Hello</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is npm? npm install vs --save-dev?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q20</span>
+            <span class="q-text">What is <code>npm</code>? Difference between <code>npm install</code> and <code>npm install --save-dev</code>?</span>
+            <span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>npm</code> (Node Package Manager) manages packages/dependencies.</p>
+            <ul>
+              <li><code>npm install &lt;pkg&gt;</code> — installs to <code>dependencies</code> (needed in production)</li>
+              <li><code>npm install &lt;pkg&gt; --save-dev</code> — installs to <code>devDependencies</code> (only during development)</li>
+            </ul>
+          </div></div>
+        </div>
+
+      </div><!-- /body-s1 -->
+    </div><!-- /s1 -->
+
+    <!-- S2: Async -->
+    <div id="s2">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">⚡</span>
+        <span class="section-title">Section 2 — Async Patterns</span>
+        <span class="section-range">Q21–40</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s2">
+
+        <div class="qa-card" data-q="What is a callback in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q21</span><span class="q-text">What is a callback in Node.js?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A callback is a function passed as an argument to another function, invoked after an async operation completes.</p>
+            <pre><code>function fetchData(callback) {
+  setTimeout(() => {
+    callback(null, { name: 'Zaheer' });
+  }, 1000);
+}
+
+fetchData((err, data) => {
+  if (err) return console.error(err);
+  console.log(data);
+});</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Callback Hell?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q22</span><span class="q-text">What is "Callback Hell"?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Deeply nested callbacks that make code hard to read and maintain.</p>
+            <pre><code>getUser(id, (err, user) => {
+  getPosts(user.id, (err, posts) => {
+    getComments(posts[0].id, (err, comments) => {
+      // deeply nested...
+    });
+  });
+});</code></pre>
+            <p><strong>Solution:</strong> Use Promises or async/await.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is a Promise?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q23</span><span class="q-text">What is a Promise?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A Promise represents the eventual completion (or failure) of an async operation. States: <strong>pending</strong>, <strong>fulfilled</strong>, <strong>rejected</strong>.</p>
+            <pre><code>const promise = new Promise((resolve, reject) => {
+  setTimeout(() => resolve('Done!'), 1000);
+});
+
+promise
+  .then(result => console.log(result))  // Done!
+  .catch(err => console.error(err));</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is async/await?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q24</span><span class="q-text">What is <code>async/await</code>?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>async/await</code> is syntactic sugar over Promises that makes async code look synchronous.</p>
+            <pre><code>async function fetchUser() {
+  try {
+    const user = await getUser(1);
+    const posts = await getPosts(user.id);
+    return posts;
+  } catch (err) {
+    console.error(err);
+  }
+}</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Promise.all?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q25</span><span class="q-text">What is <code>Promise.all()</code>?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Runs multiple promises in <strong>parallel</strong> and resolves when all succeed, or rejects if any one fails.</p>
+            <pre><code>const [users, posts] = await Promise.all([
+  fetchUsers(),
+  fetchPosts()
+]);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Promise.allSettled?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q26</span><span class="q-text">What is <code>Promise.allSettled()</code>?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Like <code>Promise.all()</code> but <strong>never rejects</strong> — waits for all promises and returns their statuses.</p>
+            <pre><code>const results = await Promise.allSettled([p1, p2, p3]);
+results.forEach(r => console.log(r.status, r.value || r.reason));</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Promise.race?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q27</span><span class="q-text">What is <code>Promise.race()</code>?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Resolves or rejects as soon as the <strong>first</strong> promise settles.</p>
+            <pre><code>const result = await Promise.race([
+  fetch('/api/fast'),
+  timeout(5000)   // reject after 5 sec
+]);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Promise.any?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q28</span><span class="q-text">What is <code>Promise.any()</code>?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Resolves with the <strong>first fulfilled</strong> promise. Rejects only if <strong>all</strong> promises reject.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between Promise.all and Promise.allSettled?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q29</span><span class="q-text">Difference between <code>Promise.all</code> and <code>Promise.allSettled</code>?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th></th><th>Promise.all</th><th>Promise.allSettled</th></tr>
+            <tr><td>Rejects on failure</td><td>Yes (immediately)</td><td>No</td></tr>
+            <tr><td>Returns</td><td>Values array</td><td>{status, value/reason} array</td></tr>
+            <tr><td>Use when</td><td>All must succeed</td><td>Want all results regardless</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you handle errors in async/await?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q30</span><span class="q-text">How do you handle errors in async/await?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>// Option 1: try/catch
+async function run() {
+  try {
+    const data = await riskyOperation();
+  } catch (err) {
+    console.error('Error:', err.message);
+  }
+}
+
+// Option 2: .catch on the call
+run().catch(console.error);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between synchronous and asynchronous code?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q31</span><span class="q-text">Difference between synchronous and asynchronous code?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><strong>Synchronous:</strong> Executes line by line, each line waits for the previous to complete. Blocks the thread.</p>
+            <p><strong>Asynchronous:</strong> Operations are started and the program continues. Result is handled via callback/promise/async-await.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is util.promisify?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q32</span><span class="q-text">What is <code>util.promisify()</code>?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Converts a callback-based function into a Promise-based one.</p>
+            <pre><code>const util = require('util');
+const fs = require('fs');
+
+const readFile = util.promisify(fs.readFile);
+const data = await readFile('file.txt', 'utf8');</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are microtasks and macrotasks?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q33</span><span class="q-text">What are microtasks and macrotasks?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><strong>Microtasks</strong> (higher priority): Promise callbacks (<code>.then</code>), <code>process.nextTick</code>, <code>queueMicrotask</code></p>
+            <p><strong>Macrotasks</strong> (lower priority): <code>setTimeout</code>, <code>setInterval</code>, <code>setImmediate</code>, I/O callbacks</p>
+            <p>Microtasks run <strong>before</strong> macrotasks after each task.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Explain output of event loop code">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q34</span><span class="q-text">Explain the output of this code:</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>console.log('1');
+setTimeout(() => console.log('2'), 0);
+Promise.resolve().then(() => console.log('3'));
+console.log('4');</code></pre>
+            <p><strong>Output:</strong> <code>1 → 4 → 3 → 2</code></p>
+            <ul>
+              <li><code>1</code>, <code>4</code> are synchronous</li>
+              <li>Promise <code>.then</code> is a microtask (runs before macrotasks)</li>
+              <li><code>setTimeout</code> is a macrotask (runs last)</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between setInterval and setTimeout?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q35</span><span class="q-text">Difference between <code>setInterval</code> and <code>setTimeout</code>?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>setTimeout(fn, ms)</code> — runs <code>fn</code> <strong>once</strong> after <code>ms</code> milliseconds.</p>
+            <p><code>setInterval(fn, ms)</code> — runs <code>fn</code> <strong>repeatedly</strong> every <code>ms</code> milliseconds.</p>
+            <pre><code>const timer = setInterval(() => console.log('tick'), 1000);
+clearInterval(timer); // stop it</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is an IIFE?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q36</span><span class="q-text">What is an IIFE? Is it useful in Node.js?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>An <strong>Immediately Invoked Function Expression</strong> executes as soon as it's defined. Every CommonJS module is wrapped in an IIFE-like wrapper by Node.js.</p>
+            <pre><code>(function() {
+  const x = 10; // scoped, not global
+})();</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is async_hooks module?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q37</span><span class="q-text">What is <code>async_hooks</code> module?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>async_hooks</code> is a Node.js core module to track the lifetime of async resources (for APM/tracing tools). Not commonly used in day-to-day development.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Can you await outside an async function?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q38</span><span class="q-text">Can you <code>await</code> outside an <code>async</code> function?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>In Node.js v14.8+ with ES Modules (<code>"type": "module"</code>), you can use <strong>top-level await</strong>:</p>
+            <pre><code>// works in .mjs or type:module
+const data = await fetch('https://api.example.com');</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the Worker Threads module?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q39</span><span class="q-text">What is the <code>Worker Threads</code> module?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Allows running JavaScript in <strong>parallel threads</strong> for CPU-intensive tasks. Each worker has its own V8 instance.</p>
+            <pre><code>const { Worker } = require('worker_threads');
+const worker = new Worker('./heavy-task.js');
+worker.on('message', (result) => console.log(result));</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is child_process module?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)">
+            <span class="q-num">Q40</span><span class="q-text">What is <code>child_process</code> module?</span><span class="qa-arrow">▶</span>
+          </div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Allows spawning child processes to run shell commands or other scripts.</p>
+            <pre><code>const { exec } = require('child_process');
+exec('ls -la', (err, stdout) => {
+  console.log(stdout);
+});</code></pre>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s2 -->
+
+    <!-- S3: Modules -->
+    <div id="s3">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">🔧</span>
+        <span class="section-title">Section 3 — Modules &amp; npm</span>
+        <span class="section-range">Q41–55</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s3">
+
+        <div class="qa-card" data-q="What are the types of modules in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q41</span><span class="q-text">What are the types of modules in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <ol><li><strong>Core modules</strong> — built-in (<code>fs</code>, <code>path</code>, <code>http</code>, <code>os</code>, etc.)</li>
+            <li><strong>Local modules</strong> — files you create yourself</li>
+            <li><strong>Third-party modules</strong> — installed via npm (<code>express</code>, <code>mongoose</code>, etc.)</li></ol>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is package.json?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q42</span><span class="q-text">What is <code>package.json</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A JSON file that holds metadata about your project and manages dependencies.</p>
+            <pre><code>{
+  "name": "my-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": { "express": "^4.18.2" },
+  "devDependencies": { "nodemon": "^3.0.0" }
+}</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is package-lock.json?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q43</span><span class="q-text">What is <code>package-lock.json</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A file that locks the <strong>exact versions</strong> of installed packages, including nested dependencies. Ensures consistent installs across machines.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between dependencies and devDependencies?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q44</span><span class="q-text">Difference between <code>dependencies</code> and <code>devDependencies</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>dependencies</code> — required at <strong>runtime</strong> (e.g., <code>express</code>, <code>mongoose</code>)</p>
+            <p><code>devDependencies</code> — required only during <strong>development</strong> (e.g., <code>nodemon</code>, <code>jest</code>, <code>eslint</code>)</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What does ^ and ~ mean in package.json versions?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q45</span><span class="q-text">What does <code>^</code> and <code>~</code> mean in package.json versions?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <ul>
+              <li><code>^1.2.3</code> — allows minor &amp; patch updates (<code>1.x.x</code>)</li>
+              <li><code>~1.2.3</code> — allows only patch updates (<code>1.2.x</code>)</li>
+              <li><code>1.2.3</code> — exact version only</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is npx?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q46</span><span class="q-text">What is <code>npx</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>npx</code> runs npm packages <strong>without installing them globally</strong>. Useful for one-time tools.</p>
+            <pre><code>npx create-react-app my-app
+npx nodemon index.js</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is nodemon?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q47</span><span class="q-text">What is <code>nodemon</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A development utility that <strong>automatically restarts</strong> the Node.js server when file changes are detected.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the node_modules folder?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q48</span><span class="q-text">What is the <code>node_modules</code> folder?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>The directory where npm installs all project dependencies. It should be added to <code>.gitignore</code> and never committed.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is .env and how is it used?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q49</span><span class="q-text">What is <code>.env</code> and how is it used in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code># .env
+PORT=3000
+DB_URI=mongodb://localhost/mydb</code></pre>
+            <pre><code>require('dotenv').config();
+console.log(process.env.PORT); // 3000</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between npm install and npm ci?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q50</span><span class="q-text">Difference between <code>npm install</code> and <code>npm ci</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>npm install</code> — installs based on <code>package.json</code>, updates <code>package-lock.json</code></p>
+            <p><code>npm ci</code> — installs <strong>strictly</strong> from <code>package-lock.json</code> (faster, for CI/CD pipelines)</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is semantic versioning semver?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q52</span><span class="q-text">What is semantic versioning (semver)?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>MAJOR.MINOR.PATCH</code> — e.g., <code>4.18.2</code></p>
+            <ul>
+              <li><strong>MAJOR</strong> — breaking changes</li>
+              <li><strong>MINOR</strong> — new features, backward compatible</li>
+              <li><strong>PATCH</strong> — bug fixes</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you create a custom module in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q53</span><span class="q-text">How do you create a custom module in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>// math.js
+const add = (a, b) => a + b;
+const sub = (a, b) => a - b;
+module.exports = { add, sub };
+
+// app.js
+const { add } = require('./math');
+console.log(add(2, 3)); // 5</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is circular dependency in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q54</span><span class="q-text">What is circular dependency in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>When module A requires B, and B requires A. Node.js handles it by returning a partially-filled <code>exports</code> object, which can lead to <code>undefined</code> values. Should be avoided by refactoring.</p>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s3 -->
+
+    <!-- S4: HTTP -->
+    <div id="s4">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">🌐</span>
+        <span class="section-title">Section 4 — HTTP &amp; Networking</span>
+        <span class="section-range">Q56–70</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s4">
+
+        <div class="qa-card" data-q="How do you create an HTTP server in Node.js without any framework?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q56</span><span class="q-text">How do you create an HTTP server in Node.js without any framework?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('Hello World');
+});
+
+server.listen(3000, () => console.log('Server running on port 3000'));</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are HTTP methods?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q58</span><span class="q-text">What are HTTP methods?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th>Method</th><th>Purpose</th></tr>
+            <tr><td><code>GET</code></td><td>Fetch data</td></tr>
+            <tr><td><code>POST</code></td><td>Create resource</td></tr>
+            <tr><td><code>PUT</code></td><td>Replace resource entirely</td></tr>
+            <tr><td><code>PATCH</code></td><td>Partially update resource</td></tr>
+            <tr><td><code>DELETE</code></td><td>Delete resource</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are HTTP status codes?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q59</span><span class="q-text">What are HTTP status codes? Give common examples.</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th>Code</th><th>Meaning</th></tr>
+            <tr><td>200</td><td>OK</td></tr>
+            <tr><td>201</td><td>Created</td></tr>
+            <tr><td>204</td><td>No Content</td></tr>
+            <tr><td>400</td><td>Bad Request</td></tr>
+            <tr><td>401</td><td>Unauthorized</td></tr>
+            <tr><td>403</td><td>Forbidden</td></tr>
+            <tr><td>404</td><td>Not Found</td></tr>
+            <tr><td>409</td><td>Conflict</td></tr>
+            <tr><td>500</td><td>Internal Server Error</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is REST API?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q60</span><span class="q-text">What is REST API?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>REST (Representational State Transfer) is an architectural style for designing networked applications using HTTP.</p>
+            <ul>
+              <li>Stateless</li>
+              <li>Resource-based URLs (<code>/users</code>, <code>/users/:id</code>)</li>
+              <li>Standard HTTP methods</li>
+              <li>JSON as common format</li>
+            </ul>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is CORS? How do you handle it in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q61</span><span class="q-text">What is CORS? How do you handle it in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>CORS (Cross-Origin Resource Sharing) is a browser security policy that blocks requests from different origins.</p>
+            <pre><code>const cors = require('cors');
+app.use(cors()); // allow all
+
+// Or specific origin
+app.use(cors({ origin: 'https://myfrontend.com' }));</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is WebSocket and how is it different from HTTP?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q64</span><span class="q-text">What is WebSocket and how is it different from HTTP?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th></th><th>HTTP</th><th>WebSocket</th></tr>
+            <tr><td>Connection</td><td>Request-Response, stateless</td><td>Persistent, full-duplex</td></tr>
+            <tr><td>Direction</td><td>Client initiates</td><td>Both can send anytime</td></tr>
+            <tr><td>Use case</td><td>REST APIs</td><td>Chat, live feeds, gaming</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between req.params, req.query, req.body?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q66</span><span class="q-text">Difference between <code>req.params</code>, <code>req.query</code>, and <code>req.body</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>GET /users/:id           → req.params.id
+GET /users?page=2        → req.query.page
+POST /users (body: JSON) → req.body.name</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is rate limiting?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q69</span><span class="q-text">What is rate limiting?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Restricting the number of requests a client can make in a time window to prevent abuse.</p>
+            <pre><code>const rateLimit = require('express-rate-limit');
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is clustering in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q70</span><span class="q-text">What is clustering in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>The <code>cluster</code> module allows Node.js to create child processes (workers) that <strong>share the same server port</strong>, utilizing multiple CPU cores.</p>
+            <pre><code>const cluster = require('cluster');
+const os = require('os');
+
+if (cluster.isPrimary) {
+  os.cpus().forEach(() => cluster.fork());
+} else {
+  require('./server');
+}</code></pre>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s4 -->
+
+    <!-- S5: Security -->
+    <div id="s5">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">🔐</span>
+        <span class="section-title">Section 5 — Security &amp; Performance</span>
+        <span class="section-range">Q71–85</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s5">
+
+        <div class="qa-card" data-q="What is JWT JSON Web Token?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q71</span><span class="q-text">What is JWT (JSON Web Token)?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>JWT is a compact, URL-safe token format for authentication. It contains a <code>header.payload.signature</code>.</p>
+            <pre><code>const jwt = require('jsonwebtoken');
+
+// Sign
+const token = jwt.sign({ userId: 1 }, process.env.JWT_SECRET, { expiresIn: '7d' });
+
+// Verify
+const decoded = jwt.verify(token, process.env.JWT_SECRET);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is bcrypt and why is it used?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q72</span><span class="q-text">What is <code>bcrypt</code> and why is it used?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>bcrypt</code> is used to <strong>hash passwords</strong> so they're never stored in plain text. It includes salt to prevent rainbow table attacks.</p>
+            <pre><code>const bcrypt = require('bcryptjs');
+const hash = await bcrypt.hash('myPassword', 10);   // 10 = salt rounds
+const match = await bcrypt.compare('myPassword', hash); // true</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Helmet.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q74</span><span class="q-text">What is Helmet.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>helmet</code> is an Express middleware that sets <strong>security-related HTTP headers</strong> to protect against common attacks.</p>
+            <pre><code>const helmet = require('helmet');
+app.use(helmet());
+// Sets: Content-Security-Policy, X-XSS-Protection, etc.</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you handle file uploads in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q78</span><span class="q-text">How do you handle file uploads in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  console.log(req.file);
+  res.json({ filename: req.file.filename });
+});</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is PM2?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q81</span><span class="q-text">What is <code>PM2</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>PM2 is a production process manager for Node.js that handles auto-restart on crash, cluster mode, log management, and zero-downtime reload.</p>
+            <pre><code>pm2 start index.js --name my-app
+pm2 start index.js -i max  # use all CPU cores</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you handle uncaught exceptions in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q84</span><span class="q-text">How do you handle uncaught exceptions in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>process.on('uncaughtException', (err) => {
+  console.error('Uncaught Exception:', err);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});</code></pre>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s5 -->
+
+    <!-- S6: Advanced -->
+    <div id="s6">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">🧪</span>
+        <span class="section-title">Section 6 — Advanced &amp; Misc</span>
+        <span class="section-range">Q86–100</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s6">
+
+        <div class="qa-card" data-q="What is middleware in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q86</span><span class="q-text">What is middleware in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A middleware is a function that has access to <code>req</code>, <code>res</code>, and <code>next()</code>. It sits between the request and response to process data, authenticate, log, etc.</p>
+            <pre><code>function logger(req, res, next) {
+  console.log(`${req.method} ${req.url}`);
+  next(); // pass to next middleware
+}
+app.use(logger);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is MVC architecture?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q90</span><span class="q-text">What is MVC architecture?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>Model      → Data layer (Mongoose models)
+View       → Response/template (JSON or HTML)
+Controller → Business logic (route handlers)
+
+src/
+├── models/      User.js, Post.js
+├── controllers/ userController.js
+├── routes/      userRoutes.js
+└── index.js</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is REPL in Node.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q92</span><span class="q-text">What is <code>REPL</code> in Node.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>REPL stands for <strong>Read-Eval-Print-Loop</strong>. An interactive shell to run JavaScript code instantly.</p>
+            <pre><code>$ node
+> 2 + 2
+4
+> `Hello ${'Zaheer'}`
+'Hello Zaheer'</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is libuv?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q93</span><span class="q-text">What is <code>libuv</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>libuv</code> is a C library that Node.js uses under the hood to provide: Asynchronous I/O, the Event Loop, Thread pool (4 threads by default), and Cross-platform async networking.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are best practices for a Node.js project?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q100</span><span class="q-text">What are some best practices for a Node.js project?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <ol>
+              <li>Use environment variables for secrets (<code>dotenv</code>)</li>
+              <li>Validate all input (<code>express-validator</code>)</li>
+              <li>Handle errors centrally (error middleware)</li>
+              <li>Use async/await over callbacks</li>
+              <li>Use <code>helmet</code> + <code>cors</code> for security</li>
+              <li>Structure with MVC (models/controllers/routes)</li>
+              <li>Use <code>PM2</code> or Docker in production</li>
+              <li>Never store <code>.env</code> in git</li>
+              <li>Log with <code>morgan</code>/<code>winston</code></li>
+              <li>Use <code>process.on('unhandledRejection')</code> safety net</li>
+            </ol>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s6 -->
+
+    <!-- ══════════════════════════════════════════════
+         PART 2 — MONGODB
+    ══════════════════════════════════════════════ -->
+    <div class="part-header">
+      <span class="part-badge mongo">Part 2</span>
+      <h2 class="part-title">MongoDB &amp; Mongoose</h2>
+      <span class="part-count">40 Questions</span>
+    </div>
+
+    <!-- S7: MongoDB Basics -->
+    <div id="s7">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">🍃</span>
+        <span class="section-title">Section 7 — MongoDB Basics</span>
+        <span class="section-range">Q1–20</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s7">
+
+        <div class="qa-card" data-q="What is MongoDB?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q1</span><span class="q-text">What is MongoDB?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>MongoDB is a <strong>NoSQL document database</strong> that stores data as flexible JSON-like documents (BSON format). It's schema-less, highly scalable, and ideal for applications with dynamic or evolving data structures.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between SQL and NoSQL databases?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q2</span><span class="q-text">Difference between SQL and NoSQL databases?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th></th><th>SQL (MySQL)</th><th>NoSQL (MongoDB)</th></tr>
+            <tr><td>Data model</td><td>Tables &amp; rows</td><td>Documents, collections</td></tr>
+            <tr><td>Schema</td><td>Fixed schema</td><td>Flexible/schema-less</td></tr>
+            <tr><td>Relationships</td><td>JOINs</td><td>Embedded docs / $lookup</td></tr>
+            <tr><td>Scalability</td><td>Vertical</td><td>Horizontal</td></tr>
+            <tr><td>Best for</td><td>Complex relations</td><td>Large, flexible, fast I/O</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is BSON?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q3</span><span class="q-text">What is BSON?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>BSON (Binary JSON) is MongoDB's internal storage format — a binary-encoded serialization of JSON-like documents. It supports additional types like <code>Date</code>, <code>ObjectId</code>, <code>Binary</code>.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is _id in MongoDB?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q6</span><span class="q-text">What is <code>_id</code> in MongoDB?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>_id</code> is the <strong>primary key</strong> of every document. If not provided, MongoDB auto-generates an <code>ObjectId</code> — a 12-byte unique identifier.</p>
+            <pre><code>ObjectId("507f1f77bcf86cd799439011")
+// 4 bytes timestamp + 5 bytes random + 3 bytes increment</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the MongoDB CRUD syntax?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q7</span><span class="q-text">What is the MongoDB CRUD syntax?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>// Create
+db.users.insertOne({ name: 'Zaheer' });
+db.users.insertMany([{ name: 'A' }, { name: 'B' }]);
+
+// Read
+db.users.find({ name: 'Zaheer' });
+db.users.findOne({ _id: id });
+
+// Update
+db.users.updateOne({ name: 'Zaheer' }, { $set: { age: 22 } });
+db.users.updateMany({ role: 'user' }, { $set: { active: true } });
+
+// Delete
+db.users.deleteOne({ name: 'Zaheer' });
+db.users.deleteMany({ active: false });</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are common MongoDB query operators?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q8</span><span class="q-text">What are common MongoDB query operators?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>$eq, $ne, $gt, $gte, $lt, $lte  // comparison
+$in, $nin                         // in array
+$and, $or, $not, $nor             // logical
+$exists, $type                    // element
+$regex                            // pattern match
+
+db.users.find({ age: { $gte: 18, $lte: 30 } });
+db.users.find({ role: { $in: ['admin', 'moderator'] } });</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are MongoDB update operators?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q9</span><span class="q-text">What are MongoDB update operators?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>$set      // set field value
+$unset    // remove a field
+$inc      // increment numeric field
+$push     // add item to array
+$pull     // remove item from array
+$addToSet // add to array only if not present
+$rename   // rename a field</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is an index in MongoDB? Why is it important?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q10</span><span class="q-text">What is an index in MongoDB? Why is it important?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Indexes are data structures that speed up query performance by avoiding full collection scans.</p>
+            <pre><code>db.users.createIndex({ email: 1 });         // ascending
+db.users.createIndex({ email: 1 }, { unique: true }); // unique
+db.users.createIndex({ name: 'text' });     // text search</code></pre>
+            <p>Without indexes, MongoDB scans every document — slow for large collections.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Aggregation in MongoDB?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q12</span><span class="q-text">What is Aggregation in MongoDB?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Aggregation processes data through a <strong>pipeline of stages</strong> to transform, filter, group, or compute data.</p>
+            <pre><code>db.orders.aggregate([
+  { $match: { status: 'completed' } },
+  { $group: { _id: '$userId', total: { $sum: '$amount' } } },
+  { $sort: { total: -1 } },
+  { $limit: 10 }
+]);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is $lookup in MongoDB?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q13</span><span class="q-text">What is <code>$lookup</code> in MongoDB?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>$lookup</code> performs a <strong>left outer join</strong> between two collections (like SQL JOIN).</p>
+            <pre><code>db.orders.aggregate([
+  {
+    $lookup: {
+      from: 'users',
+      localField: 'userId',
+      foreignField: '_id',
+      as: 'user'
+    }
+  }
+]);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between embedded documents and references?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q14</span><span class="q-text">Difference between embedded documents and references?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th></th><th>Embedded</th><th>Reference</th></tr>
+            <tr><td>Storage</td><td>Nested inside document</td><td>Separate collection, store ObjectId</td></tr>
+            <tr><td>Read</td><td>One query</td><td>Multiple queries or $lookup</td></tr>
+            <tr><td>When to use</td><td>1:1 or 1:few</td><td>1:many, data used independently</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is a Replica Set?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q19</span><span class="q-text">What is a Replica Set?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A replica set is a group of MongoDB servers that maintain the <strong>same dataset</strong> for high availability. One is the primary (receives writes), others are secondaries (replicate data). If primary fails, a secondary is elected automatically.</p>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s7 -->
+
+    <!-- S8: Mongoose -->
+    <div id="s8">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">🔗</span>
+        <span class="section-title">Section 8 — Mongoose</span>
+        <span class="section-range">Q21–40</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s8">
+
+        <div class="qa-card" data-q="What is Mongoose?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q21</span><span class="q-text">What is Mongoose?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Mongoose is an <strong>ODM (Object Data Modeling)</strong> library for MongoDB and Node.js. It provides schema-based modeling, validation, query building, and middleware for MongoDB documents.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is a Mongoose Schema?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q23</span><span class="q-text">What is a Mongoose Schema?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A Schema defines the <strong>structure, types, validations, and defaults</strong> for a MongoDB collection.</p>
+            <pre><code>const { Schema, model } = require('mongoose');
+
+const userSchema = new Schema({
+  name:  { type: String, required: true, trim: true },
+  email: { type: String, required: true, unique: true, lowercase: true },
+  age:   { type: Number, min: 0, max: 120 },
+  role:  { type: String, enum: ['user', 'admin'], default: 'user' },
+  createdAt: { type: Date, default: Date.now }
+});
+
+const User = model('User', userSchema);
+module.exports = User;</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is CRUD with Mongoose?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q26</span><span class="q-text">What is CRUD with Mongoose?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>// CREATE
+const user = await User.create({ name: 'Zaheer', email: 'z@z.com' });
+
+// READ
+const users = await User.find({});
+const user  = await User.findById(id);
+const user  = await User.findOne({ email: 'z@z.com' });
+
+// UPDATE
+await User.findByIdAndUpdate(id, { name: 'New' }, { new: true });
+await User.updateMany({ role: 'user' }, { $set: { active: true } });
+
+// DELETE
+await User.findByIdAndDelete(id);
+await User.deleteMany({ active: false });</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What does { new: true } mean in findByIdAndUpdate?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q27</span><span class="q-text">What does <code>{ new: true }</code> mean in <code>findByIdAndUpdate</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>By default, <code>findByIdAndUpdate</code> returns the <strong>old document</strong> before the update. <code>{ new: true }</code> makes it return the <strong>updated document</strong>.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Mongoose Middleware Hooks?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q29</span><span class="q-text">What is Mongoose Middleware (Hooks)?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Functions that run <strong>before or after</strong> certain operations.</p>
+            <pre><code>// Pre-save: hash password before saving
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
+
+// Post-save
+userSchema.post('save', function(doc) {
+  console.log('User saved:', doc.email);
+});</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is virtual field in Mongoose?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q31</span><span class="q-text">What is a virtual field in Mongoose?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>A virtual is a <strong>computed property</strong> that doesn't get persisted to MongoDB.</p>
+            <pre><code>userSchema.virtual('fullName').get(function() {
+  return `${this.firstName} ${this.lastName}`;
+});
+
+const user = await User.findById(id);
+console.log(user.fullName); // "Zaheer Shaik"</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is population in Mongoose?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q32</span><span class="q-text">What is population in Mongoose?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>populate()</code> replaces a stored <strong>ObjectId reference</strong> with the actual document from another collection.</p>
+            <pre><code>const postSchema = new Schema({
+  title: String,
+  author: { type: Schema.Types.ObjectId, ref: 'User' }
+});
+
+const post = await Post.findById(id).populate('author', 'name email');
+// post.author is now a full User object</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is lean() in Mongoose?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q33</span><span class="q-text">What is <code>lean()</code> in Mongoose?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>lean()</code> returns plain JS objects instead of Mongoose documents — much <strong>faster and lighter</strong>. Use when you only need to read data.</p>
+            <pre><code>const users = await User.find({}).lean(); // plain objects</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you paginate results with Mongoose?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q35</span><span class="q-text">How do you paginate results with Mongoose?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>const page  = parseInt(req.query.page) || 1;
+const limit = parseInt(req.query.limit) || 10;
+const skip  = (page - 1) * limit;
+
+const users = await User.find({}).skip(skip).limit(limit);
+const total = await User.countDocuments();</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is timestamps: true in Mongoose schema?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q38</span><span class="q-text">What is <code>timestamps: true</code> in Mongoose schema?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Automatically adds <code>createdAt</code> and <code>updatedAt</code> fields to every document.</p>
+            <pre><code>const userSchema = new Schema({ name: String }, { timestamps: true });</code></pre>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s8 -->
+
+    <!-- ══════════════════════════════════════════════
+         PART 3 — EXPRESS
+    ══════════════════════════════════════════════ -->
+    <div class="part-header">
+      <span class="part-badge express">Part 3</span>
+      <h2 class="part-title">Express.js</h2>
+      <span class="part-count">40 Questions</span>
+    </div>
+
+    <!-- S9: Express Basics -->
+    <div id="s9">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">🚂</span>
+        <span class="section-title">Section 9 — Express Basics</span>
+        <span class="section-range">Q1–20</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s9">
+
+        <div class="qa-card" data-q="What is Express.js?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q1</span><span class="q-text">What is Express.js?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Express is a minimal, fast, and unopinionated <strong>web framework</strong> for Node.js. It simplifies building HTTP servers, REST APIs, and web applications.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is middleware in Express?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q4</span><span class="q-text">What is middleware in Express?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Middleware functions have access to <code>req</code>, <code>res</code>, and <code>next</code>. They can execute code, modify <code>req</code>/<code>res</code>, end the cycle, or call <code>next()</code>.</p>
+            <pre><code>app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next(); // MUST call next() or request hangs
+});</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What are the types of middleware in Express?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q5</span><span class="q-text">What are the types of middleware in Express?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <ol>
+              <li><strong>Application-level</strong> — <code>app.use(fn)</code></li>
+              <li><strong>Router-level</strong> — <code>router.use(fn)</code></li>
+              <li><strong>Error-handling</strong> — <code>(err, req, res, next) => {}</code></li>
+              <li><strong>Built-in</strong> — <code>express.json()</code>, <code>express.static()</code>, <code>express.urlencoded()</code></li>
+              <li><strong>Third-party</strong> — <code>cors</code>, <code>morgan</code>, <code>helmet</code>, <code>multer</code></li>
+            </ol>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is Express Router?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q8</span><span class="q-text">What is Express Router?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>express.Router()</code> creates a <strong>modular, mountable route handler</strong> for organizing routes in separate files.</p>
+            <pre><code>// routes/userRoutes.js
+const router = require('express').Router();
+router.get('/', getAllUsers);
+router.post('/', createUser);
+router.get('/:id', getUserById);
+module.exports = router;
+
+// app.js
+const userRoutes = require('./routes/userRoutes');
+app.use('/api/users', userRoutes);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is error-handling middleware in Express?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q9</span><span class="q-text">What is error-handling middleware in Express?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>An error-handling middleware has <strong>4 parameters</strong>: <code>(err, req, res, next)</code>.</p>
+            <pre><code>// Must be defined AFTER all other routes
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || 'Internal Server Error'
+  });
+});</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between res.send and res.json?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q12</span><span class="q-text">Difference between <code>res.send()</code> and <code>res.json()</code>?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p><code>res.send()</code> — sends string, Buffer, or object (auto-detects Content-Type).</p>
+            <p><code>res.json()</code> — sends JSON and explicitly sets <code>Content-Type: application/json</code>. For APIs, always use <code>res.json()</code>.</p>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Difference between sessions and JWT?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q20</span><span class="q-text">Difference between sessions and JWT?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <table><tr><th></th><th>Sessions</th><th>JWT</th></tr>
+            <tr><td>Storage</td><td>Server-side</td><td>Client-side (token)</td></tr>
+            <tr><td>Stateful</td><td>Yes</td><td>No (stateless)</td></tr>
+            <tr><td>Scalability</td><td>Needs shared store (Redis)</td><td>Scales easily</td></tr>
+            <tr><td>Logout</td><td>Easy (destroy session)</td><td>Harder (need blacklist)</td></tr>
+            </table>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s9 -->
+
+    <!-- S10: Advanced Express -->
+    <div id="s10">
+      <div class="section-header" onclick="toggleSection(this)">
+        <span class="section-icon">🏗️</span>
+        <span class="section-title">Section 10 — Advanced Express</span>
+        <span class="section-range">Q21–40</span>
+        <span class="section-toggle">▾</span>
+      </div>
+      <div class="qa-list" id="body-s10">
+
+        <div class="qa-card" data-q="How do you structure a production Express project?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q21</span><span class="q-text">How do you structure a production Express project?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>src/
+├── config/       db.js, env.js
+├── models/       User.js, Post.js
+├── controllers/  userController.js
+├── routes/       userRoutes.js
+├── middlewares/  auth.js, errorHandler.js
+├── utils/        sendEmail.js, generateToken.js
+├── validations/  userValidation.js
+└── app.js
+server.js
+.env</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you build authentication in Express with JWT?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q22</span><span class="q-text">How do you build authentication in Express with JWT?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>// Login
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (!user || !(await bcrypt.compare(password, user.password)))
+    return res.status(401).json({ error: 'Invalid credentials' });
+
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  res.json({ token });
+});
+
+// Auth middleware
+const authenticate = async (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'No token' });
+  try {
+    req.user = jwt.verify(token, process.env.JWT_SECRET);
+    next();
+  } catch {
+    res.status(401).json({ error: 'Invalid token' });
+  }
+};</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="What is the order of middleware in Express?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q25</span><span class="q-text">What is the order of middleware in Express?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <p>Order matters — middlewares execute <strong>in the order they're registered</strong>.</p>
+            <pre><code>app.use(helmet());          // 1. Security headers
+app.use(cors());            // 2. CORS
+app.use(morgan('dev'));     // 3. Logging
+app.use(express.json());   // 4. Body parsing
+app.use('/api', routes);   // 5. Routes
+app.use(notFound);          // 6. 404 handler
+app.use(errorHandler);      // 7. Error handler (always last)</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you implement RBAC role-based access control?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q33</span><span class="q-text">How do you implement role-based access control (RBAC)?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>const authorize = (...roles) => (req, res, next) => {
+  if (!roles.includes(req.user.role)) {
+    return res.status(403).json({ error: 'Access denied' });
+  }
+  next();
+};
+
+// Usage
+app.delete('/users/:id', authenticate, authorize('admin'), deleteUser);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you create a custom error class in Express?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q35</span><span class="q-text">How do you create a custom error class in Express?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>class AppError extends Error {
+  constructor(message, statusCode) {
+    super(message);
+    this.statusCode = statusCode;
+    this.isOperational = true;
+  }
+}
+
+// Usage
+throw new AppError('User not found', 404);
+
+// Error middleware
+app.use((err, req, res, next) => {
+  res.status(err.statusCode || 500).json({
+    status: 'error',
+    message: err.message
+  });
+});</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you validate request bodies in Express?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q37</span><span class="q-text">How do you validate request bodies in Express?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>const { body, validationResult } = require('express-validator');
+
+const validateUser = [
+  body('name').notEmpty().trim().isLength({ min: 3 }),
+  body('email').isEmail().normalizeEmail(),
+  body('password').isLength({ min: 8 }),
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(422).json({ errors: errors.array() });
+    next();
+  }
+];
+
+app.post('/register', validateUser, registerUser);</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="How do you send paginated responses from Express?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q38</span><span class="q-text">How do you send paginated responses from Express?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>app.get('/products', async (req, res) => {
+  const page  = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+  const skip  = (page - 1) * limit;
+
+  const [products, total] = await Promise.all([
+    Product.find({}).skip(skip).limit(limit).lean(),
+    Product.countDocuments()
+  ]);
+
+  res.json({
+    data: products,
+    pagination: { total, page, pages: Math.ceil(total / limit), limit }
+  });
+});</code></pre>
+          </div></div>
+        </div>
+
+        <div class="qa-card" data-q="Complete minimal Express MongoDB Mongoose app structure?">
+          <div class="qa-header" onclick="toggleQA(this.parentElement)"><span class="q-num">Q40</span><span class="q-text">What is a complete minimal Express + MongoDB + Mongoose app structure?</span><span class="qa-arrow">▶</span></div>
+          <div class="qa-body"><div class="qa-answer">
+            <pre><code>require('dotenv').config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const helmet = require('helmet');
+const userRoutes = require('./routes/userRoutes');
+const { errorHandler, notFound } = require('./middlewares/errorHandler');
+
+const app = express();
+
+// Middleware
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+
+// Routes
+app.use('/api/users', userRoutes);
+
+// Error handling
+app.use(notFound);
+app.use(errorHandler);
+
+// DB + Server
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => app.listen(process.env.PORT || 3000, () =>
+    console.log('Server running')
+  ))
+  .catch(console.error);</code></pre>
+          </div></div>
+        </div>
+
+      </div>
+    </div><!-- /s10 -->
+
+    <!-- Cheat Sheet -->
+    <div id="cheat" class="cheatsheet">
+      <div class="cheatsheet-title">Quick Reference Cheat Sheet</div>
+      <table>
+        <tr><th>Node.js Concept</th><th>Key Point</th></tr>
+        <tr><td>Event Loop</td><td>Phases: timers → I/O → check</td></tr>
+        <tr><td>Non-blocking I/O</td><td>Callbacks/Promises, never blocks main thread</td></tr>
+        <tr><td>Streams</td><td>Chunk-by-chunk data processing</td></tr>
+        <tr><td><code>process.nextTick</code></td><td>Runs before I/O (next tick queue)</td></tr>
+        <tr><td><code>setImmediate</code></td><td>Runs after I/O (check phase)</td></tr>
+        <tr><td>Worker Threads</td><td>True parallelism for CPU tasks</td></tr>
+        <tr><td>Cluster</td><td>Multi-core HTTP server scaling</td></tr>
+      </table>
+      <br>
+      <table>
+        <tr><th>MongoDB Op</th><th>Command</th></tr>
+        <tr><td>Insert</td><td><code>insertOne</code>, <code>insertMany</code></td></tr>
+        <tr><td>Find</td><td><code>find</code>, <code>findOne</code></td></tr>
+        <tr><td>Update</td><td><code>updateOne</code>, <code>$set</code>, <code>$push</code></td></tr>
+        <tr><td>Delete</td><td><code>deleteOne</code>, <code>deleteMany</code></td></tr>
+        <tr><td>Aggregate</td><td><code>$match</code>, <code>$group</code>, <code>$sort</code>, <code>$lookup</code></td></tr>
+        <tr><td>Index</td><td><code>createIndex({ field: 1 })</code></td></tr>
+      </table>
+      <br>
+      <table>
+        <tr><th>Express Method</th><th>Purpose</th></tr>
+        <tr><td><code>GET</code></td><td>Read / Fetch</td></tr>
+        <tr><td><code>POST</code></td><td>Create</td></tr>
+        <tr><td><code>PUT</code></td><td>Replace entirely</td></tr>
+        <tr><td><code>PATCH</code></td><td>Partial update</td></tr>
+        <tr><td><code>DELETE</code></td><td>Remove</td></tr>
+      </table>
+    </div>
+
+  </div><!-- /content -->
+</main>
+
+<!-- Floating progress -->
+<div class="toc-float" id="float-hud">
+  <div class="toc-float-label">Progress</div>
+  <div class="toc-float-current" id="float-section">—</div>
+  <div class="toc-float-mini-bar"><div class="toc-float-fill" id="float-fill"></div></div>
+</div>
+
+<script src="../src/node-mongo.js"></script>
+</body>
+</html>

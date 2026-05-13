@@ -1,0 +1,2651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Logic Questions — C++ & JS</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/interview-logic.css">
+</head>
+<body>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-grid"></div>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+  <div class="header-tag">Interview Prep · C++ &amp; JavaScript</div>
+  <h1>
+    <span class="line1">Logic.</span>
+    <span class="line2">Arrays.</span>
+    <span class="line3">50+ Questions Implemented</span>
+  </h1>
+  <div class="header-meta">
+    <div class="hm-item"><div class="hm-dot" style="background:var(--accent)"></div>50+ Questions</div>
+    <div class="hm-item"><div class="hm-dot" style="background:var(--accent3)"></div>C++ Solutions</div>
+    <div class="hm-item"><div class="hm-dot" style="background:var(--accent4)"></div>JavaScript Solutions</div>
+    <div class="hm-item"><div class="hm-dot" style="background:var(--accent5)"></div>CRUD without Array Methods</div>
+  </div>
+</header>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">interview.cpp.js</div>
+  <a href="#logic">Logic</a>
+  <a href="#array">Arrays</a>
+  <a href="#subarray">SubArrays</a>
+  <a href="#crud">CRUD</a>
+</nav>
+
+<main>
+
+<!-- ────────────────────────────────────────── -->
+<!-- SECTION: LOGIC QUESTIONS -->
+<!-- ────────────────────────────────────────── -->
+<section id="logic">
+  <div class="sec-intro">
+    <div>
+      <div class="sec-tag">Section 01</div>
+      <h2 class="sec-title">Logic &amp; Number<br>Problems</h2>
+    </div>
+    <span class="sec-count">01</span>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">30</div><div class="stat-label">Logic Questions</div></div>
+    <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">Languages</div></div>
+    <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Implemented</div></div>
+  </div>
+
+  <div class="q-grid" id="logic-grid">
+
+    <!-- Q1: Odd or Even -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.01</span>
+        <span class="q-title">Check Odd or Even Number</span>
+        <div class="q-tags">
+          <span class="q-tag tag-logic">Logic</span>
+          <span class="q-tag tag-easy">Easy</span>
+        </div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Given an integer n, determine if it is odd or even. A number is even if <strong>n % 2 === 0</strong>, otherwise it's odd.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q1')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q1')">JavaScript</button>
+        </div>
+        <div id="q1-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q1: Odd or Even — C++</span>
+<span class="kw">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="ty">string</span> <span class="fn">oddOrEven</span>(<span class="ty">int</span> n) {
+    <span class="kw">return</span> (n % <span class="nm">2</span> == <span class="nm">0</span>) ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>;
+}
+
+<span class="ty">int</span> <span class="fn">main</span>() {
+    cout &lt;&lt; <span class="fn">oddOrEven</span>(<span class="nm">7</span>)  &lt;&lt; endl; <span class="cmt">// Odd</span>
+    cout &lt;&lt; <span class="fn">oddOrEven</span>(<span class="nm">12</span>) &lt;&lt; endl; <span class="cmt">// Even</span>
+    <span class="kw">return</span> <span class="nm">0</span>;
+}</pre></div>
+        </div>
+        <div id="q1-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q1: Odd or Even — JavaScript</span>
+<span class="kw">function</span> <span class="fn">oddOrEven</span>(n) {
+    <span class="kw">return</span> n % <span class="nm">2</span> === <span class="nm">0</span> ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">oddOrEven</span>(<span class="nm">7</span>));  <span class="cmt">// Odd</span>
+console.<span class="fn">log</span>(<span class="fn">oddOrEven</span>(<span class="nm">12</span>)); <span class="cmt">// Even</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>7 → Odd | 12 → Even</div>
+      </div>
+    </div>
+
+    <!-- Q2: Prime Number -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.02</span>
+        <span class="q-title">Check Prime Number</span>
+        <div class="q-tags">
+          <span class="q-tag tag-logic">Logic</span>
+          <span class="q-tag tag-easy">Easy</span>
+        </div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">A number is prime if it has no divisors other than 1 and itself. Key optimisation: only check up to <strong>√n</strong> — if no factor found by then, it's prime.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q2')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q2')">JavaScript</button>
+        </div>
+        <div id="q2-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q2: Prime Number — C++</span>
+<span class="kw">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">#include</span> <span class="str">&lt;cmath&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="ty">bool</span> <span class="fn">isPrime</span>(<span class="ty">int</span> n) {
+    <span class="kw">if</span> (n &lt;= <span class="nm">1</span>) <span class="kw">return false</span>;
+    <span class="kw">if</span> (n &lt;= <span class="nm">3</span>) <span class="kw">return true</span>;
+    <span class="kw">if</span> (n % <span class="nm">2</span> == <span class="nm">0</span> || n % <span class="nm">3</span> == <span class="nm">0</span>) <span class="kw">return false</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">5</span>; i * i &lt;= n; i += <span class="nm">6</span>) {
+        <span class="kw">if</span> (n % i == <span class="nm">0</span> || n % (i + <span class="nm">2</span>) == <span class="nm">0</span>)
+            <span class="kw">return false</span>;
+    }
+    <span class="kw">return true</span>;
+}
+
+<span class="ty">int</span> <span class="fn">main</span>() {
+    cout &lt;&lt; <span class="fn">isPrime</span>(<span class="nm">17</span>) &lt;&lt; endl; <span class="cmt">// 1 (true)</span>
+    cout &lt;&lt; <span class="fn">isPrime</span>(<span class="nm">18</span>) &lt;&lt; endl; <span class="cmt">// 0 (false)</span>
+    <span class="kw">return</span> <span class="nm">0</span>;
+}</pre></div>
+        </div>
+        <div id="q2-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q2: Prime Number — JavaScript</span>
+<span class="kw">function</span> <span class="fn">isPrime</span>(n) {
+    <span class="kw">if</span> (n &lt;= <span class="nm">1</span>) <span class="kw">return false</span>;
+    <span class="kw">if</span> (n &lt;= <span class="nm">3</span>) <span class="kw">return true</span>;
+    <span class="kw">if</span> (n % <span class="nm">2</span> === <span class="nm">0</span> || n % <span class="nm">3</span> === <span class="nm">0</span>) <span class="kw">return false</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">5</span>; i * i &lt;= n; i += <span class="nm">6</span>) {
+        <span class="kw">if</span> (n % i === <span class="nm">0</span> || n % (i + <span class="nm">2</span>) === <span class="nm">0</span>)
+            <span class="kw">return false</span>;
+    }
+    <span class="kw">return true</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">isPrime</span>(<span class="nm">17</span>)); <span class="cmt">// true</span>
+console.<span class="fn">log</span>(<span class="fn">isPrime</span>(<span class="nm">18</span>)); <span class="cmt">// false</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>17 → true (prime) | 18 → false | Complexity: O(√n)</div>
+      </div>
+    </div>
+
+    <!-- Q3: Fibonacci -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.03</span>
+        <span class="q-title">Fibonacci Series (First N Terms)</span>
+        <div class="q-tags">
+          <span class="q-tag tag-logic">Logic</span>
+          <span class="q-tag tag-easy">Easy</span>
+        </div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Print the first N terms of Fibonacci: each term is the sum of the previous two. F(0)=0, F(1)=1, F(n)=F(n-1)+F(n-2).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q3')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q3')">JavaScript</button>
+        </div>
+        <div id="q3-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q3: Fibonacci — C++</span>
+<span class="kw">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="kw">void</span> <span class="fn">fibonacci</span>(<span class="ty">int</span> n) {
+    <span class="ty">long long</span> a = <span class="nm">0</span>, b = <span class="nm">1</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; n; i++) {
+        cout &lt;&lt; a &lt;&lt; <span class="str">" "</span>;
+        <span class="ty">long long</span> temp = a + b;
+        a = b;
+        b = temp;
+    }
+    cout &lt;&lt; endl;
+}
+
+<span class="ty">int</span> <span class="fn">main</span>() {
+    <span class="fn">fibonacci</span>(<span class="nm">10</span>); <span class="cmt">// 0 1 1 2 3 5 8 13 21 34</span>
+    <span class="kw">return</span> <span class="nm">0</span>;
+}</pre></div>
+        </div>
+        <div id="q3-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q3: Fibonacci — JavaScript</span>
+<span class="kw">function</span> <span class="fn">fibonacci</span>(n) {
+    <span class="kw">let</span> a = <span class="nm">0</span>, b = <span class="nm">1</span>, result = <span class="str">""</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; n; i++) {
+        result += a + <span class="str">" "</span>;
+        [a, b] = [b, a + b];
+    }
+    <span class="kw">return</span> result.<span class="fn">trim</span>();
+}
+
+console.<span class="fn">log</span>(<span class="fn">fibonacci</span>(<span class="nm">10</span>));
+<span class="cmt">// 0 1 1 2 3 5 8 13 21 34</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output (n=10)</div>0 1 1 2 3 5 8 13 21 34</div>
+      </div>
+    </div>
+
+    <!-- Q4: Factorial -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.04</span>
+        <span class="q-title">Factorial of a Number</span>
+        <div class="q-tags">
+          <span class="q-tag tag-logic">Logic</span>
+          <span class="q-tag tag-easy">Easy</span>
+        </div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">n! = n × (n-1) × ... × 1. Shown with both <strong>iterative</strong> and <strong>recursive</strong> approaches.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q4')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q4')">JavaScript</button>
+        </div>
+        <div id="q4-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q4: Factorial — C++</span>
+<span class="kw">#include</span> <span class="str">&lt;iostream&gt;</span>
+<span class="kw">using namespace</span> std;
+
+<span class="cmt">// Iterative</span>
+<span class="ty">long long</span> <span class="fn">factIter</span>(<span class="ty">int</span> n) {
+    <span class="ty">long long</span> result = <span class="nm">1</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">2</span>; i &lt;= n; i++) result *= i;
+    <span class="kw">return</span> result;
+}
+
+<span class="cmt">// Recursive</span>
+<span class="ty">long long</span> <span class="fn">factRec</span>(<span class="ty">int</span> n) {
+    <span class="kw">return</span> n &lt;= <span class="nm">1</span> ? <span class="nm">1</span> : n * <span class="fn">factRec</span>(n - <span class="nm">1</span>);
+}
+
+<span class="ty">int</span> <span class="fn">main</span>() {
+    cout &lt;&lt; <span class="fn">factIter</span>(<span class="nm">10</span>) &lt;&lt; endl; <span class="cmt">// 3628800</span>
+    cout &lt;&lt; <span class="fn">factRec</span>(<span class="nm">10</span>)  &lt;&lt; endl; <span class="cmt">// 3628800</span>
+    <span class="kw">return</span> <span class="nm">0</span>;
+}</pre></div>
+        </div>
+        <div id="q4-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q4: Factorial — JavaScript</span>
+<span class="kw">function</span> <span class="fn">factIter</span>(n) {
+    <span class="kw">let</span> r = <span class="nm">1</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">2</span>; i &lt;= n; i++) r *= i;
+    <span class="kw">return</span> r;
+}
+
+<span class="kw">const</span> <span class="fn">factRec</span> = n =&gt; n &lt;= <span class="nm">1</span> ? <span class="nm">1</span> : n * <span class="fn">factRec</span>(n - <span class="nm">1</span>);
+
+console.<span class="fn">log</span>(<span class="fn">factIter</span>(<span class="nm">10</span>)); <span class="cmt">// 3628800</span>
+console.<span class="fn">log</span>(<span class="fn">factRec</span>(<span class="nm">10</span>));  <span class="cmt">// 3628800</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>10! = 3628800</div>
+      </div>
+    </div>
+
+    <!-- Q5: Reverse Number -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.05</span>
+        <span class="q-title">Reverse a Number</span>
+        <div class="q-tags">
+          <span class="q-tag tag-logic">Logic</span>
+          <span class="q-tag tag-easy">Easy</span>
+        </div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Reverse the digits of an integer using modulus and division. Extract last digit with <strong>n % 10</strong>, build reversed number.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q5')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q5')">JavaScript</button>
+        </div>
+        <div id="q5-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q5: Reverse Number — C++</span>
+<span class="ty">int</span> <span class="fn">reverseNum</span>(<span class="ty">int</span> n) {
+    <span class="ty">int</span> rev = <span class="nm">0</span>;
+    <span class="kw">while</span> (n != <span class="nm">0</span>) {
+        <span class="ty">int</span> digit = n % <span class="nm">10</span>;
+        rev = rev * <span class="nm">10</span> + digit;
+        n /= <span class="nm">10</span>;
+    }
+    <span class="kw">return</span> rev;
+}
+<span class="cmt">// reverseNum(12345) → 54321</span></pre></div>
+        </div>
+        <div id="q5-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q5: Reverse Number — JavaScript</span>
+<span class="kw">function</span> <span class="fn">reverseNum</span>(n) {
+    <span class="kw">let</span> rev = <span class="nm">0</span>, num = <span class="fn">Math</span>.<span class="fn">abs</span>(n);
+    <span class="kw">while</span> (num > <span class="nm">0</span>) {
+        rev = rev * <span class="nm">10</span> + (num % <span class="nm">10</span>);
+        num = <span class="fn">Math</span>.<span class="fn">floor</span>(num / <span class="nm">10</span>);
+    }
+    <span class="kw">return</span> n &lt; <span class="nm">0</span> ? -rev : rev;
+}
+console.<span class="fn">log</span>(<span class="fn">reverseNum</span>(<span class="nm">12345</span>)); <span class="cmt">// 54321</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>12345 → 54321</div>
+      </div>
+    </div>
+
+    <!-- Q6: Palindrome Number -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.06</span>
+        <span class="q-title">Palindrome Number Check</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">A number is a palindrome if it reads the same forwards and backwards. Reverse and compare, or use two-pointer on string.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q6')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q6')">JavaScript</button>
+        </div>
+        <div id="q6-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q6: Palindrome — C++</span>
+<span class="ty">bool</span> <span class="fn">isPalindrome</span>(<span class="ty">int</span> n) {
+    <span class="kw">if</span> (n &lt; <span class="nm">0</span>) <span class="kw">return false</span>;
+    <span class="ty">int</span> original = n, rev = <span class="nm">0</span>;
+    <span class="kw">while</span> (n > <span class="nm">0</span>) {
+        rev = rev * <span class="nm">10</span> + n % <span class="nm">10</span>;
+        n /= <span class="nm">10</span>;
+    }
+    <span class="kw">return</span> original == rev;
+}
+<span class="cmt">// isPalindrome(121) → true</span>
+<span class="cmt">// isPalindrome(123) → false</span></pre></div>
+        </div>
+        <div id="q6-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q6: Palindrome Number — JavaScript</span>
+<span class="kw">function</span> <span class="fn">isPalindrome</span>(n) {
+    <span class="kw">if</span> (n &lt; <span class="nm">0</span>) <span class="kw">return false</span>;
+    <span class="kw">let</span> original = n, rev = <span class="nm">0</span>;
+    <span class="kw">while</span> (n > <span class="nm">0</span>) {
+        rev = rev * <span class="nm">10</span> + (n % <span class="nm">10</span>);
+        n = <span class="fn">Math</span>.<span class="fn">floor</span>(n / <span class="nm">10</span>);
+    }
+    <span class="kw">return</span> original === rev;
+}
+console.<span class="fn">log</span>(<span class="fn">isPalindrome</span>(<span class="nm">121</span>)); <span class="cmt">// true</span>
+console.<span class="fn">log</span>(<span class="fn">isPalindrome</span>(<span class="nm">123</span>)); <span class="cmt">// false</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>121 → true | 123 → false</div>
+      </div>
+    </div>
+
+    <!-- Q7: Armstrong Number -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.07</span>
+        <span class="q-title">Armstrong Number Check</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">A number is Armstrong if sum of (each digit ^ number_of_digits) equals the number. 153 = 1³+5³+3³ = 153 ✓</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q7')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q7')">JavaScript</button>
+        </div>
+        <div id="q7-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q7: Armstrong Number — C++</span>
+<span class="kw">#include</span> <span class="str">&lt;cmath&gt;</span>
+<span class="ty">bool</span> <span class="fn">isArmstrong</span>(<span class="ty">int</span> n) {
+    <span class="ty">int</span> temp = n, digits = <span class="nm">0</span>, sum = <span class="nm">0</span>;
+    <span class="kw">while</span> (temp) { digits++; temp /= <span class="nm">10</span>; }
+    temp = n;
+    <span class="kw">while</span> (temp) {
+        sum += <span class="fn">pow</span>(temp % <span class="nm">10</span>, digits);
+        temp /= <span class="nm">10</span>;
+    }
+    <span class="kw">return</span> sum == n;
+}
+<span class="cmt">// isArmstrong(153) → true</span>
+<span class="cmt">// isArmstrong(9474) → true  (9⁴+4⁴+7⁴+4⁴)</span></pre></div>
+        </div>
+        <div id="q7-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q7: Armstrong Number — JavaScript</span>
+<span class="kw">function</span> <span class="fn">isArmstrong</span>(n) {
+    <span class="kw">const</span> digits = String(n).length;
+    <span class="kw">let</span> sum = <span class="nm">0</span>, temp = n;
+    <span class="kw">while</span> (temp > <span class="nm">0</span>) {
+        sum += <span class="fn">Math</span>.<span class="fn">pow</span>(temp % <span class="nm">10</span>, digits);
+        temp = <span class="fn">Math</span>.<span class="fn">floor</span>(temp / <span class="nm">10</span>);
+    }
+    <span class="kw">return</span> sum === n;
+}
+console.<span class="fn">log</span>(<span class="fn">isArmstrong</span>(<span class="nm">153</span>));  <span class="cmt">// true</span>
+console.<span class="fn">log</span>(<span class="fn">isArmstrong</span>(<span class="nm">9474</span>)); <span class="cmt">// true</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>153 → true | 370 → true | 9474 → true</div>
+      </div>
+    </div>
+
+    <!-- Q8: Sum of Digits -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.08</span>
+        <span class="q-title">Sum of Digits</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Extract each digit using <code>n % 10</code> and accumulate the sum.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q8')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q8')">JavaScript</button>
+        </div>
+        <div id="q8-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">sumOfDigits</span>(<span class="ty">int</span> n) {
+    <span class="ty">int</span> sum = <span class="nm">0</span>;
+    n = <span class="fn">abs</span>(n);
+    <span class="kw">while</span> (n > <span class="nm">0</span>) {
+        sum += n % <span class="nm">10</span>;
+        n /= <span class="nm">10</span>;
+    }
+    <span class="kw">return</span> sum;
+}
+<span class="cmt">// sumOfDigits(12345) → 15</span></pre></div>
+        </div>
+        <div id="q8-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">sumOfDigits</span>(n) {
+    <span class="kw">let</span> sum = <span class="nm">0</span>, num = <span class="fn">Math</span>.<span class="fn">abs</span>(n);
+    <span class="kw">while</span> (num > <span class="nm">0</span>) {
+        sum += num % <span class="nm">10</span>;
+        num = <span class="fn">Math</span>.<span class="fn">floor</span>(num / <span class="nm">10</span>);
+    }
+    <span class="kw">return</span> sum;
+}
+console.<span class="fn">log</span>(<span class="fn">sumOfDigits</span>(<span class="nm">12345</span>)); <span class="cmt">// 15</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>12345 → 1+2+3+4+5 = 15</div>
+      </div>
+    </div>
+
+    <!-- Q9: GCD/HCF -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.09</span>
+        <span class="q-title">GCD / HCF using Euclidean Algorithm</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Euclidean algorithm: GCD(a, b) = GCD(b, a % b). Repeat until b = 0. LCM = (a * b) / GCD(a, b).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q9')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q9')">JavaScript</button>
+        </div>
+        <div id="q9-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">gcd</span>(<span class="ty">int</span> a, <span class="ty">int</span> b) {
+    <span class="kw">while</span> (b != <span class="nm">0</span>) {
+        <span class="ty">int</span> temp = b;
+        b = a % b;
+        a = temp;
+    }
+    <span class="kw">return</span> a;
+}
+<span class="ty">int</span> <span class="fn">lcm</span>(<span class="ty">int</span> a, <span class="ty">int</span> b) {
+    <span class="kw">return</span> (a / <span class="fn">gcd</span>(a, b)) * b;
+}
+<span class="cmt">// gcd(48, 18) → 6  | lcm(4,6) → 12</span></pre></div>
+        </div>
+        <div id="q9-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">gcd</span>(a, b) {
+    <span class="kw">while</span> (b !== <span class="nm">0</span>) [a, b] = [b, a % b];
+    <span class="kw">return</span> a;
+}
+<span class="kw">const</span> <span class="fn">lcm</span> = (a, b) =&gt; (a / <span class="fn">gcd</span>(a, b)) * b;
+
+console.<span class="fn">log</span>(<span class="fn">gcd</span>(<span class="nm">48</span>, <span class="nm">18</span>)); <span class="cmt">// 6</span>
+console.<span class="fn">log</span>(<span class="fn">lcm</span>(<span class="nm">4</span>, <span class="nm">6</span>));   <span class="cmt">// 12</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>GCD(48,18)=6 | LCM(4,6)=12</div>
+      </div>
+    </div>
+
+    <!-- Q10: Power -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.10</span>
+        <span class="q-title">Power (Fast Exponentiation)</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Binary exponentiation: compute a^b in O(log b) by squaring. If b is odd: result *= a, then square a and halve b.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q10')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q10')">JavaScript</button>
+        </div>
+        <div id="q10-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">long long</span> <span class="fn">power</span>(<span class="ty">long long</span> base, <span class="ty">long long</span> exp) {
+    <span class="ty">long long</span> result = <span class="nm">1</span>;
+    <span class="kw">while</span> (exp > <span class="nm">0</span>) {
+        <span class="kw">if</span> (exp % <span class="nm">2</span> == <span class="nm">1</span>) result *= base;
+        base *= base;
+        exp /= <span class="nm">2</span>;
+    }
+    <span class="kw">return</span> result;
+}
+<span class="cmt">// power(2, 10) → 1024  O(log n)</span></pre></div>
+        </div>
+        <div id="q10-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">power</span>(base, exp) {
+    <span class="kw">let</span> result = <span class="nm">1</span>;
+    <span class="kw">while</span> (exp > <span class="nm">0</span>) {
+        <span class="kw">if</span> (exp % <span class="nm">2</span> === <span class="nm">1</span>) result *= base;
+        base *= base;
+        exp = <span class="fn">Math</span>.<span class="fn">floor</span>(exp / <span class="nm">2</span>);
+    }
+    <span class="kw">return</span> result;
+}
+console.<span class="fn">log</span>(<span class="fn">power</span>(<span class="nm">2</span>, <span class="nm">10</span>)); <span class="cmt">// 1024</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>2^10 = 1024 | Complexity: O(log n)</div>
+      </div>
+    </div>
+
+    <!-- Q11: Count Digits -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.11</span>
+        <span class="q-title">Count Number of Digits</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Count digits by dividing by 10 until zero, or use <code>log10(n)+1</code> for O(1).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q11')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q11')">JavaScript</button>
+        </div>
+        <div id="q11-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">#include</span> <span class="str">&lt;cmath&gt;</span>
+<span class="ty">int</span> <span class="fn">countDigits</span>(<span class="ty">int</span> n) {
+    <span class="kw">if</span> (n == <span class="nm">0</span>) <span class="kw">return</span> <span class="nm">1</span>;
+    <span class="kw">return</span> (<span class="ty">int</span>)<span class="fn">log10</span>(<span class="fn">abs</span>(n)) + <span class="nm">1</span>;
+}
+<span class="cmt">// countDigits(12345) → 5  O(1)</span></pre></div>
+        </div>
+        <div id="q11-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">countDigits</span>(n) {
+    <span class="kw">if</span> (n === <span class="nm">0</span>) <span class="kw">return</span> <span class="nm">1</span>;
+    <span class="kw">return</span> <span class="fn">Math</span>.<span class="fn">floor</span>(<span class="fn">Math</span>.<span class="fn">log10</span>(<span class="fn">Math</span>.<span class="fn">abs</span>(n))) + <span class="nm">1</span>;
+}
+console.<span class="fn">log</span>(<span class="fn">countDigits</span>(<span class="nm">12345</span>)); <span class="cmt">// 5</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>12345 → 5 digits</div>
+      </div>
+    </div>
+
+    <!-- Q12: Strong Number -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.12</span>
+        <span class="q-title">Strong Number (sum of factorial of digits = number)</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">A strong number equals the sum of factorials of its digits. 145 = 1! + 4! + 5! = 1+24+120 = 145 ✓</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q12')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q12')">JavaScript</button>
+        </div>
+        <div id="q12-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">bool</span> <span class="fn">isStrong</span>(<span class="ty">int</span> n) {
+    <span class="ty">int</span> sum = <span class="nm">0</span>, temp = n;
+    <span class="kw">while</span> (temp > <span class="nm">0</span>) {
+        <span class="ty">int</span> d = temp % <span class="nm">10</span>, f = <span class="nm">1</span>;
+        <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">1</span>; i &lt;= d; i++) f *= i;
+        sum += f;
+        temp /= <span class="nm">10</span>;
+    }
+    <span class="kw">return</span> sum == n;
+}
+<span class="cmt">// isStrong(145) → true</span></pre></div>
+        </div>
+        <div id="q12-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">isStrong</span>(n) {
+    <span class="kw">const</span> <span class="fn">fact</span> = d =&gt; d &lt;= <span class="nm">1</span> ? <span class="nm">1</span> : d * <span class="fn">fact</span>(d - <span class="nm">1</span>);
+    <span class="kw">let</span> sum = <span class="nm">0</span>, temp = n;
+    <span class="kw">while</span> (temp > <span class="nm">0</span>) {
+        sum += <span class="fn">fact</span>(temp % <span class="nm">10</span>);
+        temp = <span class="fn">Math</span>.<span class="fn">floor</span>(temp / <span class="nm">10</span>);
+    }
+    <span class="kw">return</span> sum === n;
+}
+console.<span class="fn">log</span>(<span class="fn">isStrong</span>(<span class="nm">145</span>)); <span class="cmt">// true</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>145 = 1!+4!+5! = 145 → true</div>
+      </div>
+    </div>
+
+    <!-- Q13: Perfect Number -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.13</span>
+        <span class="q-title">Perfect Number Check</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">A perfect number equals the sum of its proper divisors (all divisors excluding itself). 28 = 1+2+4+7+14 = 28 ✓</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q13')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q13')">JavaScript</button>
+        </div>
+        <div id="q13-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">bool</span> <span class="fn">isPerfect</span>(<span class="ty">int</span> n) {
+    <span class="kw">if</span> (n &lt;= <span class="nm">1</span>) <span class="kw">return false</span>;
+    <span class="ty">int</span> sum = <span class="nm">1</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">2</span>; i * i &lt;= n; i++) {
+        <span class="kw">if</span> (n % i == <span class="nm">0</span>) {
+            sum += i;
+            <span class="kw">if</span> (i != n / i) sum += n / i;
+        }
+    }
+    <span class="kw">return</span> sum == n;
+}
+<span class="cmt">// isPerfect(28) → true</span></pre></div>
+        </div>
+        <div id="q13-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">isPerfect</span>(n) {
+    <span class="kw">if</span> (n &lt;= <span class="nm">1</span>) <span class="kw">return false</span>;
+    <span class="kw">let</span> sum = <span class="nm">1</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">2</span>; i * i &lt;= n; i++) {
+        <span class="kw">if</span> (n % i === <span class="nm">0</span>) {
+            sum += i;
+            <span class="kw">if</span> (i !== n / i) sum += n / i;
+        }
+    }
+    <span class="kw">return</span> sum === n;
+}
+console.<span class="fn">log</span>(<span class="fn">isPerfect</span>(<span class="nm">28</span>)); <span class="cmt">// true</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>6→true | 28→true | 496→true</div>
+      </div>
+    </div>
+
+    <!-- Q14: Swap without Temp -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.14</span>
+        <span class="q-title">Swap Two Numbers Without Temp Variable</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Three methods: XOR swap, arithmetic swap (a=a+b; b=a-b; a=a-b), and destructuring in JS.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q14')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q14')">JavaScript</button>
+        </div>
+        <div id="q14-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Method 1: XOR swap</span>
+<span class="kw">void</span> <span class="fn">swapXOR</span>(<span class="ty">int</span> &a, <span class="ty">int</span> &b) {
+    a ^= b; b ^= a; a ^= b;
+}
+
+<span class="cmt">// Method 2: Arithmetic swap</span>
+<span class="kw">void</span> <span class="fn">swapArith</span>(<span class="ty">int</span> &a, <span class="ty">int</span> &b) {
+    a = a + b;
+    b = a - b;
+    a = a - b;
+}
+<span class="cmt">// int x=5,y=10; swapXOR(x,y) → x=10, y=5</span></pre></div>
+        </div>
+        <div id="q14-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Method 1: Destructuring (modern JS)</span>
+<span class="kw">let</span> a = <span class="nm">5</span>, b = <span class="nm">10</span>;
+[a, b] = [b, a];
+
+<span class="cmt">// Method 2: XOR</span>
+<span class="kw">function</span> <span class="fn">swapXOR</span>(a, b) {
+    a ^= b; b ^= a; a ^= b;
+    <span class="kw">return</span> [a, b];
+}
+console.<span class="fn">log</span>(<span class="fn">swapXOR</span>(<span class="nm">5</span>, <span class="nm">10</span>)); <span class="cmt">// [10, 5]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>a=5,b=10 → a=10,b=5</div>
+      </div>
+    </div>
+
+    <!-- Q15: Sieve of Eratosthenes -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.15</span>
+        <span class="q-title">Sieve of Eratosthenes — All Primes up to N</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Mark all multiples of each prime as composite starting from 2. O(N log log N) — most efficient way to find all primes up to N.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q15')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q15')">JavaScript</button>
+        </div>
+        <div id="q15-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">#include</span> <span class="str">&lt;vector&gt;</span>
+<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; <span class="fn">sieve</span>(<span class="ty">int</span> n) {
+    <span class="kw">vector</span>&lt;<span class="ty">bool</span>&gt; prime(n + <span class="nm">1</span>, <span class="kw">true</span>);
+    prime[<span class="nm">0</span>] = prime[<span class="nm">1</span>] = <span class="kw">false</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">2</span>; i * i &lt;= n; i++) {
+        <span class="kw">if</span> (prime[i]) {
+            <span class="kw">for</span> (<span class="ty">int</span> j = i * i; j &lt;= n; j += i)
+                prime[j] = <span class="kw">false</span>;
+        }
+    }
+    <span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; result;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">2</span>; i &lt;= n; i++)
+        <span class="kw">if</span> (prime[i]) result.<span class="fn">push_back</span>(i);
+    <span class="kw">return</span> result;
+}
+<span class="cmt">// sieve(20) → [2,3,5,7,11,13,17,19]</span></pre></div>
+        </div>
+        <div id="q15-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">sieve</span>(n) {
+    <span class="kw">const</span> prime = <span class="kw">new</span> <span class="fn">Array</span>(n + <span class="nm">1</span>).<span class="fn">fill</span>(<span class="kw">true</span>);
+    prime[<span class="nm">0</span>] = prime[<span class="nm">1</span>] = <span class="kw">false</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">2</span>; i * i &lt;= n; i++) {
+        <span class="kw">if</span> (prime[i]) {
+            <span class="kw">for</span> (<span class="kw">let</span> j = i * i; j &lt;= n; j += i)
+                prime[j] = <span class="kw">false</span>;
+        }
+    }
+    <span class="kw">const</span> result = [];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">2</span>; i &lt;= n; i++)
+        <span class="kw">if</span> (prime[i]) result[result.length] = i;
+    <span class="kw">return</span> result;
+}
+console.<span class="fn">log</span>(<span class="fn">sieve</span>(<span class="nm">20</span>));
+<span class="cmt">// [2,3,5,7,11,13,17,19]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output (N=20)</div>2 3 5 7 11 13 17 19 | O(N log log N)</div>
+      </div>
+    </div>
+
+    <!-- Q16: Binary to Decimal -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.16</span>
+        <span class="q-title">Binary to Decimal &amp; Decimal to Binary</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Binary→Decimal: multiply each bit by 2^position. Decimal→Binary: repeatedly divide by 2, collect remainders.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q16')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q16')">JavaScript</button>
+        </div>
+        <div id="q16-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Binary string to decimal</span>
+<span class="ty">int</span> <span class="fn">binToDec</span>(<span class="ty">string</span> bin) {
+    <span class="ty">int</span> dec = <span class="nm">0</span>, base = <span class="nm">1</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = bin.<span class="fn">size</span>() - <span class="nm">1</span>; i >= <span class="nm">0</span>; i--) {
+        dec += (bin[i] - <span class="str">'0'</span>) * base;
+        base *= <span class="nm">2</span>;
+    }
+    <span class="kw">return</span> dec;
+}
+
+<span class="cmt">// Decimal to binary string</span>
+<span class="ty">string</span> <span class="fn">decToBin</span>(<span class="ty">int</span> n) {
+    <span class="ty">string</span> bin = <span class="str">""</span>;
+    <span class="kw">while</span> (n > <span class="nm">0</span>) {
+        bin = (<span class="ty">char</span>)(<span class="str">'0'</span> + n % <span class="nm">2</span>) + bin;
+        n /= <span class="nm">2</span>;
+    }
+    <span class="kw">return</span> bin;
+}
+<span class="cmt">// binToDec("1010")→10 | decToBin(10)→"1010"</span></pre></div>
+        </div>
+        <div id="q16-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">binToDec</span>(bin) {
+    <span class="kw">let</span> dec = <span class="nm">0</span>, base = <span class="nm">1</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = bin.length - <span class="nm">1</span>; i >= <span class="nm">0</span>; i--) {
+        dec += +bin[i] * base;
+        base *= <span class="nm">2</span>;
+    }
+    <span class="kw">return</span> dec;
+}
+
+<span class="kw">function</span> <span class="fn">decToBin</span>(n) {
+    <span class="kw">let</span> bin = <span class="str">""</span>;
+    <span class="kw">while</span> (n > <span class="nm">0</span>) {
+        bin = (n % <span class="nm">2</span>) + bin;
+        n = <span class="fn">Math</span>.<span class="fn">floor</span>(n / <span class="nm">2</span>);
+    }
+    <span class="kw">return</span> bin || <span class="str">"0"</span>;
+}
+console.<span class="fn">log</span>(<span class="fn">binToDec</span>(<span class="str">"1010"</span>)); <span class="cmt">// 10</span>
+console.<span class="fn">log</span>(<span class="fn">decToBin</span>(<span class="nm">10</span>));     <span class="cmt">// "1010"</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>"1010"→10 | 10→"1010"</div>
+      </div>
+    </div>
+
+    <!-- Q17: Leap Year -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.17</span>
+        <span class="q-title">Leap Year Check</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Leap year rules: divisible by 4 AND (not divisible by 100 OR divisible by 400).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q17')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q17')">JavaScript</button>
+        </div>
+        <div id="q17-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">bool</span> <span class="fn">isLeap</span>(<span class="ty">int</span> year) {
+    <span class="kw">return</span> (year % <span class="nm">4</span> == <span class="nm">0</span> && year % <span class="nm">100</span> != <span class="nm">0</span>)
+           || (year % <span class="nm">400</span> == <span class="nm">0</span>);
+}
+<span class="cmt">// isLeap(2024)→true | isLeap(1900)→false</span></pre></div>
+        </div>
+        <div id="q17-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">const</span> <span class="fn">isLeap</span> = y =&gt;
+    (y % <span class="nm">4</span> === <span class="nm">0</span> && y % <span class="nm">100</span> !== <span class="nm">0</span>) || y % <span class="nm">400</span> === <span class="nm">0</span>;
+
+console.<span class="fn">log</span>(<span class="fn">isLeap</span>(<span class="nm">2024</span>)); <span class="cmt">// true</span>
+console.<span class="fn">log</span>(<span class="fn">isLeap</span>(<span class="nm">1900</span>)); <span class="cmt">// false</span>
+console.<span class="fn">log</span>(<span class="fn">isLeap</span>(<span class="nm">2000</span>)); <span class="cmt">// true</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>2024→true | 1900→false | 2000→true</div>
+      </div>
+    </div>
+
+    <!-- Q18: Number Pattern -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.18</span>
+        <span class="q-title">Print Triangle / Number Patterns</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Classic nested loop pattern questions: Floyd's triangle, pyramid, inverted triangle.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q18')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q18')">JavaScript</button>
+        </div>
+        <div id="q18-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Floyd's Triangle</span>
+<span class="kw">void</span> <span class="fn">floyd</span>(<span class="ty">int</span> n) {
+    <span class="ty">int</span> num = <span class="nm">1</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">1</span>; i &lt;= n; i++) {
+        <span class="kw">for</span> (<span class="ty">int</span> j = <span class="nm">1</span>; j &lt;= i; j++)
+            cout &lt;&lt; num++ &lt;&lt; <span class="str">" "</span>;
+        cout &lt;&lt; <span class="str">"\n"</span>;
+    }
+}
+<span class="cmt">// n=4:
+// 1
+// 2 3
+// 4 5 6
+// 7 8 9 10</span>
+
+<span class="cmt">// Star Pyramid</span>
+<span class="kw">void</span> <span class="fn">pyramid</span>(<span class="ty">int</span> n) {
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">1</span>; i &lt;= n; i++) {
+        <span class="kw">for</span> (<span class="ty">int</span> sp = <span class="nm">1</span>; sp &lt;= n - i; sp++) cout &lt;&lt; <span class="str">" "</span>;
+        <span class="kw">for</span> (<span class="ty">int</span> j = <span class="nm">1</span>; j &lt;= <span class="nm">2</span>*i-<span class="nm">1</span>; j++) cout &lt;&lt; <span class="str">"*"</span>;
+        cout &lt;&lt; <span class="str">"\n"</span>;
+    }
+}</pre></div>
+        </div>
+        <div id="q18-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">floyd</span>(n) {
+    <span class="kw">let</span> num = <span class="nm">1</span>, out = <span class="str">""</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">1</span>; i &lt;= n; i++) {
+        <span class="kw">for</span> (<span class="kw">let</span> j = <span class="nm">1</span>; j &lt;= i; j++)
+            out += num++ + <span class="str">" "</span>;
+        out += <span class="str">"\n"</span>;
+    }
+    <span class="kw">return</span> out;
+}
+
+<span class="kw">function</span> <span class="fn">pyramid</span>(n) {
+    <span class="kw">let</span> out = <span class="str">""</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">1</span>; i &lt;= n; i++) {
+        out += <span class="str">" "</span>.<span class="fn">repeat</span>(n - i) +
+               <span class="str">"*"</span>.<span class="fn">repeat</span>(<span class="nm">2</span> * i - <span class="nm">1</span>) + <span class="str">"\n"</span>;
+    }
+    <span class="kw">return</span> out;
+}
+console.<span class="fn">log</span>(<span class="fn">pyramid</span>(<span class="nm">4</span>));</pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Pyramid (n=4)</div>&nbsp;&nbsp;&nbsp;* | &nbsp;&nbsp;*** | &nbsp;***** | *******</div>
+      </div>
+    </div>
+
+    <!-- Q19: Count occurrences digit -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.19</span>
+        <span class="q-title">Count Occurrences of a Digit in a Number</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Count how many times a specific digit appears in a number by repeatedly extracting the last digit.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q19')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q19')">JavaScript</button>
+        </div>
+        <div id="q19-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">countDigit</span>(<span class="ty">int</span> n, <span class="ty">int</span> d) {
+    <span class="ty">int</span> count = <span class="nm">0</span>;
+    n = <span class="fn">abs</span>(n);
+    <span class="kw">while</span> (n > <span class="nm">0</span>) {
+        <span class="kw">if</span> (n % <span class="nm">10</span> == d) count++;
+        n /= <span class="nm">10</span>;
+    }
+    <span class="kw">return</span> count;
+}
+<span class="cmt">// countDigit(112233, 3) → 2</span></pre></div>
+        </div>
+        <div id="q19-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">countDigit</span>(n, d) {
+    <span class="kw">let</span> count = <span class="nm">0</span>, num = <span class="fn">Math</span>.<span class="fn">abs</span>(n);
+    <span class="kw">while</span> (num > <span class="nm">0</span>) {
+        <span class="kw">if</span> (num % <span class="nm">10</span> === d) count++;
+        num = <span class="fn">Math</span>.<span class="fn">floor</span>(num / <span class="nm">10</span>);
+    }
+    <span class="kw">return</span> count;
+}
+console.<span class="fn">log</span>(<span class="fn">countDigit</span>(<span class="nm">112233</span>, <span class="nm">3</span>)); <span class="cmt">// 2</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>countDigit(112233, 3) = 2</div>
+      </div>
+    </div>
+
+    <!-- Q20: Check Power of 2 -->
+    <div class="q-card" data-cat="logic">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.20</span>
+        <span class="q-title">Check if Number is Power of 2 (Bit Trick)</span>
+        <div class="q-tags"><span class="q-tag tag-logic">Logic</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Bit trick: n & (n-1) == 0 for powers of 2. Powers of 2 have exactly one set bit; n-1 flips all lower bits, so AND = 0.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q20')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q20')">JavaScript</button>
+        </div>
+        <div id="q20-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">bool</span> <span class="fn">isPow2</span>(<span class="ty">int</span> n) {
+    <span class="kw">return</span> n > <span class="nm">0</span> && (n & (n - <span class="nm">1</span>)) == <span class="nm">0</span>;
+}
+<span class="cmt">// 8 = 1000, 7 = 0111 → AND = 0000 → true
+// isPow2(16)→true | isPow2(18)→false</span></pre></div>
+        </div>
+        <div id="q20-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">const</span> <span class="fn">isPow2</span> = n =&gt; n > <span class="nm">0</span> && (n & (n - <span class="nm">1</span>)) === <span class="nm">0</span>;
+
+console.<span class="fn">log</span>(<span class="fn">isPow2</span>(<span class="nm">16</span>)); <span class="cmt">// true</span>
+console.<span class="fn">log</span>(<span class="fn">isPow2</span>(<span class="nm">18</span>)); <span class="cmt">// false</span>
+<span class="cmt">// O(1) — single bit operation!</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>16→true | 18→false | Complexity: O(1)</div>
+      </div>
+    </div>
+
+  </div><!-- end logic grid -->
+</section>
+
+<hr class="divider">
+
+<!-- ────────────────────────────────────────── -->
+<!-- SECTION: ARRAY QUESTIONS -->
+<!-- ────────────────────────────────────────── -->
+<section id="array">
+  <div class="sec-intro">
+    <div>
+      <div class="sec-tag">Section 02</div>
+      <h2 class="sec-title">Array<br>Problems</h2>
+    </div>
+    <span class="sec-count">02</span>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">Array Questions</div></div>
+    <div class="stat-item"><div class="stat-num">C++</div><div class="stat-label">& JavaScript</div></div>
+  </div>
+
+  <div class="q-grid" id="array-grid">
+
+    <!-- Q21 -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.21</span>
+        <span class="q-title">Find Maximum and Minimum in Array</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Single pass: initialise max/min to first element, iterate and compare. O(n) time, O(1) space.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q21')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q21')">JavaScript</button>
+        </div>
+        <div id="q21-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">#include</span> <span class="str">&lt;climits&gt;</span>
+<span class="kw">pair</span>&lt;<span class="ty">int</span>,<span class="ty">int</span>&gt; <span class="fn">minMax</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="ty">int</span> mn = arr[<span class="nm">0</span>], mx = arr[<span class="nm">0</span>];
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">1</span>; i &lt; n; i++) {
+        <span class="kw">if</span> (arr[i] &lt; mn) mn = arr[i];
+        <span class="kw">if</span> (arr[i] > mx) mx = arr[i];
+    }
+    <span class="kw">return</span> {mn, mx};
+}
+<span class="cmt">// arr={3,1,7,2,9} → min=1, max=9</span></pre></div>
+        </div>
+        <div id="q21-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">minMax</span>(arr) {
+    <span class="kw">let</span> mn = arr[<span class="nm">0</span>], mx = arr[<span class="nm">0</span>];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">1</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i] &lt; mn) mn = arr[i];
+        <span class="kw">if</span> (arr[i] > mx) mx = arr[i];
+    }
+    <span class="kw">return</span> { min: mn, max: mx };
+}
+console.<span class="fn">log</span>(<span class="fn">minMax</span>([<span class="nm">3</span>,<span class="nm">1</span>,<span class="nm">7</span>,<span class="nm">2</span>,<span class="nm">9</span>]));
+<span class="cmt">// { min: 1, max: 9 }</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[3,1,7,2,9] → min=1, max=9</div>
+      </div>
+    </div>
+
+    <!-- Q22 -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.22</span>
+        <span class="q-title">Reverse an Array (In-Place)</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Two-pointer technique: left pointer starts at 0, right at n-1. Swap and move inward until they meet.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q22')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q22')">JavaScript</button>
+        </div>
+        <div id="q22-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">void</span> <span class="fn">reverseArr</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="ty">int</span> l = <span class="nm">0</span>, r = n - <span class="nm">1</span>;
+    <span class="kw">while</span> (l &lt; r) {
+        <span class="fn">swap</span>(arr[l], arr[r]);
+        l++; r--;
+    }
+}
+<span class="cmt">// {1,2,3,4,5} → {5,4,3,2,1}</span></pre></div>
+        </div>
+        <div id="q22-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">reverseArr</span>(arr) {
+    <span class="kw">let</span> l = <span class="nm">0</span>, r = arr.length - <span class="nm">1</span>;
+    <span class="kw">while</span> (l &lt; r) {
+        <span class="kw">let</span> temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+        l++; r--;
+    }
+    <span class="kw">return</span> arr;
+}
+console.<span class="fn">log</span>(<span class="fn">reverseArr</span>([<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">4</span>,<span class="nm">5</span>]));
+<span class="cmt">// [5,4,3,2,1]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,2,3,4,5] → [5,4,3,2,1] | O(n)</div>
+      </div>
+    </div>
+
+    <!-- Q23 -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.23</span>
+        <span class="q-title">Remove Duplicates from Sorted Array</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Two-pointer: keep a slow pointer for unique position, fast pointer scans. When new unique element found, place it at slow pointer. O(n) time, O(1) space.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q23')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q23')">JavaScript</button>
+        </div>
+        <div id="q23-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">removeDup</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="kw">if</span> (n == <span class="nm">0</span>) <span class="kw">return</span> <span class="nm">0</span>;
+    <span class="ty">int</span> j = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">1</span>; i &lt; n; i++) {
+        <span class="kw">if</span> (arr[i] != arr[j]) {
+            j++;
+            arr[j] = arr[i];
+        }
+    }
+    <span class="kw">return</span> j + <span class="nm">1</span>; <span class="cmt">// new length</span>
+}
+<span class="cmt">// {1,1,2,3,3,4} → {1,2,3,4}, length=4</span></pre></div>
+        </div>
+        <div id="q23-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">removeDup</span>(arr) {
+    <span class="kw">if</span> (arr.length === <span class="nm">0</span>) <span class="kw">return</span> arr;
+    <span class="kw">let</span> j = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">1</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i] !== arr[j]) arr[++j] = arr[i];
+    }
+    arr.length = j + <span class="nm">1</span>;
+    <span class="kw">return</span> arr;
+}
+console.<span class="fn">log</span>(<span class="fn">removeDup</span>([<span class="nm">1</span>,<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">3</span>,<span class="nm">4</span>]));
+<span class="cmt">// [1,2,3,4]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,1,2,3,3,4] → [1,2,3,4]</div>
+      </div>
+    </div>
+
+    <!-- Q24 -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.24</span>
+        <span class="q-title">Rotate Array by K Positions</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Reversal algorithm: reverse first k, reverse remaining n-k, reverse all. O(n) time, O(1) space.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q24')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q24')">JavaScript</button>
+        </div>
+        <div id="q24-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">void</span> <span class="fn">rev</span>(<span class="ty">int</span>* a, <span class="ty">int</span> l, <span class="ty">int</span> r) {
+    <span class="kw">while</span>(l &lt; r) { <span class="fn">swap</span>(a[l++], a[r--]); }
+}
+
+<span class="kw">void</span> <span class="fn">rotateK</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n, <span class="ty">int</span> k) {
+    k %= n;
+    <span class="fn">rev</span>(arr, <span class="nm">0</span>, k - <span class="nm">1</span>);
+    <span class="fn">rev</span>(arr, k, n - <span class="nm">1</span>);
+    <span class="fn">rev</span>(arr, <span class="nm">0</span>, n - <span class="nm">1</span>);
+}
+<span class="cmt">// {1,2,3,4,5} k=2 → {3,4,5,1,2}</span></pre></div>
+        </div>
+        <div id="q24-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">rotateK</span>(arr, k) {
+    <span class="kw">const</span> n = arr.length;
+    k %= n;
+    <span class="kw">const</span> <span class="fn">rev</span> = (l, r) =&gt; {
+        <span class="kw">while</span> (l &lt; r) {
+            [arr[l], arr[r]] = [arr[r], arr[l]];
+            l++; r--;
+        }
+    };
+    <span class="fn">rev</span>(<span class="nm">0</span>, k - <span class="nm">1</span>);
+    <span class="fn">rev</span>(k, n - <span class="nm">1</span>);
+    <span class="fn">rev</span>(<span class="nm">0</span>, n - <span class="nm">1</span>);
+    <span class="kw">return</span> arr;
+}
+console.<span class="fn">log</span>(<span class="fn">rotateK</span>([<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">4</span>,<span class="nm">5</span>], <span class="nm">2</span>));
+<span class="cmt">// [3,4,5,1,2]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,2,3,4,5] k=2 → [3,4,5,1,2]</div>
+      </div>
+    </div>
+
+    <!-- Q25 -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.25</span>
+        <span class="q-title">Move All Zeros to End</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Two-pointer: maintain a count for next non-zero position. Scan array, place non-zero elements, fill rest with zeros.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q25')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q25')">JavaScript</button>
+        </div>
+        <div id="q25-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">void</span> <span class="fn">moveZeros</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="ty">int</span> pos = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; n; i++)
+        <span class="kw">if</span> (arr[i] != <span class="nm">0</span>) arr[pos++] = arr[i];
+    <span class="kw">while</span> (pos &lt; n) arr[pos++] = <span class="nm">0</span>;
+}
+<span class="cmt">// {0,1,0,3,12} → {1,3,12,0,0}</span></pre></div>
+        </div>
+        <div id="q25-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">moveZeros</span>(arr) {
+    <span class="kw">let</span> pos = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++)
+        <span class="kw">if</span> (arr[i] !== <span class="nm">0</span>) arr[pos++] = arr[i];
+    <span class="kw">while</span> (pos &lt; arr.length) arr[pos++] = <span class="nm">0</span>;
+    <span class="kw">return</span> arr;
+}
+console.<span class="fn">log</span>(<span class="fn">moveZeros</span>([<span class="nm">0</span>,<span class="nm">1</span>,<span class="nm">0</span>,<span class="nm">3</span>,<span class="nm">12</span>]));
+<span class="cmt">// [1,3,12,0,0]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[0,1,0,3,12] → [1,3,12,0,0]</div>
+      </div>
+    </div>
+
+    <!-- Q26 -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.26</span>
+        <span class="q-title">Find Second Largest Element</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Single pass with two variables: first and second largest. Update both when needed. O(n) time.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q26')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q26')">JavaScript</button>
+        </div>
+        <div id="q26-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">secondLargest</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="ty">int</span> first = INT_MIN, second = INT_MIN;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; n; i++) {
+        <span class="kw">if</span> (arr[i] > first) {
+            second = first;
+            first = arr[i];
+        } <span class="kw">else if</span> (arr[i] > second && arr[i] != first) {
+            second = arr[i];
+        }
+    }
+    <span class="kw">return</span> second;
+}
+<span class="cmt">// {12,35,1,10,34} → 34</span></pre></div>
+        </div>
+        <div id="q26-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">secondLargest</span>(arr) {
+    <span class="kw">let</span> first = -Infinity, second = -Infinity;
+    <span class="kw">for</span> (<span class="kw">let</span> x <span class="kw">of</span> arr) {
+        <span class="kw">if</span> (x > first) { second = first; first = x; }
+        <span class="kw">else if</span> (x > second && x !== first) second = x;
+    }
+    <span class="kw">return</span> second;
+}
+console.<span class="fn">log</span>(<span class="fn">secondLargest</span>([<span class="nm">12</span>,<span class="nm">35</span>,<span class="nm">1</span>,<span class="nm">10</span>,<span class="nm">34</span>])); <span class="cmt">// 34</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[12,35,1,10,34] → 34</div>
+      </div>
+    </div>
+
+    <!-- Q27 -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.27</span>
+        <span class="q-title">Sort Array of 0s, 1s, 2s (Dutch National Flag)</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-hard">Hard</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">3 pointers: low, mid, high. Move 0s to front, 2s to back, 1s stay in middle. Single pass O(n) O(1).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q27')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q27')">JavaScript</button>
+        </div>
+        <div id="q27-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">void</span> <span class="fn">dnf</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="ty">int</span> lo = <span class="nm">0</span>, mid = <span class="nm">0</span>, hi = n - <span class="nm">1</span>;
+    <span class="kw">while</span> (mid &lt;= hi) {
+        <span class="kw">if</span>      (arr[mid] == <span class="nm">0</span>) <span class="fn">swap</span>(arr[lo++], arr[mid++]);
+        <span class="kw">else if</span> (arr[mid] == <span class="nm">1</span>) mid++;
+        <span class="kw">else</span>                    <span class="fn">swap</span>(arr[mid], arr[hi--]);
+    }
+}
+<span class="cmt">// {0,1,2,0,1,2} → {0,0,1,1,2,2}</span></pre></div>
+        </div>
+        <div id="q27-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">dnf</span>(arr) {
+    <span class="kw">let</span> lo = <span class="nm">0</span>, mid = <span class="nm">0</span>, hi = arr.length - <span class="nm">1</span>;
+    <span class="kw">while</span> (mid &lt;= hi) {
+        <span class="kw">if</span> (arr[mid] === <span class="nm">0</span>) {
+            [arr[lo], arr[mid]] = [arr[mid], arr[lo]];
+            lo++; mid++;
+        } <span class="kw">else if</span> (arr[mid] === <span class="nm">1</span>) {
+            mid++;
+        } <span class="kw">else</span> {
+            [arr[mid], arr[hi]] = [arr[hi], arr[mid]];
+            hi--;
+        }
+    }
+    <span class="kw">return</span> arr;
+}
+console.<span class="fn">log</span>(<span class="fn">dnf</span>([<span class="nm">0</span>,<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">0</span>,<span class="nm">1</span>,<span class="nm">2</span>]));
+<span class="cmt">// [0,0,1,1,2,2]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[0,1,2,0,1,2] → [0,0,1,1,2,2]</div>
+      </div>
+    </div>
+
+    <!-- Q28: Two Sum -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.28</span>
+        <span class="q-title">Two Sum — Find Pair with Given Sum</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">HashMap approach: store visited elements. For each element, check if target-element exists in map. O(n) time and space.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q28')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q28')">JavaScript</button>
+        </div>
+        <div id="q28-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">#include</span> <span class="str">&lt;unordered_map&gt;</span>
+<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; <span class="fn">twoSum</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; nums, <span class="ty">int</span> target) {
+    <span class="kw">unordered_map</span>&lt;<span class="ty">int</span>,<span class="ty">int</span>&gt; seen;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; nums.<span class="fn">size</span>(); i++) {
+        <span class="ty">int</span> comp = target - nums[i];
+        <span class="kw">if</span> (seen.<span class="fn">count</span>(comp))
+            <span class="kw">return</span> {seen[comp], i};
+        seen[nums[i]] = i;
+    }
+    <span class="kw">return</span> {};
+}
+<span class="cmt">// {2,7,11,15}, target=9 → {0,1}</span></pre></div>
+        </div>
+        <div id="q28-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">twoSum</span>(nums, target) {
+    <span class="kw">const</span> seen = {};
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; nums.length; i++) {
+        <span class="kw">const</span> comp = target - nums[i];
+        <span class="kw">if</span> (seen[comp] !== <span class="kw">undefined</span>)
+            <span class="kw">return</span> [seen[comp], i];
+        seen[nums[i]] = i;
+    }
+    <span class="kw">return</span> [];
+}
+console.<span class="fn">log</span>(<span class="fn">twoSum</span>([<span class="nm">2</span>,<span class="nm">7</span>,<span class="nm">11</span>,<span class="nm">15</span>], <span class="nm">9</span>)); <span class="cmt">// [0,1]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[2,7,11,15] target=9 → [0,1] (indices)</div>
+      </div>
+    </div>
+
+    <!-- Q29: Frequency count -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.29</span>
+        <span class="q-title">Frequency Count of Each Element</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Use a hash map to count occurrences. O(n) time, O(n) space.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q29')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q29')">JavaScript</button>
+        </div>
+        <div id="q29-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">#include</span> <span class="str">&lt;unordered_map&gt;</span>
+<span class="kw">void</span> <span class="fn">freqCount</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr) {
+    <span class="kw">unordered_map</span>&lt;<span class="ty">int</span>,<span class="ty">int</span>&gt; freq;
+    <span class="kw">for</span> (<span class="ty">int</span> x : arr) freq[x]++;
+    <span class="kw">for</span> (<span class="kw">auto</span>&amp; p : freq)
+        cout &lt;&lt; p.first &lt;&lt; <span class="str">": "</span> &lt;&lt; p.second &lt;&lt; <span class="str">"\n"</span>;
+}
+<span class="cmt">// {1,2,2,3,3,3} → 1:1, 2:2, 3:3</span></pre></div>
+        </div>
+        <div id="q29-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">freqCount</span>(arr) {
+    <span class="kw">const</span> freq = {};
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        freq[arr[i]] = (freq[arr[i]] || <span class="nm">0</span>) + <span class="nm">1</span>;
+    }
+    <span class="kw">return</span> freq;
+}
+console.<span class="fn">log</span>(<span class="fn">freqCount</span>([<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">3</span>,<span class="nm">3</span>]));
+<span class="cmt">// {1:1, 2:2, 3:3}</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>{1:1, 2:2, 3:3}</div>
+      </div>
+    </div>
+
+    <!-- Q30: Missing Number -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.30</span>
+        <span class="q-title">Find the Missing Number (1 to N)</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Mathematical approach: expected sum = n*(n+1)/2. Missing = expected - actual sum. O(n) time, O(1) space. Also solvable with XOR.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q30')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q30')">JavaScript</button>
+        </div>
+        <div id="q30-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">missingNum</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr, <span class="ty">int</span> n) {
+    <span class="ty">long long</span> expected = (<span class="ty">long long</span>)n * (n + <span class="nm">1</span>) / <span class="nm">2</span>;
+    <span class="ty">long long</span> actual = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> x : arr) actual += x;
+    <span class="kw">return</span> expected - actual;
+}
+<span class="cmt">// {1,2,4,5,6}, n=6 → 3</span></pre></div>
+        </div>
+        <div id="q30-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">missingNum</span>(arr, n) {
+    <span class="kw">const</span> expected = n * (n + <span class="nm">1</span>) / <span class="nm">2</span>;
+    <span class="kw">let</span> actual = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) actual += arr[i];
+    <span class="kw">return</span> expected - actual;
+}
+console.<span class="fn">log</span>(<span class="fn">missingNum</span>([<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">4</span>,<span class="nm">5</span>,<span class="nm">6</span>], <span class="nm">6</span>)); <span class="cmt">// 3</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,2,4,5,6] → Missing: 3</div>
+      </div>
+    </div>
+
+    <!-- Q31: Merge Two Sorted Arrays -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.31</span>
+        <span class="q-title">Merge Two Sorted Arrays</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Two-pointer merge: compare elements from both arrays, take smaller, advance that pointer. O(m+n) time.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q31')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q31')">JavaScript</button>
+        </div>
+        <div id="q31-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; <span class="fn">mergeSorted</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; a, <span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; b) {
+    <span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; res;
+    <span class="ty">int</span> i = <span class="nm">0</span>, j = <span class="nm">0</span>;
+    <span class="kw">while</span> (i &lt; a.<span class="fn">size</span>() && j &lt; b.<span class="fn">size</span>())
+        res.<span class="fn">push_back</span>(a[i] &lt; b[j] ? a[i++] : b[j++]);
+    <span class="kw">while</span> (i &lt; a.<span class="fn">size</span>()) res.<span class="fn">push_back</span>(a[i++]);
+    <span class="kw">while</span> (j &lt; b.<span class="fn">size</span>()) res.<span class="fn">push_back</span>(b[j++]);
+    <span class="kw">return</span> res;
+}
+<span class="cmt">// {1,3,5}+{2,4,6} → {1,2,3,4,5,6}</span></pre></div>
+        </div>
+        <div id="q31-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">mergeSorted</span>(a, b) {
+    <span class="kw">const</span> res = [];
+    <span class="kw">let</span> i = <span class="nm">0</span>, j = <span class="nm">0</span>;
+    <span class="kw">while</span> (i &lt; a.length && j &lt; b.length)
+        res[res.length] = a[i] &lt; b[j] ? a[i++] : b[j++];
+    <span class="kw">while</span> (i &lt; a.length) res[res.length] = a[i++];
+    <span class="kw">while</span> (j &lt; b.length) res[res.length] = b[j++];
+    <span class="kw">return</span> res;
+}
+console.<span class="fn">log</span>(<span class="fn">mergeSorted</span>([<span class="nm">1</span>,<span class="nm">3</span>,<span class="nm">5</span>],[<span class="nm">2</span>,<span class="nm">4</span>,<span class="nm">6</span>]));
+<span class="cmt">// [1,2,3,4,5,6]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,3,5] + [2,4,6] → [1,2,3,4,5,6]</div>
+      </div>
+    </div>
+
+    <!-- Q32: Intersection of Two Arrays -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.32</span>
+        <span class="q-title">Intersection and Union of Two Arrays</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Use hash sets for O(n) intersection and union without sorting requirement.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q32')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q32')">JavaScript</button>
+        </div>
+        <div id="q32-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">#include</span> <span class="str">&lt;unordered_set&gt;</span>
+<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; <span class="fn">intersect</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; a, <span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; b) {
+    <span class="kw">unordered_set</span>&lt;<span class="ty">int</span>&gt; setA(a.<span class="fn">begin</span>(), a.<span class="fn">end</span>());
+    <span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; res;
+    <span class="kw">for</span> (<span class="ty">int</span> x : b)
+        <span class="kw">if</span> (setA.<span class="fn">count</span>(x)) { res.<span class="fn">push_back</span>(x); setA.<span class="fn">erase</span>(x); }
+    <span class="kw">return</span> res;
+}
+<span class="cmt">// {1,2,3,4}∩{3,4,5,6} → {3,4}</span></pre></div>
+        </div>
+        <div id="q32-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">intersect</span>(a, b) {
+    <span class="kw">const</span> setA = {}, res = [];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; a.length; i++) setA[a[i]] = <span class="kw">true</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; b.length; i++) {
+        <span class="kw">if</span> (setA[b[i]]) {
+            res[res.length] = b[i];
+            <span class="kw">delete</span> setA[b[i]];
+        }
+    }
+    <span class="kw">return</span> res;
+}
+console.<span class="fn">log</span>(<span class="fn">intersect</span>([<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">4</span>],[<span class="nm">3</span>,<span class="nm">4</span>,<span class="nm">5</span>,<span class="nm">6</span>]));
+<span class="cmt">// [3,4]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,2,3,4] ∩ [3,4,5,6] = [3,4]</div>
+      </div>
+    </div>
+
+    <!-- Q33: Bubble Sort -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.33</span>
+        <span class="q-title">Bubble Sort Implementation</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Repeatedly compare adjacent elements and swap if out of order. Optimised with early exit flag. O(n²) worst, O(n) best.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q33')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q33')">JavaScript</button>
+        </div>
+        <div id="q33-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">void</span> <span class="fn">bubbleSort</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; n - <span class="nm">1</span>; i++) {
+        <span class="ty">bool</span> swapped = <span class="kw">false</span>;
+        <span class="kw">for</span> (<span class="ty">int</span> j = <span class="nm">0</span>; j &lt; n - i - <span class="nm">1</span>; j++) {
+            <span class="kw">if</span> (arr[j] > arr[j + <span class="nm">1</span>]) {
+                <span class="fn">swap</span>(arr[j], arr[j + <span class="nm">1</span>]);
+                swapped = <span class="kw">true</span>;
+            }
+        }
+        <span class="kw">if</span> (!swapped) <span class="kw">break</span>; <span class="cmt">// already sorted</span>
+    }
+}</pre></div>
+        </div>
+        <div id="q33-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">bubbleSort</span>(arr) {
+    <span class="kw">const</span> n = arr.length;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; n - <span class="nm">1</span>; i++) {
+        <span class="kw">let</span> swapped = <span class="kw">false</span>;
+        <span class="kw">for</span> (<span class="kw">let</span> j = <span class="nm">0</span>; j &lt; n - i - <span class="nm">1</span>; j++) {
+            <span class="kw">if</span> (arr[j] > arr[j + <span class="nm">1</span>]) {
+                [arr[j], arr[j+<span class="nm">1</span>]] = [arr[j+<span class="nm">1</span>], arr[j]];
+                swapped = <span class="kw">true</span>;
+            }
+        }
+        <span class="kw">if</span> (!swapped) <span class="kw">break</span>;
+    }
+    <span class="kw">return</span> arr;
+}
+console.<span class="fn">log</span>(<span class="fn">bubbleSort</span>([<span class="nm">5</span>,<span class="nm">3</span>,<span class="nm">8</span>,<span class="nm">1</span>])); <span class="cmt">// [1,3,5,8]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[5,3,8,1] → [1,3,5,8] | O(n²) worst</div>
+      </div>
+    </div>
+
+    <!-- Q34: Leaders in Array -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.34</span>
+        <span class="q-title">Find Leaders in Array (right-side smaller)</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">An element is a leader if all elements to its right are smaller. Scan from right, track max suffix. Last element is always a leader.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q34')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q34')">JavaScript</button>
+        </div>
+        <div id="q34-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">void</span> <span class="fn">leaders</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="ty">int</span> maxRight = arr[n - <span class="nm">1</span>];
+    cout &lt;&lt; maxRight &lt;&lt; <span class="str">" "</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = n - <span class="nm">2</span>; i >= <span class="nm">0</span>; i--) {
+        <span class="kw">if</span> (arr[i] > maxRight) {
+            cout &lt;&lt; arr[i] &lt;&lt; <span class="str">" "</span>;
+            maxRight = arr[i];
+        }
+    }
+}
+<span class="cmt">// {16,17,4,3,5,2} → 17 5 2</span></pre></div>
+        </div>
+        <div id="q34-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">leaders</span>(arr) {
+    <span class="kw">const</span> res = [arr[arr.length - <span class="nm">1</span>]];
+    <span class="kw">let</span> maxRight = arr[arr.length - <span class="nm">1</span>];
+    <span class="kw">for</span> (<span class="kw">let</span> i = arr.length - <span class="nm">2</span>; i >= <span class="nm">0</span>; i--) {
+        <span class="kw">if</span> (arr[i] > maxRight) {
+            res[res.length] = arr[i];
+            maxRight = arr[i];
+        }
+    }
+    <span class="kw">return</span> res;
+}
+console.<span class="fn">log</span>(<span class="fn">leaders</span>([<span class="nm">16</span>,<span class="nm">17</span>,<span class="nm">4</span>,<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">2</span>]));
+<span class="cmt">// [2,5,17] (right to left)</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[16,17,4,3,5,2] → Leaders: 17,5,2</div>
+      </div>
+    </div>
+
+    <!-- Q35: Stock Buy/Sell -->
+    <div class="q-card" data-cat="array">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.35</span>
+        <span class="q-title">Best Time to Buy and Sell Stock (Max Profit)</span>
+        <div class="q-tags"><span class="q-tag tag-array">Array</span><span class="q-tag tag-hard">Hard</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Track minimum price seen so far. For each day, profit = current - minSoFar. Track maximum profit. O(n) O(1).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q35')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q35')">JavaScript</button>
+        </div>
+        <div id="q35-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">maxProfit</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; prices) {
+    <span class="ty">int</span> minPrice = INT_MAX, maxProf = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> price : prices) {
+        <span class="kw">if</span> (price &lt; minPrice) minPrice = price;
+        <span class="kw">else if</span> (price - minPrice > maxProf)
+            maxProf = price - minPrice;
+    }
+    <span class="kw">return</span> maxProf;
+}
+<span class="cmt">// {7,1,5,3,6,4} → 5 (buy@1, sell@6)</span></pre></div>
+        </div>
+        <div id="q35-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">maxProfit</span>(prices) {
+    <span class="kw">let</span> minPrice = Infinity, maxProf = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; prices.length; i++) {
+        <span class="kw">if</span> (prices[i] &lt; minPrice) minPrice = prices[i];
+        <span class="kw">else if</span> (prices[i] - minPrice > maxProf)
+            maxProf = prices[i] - minPrice;
+    }
+    <span class="kw">return</span> maxProf;
+}
+console.<span class="fn">log</span>(<span class="fn">maxProfit</span>([<span class="nm">7</span>,<span class="nm">1</span>,<span class="nm">5</span>,<span class="nm">3</span>,<span class="nm">6</span>,<span class="nm">4</span>])); <span class="cmt">// 5</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[7,1,5,3,6,4] → Max profit = 5</div>
+      </div>
+    </div>
+
+  </div><!-- end array grid -->
+</section>
+
+<hr class="divider">
+
+<!-- ────────────────────────────────────────── -->
+<!-- SECTION: SUBARRAY QUESTIONS -->
+<!-- ────────────────────────────────────────── -->
+<section id="subarray">
+  <div class="sec-intro">
+    <div>
+      <div class="sec-tag">Section 03</div>
+      <h2 class="sec-title">SubArray<br>Problems</h2>
+    </div>
+    <span class="sec-count">03</span>
+  </div>
+
+  <div class="q-grid">
+
+    <!-- Q36: Kadane's Algorithm -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.36</span>
+        <span class="q-title">Maximum Subarray Sum (Kadane's Algorithm)</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-hard">Hard</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">At each element, decide: extend current subarray or start fresh. <strong>maxCur = max(num, maxCur + num)</strong>. Track global max. O(n) O(1).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q36')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q36')">JavaScript</button>
+        </div>
+        <div id="q36-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">maxSubarraySum</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr) {
+    <span class="ty">int</span> maxCur = arr[<span class="nm">0</span>], maxGlobal = arr[<span class="nm">0</span>];
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">1</span>; i &lt; arr.<span class="fn">size</span>(); i++) {
+        maxCur = <span class="fn">max</span>(arr[i], maxCur + arr[i]);
+        maxGlobal = <span class="fn">max</span>(maxGlobal, maxCur);
+    }
+    <span class="kw">return</span> maxGlobal;
+}
+<span class="cmt">// {-2,1,-3,4,-1,2,1,-5,4} → 6</span>
+<span class="cmt">// subarray: [4,-1,2,1]</span></pre></div>
+        </div>
+        <div id="q36-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">maxSubarraySum</span>(arr) {
+    <span class="kw">let</span> maxCur = arr[<span class="nm">0</span>], maxGlobal = arr[<span class="nm">0</span>];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">1</span>; i &lt; arr.length; i++) {
+        maxCur = arr[i] > maxCur + arr[i]
+            ? arr[i] : maxCur + arr[i];
+        <span class="kw">if</span> (maxCur > maxGlobal) maxGlobal = maxCur;
+    }
+    <span class="kw">return</span> maxGlobal;
+}
+console.<span class="fn">log</span>(<span class="fn">maxSubarraySum</span>([-<span class="nm">2</span>,<span class="nm">1</span>,-<span class="nm">3</span>,<span class="nm">4</span>,-<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">1</span>,-<span class="nm">5</span>,<span class="nm">4</span>]));
+<span class="cmt">// 6</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[-2,1,-3,4,-1,2,1,-5,4] → Max sum = 6 (subarray [4,-1,2,1])</div>
+      </div>
+    </div>
+
+    <!-- Q37: Subarray with given sum -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.37</span>
+        <span class="q-title">Subarray with Given Sum (Sliding Window)</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Sliding window for non-negative arrays. Expand right to add, shrink left when sum exceeds target. O(n) time.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q37')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q37')">JavaScript</button>
+        </div>
+        <div id="q37-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">pair</span>&lt;<span class="ty">int</span>,<span class="ty">int</span>&gt; <span class="fn">subarraySum</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n, <span class="ty">int</span> target) {
+    <span class="ty">int</span> start = <span class="nm">0</span>, curr = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> end = <span class="nm">0</span>; end &lt; n; end++) {
+        curr += arr[end];
+        <span class="kw">while</span> (curr > target && start &lt;= end)
+            curr -= arr[start++];
+        <span class="kw">if</span> (curr == target)
+            <span class="kw">return</span> {start, end}; <span class="cmt">// 0-indexed</span>
+    }
+    <span class="kw">return</span> {-<span class="nm">1</span>, -<span class="nm">1</span>};
+}
+<span class="cmt">// {1,4,20,3,10,5}, target=33 → {2,4}</span></pre></div>
+        </div>
+        <div id="q37-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">subarraySum</span>(arr, target) {
+    <span class="kw">let</span> start = <span class="nm">0</span>, curr = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> end = <span class="nm">0</span>; end &lt; arr.length; end++) {
+        curr += arr[end];
+        <span class="kw">while</span> (curr > target && start &lt;= end)
+            curr -= arr[start++];
+        <span class="kw">if</span> (curr === target)
+            <span class="kw">return</span> [start, end];
+    }
+    <span class="kw">return</span> [-<span class="nm">1</span>, -<span class="nm">1</span>];
+}
+console.<span class="fn">log</span>(<span class="fn">subarraySum</span>([<span class="nm">1</span>,<span class="nm">4</span>,<span class="nm">20</span>,<span class="nm">3</span>,<span class="nm">10</span>,<span class="nm">5</span>], <span class="nm">33</span>));
+<span class="cmt">// [2, 4]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,4,20,3,10,5] target=33 → indices [2,4] (20+3+10=33)</div>
+      </div>
+    </div>
+
+    <!-- Q38: Longest subarray with 0 sum -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.38</span>
+        <span class="q-title">Longest Subarray with Sum Zero</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-hard">Hard</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Prefix sum + hashmap. If prefix sum repeats at index j and i (i &lt; j), subarray [i+1..j] sums to 0. O(n).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q38')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q38')">JavaScript</button>
+        </div>
+        <div id="q38-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">longestZeroSum</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr) {
+    <span class="kw">unordered_map</span>&lt;<span class="ty">int</span>,<span class="ty">int</span>&gt; first;
+    first[<span class="nm">0</span>] = -<span class="nm">1</span>;
+    <span class="ty">int</span> maxLen = <span class="nm">0</span>, prefix = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; arr.<span class="fn">size</span>(); i++) {
+        prefix += arr[i];
+        <span class="kw">if</span> (first.<span class="fn">count</span>(prefix))
+            maxLen = <span class="fn">max</span>(maxLen, i - first[prefix]);
+        <span class="kw">else</span>
+            first[prefix] = i;
+    }
+    <span class="kw">return</span> maxLen;
+}
+<span class="cmt">// {15,-2,2,-8,1,7,10,23} → 5</span></pre></div>
+        </div>
+        <div id="q38-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">longestZeroSum</span>(arr) {
+    <span class="kw">const</span> first = { <span class="nm">0</span>: -<span class="nm">1</span> };
+    <span class="kw">let</span> maxLen = <span class="nm">0</span>, prefix = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        prefix += arr[i];
+        <span class="kw">if</span> (first[prefix] !== <span class="kw">undefined</span>)
+            maxLen = maxLen > i - first[prefix]
+                   ? maxLen : i - first[prefix];
+        <span class="kw">else</span>
+            first[prefix] = i;
+    }
+    <span class="kw">return</span> maxLen;
+}
+console.<span class="fn">log</span>(<span class="fn">longestZeroSum</span>([<span class="nm">15</span>,-<span class="nm">2</span>,<span class="nm">2</span>,-<span class="nm">8</span>,<span class="nm">1</span>,<span class="nm">7</span>,<span class="nm">10</span>,<span class="nm">23</span>]));
+<span class="cmt">// 5</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[15,-2,2,-8,1,7,10,23] → Longest zero-sum subarray = length 5</div>
+      </div>
+    </div>
+
+    <!-- Q39: Count subarrays with sum K -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.39</span>
+        <span class="q-title">Count Subarrays with Sum Equal to K</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-hard">Hard</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Prefix sum with hashmap. For each prefix[i], check how many previous prefix[j] satisfy prefix[i]-prefix[j]=k, i.e., prefix[j]=prefix[i]-k.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q39')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q39')">JavaScript</button>
+        </div>
+        <div id="q39-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">countSubarraysK</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr, <span class="ty">int</span> k) {
+    <span class="kw">unordered_map</span>&lt;<span class="ty">int</span>,<span class="ty">int</span>&gt; freq;
+    freq[<span class="nm">0</span>] = <span class="nm">1</span>;
+    <span class="ty">int</span> count = <span class="nm">0</span>, prefix = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> x : arr) {
+        prefix += x;
+        count += freq[prefix - k];
+        freq[prefix]++;
+    }
+    <span class="kw">return</span> count;
+}
+<span class="cmt">// {1,1,1}, k=2 → 2</span></pre></div>
+        </div>
+        <div id="q39-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">countSubarraysK</span>(arr, k) {
+    <span class="kw">const</span> freq = { <span class="nm">0</span>: <span class="nm">1</span> };
+    <span class="kw">let</span> count = <span class="nm">0</span>, prefix = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        prefix += arr[i];
+        count += (freq[prefix - k] || <span class="nm">0</span>);
+        freq[prefix] = (freq[prefix] || <span class="nm">0</span>) + <span class="nm">1</span>;
+    }
+    <span class="kw">return</span> count;
+}
+console.<span class="fn">log</span>(<span class="fn">countSubarraysK</span>([<span class="nm">1</span>,<span class="nm">1</span>,<span class="nm">1</span>], <span class="nm">2</span>)); <span class="cmt">// 2</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,1,1] k=2 → 2 subarrays ([1,1] starting at 0 and 1)</div>
+      </div>
+    </div>
+
+    <!-- Q40: Maximum product subarray -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.40</span>
+        <span class="q-title">Maximum Product Subarray</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-hard">Hard</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Track both max and min product (negative × negative = large positive). At each step, update both from current element, maxPrev, minPrev.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q40')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q40')">JavaScript</button>
+        </div>
+        <div id="q40-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">maxProduct</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr) {
+    <span class="ty">int</span> maxP = arr[<span class="nm">0</span>], minP = arr[<span class="nm">0</span>], res = arr[<span class="nm">0</span>];
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">1</span>; i &lt; arr.<span class="fn">size</span>(); i++) {
+        <span class="kw">int</span> temp = maxP;
+        maxP = <span class="fn">max</span>({arr[i], maxP*arr[i], minP*arr[i]});
+        minP = <span class="fn">min</span>({arr[i], temp*arr[i], minP*arr[i]});
+        res  = <span class="fn">max</span>(res, maxP);
+    }
+    <span class="kw">return</span> res;
+}
+<span class="cmt">// {2,3,-2,4} → 6 (subarray [2,3])</span></pre></div>
+        </div>
+        <div id="q40-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">maxProduct</span>(arr) {
+    <span class="kw">let</span> maxP = arr[<span class="nm">0</span>], minP = arr[<span class="nm">0</span>], res = arr[<span class="nm">0</span>];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">1</span>; i &lt; arr.length; i++) {
+        <span class="kw">const</span> temp = maxP;
+        maxP = arr[i] > maxP*arr[i]
+             ? (arr[i] > minP*arr[i] ? arr[i] : minP*arr[i])
+             : (maxP*arr[i] > minP*arr[i] ? maxP*arr[i] : minP*arr[i]);
+        minP = arr[i] &lt; temp*arr[i]
+             ? (arr[i] &lt; minP*arr[i] ? arr[i] : minP*arr[i])
+             : (temp*arr[i] &lt; minP*arr[i] ? temp*arr[i] : minP*arr[i]);
+        <span class="kw">if</span> (maxP > res) res = maxP;
+    }
+    <span class="kw">return</span> res;
+}
+console.<span class="fn">log</span>(<span class="fn">maxProduct</span>([<span class="nm">2</span>,<span class="nm">3</span>,-<span class="nm">2</span>,<span class="nm">4</span>])); <span class="cmt">// 6</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[2,3,-2,4] → 6 | [-2,3,-4] → 24</div>
+      </div>
+    </div>
+
+    <!-- Q41: Smallest Subarray length >= S -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.41</span>
+        <span class="q-title">Smallest Subarray with Sum ≥ S</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Sliding window: expand right until sum ≥ S, then shrink from left and update minimum window size. O(n).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q41')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q41')">JavaScript</button>
+        </div>
+        <div id="q41-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">minSubLen</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr, <span class="ty">int</span> s) {
+    <span class="ty">int</span> minLen = INT_MAX, curr = <span class="nm">0</span>, start = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> end = <span class="nm">0</span>; end &lt; arr.<span class="fn">size</span>(); end++) {
+        curr += arr[end];
+        <span class="kw">while</span> (curr >= s) {
+            minLen = <span class="fn">min</span>(minLen, end - start + <span class="nm">1</span>);
+            curr -= arr[start++];
+        }
+    }
+    <span class="kw">return</span> minLen == INT_MAX ? <span class="nm">0</span> : minLen;
+}
+<span class="cmt">// {2,3,1,2,4,3}, s=7 → 2 (subarray [4,3])</span></pre></div>
+        </div>
+        <div id="q41-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">minSubLen</span>(arr, s) {
+    <span class="kw">let</span> minLen = Infinity, curr = <span class="nm">0</span>, start = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> end = <span class="nm">0</span>; end &lt; arr.length; end++) {
+        curr += arr[end];
+        <span class="kw">while</span> (curr >= s) {
+            <span class="kw">const</span> len = end - start + <span class="nm">1</span>;
+            <span class="kw">if</span> (len &lt; minLen) minLen = len;
+            curr -= arr[start++];
+        }
+    }
+    <span class="kw">return</span> minLen === Infinity ? <span class="nm">0</span> : minLen;
+}
+console.<span class="fn">log</span>(<span class="fn">minSubLen</span>([<span class="nm">2</span>,<span class="nm">3</span>,<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">4</span>,<span class="nm">3</span>], <span class="nm">7</span>)); <span class="cmt">// 2</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[2,3,1,2,4,3] s=7 → min length = 2 ([4,3])</div>
+      </div>
+    </div>
+
+    <!-- Q42: Find all subarrays -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.42</span>
+        <span class="q-title">Print All Subarrays of an Array</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Three nested loops. Outer two define start/end of each subarray. Inner loop prints elements. O(n³) time — total n*(n+1)/2 subarrays.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q42')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q42')">JavaScript</button>
+        </div>
+        <div id="q42-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">void</span> <span class="fn">printAllSubarrays</span>(<span class="ty">int</span> arr[], <span class="ty">int</span> n) {
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; n; i++) {
+        <span class="kw">for</span> (<span class="ty">int</span> j = i; j &lt; n; j++) {
+            <span class="kw">for</span> (<span class="ty">int</span> k = i; k &lt;= j; k++)
+                cout &lt;&lt; arr[k] &lt;&lt; <span class="str">" "</span>;
+            cout &lt;&lt; <span class="str">"| "</span>;
+        }
+    }
+}
+<span class="cmt">// {1,2,3} → 1| 1 2| 1 2 3| 2| 2 3| 3|</span></pre></div>
+        </div>
+        <div id="q42-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">printAllSubarrays</span>(arr) {
+    <span class="kw">const</span> result = [];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">for</span> (<span class="kw">let</span> j = i; j &lt; arr.length; j++) {
+            <span class="kw">const</span> sub = [];
+            <span class="kw">for</span> (<span class="kw">let</span> k = i; k &lt;= j; k++)
+                sub[sub.length] = arr[k];
+            result[result.length] = sub;
+        }
+    }
+    <span class="kw">return</span> result;
+}
+console.<span class="fn">log</span>(<span class="fn">printAllSubarrays</span>([<span class="nm">1</span>,<span class="nm">2</span>,<span class="nm">3</span>]).length);
+<span class="cmt">// 6 subarrays</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output (n=3)</div>[1] [1,2] [1,2,3] [2] [2,3] [3] — total 6 subarrays</div>
+      </div>
+    </div>
+
+    <!-- Q43: Subarray Prefix Sum -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.43</span>
+        <span class="q-title">Prefix Sum Array (Range Sum Queries)</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Precompute prefix[i] = arr[0]+...+arr[i-1]. Then range sum [l,r] = prefix[r+1]-prefix[l]. O(n) build, O(1) query.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q43')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q43')">JavaScript</button>
+        </div>
+        <div id="q43-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; <span class="fn">buildPrefix</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr) {
+    <span class="ty">int</span> n = arr.<span class="fn">size</span>();
+    <span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; pre(n + <span class="nm">1</span>, <span class="nm">0</span>);
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; n; i++)
+        pre[i + <span class="nm">1</span>] = pre[i] + arr[i];
+    <span class="kw">return</span> pre;
+}
+<span class="ty">int</span> <span class="fn">rangeSum</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; pre, <span class="ty">int</span> l, <span class="ty">int</span> r) {
+    <span class="kw">return</span> pre[r + <span class="nm">1</span>] - pre[l];
+}
+<span class="cmt">// arr={2,4,5,3,1} sum(1,3)=4+5+3=12</span></pre></div>
+        </div>
+        <div id="q43-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">buildPrefix</span>(arr) {
+    <span class="kw">const</span> pre = [<span class="nm">0</span>];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++)
+        pre[pre.length] = pre[i] + arr[i];
+    <span class="kw">return</span> pre;
+}
+<span class="kw">const</span> <span class="fn">rangeSum</span> = (pre, l, r) =&gt; pre[r + <span class="nm">1</span>] - pre[l];
+
+<span class="kw">const</span> pre = <span class="fn">buildPrefix</span>([<span class="nm">2</span>,<span class="nm">4</span>,<span class="nm">5</span>,<span class="nm">3</span>,<span class="nm">1</span>]);
+console.<span class="fn">log</span>(<span class="fn">rangeSum</span>(pre, <span class="nm">1</span>, <span class="nm">3</span>)); <span class="cmt">// 12 (4+5+3)</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>arr=[2,4,5,3,1] → range(1,3) = 12 | O(n) build, O(1) query</div>
+      </div>
+    </div>
+
+    <!-- Q44: Equilibrium Index -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.44</span>
+        <span class="q-title">Equilibrium Index (Left Sum = Right Sum)</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Total sum precomputed. For each index: right sum = total - left - arr[i]. If leftSum == rightSum, found equilibrium. O(n).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q44')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q44')">JavaScript</button>
+        </div>
+        <div id="q44-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="ty">int</span> <span class="fn">equilibrium</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr) {
+    <span class="ty">int</span> total = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> x : arr) total += x;
+    <span class="ty">int</span> left = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; arr.<span class="fn">size</span>(); i++) {
+        <span class="ty">int</span> right = total - left - arr[i];
+        <span class="kw">if</span> (left == right) <span class="kw">return</span> i;
+        left += arr[i];
+    }
+    <span class="kw">return</span> -<span class="nm">1</span>;
+}
+<span class="cmt">// {-7,1,5,2,-4,3,0} → 3 (sum left=−1 = sum right=−1)</span></pre></div>
+        </div>
+        <div id="q44-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">equilibrium</span>(arr) {
+    <span class="kw">let</span> total = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) total += arr[i];
+    <span class="kw">let</span> left = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">const</span> right = total - left - arr[i];
+        <span class="kw">if</span> (left === right) <span class="kw">return</span> i;
+        left += arr[i];
+    }
+    <span class="kw">return</span> -<span class="nm">1</span>;
+}
+console.<span class="fn">log</span>(<span class="fn">equilibrium</span>([-<span class="nm">7</span>,<span class="nm">1</span>,<span class="nm">5</span>,<span class="nm">2</span>,-<span class="nm">4</span>,<span class="nm">3</span>,<span class="nm">0</span>])); <span class="cmt">// 3</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[-7,1,5,2,-4,3,0] → equilibrium index = 3</div>
+      </div>
+    </div>
+
+    <!-- Q45: Max of all subarrays of size k -->
+    <div class="q-card" data-cat="subarray">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.45</span>
+        <span class="q-title">Maximum of All Subarrays of Size K (Deque)</span>
+        <div class="q-tags"><span class="q-tag tag-subarray">SubArray</span><span class="q-tag tag-hard">Hard</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Deque-based sliding window: maintain indices of potential maximums in decreasing order. Front is always the max of current window. O(n) O(k).</div>
+        <div class="lang-tabs">
+          <button class="lang-tab cpp-tab active" onclick="switchTab(this,'cpp','q45')">C++</button>
+          <button class="lang-tab js-tab" onclick="switchTab(this,'js','q45')">JavaScript</button>
+        </div>
+        <div id="q45-cpp" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">#include</span> <span class="str">&lt;deque&gt;</span>
+<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; <span class="fn">maxSlidingWindow</span>(<span class="kw">vector</span>&lt;<span class="ty">int</span>&gt;&amp; arr, <span class="ty">int</span> k) {
+    <span class="kw">deque</span>&lt;<span class="ty">int</span>&gt; dq; <span class="cmt">// stores indices</span>
+    <span class="kw">vector</span>&lt;<span class="ty">int</span>&gt; res;
+    <span class="kw">for</span> (<span class="ty">int</span> i = <span class="nm">0</span>; i &lt; arr.<span class="fn">size</span>(); i++) {
+        <span class="cmt">// remove out-of-window elements</span>
+        <span class="kw">while</span> (!dq.<span class="fn">empty</span>() && dq.<span class="fn">front</span>() &lt;= i - k)
+            dq.<span class="fn">pop_front</span>();
+        <span class="cmt">// remove smaller elements from back</span>
+        <span class="kw">while</span> (!dq.<span class="fn">empty</span>() && arr[dq.<span class="fn">back</span>()] &lt; arr[i])
+            dq.<span class="fn">pop_back</span>();
+        dq.<span class="fn">push_back</span>(i);
+        <span class="kw">if</span> (i >= k - <span class="nm">1</span>) res.<span class="fn">push_back</span>(arr[dq.<span class="fn">front</span>()]);
+    }
+    <span class="kw">return</span> res;
+}
+<span class="cmt">// {1,3,-1,-3,5,3,6,7} k=3 → {3,3,5,5,6,7}</span></pre></div>
+        </div>
+        <div id="q45-js" class="lang-pane">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="kw">function</span> <span class="fn">maxSlidingWindow</span>(arr, k) {
+    <span class="kw">const</span> dq = [], res = [];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="cmt">// remove out-of-window</span>
+        <span class="kw">while</span> (dq.length && dq[<span class="nm">0</span>] &lt;= i - k) dq.<span class="fn">shift</span>();
+        <span class="cmt">// remove smaller from back</span>
+        <span class="kw">while</span> (dq.length && arr[dq[dq.length-<span class="nm">1</span>]] &lt; arr[i])
+            dq.<span class="fn">pop</span>();
+        dq[dq.length] = i;
+        <span class="kw">if</span> (i >= k - <span class="nm">1</span>) res[res.length] = arr[dq[<span class="nm">0</span>]];
+    }
+    <span class="kw">return</span> res;
+}
+console.<span class="fn">log</span>(<span class="fn">maxSlidingWindow</span>([<span class="nm">1</span>,<span class="nm">3</span>,-<span class="nm">1</span>,-<span class="nm">3</span>,<span class="nm">5</span>,<span class="nm">3</span>,<span class="nm">6</span>,<span class="nm">7</span>], <span class="nm">3</span>));
+<span class="cmt">// [3,3,5,5,6,7]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>[1,3,-1,-3,5,3,6,7] k=3 → [3,3,5,5,6,7] | O(n)</div>
+      </div>
+    </div>
+
+  </div><!-- end subarray grid -->
+</section>
+
+<hr class="divider">
+
+<!-- ────────────────────────────────────────── -->
+<!-- SECTION: JS CRUD WITHOUT ARRAY METHODS -->
+<!-- ────────────────────────────────────────── -->
+<section id="crud">
+  <div class="sec-intro">
+    <div>
+      <div class="sec-tag">Section 04</div>
+      <h2 class="sec-title">CRUD Without<br>Array Methods</h2>
+    </div>
+    <span class="sec-count">04</span>
+  </div>
+
+  <div class="q-grid">
+
+    <!-- Q46: Custom Push -->
+    <div class="q-card" data-cat="crud">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.46</span>
+        <span class="q-title">CREATE — Custom Push (Add Element)</span>
+        <div class="q-tags"><span class="q-tag tag-crud">CRUD</span><span class="q-tag tag-easy">Easy</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Implement push without <code>Array.push()</code>. Use <code>arr.length</code> property to set the next index directly.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab js-tab active" onclick="switchTab(this,'js','q46')">JavaScript</button>
+        </div>
+        <div id="q46-js" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q46: Custom push — no Array methods</span>
+<span class="kw">function</span> <span class="fn">customPush</span>(arr, value) {
+    arr[arr.length] = value; <span class="cmt">// arr.length is current size</span>
+    <span class="kw">return</span> arr.length;       <span class="cmt">// returns new length like native push</span>
+}
+
+<span class="kw">const</span> users = [];
+<span class="fn">customPush</span>(users, { id: <span class="nm">1</span>, name: <span class="str">"Zaheer"</span>, role: <span class="str">"dev"</span> });
+<span class="fn">customPush</span>(users, { id: <span class="nm">2</span>, name: <span class="str">"Priya"</span>,  role: <span class="str">"pm"</span>  });
+<span class="fn">customPush</span>(users, { id: <span class="nm">3</span>, name: <span class="str">"Ali"</span>,    role: <span class="str">"qa"</span>  });
+
+console.<span class="fn">log</span>(users.length); <span class="cmt">// 3</span>
+console.<span class="fn">log</span>(users[<span class="nm">0</span>]);     <span class="cmt">// {id:1, name:"Zaheer", role:"dev"}</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>Length: 3 | users[0] = {id:1, name:"Zaheer"}</div>
+      </div>
+    </div>
+
+    <!-- Q47: READ -->
+    <div class="q-card" data-cat="crud">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.47</span>
+        <span class="q-title">READ — Find by ID, Find All, Pagination</span>
+        <div class="q-tags"><span class="q-tag tag-crud">CRUD</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Implement find, findAll, and manual pagination using only <code>for</code> loops — no <code>.find()</code>, <code>.filter()</code>, or <code>.slice()</code>.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab js-tab active" onclick="switchTab(this,'js','q47')">JavaScript</button>
+        </div>
+        <div id="q47-js" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// READ by ID — no .find()</span>
+<span class="kw">function</span> <span class="fn">findById</span>(arr, id) {
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i].id === id) <span class="kw">return</span> arr[i];
+    }
+    <span class="kw">return null</span>;
+}
+
+<span class="cmt">// READ all by key-value — no .filter()</span>
+<span class="kw">function</span> <span class="fn">findWhere</span>(arr, key, value) {
+    <span class="kw">const</span> result = [];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i][key] === value)
+            result[result.length] = arr[i];
+    }
+    <span class="kw">return</span> result;
+}
+
+<span class="cmt">// Pagination — no .slice()</span>
+<span class="kw">function</span> <span class="fn">paginate</span>(arr, page, size) {
+    <span class="kw">const</span> start = (page - <span class="nm">1</span>) * size;
+    <span class="kw">const</span> end   = start + size;
+    <span class="kw">const</span> result = [];
+    <span class="kw">for</span> (<span class="kw">let</span> i = start; i &lt; end && i &lt; arr.length; i++) {
+        result[result.length] = arr[i];
+    }
+    <span class="kw">return</span> result;
+}
+
+<span class="cmt">// Usage</span>
+<span class="kw">const</span> db = [
+    { id:<span class="nm">1</span>, name:<span class="str">"Zaheer"</span>, role:<span class="str">"dev"</span> },
+    { id:<span class="nm">2</span>, name:<span class="str">"Priya"</span>,  role:<span class="str">"pm"</span>  },
+    { id:<span class="nm">3</span>, name:<span class="str">"Ali"</span>,    role:<span class="str">"dev"</span>  },
+    { id:<span class="nm">4</span>, name:<span class="str">"Sara"</span>,   role:<span class="str">"qa"</span>  },
+];
+
+console.<span class="fn">log</span>(<span class="fn">findById</span>(db, <span class="nm">2</span>));
+<span class="cmt">// {id:2, name:"Priya", role:"pm"}</span>
+
+console.<span class="fn">log</span>(<span class="fn">findWhere</span>(db, <span class="str">"role"</span>, <span class="str">"dev"</span>));
+<span class="cmt">// [{id:1,name:"Zaheer"}, {id:3,name:"Ali"}]</span>
+
+console.<span class="fn">log</span>(<span class="fn">paginate</span>(db, <span class="nm">1</span>, <span class="nm">2</span>));
+<span class="cmt">// page 1, size 2 → [{id:1}, {id:2}]</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>findById(2)→Priya | findWhere("dev")→2 users | paginate(1,2)→2 records</div>
+      </div>
+    </div>
+
+    <!-- Q48: UPDATE -->
+    <div class="q-card" data-cat="crud">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.48</span>
+        <span class="q-title">UPDATE — Update by ID and Bulk Update</span>
+        <div class="q-tags"><span class="q-tag tag-crud">CRUD</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Find the matching record by looping, then merge new data using a key loop. No <code>.map()</code>, no spread destructuring for the loop.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab js-tab active" onclick="switchTab(this,'js','q48')">JavaScript</button>
+        </div>
+        <div id="q48-js" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// UPDATE by ID — no .map() or .findIndex()</span>
+<span class="kw">function</span> <span class="fn">updateById</span>(arr, id, newData) {
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i].id === id) {
+            <span class="cmt">// merge fields manually</span>
+            <span class="kw">const</span> keys = <span class="fn">Object</span>.<span class="fn">keys</span>(newData);
+            <span class="kw">for</span> (<span class="kw">let</span> k = <span class="nm">0</span>; k &lt; keys.length; k++) {
+                arr[i][keys[k]] = newData[keys[k]];
+            }
+            <span class="kw">return</span> arr[i]; <span class="cmt">// return updated record</span>
+        }
+    }
+    <span class="kw">return null</span>; <span class="cmt">// not found</span>
+}
+
+<span class="cmt">// BULK UPDATE — update all matching a condition</span>
+<span class="kw">function</span> <span class="fn">updateWhere</span>(arr, key, matchVal, newData) {
+    <span class="kw">let</span> count = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i][key] === matchVal) {
+            <span class="kw">const</span> fields = <span class="fn">Object</span>.<span class="fn">keys</span>(newData);
+            <span class="kw">for</span> (<span class="kw">let</span> f = <span class="nm">0</span>; f &lt; fields.length; f++) {
+                arr[i][fields[f]] = newData[fields[f]];
+            }
+            count++;
+        }
+    }
+    <span class="kw">return</span> count; <span class="cmt">// return number updated</span>
+}
+
+<span class="kw">const</span> db = [
+    { id:<span class="nm">1</span>, name:<span class="str">"Zaheer"</span>, role:<span class="str">"dev"</span>, active:<span class="kw">true</span> },
+    { id:<span class="nm">2</span>, name:<span class="str">"Priya"</span>,  role:<span class="str">"pm"</span>,  active:<span class="kw">true</span> },
+    { id:<span class="nm">3</span>, name:<span class="str">"Ali"</span>,    role:<span class="str">"dev"</span>, active:<span class="kw">true</span> },
+];
+
+<span class="fn">updateById</span>(db, <span class="nm">1</span>, { role: <span class="str">"senior-dev"</span>, level: <span class="nm">3</span> });
+console.<span class="fn">log</span>(db[<span class="nm">0</span>]);
+<span class="cmt">// {id:1, name:"Zaheer", role:"senior-dev", active:true, level:3}</span>
+
+<span class="kw">const</span> n = <span class="fn">updateWhere</span>(db, <span class="str">"role"</span>, <span class="str">"dev"</span>, { active: <span class="kw">false</span> });
+console.<span class="fn">log</span>(n); <span class="cmt">// 2 (Zaheer senior-dev not matched)</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>updateById → merged fields | updateWhere → count of updated records</div>
+      </div>
+    </div>
+
+    <!-- Q49: DELETE -->
+    <div class="q-card" data-cat="crud">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.49</span>
+        <span class="q-title">DELETE — Remove by ID, Remove by Condition, Soft Delete</span>
+        <div class="q-tags"><span class="q-tag tag-crud">CRUD</span><span class="q-tag tag-medium">Medium</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Hard delete by rebuilding array skipping the target. Soft delete by flagging. No <code>.splice()</code> or <code>.filter()</code>.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab js-tab active" onclick="switchTab(this,'js','q49')">JavaScript</button>
+        </div>
+        <div id="q49-js" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// HARD DELETE by ID — no .splice() or .filter()</span>
+<span class="kw">function</span> <span class="fn">deleteById</span>(arr, id) {
+    <span class="kw">const</span> result = [];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i].id !== id)
+            result[result.length] = arr[i];
+    }
+    <span class="cmt">// mutate original array in-place</span>
+    arr.length = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; result.length; i++)
+        arr[arr.length] = result[i];
+    <span class="kw">return</span> arr;
+}
+
+<span class="cmt">// SOFT DELETE — mark deleted instead of removing</span>
+<span class="kw">function</span> <span class="fn">softDelete</span>(arr, id) {
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i].id === id) {
+            arr[i].deleted = <span class="kw">true</span>;
+            arr[i].deletedAt = <span class="kw">new</span> <span class="fn">Date</span>().<span class="fn">toISOString</span>();
+            <span class="kw">return</span> <span class="kw">true</span>;
+        }
+    }
+    <span class="kw">return false</span>;
+}
+
+<span class="cmt">// DELETE WHERE condition (bulk)</span>
+<span class="kw">function</span> <span class="fn">deleteWhere</span>(arr, key, value) {
+    <span class="kw">let</span> count = <span class="nm">0</span>;
+    <span class="ty">const</span> result = [];
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; arr.length; i++) {
+        <span class="kw">if</span> (arr[i][key] !== value) result[result.length] = arr[i];
+        <span class="kw">else</span> count++;
+    }
+    arr.length = <span class="nm">0</span>;
+    <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; result.length; i++)
+        arr[arr.length] = result[i];
+    <span class="kw">return</span> count;
+}
+
+<span class="kw">const</span> db = [
+    { id:<span class="nm">1</span>, name:<span class="str">"Zaheer"</span>, role:<span class="str">"dev"</span> },
+    { id:<span class="nm">2</span>, name:<span class="str">"Priya"</span>,  role:<span class="str">"pm"</span>  },
+    { id:<span class="nm">3</span>, name:<span class="str">"Ali"</span>,    role:<span class="str">"dev"</span>  },
+];
+
+<span class="fn">deleteById</span>(db, <span class="nm">2</span>);
+console.<span class="fn">log</span>(db.length); <span class="cmt">// 2</span>
+
+<span class="fn">softDelete</span>(db, <span class="nm">1</span>);
+console.<span class="fn">log</span>(db[<span class="nm">0</span>].deleted); <span class="cmt">// true</span>
+
+<span class="kw">const</span> deleted = <span class="fn">deleteWhere</span>(db, <span class="str">"role"</span>, <span class="str">"dev"</span>);
+console.<span class="fn">log</span>(deleted, db.length); <span class="cmt">// 1, 0</span></pre></div>
+        </div>
+        <div class="output-wrap"><div class="output-label">Output</div>After hard delete → len=2 | softDelete marks deleted:true | deleteWhere removed 1</div>
+      </div>
+    </div>
+
+    <!-- Q50: Full CRUD system -->
+    <div class="q-card" data-cat="crud">
+      <div class="q-header" onclick="toggleCard(this)">
+        <span class="q-num">Q.50</span>
+        <span class="q-title">FULL CRUD — Complete In-Memory Store (No Array Methods)</span>
+        <div class="q-tags"><span class="q-tag tag-crud">CRUD</span><span class="q-tag tag-hard">Hard</span></div>
+        <span class="q-chevron">▶</span>
+      </div>
+      <div class="q-body">
+        <div class="q-desc">Complete production-style in-memory store: auto-increment ID, timestamps, soft delete, search, pagination — all using only <code>for</code> loops, no array methods at all.</div>
+        <div class="lang-tabs">
+          <button class="lang-tab js-tab active" onclick="switchTab(this,'js','q50')">JavaScript</button>
+        </div>
+        <div id="q50-js" class="lang-pane active">
+          <div class="code-wrap"><button class="copy-btn" onclick="copyCode(this)">Copy</button><pre>
+<span class="cmt">// Q50: Complete CRUD Store — zero array methods</span>
+<span class="kw">function</span> <span class="fn">createStore</span>() {
+    <span class="kw">let</span> data = [];
+    <span class="kw">let</span> nextId = <span class="nm">1</span>;
+
+    <span class="cmt">// ── CREATE ──────────────────────────────</span>
+    <span class="kw">function</span> <span class="fn">create</span>(obj) {
+        <span class="kw">const</span> record = {};
+        <span class="cmt">// copy all fields</span>
+        <span class="kw">const</span> keys = <span class="fn">Object</span>.<span class="fn">keys</span>(obj);
+        <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; keys.length; i++)
+            record[keys[i]] = obj[keys[i]];
+        record.id = nextId++;
+        record.createdAt = <span class="kw">new</span> <span class="fn">Date</span>().<span class="fn">toISOString</span>();
+        record.deleted = <span class="kw">false</span>;
+        data[data.length] = record;
+        <span class="kw">return</span> record;
+    }
+
+    <span class="cmt">// ── READ ─────────────────────────────────</span>
+    <span class="kw">function</span> <span class="fn">getAll</span>() {
+        <span class="kw">const</span> result = [];
+        <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; data.length; i++)
+            <span class="kw">if</span> (!data[i].deleted)
+                result[result.length] = data[i];
+        <span class="kw">return</span> result;
+    }
+
+    <span class="kw">function</span> <span class="fn">getById</span>(id) {
+        <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; data.length; i++)
+            <span class="kw">if</span> (data[i].id === id && !data[i].deleted)
+                <span class="kw">return</span> data[i];
+        <span class="kw">return null</span>;
+    }
+
+    <span class="kw">function</span> <span class="fn">search</span>(query) {
+        <span class="kw">const</span> result = [];
+        <span class="kw">const</span> qLow = query.<span class="fn">toLowerCase</span>();
+        <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; data.length; i++) {
+            <span class="kw">if</span> (data[i].deleted) <span class="kw">continue</span>;
+            <span class="kw">const</span> keys = <span class="fn">Object</span>.<span class="fn">keys</span>(data[i]);
+            <span class="kw">for</span> (<span class="kw">let</span> k = <span class="nm">0</span>; k &lt; keys.length; k++) {
+                <span class="kw">const</span> val = String(data[i][keys[k]]).<span class="fn">toLowerCase</span>();
+                <span class="kw">if</span> (val.<span class="fn">indexOf</span>(qLow) !== -<span class="nm">1</span>) {
+                    result[result.length] = data[i];
+                    <span class="kw">break</span>;
+                }
+            }
+        }
+        <span class="kw">return</span> result;
+    }
+
+    <span class="cmt">// ── UPDATE ───────────────────────────────</span>
+    <span class="kw">function</span> <span class="fn">update</span>(id, newData) {
+        <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; data.length; i++) {
+            <span class="kw">if</span> (data[i].id === id && !data[i].deleted) {
+                <span class="kw">const</span> fields = <span class="fn">Object</span>.<span class="fn">keys</span>(newData);
+                <span class="kw">for</span> (<span class="kw">let</span> f = <span class="nm">0</span>; f &lt; fields.length; f++) {
+                    <span class="kw">if</span> (fields[f] !== <span class="str">'id'</span>)
+                        data[i][fields[f]] = newData[fields[f]];
+                }
+                data[i].updatedAt = <span class="kw">new</span> <span class="fn">Date</span>().<span class="fn">toISOString</span>();
+                <span class="kw">return</span> data[i];
+            }
+        }
+        <span class="kw">return null</span>;
+    }
+
+    <span class="cmt">// ── DELETE (soft) ────────────────────────</span>
+    <span class="kw">function</span> <span class="fn">remove</span>(id) {
+        <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; data.length; i++) {
+            <span class="kw">if</span> (data[i].id === id && !data[i].deleted) {
+                data[i].deleted = <span class="kw">true</span>;
+                data[i].deletedAt = <span class="kw">new</span> <span class="fn">Date</span>().<span class="fn">toISOString</span>();
+                <span class="kw">return true</span>;
+            }
+        }
+        <span class="kw">return false</span>;
+    }
+
+    <span class="cmt">// ── COUNT ────────────────────────────────</span>
+    <span class="kw">function</span> <span class="fn">count</span>() {
+        <span class="kw">let</span> n = <span class="nm">0</span>;
+        <span class="kw">for</span> (<span class="kw">let</span> i = <span class="nm">0</span>; i &lt; data.length; i++)
+            <span class="kw">if</span> (!data[i].deleted) n++;
+        <span class="kw">return</span> n;
+    }
+
+    <span class="kw">return</span> { create, getAll, getById, search, update, remove, count };
+}
+
+<span class="cmt">// ── DEMO ─────────────────────────────────</span>
+<span class="kw">const</span> store = <span class="fn">createStore</span>();
+
+store.<span class="fn">create</span>({ name: <span class="str">"Zaheer"</span>, role: <span class="str">"dev"</span>,  city: <span class="str">"Ahmedabad"</span> });
+store.<span class="fn">create</span>({ name: <span class="str">"Priya"</span>,  role: <span class="str">"pm"</span>,   city: <span class="str">"Mumbai"</span>    });
+store.<span class="fn">create</span>({ name: <span class="str">"Ali"</span>,    role: <span class="str">"qa"</span>,   city: <span class="str">"Bangalore"</span> });
+store.<span class="fn">create</span>({ name: <span class="str">"Sara"</span>,   role: <span class="str">"dev"</span>,  city: <span class="str">"Delhi"</span>     });
+
+console.<span class="fn">log</span>(<span class="str">"All:"</span>,    store.<span class="fn">getAll</span>().length);   <span class="cmt">// 4</span>
+console.<span class="fn">log</span>(<span class="str">"By ID:"</span>, store.<span class="fn">getById</span>(<span class="nm">2</span>).name);  <span class="cmt">// Priya</span>
+console.<span class="fn">log</span>(<span class="str">"Search:"</span>, store.<span class="fn">search</span>(<span class="str">"dev"</span>).length); <span class="cmt">// 2</span>
+
+store.<span class="fn">update</span>(<span class="nm">1</span>, { role: <span class="str">"senior-dev"</span>, level: <span class="nm">5</span> });
+console.<span class="fn">log</span>(<span class="str">"Updated:"</span>, store.<span class="fn">getById</span>(<span class="nm">1</span>).level); <span class="cmt">// 5</span>
+
+store.<span class="fn">remove</span>(<span class="nm">3</span>);
+console.<span class="fn">log</span>(<span class="str">"Count after delete:"</span>, store.<span class="fn">count</span>()); <span class="cmt">// 3</span>
+console.<span class="fn">log</span>(<span class="str">"Deleted visible:"</span>, store.<span class="fn">getById</span>(<span class="nm">3</span>)); <span class="cmt">// null</span></pre></div>
+        </div>
+        <div class="output-wrap">
+          <div class="output-label">Full CRUD Output</div>
+          All: 4 | getById(2): "Priya" | search("dev"): 2 | update level: 5 | count after delete: 3
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end crud grid -->
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">LOGIC.CPP.JS</div>
+  <p>50 Questions · Logic · Arrays · SubArrays · CRUD · C++ &amp; JavaScript · 2026</p>
+</footer>
+
+<script src="../src/interview-logic.js"></script>
+
+</body>
+</html>
