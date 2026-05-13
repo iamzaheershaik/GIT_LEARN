@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Deep Interview Guide — Core + DOM + BOM</title>
+<meta name="description" content="200+ JavaScript interview questions with answers covering core JS, arrays, objects, strings, Set/Map, DOM, BOM, and browser APIs.">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/js-interview-deep.css">
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div class="top-header">
+  <div class="term-dots">
+    <div class="header-dot dot-red"></div>
+    <div class="header-dot dot-yellow"></div>
+    <div class="header-dot dot-green"></div>
+  </div>
+  <span class="header-title">js<span>-interview-deep</span> ~/prep</span>
+  <span class="header-version">v2.0 — Core + DOM + BOM</span>
+</div>
+
+<div class="sidebar" id="sidebar"></div>
+<button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+<div class="layout">
+  <div class="main">
+    <div class="hero" id="s0">
+      <div class="hero-tag">Complete Interview Preparation</div>
+      <h1>Master <span class="accent">JavaScript</span><br>Deep Interview <span class="accent2">Guide</span></h1>
+      <p>Every concept. Every method. Every gotcha. 200+ collapsible Q&A with answers, covering Core JS, DOM, BOM, and Browser APIs — interview-ready.</p>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num" id="totalSections">0</div><div class="stat-label">Sections</div></div>
+        <div class="stat"><div class="stat-num" id="totalQuestions">0</div><div class="stat-label">Questions</div></div>
+        <div class="stat"><div class="stat-num" id="totalCode">0</div><div class="stat-label">Code Examples</div></div>
+      </div>
+    </div>
+    <div class="content" id="content"></div>
+  </div>
+</div>
+
+<button class="back-to-top" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script src="../src/js-interview-deep-data.js"></script>
+<script>
+// ── RENDER ENGINE ──
+function esc(s){return s.replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function renderCode(code, title){
+  return `<div class="terminal"><div class="terminal-header"><div class="term-dots"><div class="term-dot" style="background:#ff5555"></div><div class="term-dot" style="background:#f0a500"></div><div class="term-dot" style="background:#39d353"></div></div><span class="term-title">${title||'javascript'}</span><button class="copy-btn" onclick="copyBlock(this)">copy</button></div><div class="terminal-body">${code.split('\n').map(l=>`<div class="line">${colorize(l)}</div>`).join('')}</div></div>`;
+}
+
+function colorize(line){
+  if(!line.trim()) return '';
+  // comments
+  line = line.replace(/(\/\/.*)$/g,'<span class="comment">$1</span>');
+  // strings
+  line = line.replace(/(`[^`]*`)/g,'<span class="str">$1</span>');
+  line = line.replace(/("[^"]*")/g,'<span class="str">$1</span>');
+  line = line.replace(/('[^']*')/g,'<span class="str">$1</span>');
+  // keywords
+  line = line.replace(/\b(const|let|var|function|return|if|else|for|while|class|extends|new|this|typeof|instanceof|async|await|try|catch|finally|throw|switch|case|break|default|import|export|from|of|in|yield|super|static|get|set|delete|void|null|undefined)\b/g,'<span class="kw">$1</span>');
+  // booleans
+  line = line.replace(/\b(true|false)\b/g,'<span class="bool">$1</span>');
+  // numbers
+  line = line.replace(/\b(\d+\.?\d*)\b/g,'<span class="num">$1</span>');
+  // arrow
+  line = line.replace(/=>/g,'<span class="op">=></span>');
+  return line;
+}
+
+function renderQA(questions){
+  return questions.map((q,i)=>{
+    const d = q[0]; // difficulty: e/m/h
+    const cls = d==='e'?'easy':d==='m'?'medium':'hard';
+    const badge = d==='e'?'🟢 Basic':d==='m'?'🟡 Intermediate':'🔴 Advanced';
+    return `<div class="qa-item ${cls}"><div class="qa-question" onclick="this.parentElement.classList.toggle('open')"><span class="q-num">${i+1}</span><span class="q-text">${q[1]}</span><span class="q-diff">${badge}</span><span class="q-toggle">▼</span></div><div class="qa-answer"><div class="qa-answer-inner">${q[2].includes('```')?formatAnswer(q[2]):q[2]}</div></div></div>`;
+  }).join('');
+}
+
+function formatAnswer(text){
+  return text.replace(/```(\w*)\n([\s\S]*?)```/g, (m,lang,code)=>{
+    return `<pre>${code.split('\n').map(l=>colorize(esc(l))).join('\n')}</pre>`;
+  });
+}
+
+function renderSection(sec, idx){
+  let html = `<div class="section" id="s${idx+1}"><div class="section-header"><div class="section-num">${String(idx+1).padStart(2,'0')}</div><div><div class="section-title">${sec.title}</div><div class="section-subtitle">${sec.subtitle}</div></div></div>`;
+
+  // Concept
+  if(sec.concept) html += `<div class="concept"><div class="concept-title">📖 Concept</div><p>${sec.concept}</p></div>`;
+
+  // Code examples
+  if(sec.code) sec.code.forEach(c=>{
+    html += renderCode(c[1], c[0]);
+  });
+
+  // Tables
+  if(sec.table){
+    html += `<table class="cmd-table"><thead><tr>${sec.table.head.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${sec.table.rows.map(r=>`<tr>${r.map((c,i)=>`<td${i===0?' class="tc"':''}>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+  }
+
+  // Callout
+  if(sec.callout) html += `<div class="callout ${sec.callout[0]}"><span class="icon">${sec.callout[0]==='tip'?'💡':sec.callout[0]==='warn'?'⚠️':sec.callout[0]==='danger'?'🚨':'🎯'}</span><span class="body">${sec.callout[1]}</span></div>`;
+
+  // Best practices
+  if(sec.practices){
+    html += `<ul class="practice-list">${sec.practices.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+  }
+
+  // Mistakes
+  if(sec.mistakes){
+    html += `<ul class="mistake-list">${sec.mistakes.map(m=>`<li>${m}</li>`).join('')}</ul>`;
+  }
+
+  // Questions
+  if(sec.questions){
+    html += `<div class="qa-section"><div class="qa-header"><h3>🎤 Interview Q&A</h3><span class="qa-badge interview">Collapsible</span><span class="qa-count">${sec.questions.length} questions</span></div>${renderQA(sec.questions)}</div>`;
+  }
+
+  html += '</div>';
+  return html;
+}
+
+// ── BUILD PAGE ──
+const content = document.getElementById('content');
+let totalQ = 0;
+let sidebarHTML = '';
+let currentGroup = '';
+
+SECTIONS.forEach((sec, i)=>{
+  if(sec.group && sec.group !== currentGroup){
+    currentGroup = sec.group;
+    sidebarHTML += `<div class="sidebar-section">${sec.group}</div>`;
+  }
+  const badge = sec.badge ? `<span class="badge ${sec.badge[1]||''}">${sec.badge[0]}</span>` : '';
+  sidebarHTML += `<a class="sidebar-link" onclick="document.getElementById('s${i+1}').scrollIntoView({behavior:'smooth'})"><span class="icon">${sec.icon||'📄'}</span>${sec.title}${badge}</a>`;
+  content.innerHTML += renderSection(sec, i);
+  if(sec.questions) totalQ += sec.questions.length;
+});
+
+document.getElementById('sidebar').innerHTML = `<div class="search-box"><span class="search-icon">🔍</span><input class="search-input" id="search" placeholder="Search topics..." oninput="filterSidebar(this.value)"></div>` + sidebarHTML;
+document.getElementById('totalSections').textContent = SECTIONS.length;
+document.getElementById('totalQuestions').textContent = totalQ + '+';
+document.getElementById('totalCode').textContent = SECTIONS.reduce((a,s)=>a+(s.code?s.code.length:0),0) + '+';
+
+// ── UTILS ──
+function copyBlock(btn){
+  const body = btn.closest('.terminal').querySelector('.terminal-body');
+  const text = body.innerText;
+  navigator.clipboard.writeText(text).then(()=>{btn.textContent='copied!';setTimeout(()=>btn.textContent='copy',1500);});
+}
+
+function filterSidebar(val){
+  val = val.toLowerCase();
+  document.querySelectorAll('.sidebar-link').forEach(l=>{
+    l.style.display = l.textContent.toLowerCase().includes(val) ? '' : 'none';
+  });
+}
+
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const p = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  document.getElementById('progress').style.width = p + '%';
+  document.getElementById('btt').classList.toggle('visible', window.scrollY > 500);
+});
+
+// Mobile toggle
+document.getElementById('sidebarToggle').addEventListener('click',()=>{
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+// Active sidebar tracking
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.sidebar-link').forEach(l=>l.classList.remove('active'));
+      const idx = Array.from(document.querySelectorAll('.section')).indexOf(e.target);
+      const links = document.querySelectorAll('.sidebar-link');
+      if(links[idx]) links[idx].classList.add('active');
+    }
+  });
+},{threshold:0.2, rootMargin:'-80px 0px -60% 0px'});
+document.querySelectorAll('.section').forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>

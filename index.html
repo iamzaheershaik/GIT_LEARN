@@ -85,6 +85,10 @@
           <span class="section-icon">🧠</span>
           <span class="section-label">Interview Logic</span>
         </button>
+        <button class="section-btn" data-section="jsDeep" onclick="switchSection('jsDeep')" id="secBtnJsDeep">
+          <span class="section-icon">📘</span>
+          <span class="section-label">JS Deep Guide</span>
+        </button>
       </div>
     </div>
   </aside>
@@ -164,6 +168,12 @@
             <p class="dc-desc">50+ array patterns and algorithm implementation.</p>
             <div class="dash-progress"><div class="dash-progress-fill" id="prog-logic" style="width: 0%; background: var(--logic)"></div></div>
           </div>
+          <div class="dash-card card-js-deep" onclick="switchSection('jsDeep')">
+            <div class="dc-icon">📘</div>
+            <h3 class="dc-title">JS Deep Guide</h3>
+            <p class="dc-desc">Core JS, DOM, BOM, and pseudocode logic.</p>
+            <div class="dash-progress"><div class="dash-progress-fill" id="prog-jsDeep" style="width: 0%; background: var(--cyan)"></div></div>
+          </div>
         </div>
       </div>
 
@@ -176,6 +186,7 @@
       <iframe class="level-frame" id="frameNetworking" title="Networking Notes"></iframe>
       <iframe class="level-frame" id="frameReact" src="https://crack-the-js.vercel.app" title="React Interview Prep"></iframe>
       <iframe class="level-frame" id="frameLogic" title="Interview Logic Questions"></iframe>
+      <iframe class="level-frame" id="frameJsDeep" src="html/js-interview-deep.html" title="JS Deep Guide"></iframe>
       <iframe class="level-frame" id="frameSql" title="SQL Roadmap"></iframe>
       <iframe class="level-frame" id="framePostgres" title="PostgreSQL Mastery Series"></iframe>
       <iframe class="level-frame" id="frameNode" title="Node Mongo Express"></iframe>

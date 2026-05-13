@@ -20,6 +20,7 @@ const sectionFrames = {
   sql: { el: document.getElementById('frameSql'), src: 'html/SQL_Complete_Learning_Roadmap.html', loaded: false },
   postgres: { el: document.getElementById('framePostgres'), src: 'html/postgresql-learning-series-enhanced.html', loaded: false },
   node: { el: document.getElementById('frameNode'), src: 'html/node-mongo-express-interview.html', loaded: false },
+  jsDeep: { el: document.getElementById('frameJsDeep'), src: 'html/js-interview-deep.html', loaded: true },
 };
 
 const btns = {
@@ -39,6 +40,7 @@ const sectionBtns = {
   sql: document.getElementById('secBtnSql'),
   postgres: document.getElementById('secBtnPostgres'),
   node: document.getElementById('secBtnNode'),
+  jsDeep: document.getElementById('secBtnJsDeep'),
 };
 
 const overlay = document.getElementById('transOverlay');
@@ -57,7 +59,8 @@ const sectionTitles = {
   logic: '<span class="bc-icon">🧠</span> Interview Logic',
   sql: '<span class="bc-icon">🗄️</span> SQL Roadmap',
   postgres: '<span class="bc-icon">🐘</span> PostgreSQL',
-  node: '<span class="bc-icon">🟢</span> Node / Mongo'
+  node: '<span class="bc-icon">🟢</span> Node / Mongo',
+  jsDeep: '<span class="bc-icon">📘</span> JS Deep Guide'
 };
 
 // ── Section Switching ──
@@ -252,7 +255,8 @@ const searchIndex = [
   { title: "Networking: HTTP/HTTPS", desc: "Status codes, headers, and handshakes.", section: "networking", color: "var(--net)" },
   { title: "WebSockets vs Polling", desc: "Real-time bidirectional communication.", section: "networking", color: "var(--net)" },
   { title: "Array Iteration Patterns", desc: "Map, Filter, Reduce, Some, Every.", section: "logic", color: "var(--logic)" },
-  { title: "React Interview Prep", desc: "Hooks, Virtual DOM, and State.", section: "react", color: "var(--react)" }
+  { title: "React Interview Prep", desc: "Hooks, Virtual DOM, and State.", section: "react", color: "var(--react)" },
+  { title: "JS Deep Guide", desc: "Core JS, DOM, BOM, and pseudocode logic.", section: "jsDeep", color: "var(--cyan)" }
 ];
 
 let selectedResultIndex = -1;
